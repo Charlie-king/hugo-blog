@@ -1,0 +1,7 @@
+{{/* 生成baidu_urls.txt搜索curl文件 */}}
+{{- range .Site.Pages -}}
+  {{- if not .Draft -}}
+    {{- .Permalink -}}
+    {{- "\n" -}}
+  {{- end -}}
+{{- end -}}

@@ -1,0 +1,18 @@
+# 朋友/站点信息例子
+# nickname: 朋友名字
+#  avatar: https://lruihao.cn/images/avatar.jpg
+#  url: 站点链接
+#  description: 对朋友或其站点的说明
+  
+- nickname: 愛如潮水
+  avatar: https://recell.github.io/images/123.jpg
+  url: https://recell.github.io
+  discription: 蒙镛、老铁,一句两句说不清！
+- nickname: DoubleAm
+  avatar: https://a.biugle.cn/images/avatar.jpg
+  url: https://a.biugle.cn/
+  discription: 又一个被我带入坑的小伙子！
+- nickname: francs
+  avatar: https://postgres.fun/images/francs.png
+  url: https://postgres.fun
+  discription: PostgreSQL中文网。数据库。francs.top

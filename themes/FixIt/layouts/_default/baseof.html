@@ -1,0 +1,41 @@
+{{- partial "init.html" . -}}
+
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    {{ if (eq .Kind "home") | and (ne .Site.Params.disableThemeInject true) }}
+      <meta name="theme" content='FixIt {{ .Scratch.Get "version" }}'>
+    {{ end }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>
+      {{- block "title" . }}{{ .Site.Title }}{{ end -}}
+    </title>
+
+    {{- partial "head/meta.html" . -}}
+    {{- partial "head/link.html" . -}}
+    {{- partial "head/seo.html" . -}}
+  </head>
+  <body header-desktop="{{ .Site.Params.header.desktopMode }}" header-mobile="{{ .Site.Params.header.mobileMode }}">
+    {{- /* Check theme isDark before body rendering */ -}}
+    {{- $theme := .Site.Params.defaulttheme -}}
+    <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('{{ $theme }}' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '{{ $theme }}' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    {{- /* Body wrapper */ -}}
+    <div class="wrapper">
+      {{- partial "header.html" . -}}
+      {{- $toc := .Scratch.Get "toc" -}}
+      <main class="container{{ if (eq $toc.enable true) | and (eq $toc.position `left`) }}-reverse{{ end }}" page-style="{{ (.Scratch.Get `params`).pageStyle | default `normal` }}">
+        {{- block "content" . }}{{ end -}}
+      </main>
+      {{- partial "footer.html" . -}}
+    </div>
+
+    {{- /* Theme widgets */ -}}
+    {{- partial "widgets.html" . -}}
+
+    {{- /* Load JavaScript scripts and CSS */ -}}
+    {{- partial "assets.html" . -}}
+  </body>
+</html>

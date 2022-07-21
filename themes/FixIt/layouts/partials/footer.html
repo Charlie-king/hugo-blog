@@ -1,0 +1,98 @@
+{{- if ne .Site.Params.footer.enable false -}}
+  <footer class="footer">
+    <div class="footer-container">
+      {{- /* Custom Content */ -}}
+      {{- with .Site.Params.footer.custom -}}
+        <div class="footer-line custom">
+          {{- safeHTML . -}}
+        </div>
+      {{- end -}}
+
+      {{- /* Hugo and FixIt */ -}}
+      {{- if ne .Site.Params.footer.hugo false -}}
+        <div class="footer-line powered">
+          {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer" title="Hugo %v">Hugo</a>` hugo.Version -}}
+          {{- $theme := .Scratch.Get "version" | printf `<a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreffer" title="FixIt %v"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>` -}}
+          {{- dict "Hugo" $hugo "Theme" $theme | T "poweredBySome" | safeHTML }}
+        </div>
+      {{- end -}}
+
+      {{- if .Site.Params.footer.copyright | or .Site.Params.footer.author | or .Site.Params.footer.license -}}
+        <div class="footer-line copyright">
+          {{- /* Copyright year */ -}}
+          {{- if ne .Site.Params.footer.copyright false -}}
+            <i class="far fa-copyright fa-fw"></i>
+            {{ with .Site.Params.footer.since -}}
+              <span itemprop="copyrightYear">
+                {{- if lt . now.Year }}{{ . }} - {{ end }}{{ now.Year -}}
+              </span>
+            {{- else -}}
+              <span itemprop="copyrightYear">{{ now.Year }}</span>
+            {{- end -}}
+          {{- end -}}
+
+          {{- /* Author */ -}}
+          {{- if ne .Site.Params.footer.author false -}}
+            <span class="author" itemprop="copyrightHolder">
+              {{ partial "plugin/link.html" (dict "Destination" ($.Site.Author.link | default .Site.Home.RelPermalink) "Content" .Site.Author.name) -}}
+            </span>
+          {{- end -}}
+
+          {{- /* License */ -}}
+          {{- with .Site.Params.footer.license -}}
+            <span class="license footer-divider">{{ . | safeHTML }}</span>
+          {{- end -}}
+        </div>
+      {{- end -}}
+
+      {{- /* TODO: The parameter `ibruce.siteTime` will be deleted in v0.2.15 */ -}}
+      {{- if .Site.Params.ibruce.siteTime | or .Site.Params.footer.siteTime | or .Site.Params.footer.wordCount -}}
+        <div class="footer-line statistics">
+          {{- if .Site.Params.ibruce.siteTime | or .Site.Params.footer.siteTime -}}
+            <span class="site-time" title='{{ T "siteRunning" }}'><i class="fas fa-heartbeat fa-fw animate-icon"></i>&nbsp;<span class="run-times">{{- T "siteRunning" -}}</span></span>
+          {{- end -}}
+
+          {{- /* Total word count */ -}}
+          {{- /* There is a fatal bug. See https://github.com/Lruihao/FixIt/issues/124 */ -}}
+          {{- /* if ne .Site.Params.footer.wordCount false */ -}}
+          {{- if false -}}
+            {{- $localData := newScratch -}}
+            {{- range (where .Site.Pages "Kind" "page") -}}
+              {{- $localData.Add "totalWordCount" .WordCount -}}
+            {{- end -}}
+            {{- with ($localData.Get "totalWordCount") -}}
+              {{- $humanizedNum := . -}}
+              {{- if ge $humanizedNum 1000 -}}
+                {{- $humanizedNum = printf "%.2fK" (div $humanizedNum 1000.0) -}}
+              {{- end -}}
+              <span class="total-word-count footer-divider" title='{{- T "totalwordCount" . }}'><i class="far fa-keyboard fa-fw"></i>&nbsp;{{- T "totalwordCount" (dict "Count" $humanizedNum) -}}</span>
+            {{- end -}}
+          {{- end -}}
+        </div>
+      {{- end -}}
+
+      {{- /* 不蒜子 */ -}}
+      {{- if eq .Site.Params.ibruce.enable true -}}
+        <div class="footer-line ibruce">
+          <span id="busuanzi_container_site_uv" title='{{ T "siteUV" }}'><i class="far fa-user fa-fw"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin fa-fw"></i></span></span>
+          {{- /* remove spaces */ -}}
+          <span id="busuanzi_container_site_pv" class="footer-divider" title='{{ T "sitePV" }}'><i class="far fa-eye fa-fw"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw"></i></span></span>
+        </div>
+      {{- end -}}
+      
+      {{- if .Site.Params.footer.gov | or .Site.Params.footer.icp -}}
+        <div class="footer-line beian">
+          {{- /* GOV */ -}}
+          {{- with .Site.Params.footer.gov -}}
+            <span class="gov">{{ . | safeHTML }}</span>
+          {{- end -}}
+
+          {{- /* ICP */ -}}
+          {{- with .Site.Params.footer.icp -}}
+            <span class="icp footer-divider">{{ . | safeHTML }}</span>
+          {{- end -}}
+        </div>
+      {{- end -}}
+    </div>
+  </footer>
+{{- end -}}
