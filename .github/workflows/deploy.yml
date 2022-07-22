@@ -1,0 +1,40 @@
+name: Hugo build and deploy
+on:
+  push:
+
+jobs:
+  Actions-Hugo-Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2.4.2
+        with:
+          submodules: recursive  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2.4.13
+        with:
+          hugo-version: latest
+          extended: true
+      - name: Build Hugo static files
+        run: hugo -v --gc --minify
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        env:
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          external_repository: Charlie-king/Charlie-king.github.io
+          publish_branch: main
+          publish_dir: ./public
+          commit_message: ":rocket: ${{ github.event.head_commit.message }}"
+     
+#      - name: Install coscmd
+#        run: sudo pip install coscmd
+#      - name: Configure coscmd
+#        env:
+#          COS_SECRET_ID: ${{ secrets.COS_SECRET_ID }}
+#          COS_SECRET_KEY: ${{ secrets.COS_SECRET_KEY }}
+#          COS_BUCKET_NAME: blog-1256932288
+#          COS_BUCKET_REGION: ap-chengdu
+#        run: coscmd config -a $COS_SECRET_ID -s $COS_SECRET_KEY -b $COS_BUCKET_NAME -r $COS_BUCKET_REGION
+#      - name: Deploy to COS Bucket
+#        run: coscmd upload -r -s --delete -f public/ /
