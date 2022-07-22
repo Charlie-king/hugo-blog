@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2.4.2
+        uses: actions/checkout@v2
         with:
           submodules: recursive  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2.4.13
+        uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
           extended: true
@@ -20,7 +20,7 @@ jobs:
         run: hugo -v --gc --minify
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
-        env:
+        with:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: Charlie-king/Charlie-king.github.io
           publish_branch: main
