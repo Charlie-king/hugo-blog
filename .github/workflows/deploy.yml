@@ -25,8 +25,19 @@ jobs:
           external_repository: Charlie-king/Charlie-king.github.io
           publish_branch: main
           publish_dir: ./public
-          commit_message: ":rocket: ${{ github.event.head_commit.message }}"
-     
+#          commit_message: ":rocket: ${{ github.event.head_commit.message }}"
+  
+      - name: NPM install
+        run: npm install
+      - name: Update Algolia index
+        env:
+          ALGOLIA_APP_ID: B6R922P6DD
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          ALGOLIA_INDEX_NAME: 'dev_hugo'
+          ALGOLIA_INDEX_FILE: './public/index.json'
+        run: npm run algolia
+
+  
 #      - name: Install coscmd
 #        run: sudo pip install coscmd
 #      - name: Configure coscmd
