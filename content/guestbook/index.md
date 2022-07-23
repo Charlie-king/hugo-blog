@@ -16,11 +16,12 @@ date: 2021-09-13T20:31:52+08:00
 ---
 
 {{< style "text-align: center;" div >}}
-  ![WechatPay](/images/wechat.png)
+  .top{width:500px;height:500px;}
   ![AliPay](/images/alipay.png)
+  ![WechatPay](/images/wechat.png)
 {{< /style >}}
 {{< /admonition >}}
 
 ---
 
-{{< music server="netease" type="playlist" id="2280569152" loop="all" list-folded="true">}}
+{{< music server="netease" type="playlist" id="509720124" loop="all" list-folded="true">}}
