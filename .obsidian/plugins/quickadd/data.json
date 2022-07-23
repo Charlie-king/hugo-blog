@@ -1,0 +1,20 @@
+{
+  "choices": [],
+  "macros": [
+    {
+      "name": "new",
+      "id": "c77005f9-e5ff-49df-a35d-5932f68edffd",
+      "commands": [
+        {
+          "name": "NewBlog",
+          "type": "UserScript",
+          "id": "0a468d27-e84e-462d-ae1e-e9704d04f0b9",
+          "path": "obs_sctipts/NewBlog.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    }
+  ],
+  "inputPrompt": "single-line"
+}

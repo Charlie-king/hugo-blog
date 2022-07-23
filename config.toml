@@ -1,6 +1,6 @@
 # 网站标题
 baseURL = "https://kingpo.vercel.app/"
-title = ""
+title = "六月长河"
 # [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
 # 网站语言，仅在这里 CN 大写
@@ -128,7 +128,7 @@ author = true
 # 网站创立年份
 since = 2019
 #  网站创立时间
-siteTime = '2019-02-03T19:30:34+08:00' # 例：'2019-02-03T19:30:34+08:00'
+siteTime = '2022-07-13T19:30:34+08:00' # 例：'2019-02-03T19:30:34+08:00'
 #  是否显示网站内容总字数
 wordCount = true
 #  公网安备信息，仅在中国使用（支持 HTML 格式）
@@ -314,12 +314,12 @@ keepStatic = false
 # 是否使侧边目录自动折叠展开
 auto = true
 #  目录位置 ("left", "right")
-position = "left"
+position = "right"
 #  在文章开头显示提示信息，提醒读者文章内容可能过时
 [params.page.expirationReminder]
-enable = false
+enable = true
 # 如果文章最后更新于这天数之前，显示提醒
-reminder = 90
+reminder = 180
 # 如果文章最后更新于这天数之前，显示警告
 warning = 180
 # 如果文章到期是否关闭评论
