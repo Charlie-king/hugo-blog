@@ -8,7 +8,7 @@ comment: false
 
 
 
-## 初衷
+
 {{< admonition info "白云苍狗，岁月如流" >}}
  {{< typeit >}}
   一个好折腾的普通人<br>

@@ -9,7 +9,7 @@ date: 2021-09-13T20:31:52+08:00
 {{< /typeit >}}
 {{< /admonition >}}
 
-{{< admonition example 客至 false >}}
+{{< admonition example "客至" >}}
 
 - 舍南舍北皆春水，但见群鸥日日来。
 - 花径不曾缘客扫，蓬门今始为君开。
