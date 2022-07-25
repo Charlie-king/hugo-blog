@@ -10,11 +10,12 @@ comment: false
 
 ## 初衷
 {{< admonition info "白云苍狗，岁月如流" >}}
-{{< typeit group=expect >}}
-  一个好折腾的普通人
-  折腾自己
-  折腾世界
+ {{< typeit >}}
+  一个好折腾的普通人<br>
+  折腾自己<br>
+  折腾世界<br>
   留下一点印记
+ {{< /typeit >}}
 {{< /admonition >}}
 
 {{< admonition success "公众号" >}}
