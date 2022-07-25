@@ -24,6 +24,7 @@ date: 2021-09-13T20:31:52+08:00
 
   ![AliPay](/images/alipay_250.png)
   ![WechatPay](/images/wechat_250.png)
+  ![WechatPay](/images/wxqr_250.png)
 
 
 {{< /style >}}
