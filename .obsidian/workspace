@@ -7,8 +7,12 @@
         "id": "3e5007c96062eea4",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "content/posts/2022读书记.md",
+            "mode": "source",
+            "source": false
+          }
         }
       }
     ],
@@ -65,6 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "content/posts/2022读书记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -83,5 +88,7 @@
     "collapsed": true
   },
   "active": "3e5007c96062eea4",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "content/posts/2022读书记.md"
+  ]
 }
