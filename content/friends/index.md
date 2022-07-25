@@ -17,16 +17,16 @@ comment: true
 ## 我的信息
 
 ```yaml
-  nickname: # 名字 Kingpo
-  avatar: # 头像地址 	https://kingpo.vercel.app/images/avatar.png
-  url: # 友情链接地址 	https://kingpo.vercel.app/
-  description: # 简介描述  
+  nickname: Kingpo # 名字 
+  avatar: https://kingpo.vercel.app/images/avatar.png # 头像地址 	
+  url: https://kingpo.vercel.app/  # 友情链接地址 	
+  description: 记录世界，分享美好！ # 简介描述  
 ```
 
 ## 友情提示
 
 {{< admonition info "~~" true >}}
-1. If you want to exchange link, please leave a comment in the above format. (personal non-commercial blogs / websites only)
-2. :(fas fa-exclamation-triangle): Website failure, stop maintenance and improper content may be unlinked!
-3. Those websites that do not respect other people's labor achievements, reprint without source, or malicious acts, please do not come to exchange.
+1. 如果你想互换友链，请按以上格式留言。(仅接受个人非商用博客或网站)
+2. :(fas fa-exclamation-triangle): 网站故障，停止维护和不正确的内容可能会被取消链接！
+3. 那些不尊重他人劳动成果、无来源转载、恶意行为的网站，请不要前来交流。
 {{< /admonition >}}
