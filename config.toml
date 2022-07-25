@@ -620,7 +620,7 @@ thumbnailUrl = "/logo.png"
 
 #  网站分析配置
 [params.analytics]
-enable = false
+enable = true
 # Google Analytics
 [params.analytics.google]
 id = ""
@@ -631,6 +631,10 @@ anonymizeIP = true
 id = ""
 # 自行托管追踪器时的主机路径
 server = ""
+# Baidu Analytics
+# 百度统计
+[params.analytics.baidu]
+id = "2111c670794ab20de2746cf028182bbb"
 
 #  Cookie 许可配置
 [params.cookieconsent]
