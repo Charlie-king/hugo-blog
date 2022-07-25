@@ -853,4 +853,4 @@ weight = 6
 # 添加 CSS 类到特定的菜单项
 class = "text-center"
 # 是否为草稿菜单，类似草稿页面
-draft = true
+draft = false
