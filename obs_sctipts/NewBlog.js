@@ -11,7 +11,7 @@ function getCreateTimeAsFileName() {
     var hour = d.getHours();
     var minute = d.getMinutes();
     var second = d.getSeconds();
-    var time = year + "m" + month + "d" + day + "h" + hour + "m" + minute + "s" + second;
+    var time = year + "-" + month + "-" + day + 'd' + hour + "h" + minute + "m" + second + "s";
     return time;
 }
 
