@@ -6,10 +6,10 @@ draft: false
 author: ""
 authorLink: ""
 authorEmail: ""
-description: "12精美admonition样式的介绍"
+description: "12个精美admonition样式的介绍"
 keywords: ""
 license: ""
-comment: false
+comment: true
 weight: 0
 
 tags:
@@ -75,9 +75,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## note
 ```html
-{{< admonition >}}
+{{</* admonition */>}}
 一个 **注意** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition >}}
 一个 **注意** 横幅
@@ -85,9 +85,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## tip 
 ```html
-{{< admonition tip>}}
+{{</* admonition tip*/>}}
 一个 **提示** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition tip "Tip" false >}}
 一个 **提示** 横幅
@@ -95,9 +95,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## abstract
 ```html
-{{< admonition abstract>}}
+{{</* admonition abstract*/>}}
 一个 **摘要** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition abstract >}}
 一个 **摘要** 横幅
@@ -105,9 +105,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## info
 ```html
-{{< admonition info >}}
+{{</* admonition info */>}}
 一个 **信息** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition info >}}
 一个 **信息** 横幅
@@ -115,9 +115,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## success
 ```html
-{{< admonition success >}}
+{{</* admonition success */>}}
 一个 **成功** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition success >}}
 一个 **成功** 横幅
@@ -125,9 +125,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## question
 ```html
-{{< admonition question >}}
+{{</* admonition question */>}}
 一个 **问题** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition question >}}
 一个 **问题** 横幅
@@ -135,9 +135,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## warning
 ```html
-{{< admonition warning >}}
+{{</* admonition warning */>}}
 一个 **警告** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition warning >}}
 一个 **警告** 横幅
@@ -145,9 +145,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## failure
 ```html
-{{< admonition failure >}}
+{{</* admonition failure */>}}
 一个 **失败** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition failure >}}
 一个 **失败** 横幅
@@ -155,9 +155,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## danger
 ```html
-{{< admonition danger >}}
+{{</* admonition danger */>}}
 一个 **危险** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition danger >}}
 一个 **危险** 横幅
@@ -165,9 +165,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## bug
 ```html
-{{< admonition bug >}}
+{{</* admonition bug */>}}
 一个 **Bug** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition bug >}}
 一个 **Bug** 横幅
@@ -175,9 +175,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## example
 ```html
-{{< admonition example >}}
+{{</* admonition example */>}}
 一个 **示例** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition example >}}
 一个 **示例** 横幅
@@ -185,9 +185,9 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 ## quote
 ```html
-{{< admonition quote >}}
+{{</* admonition quote */>}}
 一个 **引用** 横幅
-{{< /admonition >}}
+{{</* /admonition */>}}
 ```
 {{< admonition quote >}}
 一个 **引用** 横幅

@@ -2,7 +2,7 @@
 title: "hugo搭建"
 subtitle: ""
 date: 2022-07-15T11:34:57+08:00
-draft: false
+draft: true
 author: ""
 authorLink: ""
 authorEmail: ""
