@@ -44,8 +44,6 @@ admonition，有着炫酷的效果，可以美化文章笔记，但它并不是M
 
 有人喜欢它的优美的展示效果，有人觉得它是对Markdown语法的污染，使用因人而异。
 
-Markdown 文本编辑器**obisidian**添加插件admonition可实现其效果。
-
 `admonition` shortcode 有以下命名参数：
 
 * **type** *[必需]*（**第一个**位置参数）
@@ -61,16 +59,15 @@ Markdown 文本编辑器**obisidian**添加插件admonition可实现其效果。
     横幅内容是否默认展开，默认值是 `true`。
 
 hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较方便的进行使用，语法和样式效果如下。
-```go-html-template
-{{< admonition type=tip title="Tip" open=false >}}
-一个 **技巧** 横幅
-{{< /admonition >}}
+```html
+{{</* admonition type=tip title="This is a tip" open=false */>}}
+一个 **技巧** 横幅{{</* /admonition */>}}
 或者
-{{< admonition tip "Tip" false >}}
+{{</* admonition tip "This is a tip" false */>}}
 一个 **技巧** 横幅
-{{< /admonition >}}
-
+{{</* /admonition */>}}
 ```
+
 {{< admonition tip "Tip" false >}}
 一个 **技巧** 横幅
 {{< /admonition >}}
@@ -149,11 +146,11 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 
 
 
-```ad-note 
+ad-note 
 title: Title Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Nulla et euismod nulla.
 
-```
+
 
 
 
