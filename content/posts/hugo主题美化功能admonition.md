@@ -54,9 +54,9 @@ admonition，有着炫酷的效果，可以美化文章笔记，但它并不是M
 
 * **title** *[可选]*（**第二个**位置参数）
 
-    `admonition` 横幅的标题，默认值是 **type** 参数的值。（支持 markdown）{{< version 0.2.14 changed >}}
+    `admonition` 横幅的标题，默认值是 **type** 参数的值。（支持 markdown）
 
-* **open** *[可选]*（**第三个**位置参数） {{< version 0.2.0 changed >}}
+* **open** *[可选]*（**第三个**位置参数）
 
     横幅内容是否默认展开，默认值是 `true`。
 
@@ -74,7 +74,7 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 {{< admonition tip "Tip" >}}
 一个 **提示** 横幅
 {{< /admonition >}}
-  
+
 ### note
 ```html
 {{</* admonition */>}}
