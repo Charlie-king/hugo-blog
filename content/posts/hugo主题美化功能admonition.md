@@ -39,7 +39,7 @@ seo:
 ---
 
 <!--more-->
-## admonition
+# admonition
 admonition，有着炫酷的效果，可以美化文章笔记，但它并不是Markdown的标准语法，不能被Markdown正常渲染，需要额外的插件配置。
 
 有人喜欢它的优美的展示效果，有人觉得它是对Markdown语法的污染，使用因人而异。
