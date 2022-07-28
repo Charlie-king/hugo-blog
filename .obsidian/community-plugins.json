@@ -1,5 +1,7 @@
 [
   "quickadd",
   "obsidian-image-auto-upload-plugin",
-  "obsidian-git"
+  "obsidian-git",
+  "obsidian-list-callouts",
+  "obsidian-admonition"
 ]
