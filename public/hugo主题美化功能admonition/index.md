@@ -1,44 +1,5 @@
----
-title: "hugo主题美化功能admonition"
-subtitle: ""
-date: 2022-07-26T14:43:36+08:00
-draft: false
-author: ""
-authorLink: ""
-authorEmail: ""
-description: "12个精美admonition样式的介绍"
-keywords: ""
-license: ""
-comment: true
-weight: 0
+# hugo主题美化功能admonition
 
-tags:
-- hugo
-categories:
-- hugo
-posts:
-- 
-
-hiddenFromHomePage: false
-hiddenFromSearch: false
-
-summary: ""
-resources:
-- name: featured-image
-  src: featured-image.jpg
-- name: featured-image-preview
-  src: featured-image-preview.jpg
-
-toc:
-  enable: true
-math:
-  enable: false
-lightgallery: false
-seo:
-  images: []
-
-# See details front matter: /theme-documentation-content/#front-matter
----
 
 <!--more-->
 ## admonition
@@ -194,4 +155,5 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 {{< admonition quote >}}
 一个 **引用** 横幅
 {{< /admonition >}}
+
 
