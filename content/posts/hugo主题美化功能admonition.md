@@ -59,101 +59,137 @@ admonition，有着炫酷的效果，可以美化文章笔记，但它并不是M
     横幅内容是否默认展开，默认值是 `true`。
 
 hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较方便的进行使用，语法和样式效果如下。
+一个`admonition`示例：
 ```html
 {{</* admonition type=tip title="This is a tip" open=false */>}}
-一个 **技巧** 横幅{{</* /admonition */>}}
+一个 **提示** 横幅
+{{</* /admonition */>}}
 或者
 {{</* admonition tip "This is a tip" false */>}}
-一个 **技巧** 横幅
+一个 **提示** 横幅
 {{</* /admonition */>}}
 ```
-
 {{< admonition tip "Tip" false >}}
-一个 **技巧** 横幅
+一个 **提示** 横幅
 {{< /admonition >}}
-```go-html-template
+
+## note
+```html
 {{< admonition >}}
 一个 **注意** 横幅
 {{< /admonition >}}
 ```
-
 {{< admonition >}}
 一个 **注意** 横幅
 {{< /admonition >}}
-```go-html-template
-{{< admonition abstract >}}
+
+## tip 
+```html
+{{< admonition tip>}}
+一个 **提示** 横幅
+{{< /admonition >}}
+```
+{{< admonition tip "Tip" false >}}
+一个 **提示** 横幅
+{{< /admonition >}}
+
+## abstract
+```html
+{{< admonition abstract>}}
 一个 **摘要** 横幅
 {{< /admonition >}}
 ```
 {{< admonition abstract >}}
 一个 **摘要** 横幅
 {{< /admonition >}}
-```go-html-template
+
+## info
+```html
+{{< admonition info >}}
+一个 **信息** 横幅
+{{< /admonition >}}
+```
 {{< admonition info >}}
 一个 **信息** 横幅
 {{< /admonition >}}
 
-```
-{{< admonition info >}}
-一个 **信息** 横幅
-{{< /admonition >}}
-```go-html-template
-{{< admonition tip >}}
-一个 **技巧** 横幅
+## success
+```html
+{{< admonition success >}}
+一个 **成功** 横幅
 {{< /admonition >}}
 ```
-{{< admonition tip >}}
-一个 **技巧** 横幅
-{{< /admonition >}}
-```go-html-template
 {{< admonition success >}}
 一个 **成功** 横幅
 {{< /admonition >}}
 
-```
-
-{{< admonition success >}}
-一个 **成功** 横幅
+## question
+```html
+{{< admonition question >}}
+一个 **问题** 横幅
 {{< /admonition >}}
-
+```
 {{< admonition question >}}
 一个 **问题** 横幅
 {{< /admonition >}}
 
+## warning
+```html
+{{< admonition warning >}}
+一个 **警告** 横幅
+{{< /admonition >}}
+```
 {{< admonition warning >}}
 一个 **警告** 横幅
 {{< /admonition >}}
 
+## failure
+```html
+{{< admonition failure >}}
+一个 **失败** 横幅
+{{< /admonition >}}
+```
 {{< admonition failure >}}
 一个 **失败** 横幅
 {{< /admonition >}}
 
+## danger
+```html
+{{< admonition danger >}}
+一个 **危险** 横幅
+{{< /admonition >}}
+```
 {{< admonition danger >}}
 一个 **危险** 横幅
 {{< /admonition >}}
 
+## bug
+```html
+{{< admonition bug >}}
+一个 **Bug** 横幅
+{{< /admonition >}}
+```
 {{< admonition bug >}}
 一个 **Bug** 横幅
 {{< /admonition >}}
 
+## example
+```html
+{{< admonition example >}}
+一个 **示例** 横幅
+{{< /admonition >}}
+```
 {{< admonition example >}}
 一个 **示例** 横幅
 {{< /admonition >}}
 
+## quote
+```html
 {{< admonition quote >}}
 一个 **引用** 横幅
 {{< /admonition >}}
-
-
-
-ad-note 
-title: Title Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Nulla et euismod nulla.
-
-
-
-
-
-
-
+```
+{{< admonition quote >}}
+一个 **引用** 横幅
+{{< /admonition >}}
 
