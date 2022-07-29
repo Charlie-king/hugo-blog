@@ -1,9 +1,9 @@
 ---
 title: "hugo主题美化功能admonition"
 subtitle: ""
-date: 2022-07-26T14:43:36+08:00
+date: 2022-07-15T14:43:36+08:00
 draft: false
-author: ""
+author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: "12个精美admonition样式的介绍"

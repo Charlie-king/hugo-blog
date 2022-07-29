@@ -110,7 +110,7 @@ typeit = true
 #  页面头部导航栏副标题配置
 [params.header.subtitle]
 # 副标题名称
-name = "的后花园"
+name = "的文字世界"
 # 是否为副标题显示打字机动画
 typeit = false
 
@@ -126,7 +126,7 @@ copyright = true
 #  是否显示作者
 author = true
 # 网站创立年份
-since = 2019
+since = 2022
 #  网站创立时间
 siteTime = '2022-07-13T19:30:34+08:00' # 例：'2019-02-03T19:30:34+08:00'
 #  是否显示网站内容总字数
