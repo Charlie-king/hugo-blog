@@ -71,10 +71,11 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 一个 **提示** 横幅
 {{</* /admonition */>}}
 ```
+显示效果如下：
 {{< admonition tip "Tip" >}}
 一个 **提示** 横幅
 {{< /admonition >}}
-
+## **12种样式代码和效果**
 ### note
 ```html
 {{</* admonition */>}}
