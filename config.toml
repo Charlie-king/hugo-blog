@@ -724,7 +724,7 @@ priority = 0.5
 # Permalinks 配置 (https://gohugo.io/content-management/urls#permalinks)
 [Permalinks]
 # posts = ":year/:month/:filename"
-posts = ":posts/:year/:month/:filename"
+posts = ":section/:year:month/:filename"
 
 # 隐私信息配置 (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]
