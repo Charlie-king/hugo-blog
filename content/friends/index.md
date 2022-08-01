@@ -17,16 +17,16 @@ comment: true
 ## 我的信息
 
 ```yaml
-  nickname: Kingpo # 名字 
-  avatar: https://kingpo.vercel.app/images/avatar.png # 头像地址 	
-  url: https://kingpo.vercel.app/  # 友情链接地址 	
-  description: 记录世界，分享美好！ # 简介描述  
+  名称: 六月长河
+  头像地址: https://kingpo.vercel.app/images/avatar.png
+  网站地址: https://kingpo.vercel.app/
+  简介: 我的时光印记！记录，分享，成长。
 ```
 
 ## 友情提示
 
 {{< admonition info "~~" true >}}
-1. 如果你想互换友链，请按以上格式留言。(仅接受个人非商用博客或网站)
-2. :(fas fa-exclamation-triangle): 网站故障，停止维护和不正确的内容可能会被取消链接！
-3. 那些不尊重他人劳动成果、无来源转载、恶意行为的网站，请不要前来交流。
+1. 互换友链，请按以上格式留言。
+2. 网站故障，停止维护和不正确的内容可能会被取消链接！
+3. 欢迎交流，花径不曾缘客扫，蓬门今始为君开。
 {{< /admonition >}}

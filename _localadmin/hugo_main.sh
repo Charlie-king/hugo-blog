@@ -1,5 +1,5 @@
 #!/bin/bash
-#author: Lruihao
+#author: 
 echo "--------------Hugo Admin--------------"
 echo "Please enter the serial number to work"
 echo "--------------------------------------"
