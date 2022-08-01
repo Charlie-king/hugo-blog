@@ -4,14 +4,14 @@
     "type": "split",
     "children": [
       {
-        "id": "f053c4356d1c6078",
+        "id": "7e7f478387c451ea",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "content/posts/一个村庄的往事.md",
+            "file": "content/posts/一只斑马的大学时光.md",
             "mode": "source",
-            "source": true
+            "source": false
           }
         }
       }
@@ -53,8 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "26671c211290a33c",
@@ -70,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/posts/一个村庄的往事.md",
+                "file": "content/posts/一只斑马的大学时光.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,17 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f053c4356d1c6078",
+  "active": "7e7f478387c451ea",
   "lastOpenFiles": [
+    "content/posts/一只斑马的大学时光.md",
     "content/posts/一个村庄的往事.md",
+    "content/posts/2022m7d26h14m16s43.md",
+    "content/posts/2022-7-26d15h27m47s.md",
+    "content/posts/2022-7-26d15h28m29s.md",
+    "content/posts/2021-2022读书记.md",
     "content/posts/hugo博客搭建之旅.md",
     "content/posts/hugo主题美化功能admonition.md",
-    "content/posts/2021-2022读书记.md",
     "content/posts/2022m7d26h14m16s42.md",
-    "content/posts/2022m7d26h14m27s37.md",
-    "content/posts/2022-7-26d15h27m47s.md",
-    "content/posts/2022m7d26h14m16s43.md",
-    "content/posts/2022-7-26d15h28m29s.md",
     "content/posts/2022-7-26d14h43m36s.md"
   ]
 }
