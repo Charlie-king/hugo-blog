@@ -9,7 +9,7 @@ authorEmail: ""
 description: "我终于搭建了专属个人博客！"
 keywords: ""
 license: ""
-comment: false
+comment: true
 weight: 0
 
 tags:

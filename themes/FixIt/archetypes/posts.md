@@ -2,23 +2,20 @@
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 subtitle: ""
 date: {{ .Date }}
-draft: true
-author: ""
+
+author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: ""
 keywords: ""
-license: ""
-comment: false
+comment: true
 weight: 0
 
+draft: false
 tags:
 - draft
 categories:
 - draft
-
-hiddenFromHomePage: false
-hiddenFromSearch: false
 
 summary: ""
 resources:
@@ -29,9 +26,7 @@ resources:
 
 toc:
   enable: true
-math:
-  enable: false
-lightgallery: false
+
 seo:
   images: []
 
