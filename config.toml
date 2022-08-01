@@ -298,7 +298,7 @@ linkToMarkdown = true
 #  是否在 RSS 中显示全文内容
 rssFullText = false
 #  页面样式 ("narrow", "normal", "wide", ...)
-pageStyle = "normal"
+pageStyle = "narrow"
 #  强制使用 Gravatar 作为作者头像
 gravatarForce = false
 #  转载配置
@@ -410,7 +410,7 @@ highlight = true
 lang = "zh-CN"
 meta = ['nick', 'mail', 'link']
 pageSize = 10
-placeholder = "欢迎留言交流！匿名昵称留空即可，留下邮箱和网址可以更方便联系到你。"
+placeholder = "欢迎留言交流！匿名昵称留空即可，留下的邮箱和网址可以更方便联系到你。"
 recordIP = true
 serverURLs = "https://fbvoqmfu.api.lncldglobal.com"
 visitor = true
