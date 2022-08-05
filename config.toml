@@ -859,7 +859,7 @@ draft = false
 identifier = "tool"
 name = "工具箱"
 post = ""
-pre = "<i class='fas fa-user-tie fa-fw fa-sm'></i>"
+pre = "<i class='fas fa-cube fa-fw fa-sm'></i>"
 title = ""
 url = "/tool/"
 weight = 6
