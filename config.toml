@@ -566,7 +566,7 @@ enable = true
 [params.reward] # 文章打赏
 alipay = "/images/alipay.png" # 支付宝二维码文件路径
 enable = true # true为开启 flase为关闭
-wechat = "/images/wechat.png" # 微信二维码文件路径
+wechat = "/images/wechatpay.png" # 微信二维码文件路径
 
 #  水印配置
 # 详细参数见 https://github.com/Lruihao/watermark#readme
@@ -848,6 +848,20 @@ post = ""
 pre = "<i class='fas fa-user-tie fa-fw fa-sm'></i>"
 title = ""
 url = "/about/"
+weight = 6
+[menu.main.params]
+# 添加 CSS 类到特定的菜单项
+class = "text-center"
+# 是否为草稿菜单，类似草稿页面
+draft = false
+
+[[menu.main]]
+identifier = "tool"
+name = "工具箱"
+post = ""
+pre = "<i class='fas fa-user-tie fa-fw fa-sm'></i>"
+title = ""
+url = "/tool/"
 weight = 6
 [menu.main.params]
 # 添加 CSS 类到特定的菜单项
