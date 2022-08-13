@@ -2,6 +2,9 @@ name: Hugo build and deploy
 on:
   push:
 
+env:
+  TZ: Asia/Shanghai # 设置当前环境时区
+
 jobs:
   Actions-Hugo-Deploy:
     runs-on: ubuntu-latest
