@@ -23,8 +23,8 @@ theme = "FixIt"
 
 # Post frontmatter config
 [frontmatter]
-lastmod = [":fileModTime", "lastmod"]
-# , ":git",":defalut",
+lastmod = ["lastmod", ":fileModTime", ":git", ":defalut"]
+# 
 [params]
 #  FixIt 主题版本
 version = "0.2.X"
@@ -335,9 +335,9 @@ edit = true
 maxShownLines = 20
 #  文章编辑
 [params.page.edit]
-enable = false
+enable = true
 # url = "https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name" # Link for fork & edit
-url = "" # Link for fork & edit
+url = "https://github.com/Charlie-king/hugo-blog/edit/main/content/" # Link for fork & edit
 #  KaTeX 数学公式 (https://katex.org)
 [params.page.math]
 enable = true
