@@ -23,7 +23,7 @@ theme = "FixIt"
 
 # Post frontmatter config
 [frontmatter]
-lastmod = [":fileModTime", "lastmod", ":git", ":defalut"]
+lastmod = [":defalut", ":fileModTime", "lastmod", ":git"]
 
 [params]
 #  FixIt 主题版本
