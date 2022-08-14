@@ -17,10 +17,10 @@ comment: true
 ## 我的信息
 
 ```yaml
-  名称: 六月长河
-  头像地址: https://kingpo.vercel.app/images/avatar.png
-  网站地址: https://kingpo.vercel.app/
-  简介: 我的时光印记！记录，分享，成长。
+  nickname: 六月长河
+  avatar: https://kingpo.vercel.app/images/avatar.png
+  url: https://kingpo.vercel.app/
+  discription: 记录，分享，生活与技术的时光印记！
 ```
 
 ## 友情提示

@@ -9,19 +9,19 @@ jobs:
   Actions-Hugo-Deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Git Configuration
-        run: |
-          git config --global core.quotePath false
-          git config --global core.autocrlf false
-          git config --global core.safecrlf true
-          git config --global core.ignorecase false
-          
+
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
           submodules: recursive  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Git Configuration
+        run: |
+          git config --global core.quotePath false
+          git config --global core.autocrlf false
+          git config --global core.safecrlf true
+          git config --global core.ignorecase false
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
