@@ -318,7 +318,7 @@ auto = true
 position = "right"
 #  在文章开头显示提示信息，提醒读者文章内容可能过时
 [params.page.expirationReminder]
-enable = true
+enable = false
 # 如果文章最后更新于这天数之前，显示提醒
 reminder = 180
 # 如果文章最后更新于这天数之前，显示警告
