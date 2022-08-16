@@ -133,8 +133,11 @@ lastmod: {{ .Date }}
 
 GitHub action上的默认配置时间有个坑，设定的 **schedule** 是**UCT**时间的08:00，比北京时间快8个小时。因此运行环境要改为北京时间。
 
-**解决方法：**
-在`.github/workflows/xx.yml`
+**更新时间解决方法：**
+
+0. 填坑
+
+   在`.github/workflows/xx.yml`
 
 yml文件中添加 2行设置当前环境时区
 
@@ -147,15 +150,34 @@ env:
 	TZ: Asia/Shanghai # 设置当前环境时区
 ```
 
+1. `config.toml/yaml/json`  开启gitinfo
+```toml
+#获取git信息
+enableGitInfo = true  #设为true
 
+```
 
+2.  gihutb action yaml上需新增以下配置，具体位置是在构建前：
+```
+- name: Git Configuration
+        run: |
+          git config --global core.quotePath false
+          git config --global core.autocrlf false
+          git config --global core.safecrlf true
+          git config --global core.ignorecase false
+```
 
+使用`checkout`的话
+`fetch-depth` 需要设为0
 
-
+```yml
+	uses: actions/checkout@v2
+		  fetch-depth: 0   #设为0，depth默认为1，
+```
 
 以下是我最终的yml配置文件
 
-```
+```yml
 name: Hugo build and deploy
 on:
   push:
@@ -208,3 +230,7 @@ jobs:
   
 
 ```
+
+
+
+
