@@ -1,6 +1,6 @@
 ---
 title: "关于"
-subtitle: "KingPo"
+subtitle: ""
 date: 2022-07-07T21:00:48+08:00
 comment: false
 ---
@@ -12,6 +12,7 @@ comment: false
 {{< admonition info "白云苍狗，岁月如流" >}}
  {{< typeit >}}
   且将新火试新茶，诗酒趁年华。
+
  {{< /typeit >}}
 {{< /admonition >}}
 

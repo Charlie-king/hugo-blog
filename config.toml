@@ -7,12 +7,12 @@ defaultContentLanguage = "zh-cn"
 languageCode = "zh-CN"
 #字数统计计入中文
 
-enableGitInfo = true
+enableGitInfo = false
 # 是否包括中日韩文字
 hasCJKLanguage = true
 
 enableEmoji = true
-# nableGitInfo = true
+
 enableRobotsTXT = true
 
 relativeURLs = false
@@ -24,7 +24,7 @@ theme = "FixIt"
 # Post frontmatter config
 [frontmatter]
 lastmod = [":git", ":fileModTime", "lastmod", ":defalut"]
-# 
+# ":git", ":fileModTime", "lastmod",":defalut"
 [params]
 #  FixIt 主题版本
 version = "0.2.X"
