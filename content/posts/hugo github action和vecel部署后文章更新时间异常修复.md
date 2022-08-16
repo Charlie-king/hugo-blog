@@ -128,14 +128,14 @@ lastmod: {{ .Date }}
 
 本地端没问题，说明问题就出在GitHub action 部署过程了。
 
-> 补充提示一下，一个坑 。
-- GitHub action的Schedule 运行不准时
+> 补充提示一下，有一个坑 ：
+> GitHub action的Schedule 运行不准时
 
 GitHub action上的默认配置时间有个坑，设定的 **schedule** 是**UCT**时间的08:00，比北京时间快8个小时。因此运行环境要改为北京时间。
 
-**更新时间解决方法：**
+**解决方法：**
 
-0. 填坑
+#### 0. 填坑
 
    在`.github/workflows/xx.yml`
 
@@ -150,14 +150,17 @@ env:
 	TZ: Asia/Shanghai # 设置当前环境时区
 ```
 
-1. `config.toml/yaml/json`  开启gitinfo
+####  1. 开启gitinfo
+`config.toml/yaml/json`  
 ```toml
 #获取git信息
 enableGitInfo = true  #设为true
 
 ```
 
-2.  gihutb action yaml上需新增以下配置，具体位置是在构建前：
+#### 2.  gihutb action里yaml上配置
+
+建构前新增以下配置，主要是quotePath，默认情况下，文件名包含中文时，git会使用引号吧文件名括起来，这会导致action中无法读取`:GitInfo`变量，所以要设置`Disable quotePath`
 ```
 - name: Git Configuration
         run: |
@@ -168,11 +171,11 @@ enableGitInfo = true  #设为true
 ```
 
 使用`checkout`的话
-`fetch-depth` 需要设为0
+`fetch-depth` 需要设为0，depth默认是为1，默认只拉取分支最近一次commit，可能会导致一些文章的`GitInfo`变量无法获取，设为0代表拉去所有分支所有提交。
 
 ```yml
 	uses: actions/checkout@v2
-		  fetch-depth: 0   #设为0，depth默认为1，
+		  fetch-depth: 0   #设为0
 ```
 
 以下是我最终的yml配置文件
@@ -230,6 +233,14 @@ jobs:
   
 
 ```
+
+
+
+> 参考：
+> 
+> [# Github Action 自动修改文章的更新日期](https://www.dianbanjiu.com/post/github-action-%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%97%A5%E6%9C%9F/)
+> 
+> [# [BUG] 目录所有文章-最近更新，本地与远程打包不同，数据不对](https://github.com/hugo-fixit/FixIt/discussions/91)
 
 
 
