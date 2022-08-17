@@ -53,6 +53,9 @@ hugo博客搭建好后，陆陆续续发现一些问题。大都成功进行了�
 每次更新文章后，本地显示所有文章更新时间正常，没有修改的还是保留旧的更新日期，而通过`github action|vecel`自动部署后，所有文章更新时间都会改为最新此次更新时间，那些此次没有做修改的文章也一并全部更新。
 
 注意，不是发表时间，发表时间没有问题。
+![](https://s2.loli.net/2022/08/16/Mt2EKIVY5ai8zmv.png "本地端")
+![](https://s2.loli.net/2022/08/16/jgeDwLyHtzUpFY4.png "远程部署后")
+
 
 这个bug，花费了我很多时间精力才找到原因，终于解决了这个问题。
 
@@ -62,10 +65,12 @@ hugo博客搭建好后，陆陆续续发现一些问题。大都成功进行了�
 
 **hugo全局配置文件为`config.toml/yaml/json`**
 
-在hugo中日期（时间）是非常重要的字段，hugo的官方配置文件`configuration`(https://gohugo.io/getting-started/configuration/#configure-dates)提供一个配置日期的section `[frontmatter]`
+在hugo中日期（时间）是非常重要的字段，hugo的官方配置文档`configuration`(https://gohugo.io/getting-started/configuration/#configure-dates)提供一个配置日期的section `[frontmatter]`
 ```toml
 [frontmatter]
-  date = ['date', 'publishDate', 'lastmod'] #取值生效按括号里顺序
+
+  # 左边意为，变量 .Date 将会被赋值为右边数组中最先找到的的日期值
+  date = ['date', 'publishDate', 'lastmod'] 
   expiryDate = ['expiryDate']
   lastmod = [':git', 'lastmod', 'date', 'publishDate']
   publishDate = ['publishDate', 'date']
@@ -160,7 +165,7 @@ enableGitInfo = true  #设为true
 
 #### 2.  gihutb action里yaml上配置
 
-建构前新增以下配置，主要是quotePath，默认情况下，文件名包含中文时，git会使用引号吧文件名括起来，这会导致action中无法读取`:GitInfo`变量，所以要设置`Disable quotePath`
+建构前新增以下配置，主要是quotePath，默认情况下，文件名包含中文时，git会使用引号吧文件名括起来，这会导致action中无法读取`:GitInfo`变量，所以要设置`Disable quotePath`[^1]
 ```
 - name: Git Configuration
         run: |
