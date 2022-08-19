@@ -244,9 +244,9 @@ jobs:
 
 **参考：**
  
-[# Github Action 自动修改文章的更新日期](https://www.dianbanjiu.com/post/github-action-%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%97%A5%E6%9C%9F/)
-
- [# [BUG] 目录所有文章-最近更新，本地与远程打包不同，数据不对](https://github.com/hugo-fixit/FixIt/discussions/91)
+> [# Github Action 自动修改文章的更新日期](https://www.dianbanjiu.com/post/github-action-%E8%87%AA%E5%8A%A8%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%E7%9A%84%E6%9B%B4%E6%96%B0%E6%97%A5%E6%9C%9F/)
+> 
+> [# [BUG] 目录所有文章-最近更新，本地与远程打包不同，数据不对](https://github.com/hugo-fixit/FixIt/discussions/91)
 
 
 

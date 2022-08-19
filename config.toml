@@ -405,14 +405,14 @@ enable = true
 [params.page.comment.valine]
 appId = "fBVoqMFU1xet9Og99sfzU2Pu-MdYXbMMI"
 appKey = "tdTYEKQLqjlE8Mh6tmCs2Vtz"
-avatar = "/images/avatar.png"
+avatar = ""
 enable = true
 enableQQ = true
 highlight = true
 lang = "zh-CN"
 meta = ['nick', 'mail', 'link']
 pageSize = 10
-placeholder = "欢迎留言交流！匿名昵称留空即可，留下的邮箱和网址可以更方便联系到你。"
+placeholder = "欢迎交流！匿名昵称留空即可，已开启邮箱留言自动通知提醒。"
 recordIP = true
 serverURLs = "https://le.kinpo.eu.org"
 visitor = true
@@ -678,8 +678,8 @@ title = "在 GitHub 上查看"
 #  Gravatar 设置
 [params.gravatar]
 # Gravatar 主机，默认：“www.gravatar.com”
-host = "www.gravatar.com" # "cn.gravatar.com", "gravatar.loli.net"
-style = "mp" # "", mp, identicon, monsterid, wavatar, retro, blank, robohash
+host = "sdn.geekzu.org" # "cn.gravatar.com", "gravatar.loli.net"
+style = "robohash" # "", mp, identicon, monsterid, wavatar, retro, blank, robohash
 
 # Hugo 解析文档的配置
 [markup]
