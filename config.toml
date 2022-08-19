@@ -414,7 +414,7 @@ meta = ['nick', 'mail', 'link']
 pageSize = 10
 placeholder = "欢迎留言交流！匿名昵称留空即可，留下的邮箱和网址可以更方便联系到你。"
 recordIP = true
-serverURLs = "https://fbvoqmfu.api.lncldglobal.com"
+serverURLs = "https://le.kinpo.eu.org"
 visitor = true
 #  emoji 数据文件名称，默认是 "google.yml"
 # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
