@@ -405,7 +405,7 @@ enable = true
 [params.page.comment.valine]
 appId = "fBVoqMFU1xet9Og99sfzU2Pu-MdYXbMMI"
 appKey = "tdTYEKQLqjlE8Mh6tmCs2Vtz"
-avatar = "/images/avatar.jpg"
+avatar = "/images/avatar.png"
 enable = true
 enableQQ = true
 highlight = true
@@ -541,7 +541,7 @@ repoId = ""
 images = []
 # 出版者信息
 [params.page.seo.publisher]
-logoUrl = "/images/avatar.jpg"
+logoUrl = "/images/avatar.png"
 name = "Kingpo"
 
 #  TypeIt 配置
