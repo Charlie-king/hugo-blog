@@ -405,7 +405,7 @@ enable = true
 [params.page.comment.valine]
 appId = "fBVoqMFU1xet9Og99sfzU2Pu-MdYXbMMI"
 appKey = "tdTYEKQLqjlE8Mh6tmCs2Vtz"
-avatar = "robohash"
+avatar = "monsterid"
 enable = true
 enableQQ = true
 highlight = true
