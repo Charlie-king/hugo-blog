@@ -76,18 +76,19 @@ GitHub上最主流的3大静态博客建站框架为：
 [FixIt文档](https://fixit.lruihao.cn/)  | [LoveIt文档](https://hugoloveit.com/)
 1. 桌面端/移动端响应式布局
 2. 深色/浅色主题模式
-3. 搜索功能配置algolia
-4. 配置评论功能valine
-5. 总访问量，文章访问量，字数统计，文章预计阅读时间
-6. 微信，支付宝赞赏支持
-7. 添加社交账户，文章分享
-8. 锁定/复制代码
-9. 内嵌音乐播放器
-10. 内嵌bilibili视频
-11. 开启百度统计
-12. 使用GitHub Action自动化部署到GitHub pages并同步托管到vercel
-13. 结合obsidian插件quickadd本地快速创建文件
-14. 搭建GitHub图创，配置picgo
+3. 搜索功能配置algolia（独立配置）
+4. 配置评论功能valine（独立配置）
+5. valine开启邮箱回复提醒和配置后台valine-admin管理（独立配置）
+6. 总访问量，文章访问量，字数统计，文章预计阅读时间
+7. 微信，支付宝赞赏支持（独立配置）
+8. 添加社交账户，文章分享
+9. 锁定/复制代码
+10. 内嵌音乐播放器
+11. 内嵌bilibili视频
+12. 开启百度统计（独立配置）
+13. 使用GitHub Action自动化部署到GitHub pages并同步托管到vercel（独立配置）
+14. 结合obsidian插件quickadd本地快速创建文件（独立配置）
+15. 搭建GitHub、sm.ms图床，配置picgo插件（独立配置）
 
 
 ### 搭建过程
@@ -114,9 +115,13 @@ GitHub上最主流的3大静态博客建站框架为：
 
 下载好后，解压到某个文件夹里，复制到bin层路径，添加到电脑的环境变量里。
 
+ `控制面板 > 系统和安全 > 系统 > 高级系统设置 > 高级 > 环境变量`
+ 
+在用户变量和系统变量里，都点击`path`新建，复制你（hugo.exe所在目录）`D:xxx/hugo/bin`填进去。
+ 
 恭喜你，你已经完成了hugo的安装。
 
-测试：打开命令行，输入`hugo version`，确认，可以看到版本号，说明已经正确安装。
+测试：打开命令行，输入`hugo version`，确认，可以看到版本号，说明已经正确配置好了hugo环境。
 ```
 hugo v0.101.0-466fa43c16709b4483689930a4f9ac8add5c9f66+extended windows/amd64 BuildDate=2022-06-16T07:09:16Z VendorInfo=gohugoio
 ```
@@ -150,17 +155,20 @@ Just a few more steps and you're ready to go:
 blog文件夹里文件目录为
 ```
 D:.
-│  config.toml
+│  config.toml   #全局参数配置文件
 │
-├─archetypes
-│      default.md
+├─archetypes   #模板文件所在文件夹
+│      default.md  #模板文件，hugo new 新建Markdown文件自动生成部分
 │
-├─content
-├─data
-├─layouts
-├─public
-├─static
-└─themes
+├─content  #存放网页内容的目录
+├─data  #存放数据文件，一般json文件，hugo提供相关命令可从data中读取数据，渲染到html页面，实 
+│        现业务数据与模板分离
+│
+├─layouts  #存放自定义的模板文件，hugo优先使用此目录下模板，未发现再去themes同目录下查找
+├─public #编译生成的静态文件存放目录
+├─static #存放静态文件，如css，js，img等文件目录，hugo直接复制到public目录下，不会做渲染
+└─themes #存放网站主题，可存多个主题，在config.toml全局文件中配置指定，也可在执行渲染是加参 
+		  数–theme=xx指定
 ```
 
 到这里你的网站已经创建好了，再输入以下命令，网站就跑起来啦。
@@ -175,12 +183,33 @@ hugo server
 
 #### 安装主题
 
-安装主题
+主题要下载到`themes`这个目录下，使用`git clone` ，如没配置git ，参看我的git安装配置文章。
+
+进到`themes`目录，初始化`git init` 
+
+下载主题：
+`git clone https://github.com/dillonzq/LoveIt` 
+或
+`git clone https://github.com/dillonzq/FixIt`
+
+下载完后，里面一般都会有一个`exampleSite\`文件夹，里面放的是主题的样式，你可以直接把里面的`config.toml`中的内容复制到你的博客主目录的`config.toml`中。
+
+下一步，开始个性化配置config文件。
 
 #### 修改config文件
 
+`config.toml`文件是全局配置参数文件，是博客页面**功能控制的总开关**。
+
+每个主题都有他特有的一些功能，都在其提供的`config.toml`里面开关修改。
+
+
 
 #### 其他个性化设置
+
+
+#### hugo常用命令说明
+
+
 
 
 

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "content/posts/2022-8-19d19h37m19s.md",
+            "file": "content/posts/技术：Gravatar头像配置和镜像地址搜集.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/posts/2022-8-19d19h37m19s.md",
+                "file": "content/posts/技术：Gravatar头像配置和镜像地址搜集.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "d46d07e410456558",
   "lastOpenFiles": [
-    "content/posts/2022-8-19d19h37m19s.md",
-    "content/posts/VS Code自定义修改选中内容和tab颜色.md",
-    "content/posts/王鼎均回忆录四部曲书摘.md",
-    "content/posts/2021-2022读书记.md",
-    "content/guestbook/index.md",
-    "().md",
-    "content/tool/index.md",
-    "content/posts/hugo博客搭建之旅.md",
-    "content/posts/hugo github action和vecel部署后文章更新时间异常修复.md",
-    "content/posts/一个村庄的往事.md"
+    "content/posts/技术：Gravatar头像配置和镜像地址搜集.md",
+    "content/posts/技术：开启valine评论.md",
+    "content/posts/读书：一场孟买的惊心动魄流亡之旅，一本爱的布道书.md",
+    "content/posts/技术：VS Code自定义修改选中内容和tab颜色.md",
+    "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
+    "content/posts/技术：hugo博客搭建之旅.md",
+    "content/posts/技术：hugo github action和vecel部署后文章更新时间异常修复.md",
+    "content/posts/技术：SQL复制(导出)数据到excel行数缺失解决方案.md",
+    "content/posts/技术：hugo主题美化功能admonition.md",
+    "content/posts/随笔：茶魂.md"
   ]
 }
