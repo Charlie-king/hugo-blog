@@ -14,9 +14,9 @@ weight: 0
 draft: false
 
 tags:
-- 头像
+- 博客
 categories:
-- 
+- 博客
 
 summary: ""
 resources:
