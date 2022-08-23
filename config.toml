@@ -415,7 +415,7 @@ pageSize = 10
 placeholder = "欢迎交流！匿名昵称留空即可，已开启邮箱留言自动通知提醒。"
 recordIP = true
 serverURLs = "https://le.kinpo.eu.org"
-visitor = false
+visitor = true
 #  emoji 数据文件名称，默认是 "google.yml"
 # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
 # 位于 "themes/FixIt/assets/data/emoji/" 目录
@@ -599,7 +599,7 @@ fontFamily = 'inherit'
 [params.ibruce]
 enable = true
 # 在文章中开启
-enablePost = true
+enablePost = false
 #   网站创立时间
 # 参数 `ibruce.siteTime` 自 v0.2.14 起已弃用，请改用 `footer.siteTime`
 # siteTime = '' # 例：'2019-02-03T19:30:34+08:00'
