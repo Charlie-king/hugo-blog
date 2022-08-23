@@ -87,7 +87,7 @@ LeanCloud（原 AVOS Cloud） 是针对移动应用的一站式云端服务，�
 由于 App ID 和 App Key 是完全暴露的，任何人都可以访问我们的资源。为了防止他人使用，我们需要配置 Web 安全域名，只有添加的域名才可以使用资源。
 ![](https://s3.bmp.ovh/imgs/2022/08/23/6d6eff52af936782.png)
 
-### `config.toml`配置
+### config.toml配置
 
 将上面步骤获得的APP ID，APP Key和服务器地址填入以下对应的参数位置。
 
