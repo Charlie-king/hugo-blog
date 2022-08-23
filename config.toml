@@ -415,7 +415,7 @@ pageSize = 10
 placeholder = "欢迎交流！匿名昵称留空即可，已开启邮箱留言自动通知提醒。"
 recordIP = true
 serverURLs = "https://le.kinpo.eu.org"
-visitor = true
+visitor = false
 #  emoji 数据文件名称，默认是 "google.yml"
 # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
 # 位于 "themes/FixIt/assets/data/emoji/" 目录
