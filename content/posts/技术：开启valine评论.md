@@ -175,3 +175,7 @@ valine无后端，那么评论的数据在哪里管理呢。
 
 
 **如果想要评论数据后端管理，并开启实时邮件通知，参看我这篇**[valine评论设置邮件通知和valine-admin后台管理](/posts/202208/技术valine评论设置邮件通知和valine-admin后台管理/)
+
+
+----------
+我的博客即将同步至腾讯云开发者社区，邀请大家一同入驻：(https://cloud.tencent.com/developer/support-plan?invite_code=2rznedmkkuww8)
