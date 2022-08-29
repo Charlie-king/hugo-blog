@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "content/friends/index.md",
+            "file": "content/tool/index.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/friends/index.md",
+                "file": "content/tool/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "d46d07e410456558",
   "lastOpenFiles": [
+    "content/tool/index.md",
+    "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
+    "posts/202208/技术valine评论设置邮件通知和valine-admin后台管理.md",
+    "content/posts/技术：开启valine评论.md",
+    "content/posts/读书：一场孟买的惊心动魄流亡之旅，一本爱的布道书.md",
+    "content/posts/读书：2021-2022读书记.md",
     "content/friends/index.md",
     "content/about/index.md",
-    "content/posts/读书：2021-2022读书记.md",
     "content/posts/读书：王鼎均回忆录四部曲书摘.md",
-    "content/posts/读书：一场孟买的惊心动魄流亡之旅，一本爱的布道书.md",
-    "content/posts/技术：开启valine评论.md",
-    "content/posts/2022-8-25d11h23m50s.md",
-    "content/posts/随笔：村庄往事.md",
-    "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
-    "content/posts/技术：VS Code自定义修改选中内容和tab颜色.md"
+    "content/posts/2022-8-25d11h23m50s.md"
   ]
 }
