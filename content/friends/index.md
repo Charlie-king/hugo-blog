@@ -18,8 +18,8 @@ comment: true
 
 ```yaml
   nickname: 六月长河
-  avatar: https://kingpo.vercel.app/images/avatar.png
-  url: https://kingpo.vercel.app/
+  avatar: https://charlie-king.github.io/images/avatar.png
+  url: https://charlie-king.github.io
   discription: 记录，分享，生活与技术的时光印记！
 ```
 

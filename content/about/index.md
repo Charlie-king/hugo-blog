@@ -20,7 +20,7 @@ comment: false
 - [gitHub.io](https://charlie-king.github.io)
 - [vercel.app](https://kingpo.vercel.app/) 独立域名[zhjin.eu.org](https://zhjin.eu.org/)
 - [netlify.app](https://kingpo.netlify.app/)
-- [gitee.io]()
+
 {{< /admonition >}}
 
 
