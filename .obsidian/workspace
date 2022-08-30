@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "content/tool/index.md",
+            "file": "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/tool/index.md",
+                "file": "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,8 +89,8 @@
   },
   "active": "d46d07e410456558",
   "lastOpenFiles": [
-    "content/tool/index.md",
     "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
+    "content/tool/index.md",
     "posts/202208/技术valine评论设置邮件通知和valine-admin后台管理.md",
     "content/posts/技术：开启valine评论.md",
     "content/posts/读书：一场孟买的惊心动魄流亡之旅，一本爱的布道书.md",

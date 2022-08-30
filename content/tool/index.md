@@ -24,15 +24,15 @@ comment: false
 | []()                                                  | []()                                                                                                                       | []()                                     |
 
 
-| 其他                                               | 网盘                                             | 其他 |
-| -------------------------------------------------- | ------------------------------------------------ | ---- |
-| [迅捷画图](https://www.liuchengtu.com/ "迅捷画图") | [文叔叔](https://www.wenshushu.cn/ "临时传文件") | []() |
-| [在线流程图](https://app.diagrams.net/)            | [钛盘](https://tmp.link/)                        | []() |
-| [地址信息生成](https://www.meiguodizhi.com/)       | [轻松传](https://easychuan.cn)                   | []() |
-| [临时邮箱](https://www.67tool.com)                 | [airportal](https://airportal.cn/)               | []() |
-| [云短信](https://yunduanxin.net/ "接收短信验证码") | []()                                             | []() |
-| [视频压缩](https://compress-video-online.com/zh)   | []()                                             | []() |
-| [在线抠图](https://bgsub.cn/ "在线抠图，替换背景") | []()                                             | []() |
+| 其他                                                            | 网盘                                             | 其他 |
+| --------------------------------------------------------------- | ------------------------------------------------ | ---- |
+| [迅捷画图](https://www.liuchengtu.com/ "迅捷画图")              | [文叔叔](https://www.wenshushu.cn/ "临时传文件") | []() |
+| [在线流程图](https://app.diagrams.net/)                         | [钛盘](https://tmp.link/)                        | []() |
+| [地址信息生成](https://www.meiguodizhi.com/)                    | [轻松传](https://easychuan.cn)                   | []() |
+| [临时邮箱](https://www.67tool.com)                              | [airportal](https://airportal.cn/)               | []() |
+| [云短信](https://yunduanxin.net/ "接收短信验证码")              | []()                                             | []() |
+| [视频压缩](https://compress-video-online.com/zh "在线视频压缩") | []()                                             | []() |
+| [在线抠图](https://bgsub.cn/ "在线抠图，替换背景")              | []()                                             | []() |
 
 
 
