@@ -135,7 +135,9 @@ https://github.com/DesertsP/Valine-Admin
 </body>
 </html>
 ```
+
 样式如下：
+
 ![](https://s.imgkb.xyz/abcdocker/2022/08/30/9fd8124a02846/9fd8124a02846.png)
 
 
@@ -184,12 +186,19 @@ https://github.com/DesertsP/Valine-Admin
 ![](https://s.imgkb.xyz/abcdocker/2022/08/30/fcb094b0acb28/fcb094b0acb28.png)
 
 ### 5. 定时任务设置
+因为leancloud免费版本提供的实例，有休眠策略，如果没有请求，会自动休眠。为了保持实例一直在线，我们可以设置定时任务函数来来唤醒。
+
+![](https://s.imgkb.xyz/abcdocker/2022/08/31/84b8963c89ba4/84b8963c89ba4.png)
+
+- **两个定时任务函数设置**
 
 参看[Valine Admin 配置手册定时任务设置](https://deserts.io/valine-admin-document/#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE)
 
-**利用github actions设置定时**
+- **利用github actions设置定时**
 
-放弃leancloud的定时任务，利用github actions中的workflow定时执行命令访问leancloud的web域名，即可解决leancloud平台因为流控原因无法激活定时唤醒任务的问题。
+设置定时任务函数，很多人运行几天后会遇到leancloud平台因为流控原因无法激活定时唤醒任务的问题。
+
+另一种方式是利用github actions中的workflow定时执行命令访问leancloud的web域名，实现唤醒。
 ```
 name: 'wake comment system'
 on:
