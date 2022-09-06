@@ -34,7 +34,8 @@ seo:
 # See details front matter: /theme-documentation-content/#front-matter
 ---
 
-![回复样式](https://s.imgkb.xyz/abcdocker/2022/08/30/9fd8124a02846/9fd8124a02846.png )
+![回复样式](https://s3.bmp.ovh/imgs/2022/09/06/fd89748a78bed6c3.png)
+
 <!--more-->
 ## 给valine评论系统升级
 valine评论系统搭起来后，整体比较简洁，甚至，简单。
@@ -92,8 +93,8 @@ https://github.com/DesertsP/Valine-Admin
 |      SMTP\_PORT       | `465或587`，参照 [POP3 与 SMTP](https://service.mail.qq.com/cgi-bin/help?id=28&no=167&subtype=1) |                                         \[必填\] SMTP\_SERVICE 留空时，自定义 SMTP 端口                                         |
 |     SMTP\_SECURE      |                                               true                                               |                                                \[选填\] SMTP\_SERVICE 留空时填写                                                |
 |    BLOGGER\_EMAIL     |                            [xxxxx@gmail.com](mailto:xxxxx@gmail.com)                             |                                        \[选填\] 博主通知收件地址，默认使用 SENDER\_EMAIL                                        |
-|       ADMIN_URL       |                                    https://lean.kinpo.eu.org/                                    |                                                          评论管理后台地址                                                               |
-|        COMMENT        |                                                                                                  |                                                          新评论内容                                                                       |
+|       ADMIN_URL       |                                    https://lean.kinpo.eu.org/                                    |                                                        评论管理后台地址                                                         |
+|        COMMENT        |                                                                                                  |                                                           新评论内容                                                            |
 |         NICK          |                                                                                                  |                                                          新评论者昵称                                                           |
 |    PARENT_COMMENT     |                                                                                                  |                                                          父级评论内容                                                           |
 |      PARENT_NICK      |                                                                                                  |                                                 收件人昵称（被@者，父级评论人）                                                 |
