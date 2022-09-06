@@ -12,11 +12,11 @@
   avatar: https://a.biugle.cn/images/avatar.jpg
   url: https://a.biugle.cn/
   discription: 又一个被我带入坑的小伙子！
-#- nickname: francs
-#  avatar: https://postgres.fun/images/francs.png
-#  url: https://postgres.fun
-#  discription: PostgreSQL中文网。数据库。francs.top
 
+- nickname: 海拥
+  avatar: https://haiyong.site/img/favicon.png
+  url: https://haiyong.site
+  discription: 一个乐于分享技术与快乐的博主
 
 - nickname: 梦家博客
   avatar: https://cdn.jsdelivr.net/gh/dreamhomes/dreamhomes.github.io@master/img/avatar.gif
