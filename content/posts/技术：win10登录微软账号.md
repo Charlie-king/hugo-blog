@@ -16,7 +16,7 @@ draft: false
 tags:
 - Microsoft
 categories:
-- draft
+- 微软
 
 summary: ""
 resources:
