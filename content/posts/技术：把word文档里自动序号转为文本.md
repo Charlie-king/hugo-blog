@@ -2,6 +2,7 @@
 title: "把word文档里自动序号转为文本"
 subtitle: ""
 date: 2021-03-29T16:32:13+08:00
+lastmod: 2022-08-27T16:41:35+08:00
 
 author: "Kingpo"
 authorLink: ""

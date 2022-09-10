@@ -2,6 +2,7 @@
 title: "hugo博客搭建之旅"
 subtitle: ""
 date: 2022-07-15T13:42:42+08:00
+lastmod: 2022-08-20T16:41:35+08:00
 draft: false
 author: "Kingpo"
 authorLink: ""

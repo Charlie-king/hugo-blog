@@ -2,6 +2,7 @@
 title: "hugo github action|vecel部署后文章更新时间异常修复"
 subtitle: ""
 date: 2022-08-14T14:35:18+08:00
+lastmod: 2022-08-14T18:41:35+08:00
 draft: false
 author: "Kingpo"
 authorLink: ""

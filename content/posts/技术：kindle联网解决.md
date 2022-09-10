@@ -2,6 +2,7 @@
 title: "kindle联网异常的解决方法"
 subtitle: ""
 date: 2022-09-06T16:26:03+08:00
+lastmod: 2022-09-07T16:41:35+08:00
 
 author: "Kingpo"
 authorLink: ""

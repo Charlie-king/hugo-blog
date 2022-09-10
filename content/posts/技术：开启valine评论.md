@@ -2,6 +2,7 @@
 title: "hugo博客开启valine评论系统配置"
 subtitle: ""
 date: 2022-08-22T11:15:06+08:00
+lastmod: 2022-08-25T16:41:35+08:00
 
 author: "Kingpo"
 authorLink: ""
