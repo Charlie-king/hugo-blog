@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "content/posts/技术：tim邮箱问题.md",
+            "file": "content/posts/技术：Obisidian进行本地hugo博客文章编辑.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/posts/技术：tim邮箱问题.md",
+                "file": "content/posts/技术：Obisidian进行本地hugo博客文章编辑.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "a3611f715115fe3f",
   "lastOpenFiles": [
+    "content/posts/技术：Obisidian进行本地hugo博客文章编辑.md",
     "content/posts/技术：tim邮箱问题.md",
     "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
     "content/posts/2022-9-7d9h7m10s.md",
@@ -97,7 +98,6 @@
     "content/posts/技术：win10登录微软账号.md",
     "content/posts/技术：SQL复制(导出)数据到excel行数缺失解决方案.md",
     "content/posts/技术：kindle联网解决.md",
-    "content/posts/技术：hugo主题美化功能admonition.md",
-    "content/posts/技术：hugo博客搭建之旅.md"
+    "content/posts/技术：hugo主题美化功能admonition.md"
   ]
 }
