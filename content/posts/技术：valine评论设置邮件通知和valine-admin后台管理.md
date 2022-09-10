@@ -2,8 +2,8 @@
 ---
 title: "valine评论设置邮件通知和valine-admin后台管理"
 subtitle: ""
-date: 2022-08-19T19:37:20+08:00
-
+date: 2022-09-6T16:51:20+08:00
+lastmod: 
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""

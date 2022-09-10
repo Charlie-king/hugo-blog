@@ -24,7 +24,7 @@ theme = "FixIt"
 
 # Post frontmatter config
 [frontmatter]
-lastmod = [":git", ":fileModTime", "lastmod", ":defalut"]
+lastmod = ["lastmod", ":git", ":fileModTime", ":defalut"]
 # ":git", ":fileModTime", "lastmod",":defalut"
 [params]
 #  FixIt 主题版本
@@ -150,9 +150,9 @@ dateFormat = "01-02"
 rss = 20
 #  最近更新文章设置
 [params.section.recentlyUpdated]
-days = 30
+days = 300
 enable = true
-maxCount = 10
+maxCount = 100
 rss = true
 
 #  List（目录或标签）页面配置
@@ -319,7 +319,7 @@ auto = true
 position = "right"
 #  在文章开头显示提示信息，提醒读者文章内容可能过时
 [params.page.expirationReminder]
-enable = false
+enable = true
 # 如果文章最后更新于这天数之前，显示提醒
 reminder = 180
 # 如果文章最后更新于这天数之前，显示警告

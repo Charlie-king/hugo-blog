@@ -2,6 +2,7 @@
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 subtitle: ""
 date: {{ .Date }}
+lastmod: {{ .Date }}
 
 author: "Kingpo"
 authorLink: ""
@@ -12,6 +13,7 @@ comment: true
 weight: 0
 
 draft: false
+
 tags:
 - draft
 categories:
