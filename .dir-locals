@@ -1,4 +1,0 @@
-((org-mode . ((time-stamp-start . "lastmod:[ \t]*")
-              (time-stamp-end . "$")
-              (time-stamp-format . "%Y-%m-%dT%02H:%02M:%02S%5z")
-              (eval . (add-hook 'before-save-hook 'time-stamp nil t)))))
