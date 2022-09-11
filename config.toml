@@ -150,9 +150,9 @@ dateFormat = "01-02"
 rss = 20
 #  最近更新文章设置
 [params.section.recentlyUpdated]
-days = 300
+days = 60
 enable = true
-maxCount = 100
+maxCount = 10
 rss = true
 
 #  List（目录或标签）页面配置
@@ -412,7 +412,7 @@ highlight = true
 lang = "zh-CN"
 meta = ['nick', 'mail', 'link']
 pageSize = 10
-placeholder = "欢迎交流！匿名昵称留空即可，已开启邮箱留言自动通知提醒。"
+placeholder = "欢迎交流！已开启邮箱留言通知。留邮箱可第一时间收到回复通知。"
 recordIP = true
 serverURLs = "https://le.kinpo.eu.org"
 visitor = true
