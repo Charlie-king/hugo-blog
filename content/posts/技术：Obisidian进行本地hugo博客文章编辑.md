@@ -2,7 +2,7 @@
 title: "Markdown博客文章写作最佳体验，hugo+Obisidian+Vscode"
 subtitle: ""
 date: 2022-09-11T00:44:43+08:00
-lastmod: 2022-09-11T00:44:43+08:00
+lastmod: 2022-09-12T23:37:43+08:00
 
 author: "Kingpo"
 authorLink: ""
