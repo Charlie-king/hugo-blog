@@ -10,8 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "content/posts/技术：Obisidian进行本地hugo博客文章编辑.md",
-            "mode": "source",
-            "source": false
+            "mode": "source"
           }
         }
       }
@@ -89,10 +88,10 @@
   },
   "active": "a3611f715115fe3f",
   "lastOpenFiles": [
+    "content/posts/技术：Obisidian进行本地hugo博客文章编辑.md",
     "content/posts/2022-8-25d11h23m50s.md",
     "content/posts/2022-9-12d22h15m42s.md",
     "content/posts/2022-9-12day22h50m49s.md",
-    "content/posts/技术：Obisidian进行本地hugo博客文章编辑.md",
     "content/posts/2022m9d12h22m14s38.md",
     "content/posts/读书：2021-2022读书记.md",
     "content/posts/技术：hugo主题美化功能admonition.md",
