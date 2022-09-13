@@ -605,7 +605,7 @@ enablePost = false
 # siteTime = '' # 例：'2019-02-03T19:30:34+08:00'
 # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu/360/Sogou
 [params.verification]
-baidu = "code-xa6AnAEHhh"
+baidu = "code-yFUCizRuCv"
 bing = "AA8386F5117AE672AB61BB03DD156C34"
 google = ""
 pinterest = ""
