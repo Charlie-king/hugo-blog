@@ -1,8 +1,8 @@
 ---
-title: "Obisidian进行本地hugo博客文章编辑"
+title: "Markdown博客文章写作最佳体验，hugo+Obisidian+Vscode"
 subtitle: ""
 date: 2022-09-11T00:44:43+08:00
-lastmod: 2022-09-11T00:44:43+08:00
+lastmod: 2022-09-12T23:37:43+08:00
 
 author: "Kingpo"
 authorLink: ""
@@ -15,9 +15,10 @@ weight: 0
 draft: false
 
 tags:
-- draft
+- hugo
+- Obisidian
 categories:
-- draft
+- 博客
 
 summary: ""
 resources:
@@ -36,4 +37,18 @@ seo:
 ---
 
 <!--more-->
-测试中文
+
+## 前言
+
+hugo博客搭建后，博客写作和发布流程较为复杂，因为是静态博客，每次都需要重新编译。整体写作流程如下：
+
+
+怎么把体验变得尤为重要，
+
+
+
+## 
+
+## 参考资料
+
+> Hugo 博客写作最佳实践  https://zhuanlan.zhihu.com/p/497671233
