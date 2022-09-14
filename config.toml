@@ -1,5 +1,5 @@
 # 网站标题
-baseURL = "https://kingpo.vercel.app/"
+baseURL = "https://zhjin.eu.org/"
 title = "六月长河"
 # [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
@@ -24,7 +24,7 @@ theme = "FixIt"
 
 # Post frontmatter config
 [frontmatter]
-lastmod = ["lastmod", ":git", ":fileModTime", ":defalut"]
+lastmod = [":git", "lastmod", ":fileModTime", ":defalut"]
 # ":git", ":fileModTime", "lastmod",":defalut"
 [params]
 #  FixIt 主题版本
@@ -605,8 +605,8 @@ enablePost = false
 # siteTime = '' # 例：'2019-02-03T19:30:34+08:00'
 # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu/360/Sogou
 [params.verification]
-baidu = "code-yFUCizRuCv"
-bing = "AA8386F5117AE672AB61BB03DD156C34"
+baidu = ""
+bing = ""
 google = ""
 pinterest = ""
 so = ""
