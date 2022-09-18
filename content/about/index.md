@@ -2,7 +2,7 @@
 title: "关于"
 subtitle: ""
 date: 2022-07-07T21:00:48+08:00
-comment: false
+comment: true
 ---
 
 
@@ -16,11 +16,14 @@ comment: false
 {{< /admonition >}}
 
 {{< admonition success "部署" >}}
-#### 本站部署于以下平台，请选择一个访问最快的进行访问
-- [gitHub.io](https://charlie-king.github.io)
+#### 本站多线部署于以下平台，请选择一个访问最快的进行访问
+- [cloudflare](https://charlie-king-github-io.pages.dev/)
+- [github.io](https://charlie-king.github.io)
 - [vercel.app](https://kingpo.vercel.app/) 独立域名[zhjin.eu.org](https://zhjin.eu.org/)
 - [netlify.app](https://kingpo.netlify.app/)
 - [render.com](https://kpo.onrender.com)
+---
+vercel.app已被墙，独立域名不受影响
 
 {{< /admonition >}}
 
