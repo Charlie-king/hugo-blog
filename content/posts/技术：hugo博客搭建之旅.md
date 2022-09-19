@@ -50,7 +50,7 @@ seo:
 GitHub上最主流的3大静态博客建站框架为：
 - hugo
 - hexo
-- Jekyll 
+- Jekyll
 
 为什么选择[hugo](https://gohugo.io/)，v站上留言推荐最多的博客建站框架，[GitHub](https://github.com/gohugoio/hugo)上star数60.5k ，广受欢迎。
 它是一种用 Go 语言编写的静态网站生成器。简单、易用、高效、易扩展、快速部署。

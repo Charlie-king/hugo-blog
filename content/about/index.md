@@ -6,9 +6,6 @@ comment: true
 ---
 
 
-
-
-
 {{< admonition info "白云苍狗，岁月如流" >}}
  {{< typeit >}}
   且将新火试新茶，诗酒趁年华。
@@ -17,7 +14,7 @@ comment: true
 
 {{< admonition success "部署" >}}
 #### 本站多线部署于以下平台，请选择一个访问最快的进行访问
-- [cloudflare](https://charlie-king-github-io.pages.dev/)
+- [cloudflare](https://charlie-king-github-io.pages.dev/) 独立域名[ajin.eu.org](https://ajin.eu.org/)
 - [github.io](https://charlie-king.github.io)
 - [vercel.app](https://kingpo.vercel.app/) 独立域名[zhjin.eu.org](https://zhjin.eu.org/)
 - [netlify.app](https://kingpo.netlify.app/)

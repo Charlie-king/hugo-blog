@@ -11,7 +11,7 @@ comment: true
 ---
 
 <!-- When you set data `friends.yml` in `yourProject/data/` directory, it will be automatically loaded here. -->
-<!-- 下载窗口样式 {{< link href="https://lruihao.cn/friends/opml.xml" content=":(far fa-star fa-fw): Subscribe ours" download="opml.xml" card=true >}}. -->
+ <!-- 下载窗口样式 {{< link href="https://lruihao.cn/friends/opml.xml" content=":(far fa-star fa-fw): Subscribe ours" download="opml.xml" card=true >}}. -->
 ---
 <!-- You can define additional content below for this page. -->
 ## 我的信息

@@ -18,12 +18,9 @@ tags:
 categories:
 - 技术问题
 
-summary: ""
-resources:
-- name: featured-image
-  src: featured-image.jpg
-- name: featured-image-preview
-  src: featured-image-preview.jpg
+
+featuredImage: "https://s3.bmp.ovh/imgs/2022/09/06/7983564a617c1fc0.png"
+featuredImagePreview: "https://s3.bmp.ovh/imgs/2022/09/06/7983564a617c1fc0.png"
 
 toc:
   enable: true
@@ -34,7 +31,7 @@ seo:
 # See details front matter: /theme-documentation-content/#front-matter
 ---
 
-![](https://s3.bmp.ovh/imgs/2022/09/06/7983564a617c1fc0.png)
+![]()
 
 <!--more-->
 ### word，excel，ppt删除个人信息
