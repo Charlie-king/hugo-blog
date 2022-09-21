@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
+            "file": "content/posts/技术：cloudflare搭个人短链服务.md",
             "mode": "source",
-            "source": false
+            "source": true
           }
         }
       }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
+                "file": "content/posts/技术：cloudflare搭个人短链服务.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "f6eeab079a879922",
   "lastOpenFiles": [
-    "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
+    "content/posts/技术：cloudflare搭个人短链服务.md",
+    "content/tool/index.md",
     "content/posts/技术：Gravatar头像配置和镜像地址搜集.md",
+    "content/posts/技术：valine评论设置邮件通知和valine-admin后台管理.md",
     "content/posts/技术：word，ppt删除个人信息的方法.md",
-    "content/posts/2022-9-19day15h0m2s.md",
     "content/posts/技术：hugo主题美化功能admonition.md",
     "content/posts/技术：把word文档里自动序号转为文本.md",
     "content/posts/技术：个人博客网站提交搜索引擎收录.md",
     "content/posts/2022-8-25d11h23m50s.md",
-    "content/posts/2022-9-12d22h15m42s.md",
-    "content/posts/读书：2021-2022读书记.md"
+    "content/posts/2022-9-12d22h15m42s.md"
   ]
 }
