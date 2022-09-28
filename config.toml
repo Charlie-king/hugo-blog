@@ -6,7 +6,8 @@ defaultContentLanguage = "zh-cn"
 # 网站语言，仅在这里 CN 大写
 languageCode = "zh-CN"
 #字数统计计入中文
-
+#时区改为东八区
+timezone = "Asia/Shanghai"
 #获取git信息
 enableGitInfo = true
 # 是否包括中日韩文字
@@ -24,7 +25,7 @@ theme = "FixIt"
 
 # Post frontmatter config
 [frontmatter]
-lastmod = ["lastmod", ":git",  ":fileModTime", ":defalut"]
+lastmod = ["lastmod", ":git", ":fileModTime", ":defalut"]
 # ":git", ":fileModTime", "lastmod",":defalut"
 [params]
 #  FixIt 主题版本
