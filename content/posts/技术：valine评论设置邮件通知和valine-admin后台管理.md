@@ -16,8 +16,9 @@ weight: 0
 draft: false
 tags:
 - hugo
+- 评论系统
 categories:
-- hugo
+- 静态博客
 
 
 toc:

@@ -17,7 +17,7 @@ draft: true
 tags:
 - draft
 categories:
-- draft
+- 域名
 
 featuredImage: ""
 featuredImagePreview: ""

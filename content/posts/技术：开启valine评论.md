@@ -16,7 +16,7 @@ draft: false
 tags:
 - hugo
 categories:
-- 博客
+- 静态博客
 
 summary: ""
 resources:

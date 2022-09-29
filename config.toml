@@ -109,11 +109,11 @@ pre = ""
 # 你可以在名称（允许 HTML 格式）之后添加其他信息，例如图标
 post = ""
 #  是否为标题显示打字机动画
-typeit = true
+typeit = false
 #  页面头部导航栏副标题配置
 [params.header.subtitle]
 # 副标题名称
-name = "的文字世界"
+name = ""
 # 是否为副标题显示打字机动画
 typeit = false
 
@@ -143,6 +143,7 @@ license = '<a rel="license external nofollow noopener noreffer" href="https://cr
 
 #  Section（所有文章）页面配置
 [params.section]
+totalwordCount = true
 # section 页面每页显示文章数量
 paginate = 20
 # 日期格式（月和日）

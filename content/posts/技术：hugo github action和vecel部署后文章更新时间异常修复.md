@@ -16,7 +16,7 @@ weight: 0
 tags:
 - hugo
 categories:
-- hugo
+- 静态博客
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
