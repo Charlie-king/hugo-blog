@@ -129,16 +129,17 @@ https://charlie-king.github.io/ -->
 var sc_project=12800592; 
 var sc_invisible=0; 
 var sc_security="6f21fa5b"; 
-var scJsHost = "https://"
+var scJsHost = "https://";
 document.write("<sc"+"ript type='text/javascript' src='" + scJsHost + "statcounter.com/counter/counter.js'></"+"script>");
 </script>
 
-<noscript><div class="statcounter"><a title="Web Analytics
-Made Easy - Statcounter" href="https://statcounter.com/"
-target="_blank"><img class="statcounter"
-src="https://c.statcounter.com/12800592/0/6f21fa5b/1/"
+<noscript>
+ <div class="statcounter">
+   <a title="Web Analytics Made Easy - Statcounter" href="https://statcounter.com/" target="_blank">
+     <img class="statcounter" src="https://c.statcounter.com/12800592/0/6f21fa5b/1/"
 alt="Web Analytics Made Easy - Statcounter"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+referrerPolicy="no-referrer-when-downgrade"></a></div>
+</noscript>
 <!-- End of Statcounter Code -->
 """
 
