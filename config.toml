@@ -122,13 +122,15 @@ typeit = false
 enable = true
 #  自定义内容（支持 HTML 格式）
 custom = """
-<a href="https://statcounter.com/p12800592/?quest=1" target="_blank">访问总计</a>
+<a href="https://statcounter.com/p12800592/?quest=1" target="_blank">访问统计</a>
 <!-- Default Statcounter code for blog
 https://charlie-king.github.io/ -->
 <script type="text/javascript">
 var sc_project=12800592; 
 var sc_invisible=0; 
 var sc_security="6f21fa5b"; 
+var scJsHost = "https://"
+document.write("<sc"+"ript type='text/javascripe' src=' " + scJsHost + "statcounter.com/counter/counter.js'></"+"script>");
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js"
