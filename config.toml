@@ -130,7 +130,7 @@ var sc_project=12800592;
 var sc_invisible=0; 
 var sc_security="6f21fa5b"; 
 var scJsHost = "https://"
-document.write("<sc"+"ript type='text/javascripe' src=' " + scJsHost + "statcounter.com/counter/counter.js'></"+"script>");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost + "statcounter.com/counter/counter.js'></"+"script>");
 </script>
 <script type="text/javascript"
 src="https://www.statcounter.com/counter/counter.js"
