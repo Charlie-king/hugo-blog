@@ -2,7 +2,7 @@
 title: "GitHub pages配置自定义域名利用Cloudflare全球CDN"
 subtitle: ""
 date: 2022-09-28T17:12:26+08:00
-lastmod: 2022-09-28T17:12:26+08:00
+lastmod: 2022-10-03T23:59:26+08:00
 
 author: "Kingpo"
 authorLink: ""
@@ -55,12 +55,23 @@ GitHub pages是github提供免费静态站点托管服务，并提供域名`xxx.
 >Cloudflare推出了中国大陆地区的服务，帮助所有企业改善他们的互联网应用的性能及安全并扩展其全球业务。Cloudflare最初以[百度](https://zh.wikipedia.org/wiki/%E7%99%BE%E5%BA%A6 "百度")为合作伙伴，但之后转而与[京东](https://zh.wikipedia.org/wiki/%E4%BA%AC%E6%9D%B1_(%E7%B6%B2%E7%AB%99) "京东 (网站)")云合作。Cloudflare和[京东云](https://zh.wikipedia.org/w/index.php?title=%E4%BA%AC%E4%B8%9C%E4%BA%91&action=edit&redlink=1 "京东云（页面不存在）")的合作节点预计将在2023年扩展到中国大陆的150个地点。
 
 ## 准备工作
-一个GitHub pages站点，一个自己的域名，并交由cloudflare提供域名解析服务。
+- 一个GitHub pages站点。
+- 一个自己的域名，并交由cloudflare提供域名解析服务。
+
+个人域名可以购买国内外域名服务商的域名，区别是国内的域名的需要备案，国外不用。
+
+免费的域名注册，目前据我收集到的市面有两个渠道，一个**freenom**，一个**eu.org**。
+
+**freenom**可以注册.tk、.ml、.ga、.cf、.gq这些免费顶级域名，有效期1年，一年到期前一周可续，否则会被回收。
+
+**eu.org** 是欧盟推出的免费域名服务，从1996年至今，随时二级域名，但完全可以当一级域名使用，永久免费。我回头再整理一个教程。
 
 ## 自定义域名配置
-1. 进到GitHub pages项目，setting设置，
+### DNS解析配置
+ping自己的github pages域名`xxx.github.io`，可查看它的ip，当前github io服务器为以下4个，ip在四个里随机变化。
 
-2. cloudflare域名添加一条A记录，根域名指向`xxx.gitHub.io`的ip，目前GitHub pages的服务器为以下四个：
+![](https://s3.bmp.ovh/imgs/2022/09/28/49163b5c22c497b1.png)
+
 ```
 185.199.108.153
 185.199.109.153
@@ -68,14 +79,35 @@ GitHub pages是github提供免费静态站点托管服务，并提供域名`xxx.
 185.199.111.153
 ```
 
-ping以下自己的`github.io`，即可查看，ip在四个里随机变化。
 
-![](https://s3.bmp.ovh/imgs/2022/09/28/49163b5c22c497b1.png)
+进到cloudflare管理平台，域名管理添加一条www的CNAME记录，指向你自己的github.io域名`xxx.github.io`。这一步可以将你的个人域名转向`xxx.github.io`。
 
-3. cloudflare里的域名添加一条www的CNAME记录，指向你自己的github.io域名`xxx.github.io`。
+或者直接添加4条A记录，将你跟域名直接指向上面4个ip。这步使你个人域名直接转向github.io的ip。
+
+以上两步可同时添加。
+![](https://s3.bmp.ovh/imgs/2022/10/04/9f3ad9f96fb55a20.png)
 
 
-参考资料：
+### github配置
+
+1.  在你github pages项目根目录，添加一个文件名为CNAME文件（注意文件不要有后缀），
+文件里输入你DNS配置的个人域名。即可完成。
+![](https://s3.bmp.ovh/imgs/2022/10/03/948e4b01e19aabcf.png)
+
+
+2.  你也可以直接进到个人GitHub pages那个项目，GitHub pages -> setting设置，custom domain里添加保存你个人域名。这个操作实际对应也是生成1步骤的CNAME文件。效果一样的。
+![](https://s3.bmp.ovh/imgs/2022/10/03/7ba48e38c264d283.png)
+
+勾选强制https，更加安全。
+
+**注意：** 如果你github pages静态网站是通过github action自动编译生成的话，需要在编译前的项目对应的生成pages的根目录里添加这个CNAME文件，因为每次编译生成都会清空你原GitHub pages项内容，主流静态博客（hugo，hexo等）的话基本是static目录，这个目录的文件编译后全部都在生成的静态网站根目录里。
+
+通过以上配置，等域名配置生效后，一般24小时，即可通过个人域名访问，cloudflare配置域名默认启用cdn代理，速度会比直接访问github.io快很多。
+
+我们可以ping一下配置后个人域名的地址，会发现已经不是github.io的那4个了，而是cloudflare的cdn代理服务器。
+
+![](https://s3.bmp.ovh/imgs/2022/10/03/af31c01ce6029d6d.png)
+
+## 参考资料：
 > github docs https://docs.github.com/cn/pages/getting-started-with-github-pages/about-github-pages   
 > Cloudflare https://zh.wikipedia.org/wiki/Cloudflare
-> 
