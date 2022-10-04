@@ -124,6 +124,7 @@ enable = true
 custom = """
 <!-- Default Statcounter code for blog https://zhjin.eu.org/
 -->
+<a href="https://statcounter.com/p12800592/?guest=1" target="_blank">全平台总访问统计</a>
 <script type="text/javascript">
 var sc_project=12800592; 
 var sc_invisible=0; 
@@ -137,9 +138,7 @@ scJsHost+
 href="https://statcounter.com/" target="_blank"><img
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
-<a href="https://statcounter.com/p12800592/?guest=1">全平台总访问统计</a>alt = "web stats"
-class = "statcounter"
-src = "https://c.statcounter.com/12800592/0/6f21fa5b/0/"
+
       """
 
 #  是否显示 Hugo 和主题信息
