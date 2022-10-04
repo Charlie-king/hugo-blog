@@ -2,7 +2,7 @@
 title: "hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题"
 subtitle: ""
 date: 2022-10-04T16:44:58+08:00
-lastmod: 2022-10-04T16:44:58+08:00
+lastmod: 2022-10-04T23:39:58+08:00
 
 author: "Kingpo"
 authorLink: ""

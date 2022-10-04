@@ -3,7 +3,7 @@
 #author: Lruihao
 cd ..
 git add .
-read -p "Please enter commit message: " commitMsg
+read -ep "Please enter commit message: " commitMsg
 if [ -z $commitMsg ];then
   commitMsg="Docs: Kingpo update $(date +'%F %a %T')"
 fi
