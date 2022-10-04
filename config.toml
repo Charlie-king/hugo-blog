@@ -122,7 +122,7 @@ typeit = false
 enable = true
 #  自定义内容（支持 HTML 格式）
 custom = """
-      <a href="https://statcounter.com/12800592/?guest=1" target="_blank">访问统计</a>
+      <a href="https://statcounter.com/12800592/?guest=1" target="_blank">全平台总访问量统计</a>
       <!-- Default Statcounter code for github.io https://charlie-king.github.io/ -->
       <script type="text/javascript">
       var sc_project=12800592; 
@@ -141,9 +141,6 @@ custom = """
       </noscript>
       <!-- End of Statcounter Code -->"""
 
-#<script type="text/javascript"
-#src="https://www.statcounter.com/counter/counter.js"
-#async></script>
 #  是否显示 Hugo 和主题信息
 hugo = false
 #  是否显示版权信息
