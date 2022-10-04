@@ -1,13 +1,13 @@
 class Util {
   forEach(elements, handler) {
     elements = elements || [];
-    for(let i = 0; i < elements.length; i++){
+    for (let i = 0; i < elements.length; i++) {
       handler(elements[i]);
     }
   }
 
   getScrollTop() {
-    return (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+    return (document.documentElement ?? document.body).scrollTop;
   }
 
   isMobile() {
@@ -28,14 +28,12 @@ class Util {
   animateCSS(element, animation, reserved, callback) {
     !Array.isArray(animation) && (animation = [animation]);
     element.classList.add('animate__animated', ...animation);
-    const handler = () => {
-      element.classList.remove('animate__animated', ...animation);
-      element.removeEventListener('animationend', handler);
+    element.addEventListener('animationend', () => {
+      !reserved && element.classList.remove('animate__animated', ...animation);
       typeof callback === 'function' && callback();
-    };
-    !reserved && element.addEventListener('animationend', handler, false);
+    }, { once: true });
   }
-  
+
   /**
    * date validator
    * @param {*} date may be date or not
@@ -44,13 +42,26 @@ class Util {
   isValidDate(date) {
     return date instanceof Date && !isNaN(date.getTime());
   }
+  
+  /**
+   * scroll some element into view
+   * @param {String} selector element to scroll
+   */
+  scrollIntoView(selector) {
+    const element = selector.startsWith('#')
+      ? document.getElementById(selector.slice(1))
+      : document.querySelector(selector);
+    element?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
 }
 
-class Theme {
+class FixIt {
   constructor() {
     this.config = window.config;
     this.data = this.config.data;
-    this.isDark = document.body.getAttribute('theme') === 'dark';
+    this.isDark = document.body.dataset.theme === 'dark';
     this.util = new Util();
     this.newScrollTop = this.util.getScrollTop();
     this.oldScrollTop = this.newScrollTop;
@@ -60,6 +71,18 @@ class Theme {
     this.clickMaskEventSet = new Set();
     this.disableScrollEvent = false;
     window.objectFitImages && objectFitImages();
+  }
+
+  initThemeColor() {
+    const $meta = document.querySelector('[name="theme-color"]');
+    if (!$meta) {
+      return;
+    }
+    this._themeColorOnSwitchTheme = this._themeColorOnSwitchTheme || (() => {
+      $meta.content = this.isDark ? $meta.dataset.dark : $meta.dataset.light;
+    });
+    this.switchThemeEventSet.add(this._themeColorOnSwitchTheme);
+    this._themeColorOnSwitchTheme();
   }
 
   initSVGIcon() {
@@ -73,7 +96,7 @@ class Theme {
           $svg.setAttribute('data-svg-src', $icon.getAttribute('data-svg-src'));
           $svg.classList.add('icon');
           const $titleElements = $svg.getElementsByTagName('title');
-          $titleElements.length && $svg.removeChild($titleElements[0])
+          $titleElements.length && $svg.removeChild($titleElements[0]);
           $icon.parentElement.replaceChild($svg, $icon);
         })
         .catch((err) => {
@@ -93,11 +116,11 @@ class Theme {
 
   initMenuDesktop() {
     // This is a dirty hack for fixing sub menu position error in desktop header
-    this.util.forEach(document.querySelectorAll('[has-children], #header-desktop .language'), ($item) => {
-      $item.addEventListener('mouseover', function(){
-        this.querySelector('.sub-menu').style.left= `${this.getBoundingClientRect().left}px`;
-      })
-      $item.querySelector('.sub-menu').style.minWidth= `${$item.offsetWidth - 8}px`;
+    this.util.forEach(document.querySelectorAll('.has-children, #header-desktop .language'), ($item) => {
+      $item.addEventListener('mouseover', function () {
+        this.querySelector('.sub-menu').style.left = `${this.getBoundingClientRect().left}px`;
+      });
+      $item.querySelector('.sub-menu').style.minWidth = `${$item.offsetWidth - 8}px`;
     });
   }
 
@@ -105,10 +128,10 @@ class Theme {
     const $menuToggleMobile = document.getElementById('menu-toggle-mobile');
     const $menuMobile = document.getElementById('menu-mobile');
     $menuToggleMobile.addEventListener('click', (event) => {
-      this.disableScrollEvent = true;
       document.body.classList.toggle('blur');
       $menuToggleMobile.classList.toggle('active');
       $menuMobile.classList.toggle('active');
+      this.disableScrollEvent = document.body.classList.contains('blur');
     }, false);
     this._menuMobileOnClickMask = this._menuMobileOnClickMask || (() => {
       $menuToggleMobile.classList.remove('active');
@@ -120,16 +143,16 @@ class Theme {
       $nestedItem.addEventListener('click', function () {
         this.parentNode.querySelector('.sub-menu').classList.toggle('open');
         this.querySelector('.dropdown-icon').classList.toggle('open');
-      })
+      });
     });
   }
 
   initSwitchTheme() {
     this.util.forEach(document.getElementsByClassName('theme-switch'), ($themeSwitch) => {
       $themeSwitch.addEventListener('click', () => {
-        document.body.setAttribute('theme', document.body.getAttribute('theme') === 'dark' ? 'light' : 'dark');
+        document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
         this.isDark = !this.isDark;
-        window.localStorage && localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+        window.localStorage?.setItem('theme', this.isDark ? 'dark' : 'light');
         for (let event of this.switchThemeEventSet) {
           event();
         }
@@ -156,10 +179,12 @@ class Theme {
     if (isMobile) {
       this._searchMobileOnce = true;
       $searchInput.addEventListener('focus', () => {
+        this.disableScrollEvent = true;
         document.body.classList.add('blur');
         $header.classList.add('open');
       }, false);
       document.getElementById('search-cancel-mobile').addEventListener('click', () => {
+        this.disableScrollEvent = false;
         $header.classList.remove('open');
         document.body.classList.remove('blur');
         document.getElementById('menu-toggle-mobile').classList.remove('active');
@@ -332,7 +357,7 @@ class Theme {
                 searchConfig.type === 'algolia'
                   ? {
                       searchType: 'algolia',
-                      icon: '<i class="fab fa-algolia fa-fw"></i>',
+                      icon: '<i class="fa-brands fa-algolia fa-fw" aria-hidden="true"></i>',
                       href: 'https://www.algolia.com/'
                     }
                   : {
@@ -340,7 +365,7 @@ class Theme {
                       icon: '',
                       href: 'https://lunrjs.com/'
                     };
-              return `<div class="search-footer">Search by <a href="${href}" rel="noopener noreffer" target="_blank">${icon} ${searchType}</a></div>`;
+              return `<div class="search-footer">Search by <a href="${href}" rel="noopener noreferrer" target="_blank">${icon} ${searchType}</a></div>`;
             }
           }
         }
@@ -357,7 +382,6 @@ class Theme {
     if (searchConfig.lunrSegmentitURL && !document.getElementById('lunr-segmentit')) {
       const script = document.createElement('script');
       script.id = 'lunr-segmentit';
-      script.type = 'text/javascript';
       script.src = searchConfig.lunrSegmentitURL;
       script.async = true;
       if (script.readyState) {
@@ -388,7 +412,22 @@ class Theme {
   }
 
   initLightGallery() {
-    this.config.lightGallery && lightGallery(document.getElementById('content'), this.config.lightGallery);
+    if (this.config.lightgallery) {
+      lightGallery(document.getElementById('content'), {
+        plugins: [lgThumbnail, lgZoom],
+        selector: '.lightgallery',
+        speed: 400,
+        hideBarsDelay: 2000,
+        allowMediaOverlap: true,
+        exThumbImage: 'data-thumbnail',
+        toggleThumb: true,
+        thumbWidth: 80,
+        thumbHeight: '60px',
+        actualSize: false,
+        showZoomInOutIcons: true,
+        licenseKey: 'none'
+      });
+    }
   }
 
   initHighlight() {
@@ -415,14 +454,14 @@ class Theme {
         // code title
         const $title = document.createElement('span');
         $title.classList.add('code-title');
-        $title.insertAdjacentHTML('afterbegin', '<i class="arrow fas fa-chevron-right fa-fw"></i>');
+        $title.insertAdjacentHTML('afterbegin', '<i class="arrow fa-solid fa-chevron-right fa-fw" aria-hidden="true"></i>');
         $title.addEventListener('click', () => {
           $chroma.classList.toggle('open');
         }, false);
         $header.appendChild($title);
         // ellipses icon
         const $ellipses = document.createElement('span');
-        $ellipses.insertAdjacentHTML('afterbegin', '<i class="fas fa-ellipsis-h fa-fw"></i>');
+        $ellipses.insertAdjacentHTML('afterbegin', '<i class="fa-solid fa-ellipsis-h fa-fw" aria-hidden="true"></i>');
         $ellipses.classList.add('ellipses');
         $ellipses.addEventListener('click', () => {
           $chroma.classList.add('open');
@@ -432,7 +471,7 @@ class Theme {
         if (this.config.code.editable) {
           const $edit = document.createElement('span');
           $edit.classList.add('edit');
-          $edit.insertAdjacentHTML('afterbegin', `<i class="fas fa-key fa-fw" title="${this.config.code.editUnLockTitle}"></i>`);
+          $edit.insertAdjacentHTML('afterbegin', `<i class="fa-solid fa-key fa-fw" title="${this.config.code.editUnLockTitle}" aria-hidden="true"></i>`);
           $edit.addEventListener('click', () => {
             const $iconKey = $edit.querySelector('.fa-key');
             const $iconLock = $edit.querySelector('.fa-lock');
@@ -457,7 +496,7 @@ class Theme {
         // copy button
         if (this.config.code.copyTitle) {
           const $copy = document.createElement('span');
-          $copy.insertAdjacentHTML('afterbegin', '<i class="far fa-copy fa-fw"></i>');
+          $copy.insertAdjacentHTML('afterbegin', '<i class="fa-regular fa-copy fa-fw" aria-hidden="true"></i>');
           $copy.classList.add('copy');
           const code = $code.innerText;
           if (this.config.code.maxShownLines < 0 || code.split('\n').length < this.config.code.maxShownLines + 2) {
@@ -495,19 +534,21 @@ class Theme {
       });
     }
   }
-
+  /**
+   * init table of contents
+   */
   initToc() {
     const $tocCore = document.getElementById('TableOfContents');
     if ($tocCore === null) {
       return;
     }
-    if (document.getElementById('toc-static').getAttribute('kept') === 'true' || this.util.isTocStatic()) {
+    if (document.getElementById('toc-static').getAttribute('date-kept') === 'true' || this.util.isTocStatic()) {
       const $tocContentStatic = document.getElementById('toc-content-static');
       if ($tocCore.parentElement !== $tocContentStatic) {
         $tocCore.parentElement.removeChild($tocCore);
         $tocContentStatic.appendChild($tocCore);
       }
-      if (this._tocOnScroll) this.scrollEventSet.delete(this._tocOnScroll);
+      this._tocOnScroll && this.scrollEventSet.delete(this._tocOnScroll);
     } else {
       const $tocContentAuto = document.getElementById('toc-content-auto');
       if ($tocCore.parentElement !== $tocContentAuto) {
@@ -522,7 +563,7 @@ class Theme {
       const $tocLinkElements = $tocCore.querySelectorAll('a:first-child');
       const $tocLiElements = $tocCore.getElementsByTagName('li');
       const $headerLinkElements = document.getElementsByClassName('header-link');
-      const headerIsFixed = document.body.getAttribute('header-desktop') !== 'normal';
+      const headerIsFixed = document.body.getAttribute('data-header-desktop') !== 'normal';
       const headerHeight = document.getElementById('header-desktop').offsetHeight;
       this._tocOnScroll = this._tocOnScroll || (() => {
         const $comments = document.getElementById('comments');
@@ -559,6 +600,19 @@ class Theme {
     }
   }
 
+  initTocListener() {
+    const $toc = document.getElementById('toc-auto');
+    const $tocContentAuto = document.getElementById('toc-content-auto');
+    document.querySelector('#toc-auto>.toc-title')?.addEventListener('click', () => {
+      const animation = ['animate__faster'];
+      const tocHidden = $toc.classList.contains('toc-hidden');
+      animation.push(tocHidden ? 'animate__fadeIn' : 'animate__fadeOut');
+      $tocContentAuto.classList.remove(tocHidden ? 'animate__fadeOut' : 'animate__fadeIn');
+      this.util.animateCSS($tocContentAuto, animation, true);
+      $toc.classList.toggle('toc-hidden');
+    }, false);
+  }
+
   initMath() {
     if (this.config.math) {
       renderMathInElement(document.body, this.config.math);
@@ -566,23 +620,28 @@ class Theme {
   }
 
   initMermaid() {
-    const $mermaidElements = document.getElementsByClassName('mermaid');
-    if ($mermaidElements.length) {
-      mermaid.initialize({ startOnLoad: false, theme: 'default' });
-      this.util.forEach($mermaidElements, ($mermaid) => {
-        mermaid.mermaidAPI.render(
-          'svg-' + $mermaid.id,
-          this.data[$mermaid.id],
-          (svgCode) => {
-            $mermaid.insertAdjacentHTML('afterbegin', svgCode);
-          },
-          $mermaid
-        );
-      });
-    }
+    this._mermaidOnSwitchTheme = this._mermaidOnSwitchTheme || (() => {
+      const $mermaidElements = document.getElementsByClassName('mermaid');
+      if ($mermaidElements.length) {
+        const themes = this.config.mermaid.themes ?? ['neutral', 'dark'];
+        mermaid.initialize({startOnLoad: false, theme: this.isDark ? themes[1] : themes[0], securityLevel: 'loose'});
+        this.util.forEach($mermaidElements, $mermaid => {
+          mermaid.render('svg-' + $mermaid.id, this.data[$mermaid.id], svgCode => {
+            $mermaid.innerHTML = svgCode;
+          }, $mermaid);
+        });
+      }
+    });
+    this.switchThemeEventSet.add(this._mermaidOnSwitchTheme);
+    this._mermaidOnSwitchTheme();
   }
 
   initEcharts() {
+    if (!this.config.echarts) {
+      return;
+    }
+    echarts.registerTheme('light', this.config.echarts.lightTheme);
+    echarts.registerTheme('dark', this.config.echarts.darkTheme);
     this._echartsOnSwitchTheme = this._echartsOnSwitchTheme || (() => {
       this._echartsArr = this._echartsArr || [];
       for (let i = 0; i < this._echartsArr.length; i++) {
@@ -590,9 +649,7 @@ class Theme {
       }
       this._echartsArr = [];
       this.util.forEach(document.getElementsByClassName('echarts'), ($echarts) => {
-        const chart = echarts.init($echarts, this.isDark ? 'dark' : 'macarons', {
-          renderer: 'svg'
-        });
+        const chart = echarts.init($echarts, this.isDark ? 'dark' : 'light', { renderer: 'svg' });
         chart.setOption(JSON.parse(this.data[$echarts.id]));
         this._echartsArr.push(chart);
       });
@@ -678,10 +735,12 @@ class Theme {
             cursorChar: cursorChar,
             waitUntilVisible: true,
             afterComplete: () => {
-              if (i === group.length - 1 && typeitConfig.duration >= 0) {
-                window.setTimeout(() => {
-                  instance.destroy();
-                }, typeitConfig.duration);
+              if (i === group.length - 1) {
+                if (typeitConfig.duration >= 0) {
+                  window.setTimeout(() => {
+                    instance.destroy();
+                  }, typeitConfig.duration);
+                }
                 return;
               }
               instance.destroy();
@@ -720,8 +779,17 @@ class Theme {
   }
 
   initComment() {
-    if (!this.config.comment) {
+    if (!this.config.comment?.enable) {
       return;
+    }
+    // whether to show the view comments button
+    if (document.querySelector('#comments')) {
+      const $viewCommentsBtn = document.querySelector('.view-comments');
+      $viewCommentsBtn.classList.remove('d-none');
+      // view comments button click event
+      $viewCommentsBtn.addEventListener('click', () => {
+        this.util.scrollIntoView('#comments');
+      }, false);
     }
     if (this.config.comment.artalk) {
       const artalk = new Artalk(this.config.comment.artalk);
@@ -744,13 +812,12 @@ class Theme {
       return new Valine(this.config.comment.valine);
     }
     if (this.config.comment.waline) {
-      return new Waline(this.config.comment.waline);
+      return Waline.init(this.config.comment.waline);
     }
     if (this.config.comment.utterances) {
       const utterancesConfig = this.config.comment.utterances;
       const script = document.createElement('script');
       script.src = 'https://utteranc.es/client.js';
-      script.type = 'text/javascript';
       script.setAttribute('repo', utterancesConfig.repo);
       script.setAttribute('issue-term', utterancesConfig.issueTerm);
       if (utterancesConfig.label) script.setAttribute('label', utterancesConfig.label);
@@ -855,16 +922,18 @@ class Theme {
         .catch(function (error) {
           console.error('error: ', error);
         });
-      navigator.serviceWorker.ready.then(function (registration) {
+      navigator.serviceWorker
+        .ready
+        .then(function (registration) {
         // console.log('Service Worker Ready');
       });
     }
   }
 
   initWatermark() {
-    this.config?.watermark?.enable &&
+    this.config.watermark?.enable &&
       new Watermark({
-        content: this.config.watermark.content || '<img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" /> FixIt Theme',
+        content: this.config.watermark.content || `${document.querySelector('footer .fixit-icon')?.outerHTML ?? ''} FixIt Theme`,
         appendTo: this.config.watermark.appendto || '.wrapper>main',
         opacity: this.config.watermark.opacity,
         width: this.config.watermark.width,
@@ -878,72 +947,171 @@ class Theme {
   }
 
   initPangu() {
+    // TODO 待优化：只渲染
     this.config.enablePangu && pangu.autoSpacingPage();
+  }
+
+  initFixItDecryptor() {
+    const $tocNodes = document.querySelectorAll('#toc-auto>.d-none, #toc-static.d-none');
+    this.decryptor = new FixItDecryptor({
+      decrypted: () => {
+        this.initTwemoji();
+        this.initDetails();
+        this.initLightGallery();
+        this.initHighlight();
+        this.initTable();
+        this.initHeaderLink();
+        this.initMath();
+        this.initMermaid();
+        this.initEcharts();
+        this.initTypeit();
+        this.initMapbox();
+        this.util.forEach($tocNodes, ($element) => {
+          $element.classList.remove('d-none');
+        });
+        this.initToc();
+        this.initTocListener();
+        this.initPangu();
+      },
+      reset: () => {
+        this.util.forEach($tocNodes, ($element) => {
+          $element.classList.add('d-none');
+        });
+      }
+    });
+    if (this.config.encryption?.shortcode) {
+      this.decryptor.addEventListener('decrypted', () => {
+        this.decryptor.initShortcodes();
+      })
+      this.decryptor.initShortcodes();
+    }
+    this.config.encryption?.all && this.decryptor.init();
+  }
+
+  initMDevtools() {
+    const type = this.config?.mDevtools;
+    if (typeof window.orientation === 'undefined') {
+      return;
+    }
+    if (type === 'vConsole') {
+      const vConsole = new VConsole({
+        target: '.widgets',
+        theme: this.isDark ? 'dark' : 'light'
+      });
+      this._vConsoleOnSwitchTheme = this._vConsoleOnSwitchTheme || (() => {
+        vConsole.setOption('theme', this.isDark ? 'dark' : 'light');
+      });
+      this.switchThemeEventSet.add(this._vConsoleOnSwitchTheme);
+    }
+    if(type === 'eruda') {
+      eruda.init({
+        defaults: { theme: this.isDark ? 'Dark' : 'Light' }
+      });
+      this._erudaOnSwitchTheme = this._erudaOnSwitchTheme || (() => {
+        eruda.util.evalCss.setTheme(this.isDark ? 'Dark' : 'Light');
+      });
+      this.switchThemeEventSet.add(this._erudaOnSwitchTheme);
+    }
+  }
+
+  initAutoMark() {
+    if (!this.config.autoBookmark) {
+      return;
+    }
+    window.addEventListener('beforeunload', () => {
+      window.localStorage?.setItem(`fixit-bookmark/#${location.pathname}`, this.util.getScrollTop());
+    });
+    const scrollTop = Number(window.localStorage?.getItem(`fixit-bookmark/#${location.pathname}`));
+    // If the page opens with a specific hash, just jump out
+    if (scrollTop && location.hash === '') {
+      window.scrollTo({ 
+        top: scrollTop,
+        behavior: 'smooth'
+      });
+    }
   }
 
   onScroll() {
     const $headers = [];
-    if (document.body.getAttribute('header-desktop') === 'auto') $headers.push(document.getElementById('header-desktop'));
-    if (document.body.getAttribute('header-mobile') === 'auto') $headers.push(document.getElementById('header-mobile'));
-    if (document.getElementById('comments')) {
-      const $viewComments = document.getElementById('view-comments');
-      $viewComments.href = `#comments`;
-      $viewComments.style.display = 'block';
+    const ACCURACY = 20;
+    const $fixedButtons = document.querySelector('.fixed-buttons');
+    const $backToTop = document.querySelector('.back-to-top');
+    const $readingProgressBar = document.querySelector('.reading-progress-bar');
+    if (document.body.dataset.headerDesktop === 'auto') {
+      $headers.push(document.getElementById('header-desktop'));
     }
-    const $fixedButtons = document.getElementById('fixed-buttons');
-    const ACCURACY = 20,
-      MINIMUM = 100;
+    if (document.body.dataset.headerMobile === 'auto') {
+      $headers.push(document.getElementById('header-mobile'));
+    }
+    // b2t button click event
+    $backToTop?.addEventListener('click', () => {
+      this.util.scrollIntoView('body');
+    });
     window.addEventListener('scroll', (event) => {
       if (this.disableScrollEvent) {
         event.preventDefault();
-        this.disableScrollEvent = false;
         return;
       }
-      document.getElementById('mask').click();
+      const $mask = document.getElementById('mask');
       this.newScrollTop = this.util.getScrollTop();
       const scroll = this.newScrollTop - this.oldScrollTop;
-      const isMobile = this.util.isMobile();
+      // header animation
       this.util.forEach($headers, ($header) => {
         if (scroll > ACCURACY) {
           $header.classList.remove('animate__fadeInDown');
-          this.util.animateCSS($header, ['animate__fadeOutUp', 'animate__faster'], true);
+          this.util.animateCSS($header, ['animate__fadeOutUp'], true);
+          $mask.click();
         } else if (scroll < -ACCURACY) {
           $header.classList.remove('animate__fadeOutUp');
-          this.util.animateCSS($header, ['animate__fadeInDown', 'animate__faster'], true);
+          this.util.animateCSS($header, ['animate__fadeInDown'], true);
+          $mask.click();
         }
       });
-      // whether to show b2t button
-      if (this.newScrollTop > MINIMUM) {
-        if (isMobile && scroll > ACCURACY) {
-          $fixedButtons.classList.remove('animate__fadeIn');
-          this.util.animateCSS($fixedButtons, ['animate__fadeOut', 'animate__faster'], true);
-        } else if (!isMobile || scroll < -ACCURACY) {
-          $fixedButtons.style.display = 'block';
-          $fixedButtons.classList.remove('animate__fadeOut');
-          this.util.animateCSS($fixedButtons, ['animate__fadeIn', 'animate__faster'], true);
-        }
-      } else {
-        if (!isMobile) {
-          $fixedButtons.classList.remove('animate__fadeIn');
-          this.util.animateCSS($fixedButtons, ['animate__fadeOut', 'animate__faster'], true);
-        }
-        $fixedButtons.style.display = 'none';
+      const contentHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.max(Math.min(100 * Math.max(this.newScrollTop, 0) / contentHeight, 100), 0);
+      if ($readingProgressBar) {
+        $readingProgressBar.style.setProperty('--progress', `${scrollPercent.toFixed(2)}%`);
       }
-      for (let event of this.scrollEventSet) event();
+      // whether to show fixed buttons
+      if ($fixedButtons) {
+        if (scrollPercent > 1) {
+          $fixedButtons.classList.remove('d-none', 'animate__fadeOut');
+          this.util.animateCSS($fixedButtons, ['animate__fadeIn'], true);
+        } else {
+          $fixedButtons.classList.remove('animate__fadeIn');
+          this.util.animateCSS($fixedButtons, ['animate__fadeOut'], true, () => {
+            $fixedButtons.classList.contains('animate__fadeOut') && $fixedButtons.classList.add('d-none');
+          });
+        }
+        if ($backToTop) {
+          $backToTop.querySelector('span').innerText = `${Math.round(scrollPercent)}%`;
+        }
+      }
+      for (let event of this.scrollEventSet) {
+        event();
+      }
       this.oldScrollTop = this.newScrollTop;
     }, false);
   }
 
   onResize() {
+    let resizeBefore = this.util.isMobile();
     window.addEventListener('resize', () => {
       if (!this._resizeTimeout) {
         this._resizeTimeout = window.setTimeout(() => {
           this._resizeTimeout = null;
-          for (let event of this.resizeEventSet) event();
+          for (let event of this.resizeEventSet) {
+            event();
+          }
           this.initToc();
           this.initMermaid();
           this.initSearch();
-          document.getElementById('mask').click();
+
+          const isMobile = this.util.isMobile()
+          if (isMobile !== resizeBefore) {
+            document.getElementById('mask').click();
+            resizeBefore = isMobile;
+          }
         }, 100);
       }
     }, false);
@@ -951,51 +1119,66 @@ class Theme {
 
   onClickMask() {
     document.getElementById('mask').addEventListener('click', () => {
-      for (let event of this.clickMaskEventSet) event();
+      if (!document.body.classList.contains('blur')) {
+        return;
+      }
+      for (let event of this.clickMaskEventSet) {
+        event();
+      }
+      this.disableScrollEvent = false;
       document.body.classList.remove('blur');
     }, false);
   }
 
   init() {
     try {
+      if (this.config.encryption) {
+        this.initFixItDecryptor();
+      } else if (!this.config.encryption?.all) {
+        this.initTwemoji();
+        this.initDetails();
+        this.initLightGallery();
+        this.initHighlight();
+        this.initTable();
+        this.initHeaderLink();
+        this.initMath();
+        this.initMermaid();
+        this.initEcharts();
+        this.initTypeit();
+        this.initMapbox();
+        this.initPangu();
+      }
+      this.initThemeColor();
       this.initSVGIcon();
-      this.initTwemoji();
       this.initMenu();
       this.initSwitchTheme();
       this.initSearch();
-      this.initDetails();
-      this.initLightGallery();
-      this.initHighlight();
-      this.initTable();
-      this.initHeaderLink();
-      this.initMath();
-      this.initMermaid();
-      this.initEcharts();
-      this.initTypeit();
-      this.initMapbox();
       this.initCookieconsent();
       this.initSiteTime();
       this.initServiceWorker();
       this.initWatermark();
-      this.initPangu();
+      this.initMDevtools();
+      this.initAutoMark();
+
+      window.setTimeout(() => {
+        this.initComment();
+        if (!this.config.encryption?.all) {
+          this.initToc();
+          this.initTocListener();
+        }
+        this.onScroll();
+        this.onResize();
+        this.onClickMask();
+      }, 100);
     } catch (err) {
       console.error(err);
     }
-
-    window.setTimeout(() => {
-      this.initComment();
-      this.initToc();
-
-      this.onScroll();
-      this.onResize();
-      this.onClickMask();
-    }, 100);
   }
 }
 
 const themeInit = () => {
-  const theme = new Theme();
-  theme.init();
+  window.fixit = new FixIt();
+  window.fixit.init();
 };
 
 if (document.readyState !== 'loading') {

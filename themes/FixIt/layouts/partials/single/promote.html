@@ -1,0 +1,22 @@
+{{ if or .Params.promote (and .Site.Params.promote.enable (ne .Params.promote false)) -}}
+<div class="post-promote">
+    <input type="checkbox" name="promote" id="promote" hidden />
+    <label class="promote-button" for="promote">{{ T "promote" }}</label>
+    <div class="qr-code">
+        {{ $qrCode := .Site.Params.promote }}
+        {{- $cdnPrefix := .Site.Params.cdnPrefix -}}
+        {{ with $qrCode.gzh -}}
+        <label class="qr-code-image" for="promote">
+            <img class="image" src="{{ $cdnPrefix }}{{ . }}">
+            <span>{{ T "promotegzh" }}</span>
+        </label>
+        {{- end }}
+        {{ with $qrCode.xcx -}}
+        <label class="qr-code-image" for="promote">
+            <img class="image" src="{{ $cdnPrefix }}{{ . }}">
+            <span>{{ T "promotexcx" }}</span>
+        </label>
+        {{- end }}
+    </div>
+</div>
+{{- end }}

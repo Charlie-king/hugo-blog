@@ -1,3 +1,4 @@
 <blockquote class="blockquote-center">
-  {{ .Inner }}
+  {{ .Inner | .Page.RenderString }}
 </blockquote>
+{{- /* EOF */ -}}

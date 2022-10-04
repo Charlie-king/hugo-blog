@@ -591,6 +591,12 @@ alipay = "/images/alipay.png" # 支付宝二维码文件路径
 enable = true # true为开启 flase为关闭
 wechat = "/images/wechatpay.png" # 微信二维码文件路径
 
+# 公众号和小程序展示
+[params.promote]
+enable = true 
+gzh = "/images/wxqr.png" 
+xcx = "" # 微信二维码
+
 #  水印配置
 # 详细参数见 https://github.com/Lruihao/watermark#readme
 [params.watermark]

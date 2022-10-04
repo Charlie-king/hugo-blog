@@ -1,9 +1,10 @@
 {{- $cdn := .Scratch.Get "cdn" | default dict -}}
 {{- $fingerprint := .Scratch.Get "fingerprint" -}}
 {{- $comment := .Scratch.Get "comment" | default dict -}}
-{{- $commentConfig := dict -}}
+{{- $commentConfig := dict "enable" false -}}
 
 {{- if $comment.enable -}}
+  {{- $commentConfig = dict "enable" true -}}
   <div id="comments">
     {{- /* Artalk Comment System */ -}}
     {{- $artalk := $comment.artalk | default dict -}}
@@ -13,7 +14,14 @@
       {{- dict "Source" $source "Minify" true "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
       {{- $source := $cdn.artalkJS | default "lib/artalk/Artalk.min.js" -}}
       {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
-      {{- $commentConfig = dict "el" "#artalk" "pageKey" .Permalink "pageTitle" .Title | dict "artalk" | merge $commentConfig -}}
+      {{- $commentConfig = dict "el" "#artalk" "pageKey" .Permalink "pageTitle" .Title "pvEl" "artalk-visitor-count" "countEl" "artalk-comment-count" | dict "artalk" | merge $commentConfig -}}
+      {{- if (eq $artalk.locale "") | and (eq $.Site.LanguageCode "en") -}}
+        {{- $artalk = dict "locale" "en-US" | merge $artalk -}}
+      {{- end -}}
+      {{- $commentConfig = dict "locale" ($artalk.locale | default $.Site.LanguageCode | default "auto") | dict "artalk" | merge $commentConfig -}}
+      {{- with .Site.Params.gravatar -}}
+        {{- $commentConfig = dict "mirror" .Host "default" .Style | dict "gravatar" | dict "artalk" | merge $commentConfig -}}
+      {{- end -}}
       {{- with $artalk.server -}}
         {{- $commentConfig = dict "server" . | dict "artalk" | merge $commentConfig -}}
       {{- end -}}
@@ -42,7 +50,7 @@
         {{- $commentConfig = dict "lightgallery" . | dict "artalk" | merge $commentConfig -}}
       {{- end -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://github.com/ArtalkJS/Artalk" rel="external nofollow noopener noreffer">Artalk</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://github.com/ArtalkJS/Artalk" rel="external nofollow noopener noreferrer">Artalk</a>.
       </noscript>
     {{- end -}}
 
@@ -53,7 +61,7 @@
       {{- $source := printf "https://%v.disqus.com/embed.js" $disqus.shortname -}}
       {{- dict "Source" $source "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreffer">Disqus</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer">Disqus</a>.
       </noscript>
     {{- end -}}
 
@@ -67,7 +75,7 @@
       {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
       {{- $commentConfig = dict "id" .Date "title" .Title "clientID" $gitalk.clientId "clientSecret" $gitalk.clientSecret "repo" $gitalk.repo "owner" $gitalk.owner "admin" (slice $gitalk.owner) | dict "gitalk" | merge $commentConfig -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk" rel="external nofollow noopener noreffer">Gitalk</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk" rel="external nofollow noopener noreferrer">Gitalk</a>.
       </noscript>
     {{- end -}}
 
@@ -94,19 +102,23 @@
       {{- end -}}
       {{- $commentConfig = $valine.emoji | default "google.yml" | printf "data/emoji/%v" | resources.Get | transform.Unmarshal | dict "valine" | merge $commentConfig -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/" rel="external nofollow noopener noreffer">Valine</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/" rel="external nofollow noopener noreferrer">Valine</a>.
       </noscript>
     {{- end -}}
 
     {{- /* Waline Comment System */ -}}
+    {{- /* see https://waline.js.org/reference/component.html */ -}}
     {{- $waline := $comment.waline | default dict -}}
     {{- if $waline.enable -}}
       <div id="waline" class="comment"></div>
-      {{- $source := $cdn.walineJS | default "lib/waline/Waline.min.js" -}}
+      {{- $source := $cdn.walineCSS | default "lib/waline/waline.css" -}}
+      {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
+      {{- $source := $cdn.walineJS | default "lib/waline/waline.js" -}}
       {{- dict "Source" $source "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
-      {{- $commentConfig = dict "el" "#waline" "serverURL" $waline.serverURL "lang" .Lang "dark" "body[theme='dark']" "copyright" true | dict "waline" | merge $commentConfig -}}
-      {{- with $waline.visitor -}}
-        {{- $commentConfig = dict "visitor" . | dict "waline" | merge $commentConfig -}}
+      {{- $commentConfig = dict "el" "#waline" "serverURL" $waline.serverURL "lang" .Lang "dark" "body[data-theme='dark']" | dict "waline" | merge $commentConfig -}}
+      {{- $commentConfig = dict "copyright" true "imageUploader" false "highlighter" false "texRenderer" false "search" false | dict "waline" | merge $commentConfig -}}
+      {{- with $waline.pageview -}}
+        {{- $commentConfig = dict "pageview" . | dict "waline" | merge $commentConfig -}}
       {{- end -}}
       {{- with $waline.emoji -}}
         {{- $commentConfig = dict "emoji" . | dict "waline" | merge $commentConfig -}}
@@ -126,17 +138,26 @@
       {{- with $waline.pageSize -}}
         {{- $commentConfig = dict "pageSize" . | dict "waline" | merge $commentConfig -}}
       {{- end -}}
-      {{- with $waline.uploadImage -}}
-        {{- $commentConfig = dict "uploadImage" . | dict "waline" | merge $commentConfig -}}
+      {{- with $waline.imageUploader -}}
+        {{- $commentConfig = dict "imageUploader" . | dict "waline" | merge $commentConfig -}}
       {{- end -}}
-      {{- with $waline.highlight -}}
-        {{- $commentConfig = dict "highlight" . | dict "waline" | merge $commentConfig -}}
+      {{- with $waline.highlighter -}}
+        {{- $commentConfig = dict "highlighter" . | dict "waline" | merge $commentConfig -}}
       {{- end -}}
-      {{- with $waline.mathTagSupport -}}
-        {{- $commentConfig = dict "mathTagSupport" . | dict "waline" | merge $commentConfig -}}
+      {{- with $waline.comment -}}
+        {{- $commentConfig = dict "comment" . | dict "waline" | merge $commentConfig -}}
+      {{- end -}}
+      {{- with $waline.texRenderer -}}
+        {{- $commentConfig = dict "texRenderer" . | dict "waline" | merge $commentConfig -}}
+      {{- end -}}
+      {{- with $waline.search -}}
+        {{- $commentConfig = dict "search" . | dict "waline" | merge $commentConfig -}}
+      {{- end -}}
+      {{- with $waline.recaptchaV3Key -}}
+        {{- $commentConfig = dict "recaptchaV3Key" . | dict "waline" | merge $commentConfig -}}
       {{- end -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/" rel="external nofollow noopener noreffer">Waline</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/" rel="external nofollow noopener noreferrer">Waline</a>.
       </noscript>
     {{- end -}}
 
@@ -153,7 +174,7 @@
       {{- $source := printf "https://connect.facebook.net/%v/sdk.js#xfbml=1&version=v5.0&appId=%v&autoLogAppEvents=1" ($facebook.languageCode | default (T "facebookLanguageCode")) $facebook.appId -}}
       {{- dict "Source" $source "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://developers.facebook.com/docs/plugins/comments/" rel="external nofollow noopener noreffer">Facebook</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://developers.facebook.com/docs/plugins/comments/" rel="external nofollow noopener noreferrer">Facebook</a>.
       </noscript>
     {{- end -}}
 
@@ -180,31 +201,31 @@
       {{- end -}}
       {{- dict "Source" "https://comments.app/js/widget.js?2" "Defer" true "Attr" $attr | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://comments.app/" rel="external nofollow noopener noreffer">Telegram Comments</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://comments.app/" rel="external nofollow noopener noreferrer">Telegram Comments</a>.
       </noscript>
     {{- end -}}
 
     {{- /* Commento Comment System */ -}}
     {{- $commento := $comment.commento | default dict -}}
     {{- if $commento.enable -}}
-      <div id="commento"></div>
+      <div id="commento" class="comment"></div>
       {{- dict "Source" "https://cdn.commento.io/js/commento.js" "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://commento.io/" rel="external nofollow noopener noreffer">Commento</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://commento.io/" rel="external nofollow noopener noreferrer">Commento</a>.
       </noscript>
     {{- end -}}
 
     {{- /* Utterances Comment System */ -}}
     {{- $utterances := $comment.utterances | default dict -}}
     {{- if $utterances.enable -}}
-      <div id="utterances"></div>
+      <div id="utterances" class="comment"></div>
       {{- $commentConfig = dict "repo" $utterances.repo | dict "utterances" | merge $commentConfig -}}
       {{- $commentConfig = $utterances.issueTerm | default "pathname" | dict "issueTerm" | dict "utterances" | merge $commentConfig -}}
       {{- $commentConfig = dict "label" $utterances.label | dict "utterances" | merge $commentConfig -}}
       {{- $commentConfig = $utterances.lightTheme | default "github-light" | dict "lightTheme" | dict "utterances" | merge $commentConfig -}}
       {{- $commentConfig = $utterances.darkTheme | default "github-dark" | dict "darkTheme" | dict "utterances" | merge $commentConfig -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/" rel="external nofollow noopener noreffer">Utterances</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/" rel="external nofollow noopener noreferrer">Utterances</a>.
       </noscript>
     {{- end -}}
 
@@ -228,7 +249,7 @@
         {{- $commentConfig = dict "lightgallery" . | dict "twikoo" | merge $commentConfig -}}
       {{- end -}}
       <noscript>
-        Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/" rel="external nofollow noopener noreffer">Twikoo</a>.
+        Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/" rel="external nofollow noopener noreferrer">Twikoo</a>.
       </noscript>
     {{- end -}}
 
@@ -250,7 +271,7 @@
             data-theme="preferred_color_scheme"
             data-reactions-enabled="{{ .ReactionsEnabled }}"
             data-emit-metadata="{{ .EmitMetadata }}"
-            data-input-position="{{ .EnputPosition }}"
+            data-input-position="{{ .InputPosition }}"
             data-lang="{{ $.Site.LanguageCode }}"
             {{ if ne .LazyLoad false }}data-loading="lazy"{{ end }}
             crossorigin="anonymous"
@@ -258,7 +279,7 @@
             defer
           ></script>
           <noscript>
-            Please enable JavaScript to view the comments powered by <a href="https://giscus.app/" rel="external nofollow noopener noreffer">giscus</a>.
+            Please enable JavaScript to view the comments powered by <a href="https://giscus.app/" rel="external nofollow noopener noreferrer">giscus</a>.
           </noscript>
         </div>
       {{- end -}}

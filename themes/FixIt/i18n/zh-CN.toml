@@ -7,13 +7,16 @@
 other = "配置文件错误\n您还没有正确配置 FixIt 的版本参数。参考 https://fixit.lruihao.cn/zh-cn/theme-documentation-basics/#basic-configuration"
 
 [compatibilityError]
-other = "兼容性错误 ({{ .From }} -> {{ .To }}):\n您进行了一次不兼容的更新。参考 https://github.com/Lruihao/FixIt/releases"
+other = "兼容性错误 ({{ .From }} -> {{ .To }}):\n您进行了一次不兼容的更新。参考 https://github.com/hugo-fixit/FixIt/releases"
 
 [RCVersionWarn]
-other = "您正在使用开发版的 FixIt，请考虑使用稳定版。\n见 https://github.com/Lruihao/FixIt/releases"
+other = "您正在使用开发版的 FixIt，请考虑使用稳定版。\n见 https://github.com/hugo-fixit/FixIt/releases"
 
 [devEnvWarn]
 other = "当前运行环境是“development”。“评论系统”，“CDN”和“fingerprint”不会启用。"
+
+[quicklyUpgrade]
+other = "使用命令快速升级："
 # === init ===
 
 # === baseof ===
@@ -22,8 +25,12 @@ other = "回到顶部"
 
 [viewComments]
 other = "查看评论"
+
+[noscript]
+other = "FixIt 主题在启用 JavaScript 的情况下效果最佳。"
 # === baseof ===
 
+#打赏与关注
 [reward]
 other = "赞赏支持" #other中的文字可以自由更改
 
@@ -33,6 +40,16 @@ other = "支付宝打赏"
 [rewardWechat]
 other = "微信打赏"
 
+[promote]
+other = "关注一下有惊喜" #other中的文字可以自由更改
+
+[promotegzh]
+other = "公众号"
+
+[promotexcx]
+other = "小程序"
+#打赏与关注
+
 # === Post ===
 [posts]
 other = "文章"
@@ -41,6 +58,9 @@ other = "文章"
 # === Taxonomy ===
 [allSome]
 other = "所有{{ .Some }}"
+
+[totalwordCount]
+other = "总计约 {{ .Count }} 字"
 
 [tag]
 other = "标签"
@@ -74,6 +94,7 @@ other = "没有更多翻译"
 
 [switchTheme]
 other = "切换主题"
+
 # === partials/header.html ===
 
 # === partials/footer.html ===
@@ -87,7 +108,7 @@ other = "总访客数"
 other = "总访问量"
 
 [siteRunning]
-other = "网站运行中..."
+other = "网站运行中 ..."
 # === partials/footer.html ===
 
 # === partials/comment.html ===
@@ -154,6 +175,9 @@ other = "分享到"
 [contents]
 other = "目录"
 
+[repost]
+other = "转载"
+
 [publishedOnDate]
 other = "发布于 {{ .Date }}"
 
@@ -162,9 +186,6 @@ other = "收录于 {{ .Categories }}"
 
 [wordCount]
 other = "约 {{ .Count }} 字"
-
-[totalwordCount]
-other = "总计约 {{ .Count }} 字"
 
 [readingTime]
 other = "预计阅读 {{ .Count }} 分钟"
@@ -198,6 +219,18 @@ other = "阅读全文"
 
 [expirationReminder]
 other = "本文最后更新于 {{ .Date }}，文中内容可能已过时。"
+
+[encryptedAbstract]
+other = "本文已加密，因此其原始内容不可见！"
+
+[encryptedMessage]
+other = "请输入密码"
+
+[password]
+other = "密码"
+
+[encryptyAgain]
+other = "重新加密"
 # === posts/single.html ===
 
 # === 404.html ===

@@ -14,6 +14,9 @@ other = "" # waitting for translation
 
 [devEnvWarn]
 other = "" # waitting for translation
+
+[quicklyUpgrade]
+other = "" # waitting for translation
 # === init ===
 
 # === baseof ===
@@ -22,6 +25,9 @@ other = "Torna all'inizio"
 
 [viewComments]
 other = "Vedi commenti"
+
+[noscript]
+other = "" # waitting for translation
 # === baseof ===
 
 # === Post ===
@@ -32,6 +38,10 @@ other = "Articoli"
 # === Taxonomy ===
 [allSome]
 other = "Tutti {{ .Some }}"
+
+[totalwordCount]
+one = "" # waitting for translation
+other = "" # waitting for translation
 
 [tag]
 other = "Etichetta"
@@ -141,6 +151,8 @@ other = "Condividi su"
 # === posts/single.html ===
 [contents]
 other = "Contenuti"
+[repost]
+other = "" # waitting for translation
 
 [publishedOnDate]
 other = "pubblicato su {{ .Date }}"
@@ -151,10 +163,6 @@ other = "incluso in {{ .Categories }}"
 [wordCount]
 one = "Una parola"
 other = "{{ .Count }} parole"
-
-[totalwordCount]
-one = "" # waitting for translation
-other = "" # waitting for translation
 
 [readingTime]
 one = "Un minuto"
@@ -189,6 +197,18 @@ other = "Leggi di più"
 
 [expirationReminder]
 other = "Questo articolo è stato aggiornato l'ultima volta il {{ .Date }}, il contenuto potrebbe non essere aggiornato."
+
+[encryptedAbstract]
+other = "" # waitting for translation
+
+[encryptedMessage]
+other = "" # waitting for translation
+
+[password]
+other = "Password"
+
+[encryptyAgain]
+other = "" # waitting for translation
 # === posts/single.html ===
 
 # === 404.html ===

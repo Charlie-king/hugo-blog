@@ -2,33 +2,44 @@
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 subtitle: ""
 date: {{ .Date }}
-lastmod: {{ .Date }}
-
-author: "Kingpo"
+draft: true
+author: ""
 authorLink: ""
 authorEmail: ""
 description: ""
 keywords: ""
-comment: true
+license: ""
+comment: false
 weight: 0
-
-draft: false
 
 tags:
 - draft
 categories:
 - draft
 
-featuredImage: ""
-featuredImagePreview: ""
+hiddenFromHomePage: false
+hiddenFromSearch: false
+
+summary: ""
+resources:
+- name: featured-image
+  src: featured-image.jpg
+- name: featured-image-preview
+  src: featured-image-preview.jpg
 
 toc:
   enable: true
-
+math:
+  enable: false
+lightgallery: false
 seo:
   images: []
 
-# See details front matter: /theme-documentation-content/#front-matter
+repost:
+  enable: true
+  url: ""
+
+# See details front matter: https://fixit.lruihao.cn/theme-documentation-content/#front-matter
 ---
 
 <!--more-->

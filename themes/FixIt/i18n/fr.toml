@@ -14,6 +14,9 @@ other = "" # waitting for translation
 
 [devEnvWarn]
 other = "" # waitting for translation
+
+[quicklyUpgrade]
+other = "" # waitting for translation
 # === init ===
 
 # === baseof ===
@@ -22,6 +25,9 @@ other = "Retour en Haut"
 
 [viewComments]
 other = "Afficher les Commentaires"
+
+[noscript]
+other = "" # waitting for translation
 # === baseof ===
 
 # === Post ===
@@ -32,6 +38,10 @@ other = "Posts"
 # === Taxonomy ===
 [allSome]
 other = "Tous {{ .Some }}"
+
+[totalwordCount]
+one = "" # waitting for translation
+other = "" # waitting for translation
 
 [tag]
 other = "Balise"
@@ -141,6 +151,8 @@ other = "Partager sur"
 # === posts/single.html ===
 [contents]
 other = "Contenu"
+[repost]
+other = "" # waitting for translation
 
 [publishedOnDate]
 other = "publié le {{ .Date }}"
@@ -151,10 +163,6 @@ other = "inclus dans {{ .Categories }}"
 [wordCount]
 one = "Un mot"
 other = "{{ .Count }} mots"
-
-[totalwordCount]
-one = "" # waitting for translation
-other = "" # waitting for translation
 
 [readingTime]
 one = "Une minute"
@@ -186,6 +194,18 @@ other = "Accueil"
 
 [readMore]
 other = "En savoir plus"
+
+[encryptedAbstract]
+other = "" # waitting for translation
+
+[encryptedMessage]
+other = "" # waitting for translation
+
+[password]
+other = "Mot de passe"
+
+[encryptyAgain]
+other = "" # waitting for translation
 # === posts/single.html ===
 
 # === 404.html ===

@@ -1,6 +1,12 @@
+
 #!/bin/bash
-#author:
+#author: Lruihao
 cd ..
 git add .
-git commit -m "更新"
+read -p "Please enter commit message: " commitMsg
+if [ -z $commitMsg ];then
+  commitMsg="Docs: Kingpo update $(date +'%F %a %T')"
+fi
+git commit -m ":pencil: $commitMsg"
 git push
+

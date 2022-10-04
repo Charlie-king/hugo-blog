@@ -1,4 +1,5 @@
-@import '../_partial/_single/toc';
+@import '../_partials/_single/toc';
+@import '../_partials/_single/fixit-decryptor';
 
 .single {
   .single-title {
@@ -7,13 +8,23 @@
     font-size: 1.6rem;
     font-weight: bold;
     line-height: 140%;
+  
+    .icon-repost {
+      color: var(--#{$prefix}success);
+      display: inline-block;
+      width: max-content;
+      margin-right: 0.25rem;
+
+      [data-theme='dark'] & {
+        color: var(--#{$prefix}success-dark);
+      }
+    }
   }
 
   .single-subtitle {
-    margin: 0.4rem 0;
+    margin: 0.5rem 0;
     font-size: 1.2rem;
     font-weight: normal;
-    font-style: italic;
     line-height: 100%;
   }
 
@@ -25,7 +36,7 @@
       display: inline-block;
     }
 
-    [theme='dark'] & {
+    [data-theme='dark'] & {
       color: $global-font-secondary-color-dark;
     }
 
@@ -44,7 +55,7 @@
         object-position: center;
         @include object-fit(cover);
 
-        [theme='dark'] & {
+        [data-theme='dark'] & {
           border-color: $global-border-color-dark;
         }
       }
@@ -60,10 +71,10 @@
       height: auto;
       margin: 0 auto;
       overflow: hidden;
-    }
 
-    img.lazyloaded {
-      width: 100%;
+      &.lazyloaded {
+        width: 100%;
+      }
     }
   }
 
@@ -109,7 +120,7 @@
       font-weight: bold;
       margin: 1.2rem 0;
 
-      [theme='dark'] & {
+      [data-theme='dark'] & {
         font-weight: bolder;
       }
     }
@@ -124,7 +135,7 @@
         margin-right: 0.3125rem;
         color: $single-link-color;
 
-        [theme='dark'] & {
+        [data-theme='dark'] & {
           color: $single-link-color-dark;
         }
       }
@@ -142,7 +153,7 @@
     strong {
       font-weight: bold;
 
-      [theme='dark'] & {
+      [data-theme='dark'] & {
         color: #ddd;
       }
     }
@@ -153,14 +164,14 @@
       white-space: normal;
       @include overflow-wrap(break-word);
 
-      [theme='dark'] & b,
-      [theme='dark'] & strong {
+      [data-theme='dark'] & b,
+      [data-theme='dark'] & strong {
         color: $single-link-color-dark;
       }
     }
 
-    [theme='dark'] a:hover b,
-    [theme='dark'] a:hover strong {
+    [data-theme='dark'] a:hover b,
+    [data-theme='dark'] a:hover strong {
       color: $single-link-hover-color-dark;
     }
 
@@ -181,7 +192,7 @@
         color: $global-font-secondary-color;
       }
 
-      [theme='dark'] & {
+      [data-theme='dark'] & {
         background: $code-background-color-dark;
 
         rt {
@@ -196,7 +207,7 @@
       &::-webkit-scrollbar {
         background-color: $table-background-color;
 
-        [theme='dark'] & {
+        [data-theme='dark'] & {
           background-color: $table-background-color-dark;
         }
       }
@@ -209,14 +220,14 @@
         background: $table-background-color;
         border-collapse: collapse;
 
-        [theme='dark'] & {
+        [data-theme='dark'] & {
           background: $table-background-color-dark;
         }
 
         thead {
           background: $table-thead-color;
 
-          [theme='dark'] & {
+          [data-theme='dark'] & {
             background-color: $table-thead-color-dark;
           }
         }
@@ -225,7 +236,7 @@
           & tr:nth-child(odd) {
             background: darken($table-background-color, 2.25%);
 
-            [theme='dark'] & {
+            [data-theme='dark'] & {
               background-color: lighten($table-background-color-dark, 2.75%);
             }
           }
@@ -233,7 +244,7 @@
           & tr:hover {
             background: darken($table-background-color, 4.5%);
 
-            [theme='dark'] & {
+            [data-theme='dark'] & {
               background-color: lighten($table-background-color-dark, 5.5%);
             }
           }
@@ -244,7 +255,7 @@
           padding: 0.3rem 1rem;
           border: 1px solid darken($table-thead-color, 2%);
 
-          [theme='dark'] & {
+          [data-theme='dark'] & {
             border-color: darken($table-thead-color-dark, 2%);
           }
         }
@@ -254,6 +265,13 @@
     img {
       max-width: 100%;
       min-height: 1em;
+
+      &:not([data-h]) {
+        height: auto;
+      }
+    }
+    svg {
+      max-width: 100%;
     }
 
     figure {
@@ -272,14 +290,22 @@
 
       img {
         display: block;
-        height: auto;
         margin: 0 auto;
         overflow: hidden;
+
+        &.lazyloaded:not([data-w]) {
+          width: 100%;
+        }
       }
     }
 
+    .lazyload,
     .lazyloading {
       @include object-fit(none);
+    }
+
+    .lazyloaded {
+      @include object-fit(fill);
     }
 
     blockquote {
@@ -294,7 +320,7 @@
         padding-left: 1.5em;
       }
 
-      [theme='dark'] & {
+      [data-theme='dark'] & {
         color: $blockquote-color-dark;
         border-left-color: $global-border-color-dark;
       }
@@ -305,7 +331,7 @@
     .footnotes {
       color: $global-font-secondary-color;
 
-      [theme='dark'] & {
+      [data-theme='dark'] & {
         color: $global-font-secondary-color-dark;
       }
 
@@ -314,8 +340,8 @@
       }
     }
 
-    @import '../_partial/_single/code';
-    @import '../_shortcodes/index';
+    @import '../_partials/_single/code';
+    @import '../_shortcodes';
 
     hr {
       margin: 1rem 0;
@@ -323,7 +349,7 @@
       border-top: 1px dashed $global-border-color;
       border-bottom: none;
 
-      [theme='dark'] & {
+      [data-theme='dark'] & {
         border-top: 1px dashed $global-border-color-dark;
       }
     }
@@ -340,22 +366,12 @@
       font-family: $code-font-family;
       color: $code-color;
 
-      [theme='dark'] & {
+      [data-theme='dark'] & {
         background-color: $global-background-color-dark;
         border: 1px solid $global-border-color-dark;
         border-bottom-color: $global-border-color-dark;
         @include box-shadow(inset 0 -1px 0 $global-border-color-dark);
         color: $code-color-dark;
-      }
-    }
-
-    .typeit {
-      .code {
-        padding: 0.375rem;
-        font-size: 0.875rem;
-        font-family: $code-font-family;
-        font-weight: bold;
-        word-break: break-all;
       }
     }
 
@@ -365,8 +381,8 @@
     }
   }
 
-  @import '../_partial/_single/footer';
-  @import '../_partial/_single/comment';
+  @import '../_partials/_single/footer';
+  @import '../_partials/_single/comment';
 }
 
 .lg-toolbar .lg-icon::after {

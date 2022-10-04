@@ -20,22 +20,22 @@ And now you are ready to go!
 Here are some useful commands.
 
 ```bash
-#build theme.js with babel
+# build theme.js with babel
 npm run babel
-#build theme.js and then build the static site
+# build theme.js and then build the static site
 npm run build
-#run a local debugging server
+# run a local debugging server with watch
 npm run server
-#run a local debugging server in production environment
+# run a local debugging server with watch in production environment
 npm run server:production
-#build theme.js and then run a local debugging server
+# build theme.js and then run a local debugging server
 npm run start
-#build theme.js and then run a local debugging server in production environment
+# build theme.js and then run a local debugging server in production environment
 npm run start:production
 
 ```
 
-Finally, create a new pull request at https://github.com/Lruihao/FixIt/pulls to submit your contribution 🎉
+Finally, create a new pull request at https://github.com/hugo-fixit/FixIt/pulls to submit your contribution 🎉
 
 ## Git standard for developers
 
@@ -58,9 +58,16 @@ Finally, create a new pull request at https://github.com/Lruihao/FixIt/pulls to 
 ### Commit message
 
 #### Format
-> {emoji} {type}: {subject within 50 words} (#{issue/pull request})
+
+`[{emoji} ]{type}[({module})]: {subject within 50 words}[ (#{issue/pull request})]`
+
+example:
+
+- :tada: Feat: add shortcode fixit-encryptor shortcode (#123)
+- :arrow_up: Chore(libs): update Artalk from 2.2.12 to 2.3.4 (#150)
 
 #### Emoji
+
 - https://gitmoji.dev
 - [vscode plugin](https://github.com/maixiaojie/git-emoji-zh.git)
 - utools plugin `GitEmoji`
@@ -70,7 +77,7 @@ Finally, create a new pull request at https://github.com/Lruihao/FixIt/pulls to 
 | Emoji                                         | Type     | Example                                                      | Description (No Ambiguous)                                   |
 | :-------------------------------------------- | :------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | :tada:  <br>:sparkles:                        | Feat     | Feat: add {feature}                                          | new feature                                                  |
-| :truck:                                       |          | Feat: adjust/migrate {feature name}，{change details}        | For the adjustment feature, it is necessary to describe the current situation (before) and after adjustment (after) |
+| :truck:                                       |          | Feat: adjust/migrate {feature name}, {change details}        | For the adjustment feature, it is necessary to describe the current situation (before) and after adjustment (after) |
 | :fire:                                        |          | Feat: delete {feature name}, {deletion reason}               | If the feature is deleted, the reason for deletion must be explained |
 | :bug: <br>:construction: <br>:rotating_light: | Fix      | Fix: fix {bug description}                                   | Fix known bugs                                               |
 | :art: <br>:lipstick: <br>:pencil2:            | Style    | Style: Typesetting/CSS style {optimizing content}            | Changes that do not affect code operation, such as code layout and style change |

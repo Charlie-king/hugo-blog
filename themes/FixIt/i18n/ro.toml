@@ -14,6 +14,9 @@ other = "" # waitting for translation
 
 [devEnvWarn]
 other = "" # waitting for translation
+
+[quicklyUpgrade]
+other = "" # waitting for translation
 # === init ===
 
 # === baseof ===
@@ -22,6 +25,9 @@ other = "Înapoi Sus"
 
 [viewComments]
 other = "Vizualizare Comentarii"
+
+[noscript]
+other = "" # waitting for translation
 # === baseof ===
 
 # === Post ===
@@ -32,6 +38,10 @@ other = "Articole"
 # === Taxonomy ===
 [allSome]
 other = "Toate {{ .Some }}"
+
+[totalwordCount]
+one = "" # waitting for translation
+other = "" # waitting for translation
 
 [tag]
 other = "Etichetă"
@@ -141,6 +151,8 @@ other = "Distribuie pe"
 # === posts/single.html ===
 [contents]
 other = "Cuprins"
+[repost]
+other = "" # waitting for translation
 
 [publishedOnDate]
 other = "publicat la {{ .Date }}"
@@ -151,10 +163,6 @@ other = "inclus în {{ .Categories }}"
 [wordCount]
 one = "Un cuvânt"
 other = "{{ .Count }} cuvinte"
-
-[totalwordCount]
-one = "" # waitting for translation
-other = "" # waitting for translation
 
 [readingTime]
 one = "Un minut"
@@ -189,6 +197,18 @@ other = "Citește mai mult"
 
 [expirationReminder]
 other = "Acest articol a fost actualizat ultima dată pe {{ .Date }}, conținutul poate fi depășit."
+
+[encryptedAbstract]
+other = "" # waitting for translation
+
+[encryptedMessage]
+other = "" # waitting for translation
+
+[password]
+other = "Parolă"
+
+[encryptyAgain]
+other = "" # waitting for translation
 # === posts/single.html ===
 
 # === 404.html ===

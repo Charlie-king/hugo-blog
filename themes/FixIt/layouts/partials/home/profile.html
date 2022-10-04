@@ -3,10 +3,9 @@
   {{- $avatar := $profile.avatarURL -}}
   {{- if $profile.gravatarEmail -}}
     {{- $gravatar := .Site.Params.gravatar -}}
-    {{- /* TODO: The parameter `home.profile.gravatarSite` will be deleted in v0.2.15 */ -}}
     {{- with $gravatar -}}
       {{- $avatar = printf "https://%v/avatar/%v?s=240&d=%v"
-        ($profile.gravatarSite | default .Host | default "www.gravatar.com")
+        (path.Clean .Host | default "www.gravatar.com")
         (md5 $profile.gravatarEmail)
         (.Style | default "mp")
       -}}
@@ -20,7 +19,7 @@
         {{- with .Page -}}
           {{- $url = .RelPermalink -}}
         {{- end -}}
-        <a href="{{ $url }}"{{ with .Title | default .Name }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
+        <a href="{{ $url }}"{{ with .Title | default .Name }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
           {{- dict "Src" $avatar "Alt" $.Site.Author.name | partial "plugin/image.html" -}}
         </a>
       {{- else -}}
@@ -39,7 +38,8 @@
     <h2 class="home-subtitle">
       {{- if $profile.typeit -}}
         {{- $id := dict "Content" . "Scratch" $.Scratch "Id" "typeit-profile-subtitle" | partial "function/id.html" -}}
-        <div id="{{ $id }}" class="typeit"></div>
+        <span class="d-none">{{ . }}</span>
+        <span id="{{ $id }}" class="typeit"></span>
         {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}}
       {{- else -}}
         {{- . -}}

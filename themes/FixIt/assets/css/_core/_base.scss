@@ -1,3 +1,5 @@
+@import "../../lib/normalize/normalize";
+
 html {
   font-family: $global-font-family;
   font-weight: $global-font-weight;
@@ -33,7 +35,7 @@ html {
 ::selection {
   background-color: $selection-color;
 
-  [theme='dark'] & {
+  [data-theme='dark'] & {
     background-color: $selection-color-dark;
   }
 }
@@ -44,7 +46,7 @@ body {
   @include overflow-wrap(break-word);
   scrollbar-color: auto;
 
-  &[theme='dark'] {
+  &[data-theme='dark'] {
     color: $global-font-color-dark;
     background-color: $global-background-color-dark;
   }
@@ -56,13 +58,27 @@ img {
 }
 
 iframe {
+  border: 0;
   @include border-radius($global-border-radius);
+}
+
+[role='button'] {
+  cursor: pointer;
+}
+
+summary {
+  cursor: pointer;
+}
+
+abbr[title] {
+  cursor: help;
+  text-decoration-skip-ink: none;
 }
 
 @include ms;
 @include link(true, true);
 
-@import '../_partial/mask';
-@import '../_partial/icon';
-@import '../_partial/details';
-@import '../_partial/_widgets';
+@import '../_partials/mask';
+@import '../_partials/icon';
+@import '../_partials/details';
+@import '../_partials/widgets';

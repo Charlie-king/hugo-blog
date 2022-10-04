@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "content/posts/技术：GitHub pages自定义域名.md",
+            "file": "content/posts/2022-10-4- added reward function.md",
             "mode": "source",
             "source": true
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/posts/技术：GitHub pages自定义域名.md",
+                "file": "content/posts/2022-10-4- added reward function.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "f6eeab079a879922",
   "lastOpenFiles": [
-    "content/posts/技术：GitHub pages自定义域名.md",
-    "content/posts/技术：静态博客多端同步部署.md",
-    "content/posts/技术：开启valine评论.md",
-    "content/posts/技术：cloudflare搭个人短链服务.md",
+    "content/posts/2022-10-4- added reward function.md",
+    "content/posts/技术：kindle联网解决.md",
     "content/posts/技术：eu域名.md",
-    "content/posts/技术：个人博客网站提交搜索引擎收录.md",
-    "content/posts/技术：hugo+Obisidian+vscode.md",
-    "content/posts/技术：Gravatar头像配置和镜像地址搜集.md",
-    "content/posts/技术：把word文档里自动序号转为文本.md",
-    "content/posts/读书：一场孟买的惊心动魄流亡之旅，一本爱的布道书.md"
+    "content/posts/技术：cloudflare搭个人短链服务.md",
+    "content/posts/技术：开启valine评论.md",
+    "content/posts/2022-9-12d22h15m42s.md",
+    "content/posts/技术：hugo主题美化功能admonition.md",
+    "content/posts/读书：2021-2022读书记.md",
+    "content/posts/技术：GitHub pages自定义域名.md",
+    "content/posts/技术：静态博客多端同步部署.md"
   ]
 }

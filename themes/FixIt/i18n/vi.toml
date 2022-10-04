@@ -13,6 +13,9 @@ other = "" # waitting for translation
 
 [devEnvWarn]
 other = "" # waitting for translation
+
+[quicklyUpgrade]
+other = "" # waitting for translation
 # === init ===
 
 # === baseof ===
@@ -21,6 +24,9 @@ other = "Lên trên"
 
 [viewComments]
 other = "Xem bình luận"
+
+[noscript]
+other = "" # waitting for translation
 # === baseof ===
 
 # === Post ===
@@ -31,6 +37,10 @@ other = "Bài viết"
 # === Taxonomy ===
 [allSome]
 other = "Tất cả {{ .Some }}"
+
+[totalwordCount]
+one = "" # waitting for translation
+other = "" # waitting for translation
 
 [tag]
 other = "Nhãn"
@@ -140,6 +150,8 @@ other = "Chia sẻ trên"
 # === posts/single.html ===
 [contents]
 other = "Nội dung"
+[repost]
+other = "" # waitting for translation
 
 [publishedOnDate]
 other = "đăng ngày {{ .Date }}"
@@ -150,10 +162,6 @@ other = "trong {{ .Categories }}"
 [wordCount]
 one = "One word"
 other = "{{ .Count }} từ"
-
-[totalwordCount]
-one = "" # waitting for translation
-other = "" # waitting for translation
 
 [readingTime]
 one = "One minute"
@@ -188,6 +196,18 @@ other = "Đọc thêm"
 
 [expirationReminder]
 other = "Bài viết này được cập nhật lần cuối vào {{ .Date }}, nội dung có thể đã lỗi thời."
+
+[encryptedAbstract]
+other = "" # waitting for translation
+
+[encryptedMessage]
+other = "" # waitting for translation
+
+[password]
+other = "Mật khẩu"
+
+[encryptyAgain]
+other = "" # waitting for translation
 # === posts/single.html ===
 
 # === 404.html ===

@@ -1,6 +1,6 @@
 {{- $params := .Scratch.Get "params" -}}
 
-{{- $author := .Site.Author | merge (dict "name" "" "link" (echoParam $params "authorlink") "email" (echoParam $params "authoremail")) -}}
+{{- $author := .Site.Author | merge (dict "name" "Anonymous" "link" (echoParam $params "authorlink") "email" (echoParam $params "authoremail")) -}}
 {{- $avatar := .Site.Params.home.profile.avatarURL -}}
 {{- if isset $params "author" | and (ne $params.author .Site.Author.name) -}}
   {{- $author = dict "name" $params.author | merge $author -}}
@@ -11,12 +11,16 @@
 {{- if (not $avatar | or $params.gravatarForce) | and $author.email -}}
   {{- $gravatar := .Site.Params.gravatar -}}
   {{- with $gravatar -}}
-    {{- $avatar = printf "https://%v/avatar/%v?s=32&d=%v" (.Host | default "www.gravatar.com") (md5 $author.email) (.Style | default "") -}}
+    {{- $avatar = printf "https://%v/avatar/%v?s=32&d=%v"
+      (path.Clean .Host | default "www.gravatar.com")
+      (md5 $author.email)
+      (.Style | default "")
+    -}}
   {{- end -}}
 {{- end -}}
 <span class="post-author">
   {{- $content := $author.name -}}
-  {{- $icon := dict "Class" "fas fa-user-circle" -}}
+  {{- $icon := dict "Class" "fa-solid fa-user-circle" -}}
   {{- if $avatar -}}
     {{- $content = printf "%v&nbsp;%v" (dict "Src" $avatar "Class" "avatar" "Alt" $author.name | partial "plugin/image.html") $author.name -}}
     {{- $icon = "" -}}
@@ -27,9 +31,10 @@
   {{- else -}}
     <span class="author">
       {{- with $icon -}}
-        <i class="{{ .Class }}"></i>
+        {{ . | partial "plugin/icon.html" }}
       {{ end -}}
       {{- $content | safeHTML -}}
     </span>
   {{- end -}}
 </span>
+{{- /* EOF */ -}}
