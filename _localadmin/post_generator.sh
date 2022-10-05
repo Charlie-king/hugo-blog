@@ -1,7 +1,7 @@
 #!/bin/bash
 #author: Lruihao
 cd ..
-read -p "Please enter the article name: " postName
+read -ep "Please enter the article name: " postName
 if [ -z $postName ];then
   echo "The article name is required!"
 else

@@ -476,19 +476,22 @@ enable = false
 owner = ""
 repo = ""
 
-#  Waline 评论系统设置 (https://waline.js.org)
+# FixIt 0.2.16 | 更改 Waline 评论系统设置 (https://waline.js.org)
 [params.page.comment.waline]
-comment = false # 
-emoji = ['//unpkg.com/@waline/emojis@1.0.1/weibo'] 
+comment = false # FixIt 0.2.15 | 新增
+emoji = ["//unpkg.com/@waline/emojis@1.1.0/weibo"] 
 enable = false 
-highlighter = true # 
-imageUploader = false # 
-login = 'enable' 
-meta = ['nick', 'mail', 'link'] 
+highlighter = false # FixIt 0.2.15 | 新增
+imageUploader = false # FixIt 0.2.15 | 新增
+login = "enable" 
+meta = ["nick", "mail", "link"] 
 pageSize = 10 
-pageview = false # 
+pageview = false # FixIt 0.2.15 | 新增
+recaptchaV3Key = "" # FixIt 0.2.16 | 新增
 requiredMeta = [] 
+search = false # FixIt 0.2.16 | 新增
 serverURL = "" 
+texRenderer = false # FixIt 0.2.16 | 新增
 wordLimit = 0 
 # visitor = false #  更名为 pageview
 # uploadImage = false #  更名为 imageUploader
@@ -712,6 +715,37 @@ title = "在 GitHub 上查看"
 host = "gravatar.loli.net" # "cn.gravatar.com", "gravatar.loli.net"
 style = "monsterid" # "", mp, identicon, monsterid, wavatar, retro, blank, robohash
 
+# FixIt 0.2.16 | 新增 返回顶部
+[params.backToTop]
+enable = true
+# 在 b2t 按钮中显示滚动百分比
+scrollpercent = true
+
+# FixIt 0.2.16 | 新增 阅读进度条
+[params.readingProgress]
+enable = true
+# 可用值：["left", "right"]
+start = "left"
+# 可用值：["top", "bottom"]
+dark = "top"
+height = "3px"
+light = ""
+position = "top"
+reversed = false
+
+# FixIt 0.2.15 | 新增 开发者选项
+[params.dev]
+enable = false
+# 检查更新
+c4u = false
+# 请勿公开展示！
+githubToken = ""
+# 移动端开发者工具配置
+[params.dev.mDevtools]
+enable = false
+# 支持 "vConsole", "eruda"
+type = "vConsole"
+
 # Hugo 解析文档的配置
 [markup]
 # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
@@ -757,7 +791,7 @@ priority = 0.5
 # Permalinks 永久链接配置即文章归属路径设置 (https://gohugo.io/content-management/urls#permalinks)
 [Permalinks]
 # posts = ":year/:month/:filename"
-posts = ":section/:filename" #按内容部分/年月/文件名
+posts = ":filename" #按内容部分/年月/文件名
 
 # 隐私信息配置 (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]
