@@ -1,15 +1,16 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
+title: "使用statcount做全平台站点访问统计"
 subtitle: ""
-date: {{ .Date }}
+date: 2022-10-05T09:22:13+08:00
 
-lastmod: {{ .Date }}
-draft: true
+lastmod: 2022-10-05T10:22:13+08:00
+draft: false
 description: ""
 tags:
-- draft
+- hugo
+- 访问统计
 categories:
-- draft
+- 静态博客
 featuredImage: ""
 featuredImagePreview: ""
 
@@ -30,5 +31,7 @@ seo:
 
 # See details front matter: /theme-documentation-content/#front-matter
 ---
-
+这个人可是
 <!--more-->
+
+## 

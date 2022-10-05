@@ -53,6 +53,10 @@ externalIcon = false
 # 您可以将其关闭，但如果您不这样做，我们将不胜感激，因为这是观察 FixIt 受欢迎程度上升的好方法。
 disableThemeInject = false
 
+# FixIt 0.2.16 | 新增 开启自动书签支持
+# 如果为 true，则在关闭页面时保存阅读进度
+autoBookmark = true
+
 #  应用图标配置
 [params.app]
 # 当添加到 iOS 主屏幕或者 Android 启动器时的标题，覆盖默认标题
@@ -753,7 +757,7 @@ priority = 0.5
 # Permalinks 永久链接配置即文章归属路径设置 (https://gohugo.io/content-management/urls#permalinks)
 [Permalinks]
 # posts = ":year/:month/:filename"
-posts = ":section/:year:month/:filename" #按内容部分/年月/文件名
+posts = ":section/:filename" #按内容部分/年月/文件名
 
 # 隐私信息配置 (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]

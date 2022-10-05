@@ -306,10 +306,8 @@ article .post-reward .qr-code .image {
 翻到文章文末，查看效果，我这里还添加了关注公众号的二维码，添加过程和赞赏模式一样的。
 ![](https://s3.bmp.ovh/imgs/2022/10/04/f68ecc158a739250.png)
 
-![](https://s3.bmp.ovh/imgs/2022/10/04/f6329b2e0dd338ff.png)
-
 
 
 ## 参考资料
-https://cywhat.cn/Loveit%E4%B8%BB%E9%A2%98%E5%BC%80%E5%90%AF%E6%96%87%E7%AB%A0%E8%B5%9E%E8%B5%8F/#%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD
-
+> https://cywhat.cn/Loveit%E4%B8%BB%E9%A2%98%E5%BC%80%E5%90%AF%E6%96%87%E7%AB%A0%E8%B5%9E%E8%B5%8F/#%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD
+> http://imfang.net/web/119.html

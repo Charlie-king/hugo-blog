@@ -80,11 +80,11 @@ ping自己的github pages域名`xxx.github.io`，可查看它的ip，当前githu
 ```
 
 
-进到cloudflare管理平台，域名管理添加一条www的CNAME记录，指向你自己的github.io域名`xxx.github.io`。这一步可以将你的个人域名转向`xxx.github.io`。
+进到cloudflare管理平台，域名管理添加一条www的CNAME记录，指向你自己的github.io域名`xxx.github.io`。这一步可以将你的个人域名转向`xxx.github.io`，io域名再去解析到那4个ip中的一个。
 
 或者直接添加4条A记录，将你跟域名直接指向上面4个ip。这步使你个人域名直接转向github.io的ip。
 
-以上两步可同时添加。
+github官方的建议是采用添加CNAME记录，这样github.io的ip变化后不会不会受影响。
 ![](https://s3.bmp.ovh/imgs/2022/10/04/9f3ad9f96fb55a20.png)
 
 
@@ -98,16 +98,24 @@ ping自己的github pages域名`xxx.github.io`，可查看它的ip，当前githu
 2.  你也可以直接进到个人GitHub pages那个项目，GitHub pages -> setting设置，custom domain里添加保存你个人域名。这个操作实际对应也是生成1步骤的CNAME文件。效果一样的。
 ![](https://s3.bmp.ovh/imgs/2022/10/03/7ba48e38c264d283.png)
 
-勾选强制https，更加安全。
+
 
 **注意：** 如果你github pages静态网站是通过github action自动编译生成的话，需要在编译前的项目对应的生成pages的根目录里添加这个CNAME文件，因为每次编译生成都会清空你原GitHub pages项内容，主流静态博客（hugo，hexo等）的话基本是static目录，这个目录的文件编译后全部都在生成的静态网站根目录里。
 
-通过以上配置，等域名配置生效后，一般24小时，即可通过个人域名访问，cloudflare配置域名默认启用cdn代理，速度会比直接访问github.io快很多。
+通过以上配置，等域名配置生效后，一般需要24小时，不过我设置后一会就直接生效，即可通过个人域名访问，cloudflare配置域名默认启用cdn代理，速度会比直接访问github.io快很多。
 
 我们可以ping一下配置后个人域名的地址，会发现已经不是github.io的那4个了，而是cloudflare的cdn代理服务器。
 
 ![](https://s3.bmp.ovh/imgs/2022/10/03/af31c01ce6029d6d.png)
 
+{{< admonition tip "关于无法Enforce HTTPS">}}
+配置到这里，大家会发现无法启用github的强制https，这是因为cloudflare默认启用了http/dns代理功能，也就是cdn代理，导致github无法查看生成https证书所需的dns记录，对于指向github的任何dns记录，都要禁用该选项，才能启用Enforce HTTPS。
+
+不过你在的cloudflare上直接启用https即可，这里本来就要利用它的cdn来进行访问加速。
+{{< /admonition >}}
+
+
 ## 参考资料：
 > github docs https://docs.github.com/cn/pages/getting-started-with-github-pages/about-github-pages   
 > Cloudflare https://zh.wikipedia.org/wiki/Cloudflare
+> GitHub Pages自定义域名使用Cloudflare无法Enforce HTTPS解决方法 https://blog.imfang.net/web/118.html

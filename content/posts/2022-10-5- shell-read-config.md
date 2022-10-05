@@ -1,8 +1,8 @@
 ---
-title: "EU域名"
+title: "shell中read使用后控制台不能删除内容"
 subtitle: ""
-date: 2022-09-22T16:34:09+08:00
-lastmod: 2022-09-22T16:34:09+08:00
+date: 2022-10-05T00:02:36+08:00
+lastmod: 2022-10-05T00:02:36+08:00
 
 author: "Kingpo"
 authorLink: ""
@@ -11,14 +11,13 @@ description: ""
 keywords: ""
 comment: true
 weight: 0
-password: true
 
-draft: true
+draft: false
 
 tags:
 - draft
 categories:
-- 域名
+- draft
 
 featuredImage: ""
 featuredImagePreview: ""
@@ -35,5 +34,5 @@ seo:
 <!--more-->
 
 
-
-
+## 参考
+https://blog.csdn.net/lcm_linux/article/details/102899524
