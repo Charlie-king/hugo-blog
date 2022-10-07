@@ -2,7 +2,7 @@
 title: "shell中read在控制台不能删除内容的解决方式"
 subtitle: ""
 date: 2022-10-05T00:02:36+08:00
-lastmod: 2022-10-05T00:02:36+08:00
+lastmod: 2022-10-07T15:02:36+08:00
 
 author: "Kingpo"
 authorLink: ""
