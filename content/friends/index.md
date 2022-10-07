@@ -14,7 +14,7 @@ comment: true
  <!-- 下载窗口样式 {{< link href="https://lruihao.cn/friends/opml.xml" content=":(far fa-star fa-fw): Subscribe ours" download="opml.xml" card=true >}}. -->
 ---
 <!-- You can define additional content below for this page. -->
-## 我的信息
+## 我
 
 ```yaml
   nickname: 六月长河
@@ -25,8 +25,8 @@ comment: true
 
 ## 友情提示
 
-{{< admonition info "~~" true >}}
+{{< admonition info "叮叮" true >}}
 1. 互换友链，请按以上格式留言。
-2. 网站故障，停止维护和不正确的内容可能会被取消链接！
+2. 网站故障，停止维护和言论不正可能会被取消链接！
 3. 欢迎交流，花径不曾缘客扫，蓬门今始为君开。
 {{< /admonition >}}

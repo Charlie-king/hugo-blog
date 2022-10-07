@@ -745,7 +745,6 @@ githubToken = ""
 enable = false
 # 支持 "vConsole", "eruda"
 type = "vConsole"
-
 # Hugo 解析文档的配置
 [markup]
 # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
@@ -894,19 +893,19 @@ class = "text-center"
 # 是否为草稿菜单，类似草稿页面
 draft = false
 
-[[menu.main]]
-identifier = "guestbook"
-name = "留言"
-post = ""
-pre = "<i class='fas fa-comments fa-fw fa-sm'></i>"
-title = ""
-url = "/guestbook/"
-weight = 5
-[menu.main.params]
-# 添加 CSS 类到特定的菜单项
-class = "text-center"
-# 是否为草稿菜单，类似草稿页面
-draft = false
+# [[menu.main]]
+# identifier = "guestbook"
+# name = "留言"
+# post = ""
+# pre = "<i class='fas fa-comments fa-fw fa-sm'></i>"
+# title = ""
+# url = "/guestbook/"
+# weight = 5
+# [menu.main.params]
+# # 添加 CSS 类到特定的菜单项
+# class = "text-center"
+# # 是否为草稿菜单，类似草稿页面
+# draft = false
 
 [[menu.main]]
 identifier = "about"
