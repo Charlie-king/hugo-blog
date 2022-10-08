@@ -5,8 +5,8 @@ const exec = util.promisify(child_process.exec);
 function getCreateTimeAsFileName() {
   var d = new Date();
   var year = d.getFullYear();
-  var month = d.getMonth() + 1;
-  var day = d.getDate();
+  var month = (d.getMonth() + 1).toString().padStart(2, '0');
+  var day = (d.getDate()).toString().padStart(2, '0');
   var hour = d.getHours();
   var minute = d.getMinutes();
   var second = d.getSeconds();
@@ -16,13 +16,12 @@ function getCreateTimeAsFileName() {
     month +
     "-" +
     day +
-    "day" +
+    "-" +
     hour +
-    "h" +
+    "-" +
     minute +
-    "m" +
-    second +
-    "s";
+    "-" +
+    second;
 
   return time;
 }
