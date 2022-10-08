@@ -108,7 +108,7 @@ other = "总访客数"
 other = "总访问量"
 
 [siteRunning]
-other = "网站已持续运行这么久啦"
+other = "网站已持续运行这么多天啦"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
