@@ -790,7 +790,7 @@ priority = 0.5
 # Permalinks 永久链接配置即文章归属路径设置 (https://gohugo.io/content-management/urls#permalinks)
 [Permalinks]
 # posts = ":year/:month/:filename"
-posts = ":filename" #按内容部分/年月/文件名
+posts = ":section/:filename" #按内容部分/年月/文件名
 
 # 隐私信息配置 (https://gohugo.io/about/hugo-and-gdpr/)
 [privacy]
