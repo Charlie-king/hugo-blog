@@ -126,10 +126,16 @@ typeit = false
 enable = true
 #  自定义内容（支持 HTML 格式）
 custom = """
-
+本站多线部署：
+<a href="https://ttzz.eu.org" target="_blank">【github】</a>
+<a href="https://ajin.eu.org" target="_blank">【cloudflare】</a>
+<a href="https://zhjin.eu.org" target="_blank">【vercel】</a>
+<a href="https://kingpo.netlify.app/" target="_blank">【netlify】</a>
+<a href="https://kpo.onrender.com/" target="_blank">【render】</a>
+<br>
 <!-- Default Statcounter code for blog https://ttzz.eu.org/
 -->
-<a href="https://statcounter.com/p12800592/?guest=1" target="_blank">全平台总访问统计</a>
+<a href="https://statcounter.com/p12800592/?guest=1" target="_blank">全线路总访问量统计</a>
 <script type="text/javascript">
 var sc_project=12800592; 
 var sc_invisible=0; 
