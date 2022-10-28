@@ -1,5 +1,5 @@
 # 网站标题
-baseURL = "https://zhjin.eu.org/"
+baseURL = "https://ttzz.eu.org/"
 title = "六月长河"
 # [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
@@ -126,7 +126,8 @@ typeit = false
 enable = true
 #  自定义内容（支持 HTML 格式）
 custom = """
-<!-- Default Statcounter code for blog https://zhjin.eu.org/
+
+<!-- Default Statcounter code for blog https://ttzz.eu.org/
 -->
 <a href="https://statcounter.com/p12800592/?guest=1" target="_blank">全平台总访问统计</a>
 <script type="text/javascript">
@@ -138,10 +139,14 @@ document.write("<sc"+"ript type='text/javascript' src='" +
 scJsHost+
 "statcounter.com/counter/counter.js'></"+"script>");
 </script>
-<noscript><div class="statcounter"><a title="web stats"
-href="https://statcounter.com/" target="_blank"><img
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12800592/0/6f21fa5b/0/"
+alt="Web Analytics Made Easy - Statcounter"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
+
 
       """
 
