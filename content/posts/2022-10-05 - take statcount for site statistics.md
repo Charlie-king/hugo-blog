@@ -3,7 +3,7 @@ title: "使用statcount做静态网站全平台访问统计"
 subtitle: ""
 date: 2022-10-05T09:22:13+08:00
 
-lastmod: 2022-10-05T10:22:13+08:00
+lastmod: 2022-10-28T10:22:13+08:00
 draft: false
 description: ""
 tags:
@@ -64,6 +64,10 @@ statcounter官网：https://statcounter.com/
  ![](https://s3.bmp.ovh/imgs/2022/10/05/6f0000559434cb88.png)
 
 3. 平台选择默认，继续，复制验证代码到你的静态网站，所有页面添加（找个模板页即可）。然后回到statcounter进行验证，验证通过即完成。
+{{< admonition note >}}
+在配置里，修改统计显示样式后，验证代码会更新重新生成，需要重新填写验证代码到发布站点里。
+{{< /admonition >}}
+
 ![](https://s3.bmp.ovh/imgs/2022/10/05/7d37aa27d334b75f.png)
 ![](https://s3.bmp.ovh/imgs/2022/10/05/050ca223e5ca0bb3.png)
 

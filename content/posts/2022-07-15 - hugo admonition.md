@@ -2,7 +2,7 @@
 title: "hugo主题美化功能admonition"
 subtitle: ""
 date: 2022-07-15T14:43:36+08:00
-lastmod: 2022-07-20T16:41:35+08:00
+lastmod: 2022-10-28T16:41:35+08:00
 draft: false
 author: "Kingpo"
 authorLink: ""
@@ -43,7 +43,7 @@ seo:
 
 <!--more-->
 ## admonition
-admonition，有着炫酷的效果，可以美化文章笔记，但它并不是Markdown的标准语法，不能被Markdown正常渲染，需要额外的插件配置。
+admonition，是FixIt/LoveIt系列主题集成的短代码功能，有着炫酷的效果，可以美化文章笔记，但它并不是Markdown的标准语法，不能被Markdown正常渲染，需要额外的配置。类似样式效果很多笔记软件的插件也有，不过代码形式和展示样式不完全一样，大多类似。
 
 有人喜欢它的优美的展示效果，有人觉得它是对Markdown语法的污染，使用因人而异。
 
@@ -79,11 +79,11 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 ## **12种样式代码和效果**
 ### note
 ```html
-{{</* admonition */>}}
+{{</* admonition  */>}}
 一个 **注意** 横幅
 {{</* /admonition */>}}
 ```
-{{< admonition >}}
+{{< admonition note >}}
 一个 **注意** 横幅
 {{< /admonition >}}
 
@@ -93,7 +93,7 @@ hugo的LoveIt，FixIt主题都集成了admonition shorcode功能，可以比较�
 一个 **提示** 横幅
 {{</* /admonition */>}}
 ```
-{{< admonition tip "Tip" >}}
+{{< admonition tip >}}
 一个 **提示** 横幅
 {{< /admonition >}}
 
