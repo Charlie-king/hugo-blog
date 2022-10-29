@@ -35,9 +35,9 @@ comment: true
 
 {{< admonition success "部署" >}}
 #### 本站多线部署于以下平台，请选择一个访问最快的进行访问
-- [github.io](https://charlie-king.github.io) 独立域名[ttzz.eu.org](https://ttzz.eu.org/)
+- [github.io](https://charlie-king.github.io) 主域名[ttzz.eu.org](https://ttzz.eu.org/)
 - [cloudflare](https://charlie-king-github-io.pages.dev/) 独立域名[ajin.eu.org](https://ajin.eu.org/)
-- [vercel.app](https://kingpo.vercel.app/)
+- [vercel.app](https://zhjin.eu.org/)
 - [netlify.app](https://kingpo.netlify.app/)
 - [render.com](https://kpo.onrender.com)
 
