@@ -3,7 +3,7 @@ title: "2分钟免费自建你的专属z-library镜像站，找书没烦恼"
 subtitle: ""
 date: 2022-10-18T16:44:42+08:00
 
-lastmod: 2022-10-18T18:44:42+08:00
+lastmod: 2022-11-02T22:44:42+08:00
 draft: false
 description: ""
 tags:
@@ -34,18 +34,29 @@ seo:
 
 <!--more-->
 ## 前言
-z-library是全球最大的电子书下载站，资源非常丰富。然而地址经常面临被封禁的问题，国内非常容易被墙，官方也在不断地变换地址。
+z-library是全球最大的电子书下载站，资源非常丰富。然而地址经常面临被封禁的问题，国内非常容易被墙，官方也在不断地变换地址。除了寻找别人所做的镜像站之外，另一种最方便的，就是自建镜像站。
 ![](https://s.imgkb.xyz/abcdocker/2022/10/18/08f91edc7aed9/08f91edc7aed9.png)
 
 今天实操自建一个z-library的镜像站，摆脱被墙困扰，实现免翻下载。
 
 ## 准备工作
 
-1. 一个自己的域名，可以去申请一个免费域名。
-2. 一个cloudflare账号，个人域名交由它解析。
+1. 一个自己的域名，可以申请免费域名。
+2. 一个cloudflare账号，DNS解析托管到cloudflare。
 
-## cloudflare
+## cloudflare配置
+1. 登录cloudflare管理台后，选择worker，创建一个服务
+![](https://s.imgkb.xyz/abcdocker/2022/11/02/64a01ee72d700/64a01ee72d700.png)
 
+2. 选择http处理程序，服务名称你自定。这个服务名称xxx就是你这个cloudflare给你生成的三级域名，下面有行提示：您的服务将被部署到：https://xxx.aaaa.workers.dev，aaaa这里是你整个worker里定义名称。不过现在cloudflare提供的这个域名国内都被墙了，所以用不上，这也是我们要准备自己一个域名的原因。
+![](https://s.imgkb.xyz/abcdocker/2022/11/02/1c2b93d3d6df0/1c2b93d3d6df0.png)
+
+4. 创建完服务，进来点击【资源】--快速编辑，将下面代码替换原有代码，保存。
+![](https://s.imgkb.xyz/abcdocker/2022/11/02/de3fef8bb7173/de3fef8bb7173.png)
+
+![](https://s.imgkb.xyz/abcdocker/2022/11/02/726c961b3870d/726c961b3870d.png)
+
+覆盖代码：
 ```
 
 // 你要镜像的网站.
@@ -191,6 +202,16 @@ async function device_status(user_agent_info) {
 }
 
 ```
+
+
+5. 回到【触发器】--添加自定义域，添加自己的域名，这个域名需要先托管到cloudflare上。
+![](https://s.imgkb.xyz/abcdocker/2022/11/02/09cb6d3997412/09cb6d3997412.png)
+
+到此，镜像站已经完成，生效时间虽说24小时，实际一般很快，不到1分钟就生效。
+
+这里我们利用cloudflare提供的全球cdn，给我们做了代理。免费用户每天worker里服务可以有10万次请求，对于个人而言完全足够用。
+
+需要注意，z-library对每个ip未登录用户每天有5次下载限制，如果你建立镜像站后出现过超过限制，很可能是cloudflare的代理ip的下载次数已经被人用完了。怎么解决呢，换个ip即可，或者最方便的找个修改ip的插件就可以继续用了。
 
 ## 参考
 > https://www.axutongxue.top/2022/09/8zlibrary.html
