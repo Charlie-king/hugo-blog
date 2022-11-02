@@ -18,9 +18,9 @@ comment: true
 
 ```yaml
   nickname: 六月长河
-  avatar: https://charlie-king.github.io/images/avatar.png
+  avatar: https://kingpo.netlify.app/images/avatar.png
   url: https://charlie-king.github.io
-  discription: 记录，分享，生活与技术的时光印记！
+  discription: 桃李春风一杯酒，江湖夜雨十年灯。
 ```
 
 ## 友情提示
