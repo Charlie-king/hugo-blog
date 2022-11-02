@@ -1,4 +1,4 @@
-# 朋友/站点信息例子
+#  朋友/站点信息例子
 #  nickname: 朋友名字
 #  avatar: https://lruihao.cn/images/avatar.jpg
 #  url: 站点链接
@@ -68,10 +68,10 @@
    avatar: https://nosecurity.cn/img/logo.webp
    discription: Let’s start talking
 
-#-  nickname: 
-#   url: 
-#   avatar: 
-#   discription:
+- nickname: 爱编程的小明
+  url: https://blog.kobal.cn/
+  avatar: https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/avatar.webp
+  discription: 不要温和地走进那个良夜 
 
 #-  nickname: 
 #   url: 
