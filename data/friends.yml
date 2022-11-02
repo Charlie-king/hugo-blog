@@ -40,5 +40,35 @@
 
 -  nickname: biaoblog - 个人博客
    url: http://biaoblog.cn
-   avatar: http://biaoblog.run:3000/uploads/1653375680185.png
+   avatar: https://biaoblog.run:3000/uploads/1653375680185.png
    discription: 专注web技术分享
+
+-  nickname: 点滴日记
+   url: https://www.ddkjt.com
+   avatar: https://www.ddkjt.com/usr/uploads/tx.png
+   discription: 记录生活日记分享学习点滴的个人博客网站
+
+-  nickname: Pei’s Blog
+   url: https://blog.goku.top/
+   avatar: https://ghproxy.com/https://raw.githubusercontent.com/sgr997/images/main/blog/avatar.jpg
+   discription: 随记随看
+
+-  nickname: duadua blog
+   url: https://duaduac.com
+   avatar: https://duadua.github.io/images/avatar.png
+   discription: 不可描述
+
+-  nickname: 你会发光叭
+   url: https://linjiangyu.com
+   avatar: https://linjiangyu.com/upload/2022/07/0b3397b2275950862f89b57b46f1fef-55356d72c9fa43d49cf5e168f990e7fa.jpg
+   discription: 慢也好，步子小也好，是在往前走就好了
+
+#-  nickname: 
+#   url: 
+#   avatar: 
+#   discription:
+
+#-  nickname: 
+#   url: 
+#   avatar: 
+#   discription:
