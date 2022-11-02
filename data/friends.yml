@@ -40,7 +40,7 @@
 
 -  nickname: biaoblog - 个人博客
    url: http://biaoblog.cn
-   avatar: https://biaoblog.run:3000/uploads/1653375680185.png
+   avatar: http://biaoblog.run:3000/uploads/1653375680185.png
    discription: 专注web技术分享
 
 -  nickname: 点滴日记
@@ -62,6 +62,16 @@
    url: https://linjiangyu.com
    avatar: https://linjiangyu.com/upload/2022/07/0b3397b2275950862f89b57b46f1fef-55356d72c9fa43d49cf5e168f990e7fa.jpg
    discription: 慢也好，步子小也好，是在往前走就好了
+
+-  nickname: Alone
+   url: https://blog.nosecurity.cn
+   avatar: https://nosecurity.cn/img/logo.webp
+   discription: Let’s start talking
+
+#-  nickname: 
+#   url: 
+#   avatar: 
+#   discription:
 
 #-  nickname: 
 #   url: 
