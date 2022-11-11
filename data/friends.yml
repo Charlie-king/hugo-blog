@@ -68,31 +68,37 @@
    avatar: https://nosecurity.cn/img/logo.webp
    discription: Let’s start talking
 
-- nickname: 爱编程的小明
-  url: https://blog.kobal.cn/
-  avatar: https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/avatar.webp
-  discription: 不要温和地走进那个良夜 
+-  nickname: 爱编程的小明
+   url: https://blog.kobal.cn/
+   avatar: https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/avatar.webp
+   discription: 不要温和地走进那个良夜 
 
 
-- nickname: 做棵大树
-  url: https://beatree.cn
-  discription: 一个分享知识和资源的博客  或  勇敢且上进，强大而谦逊。
-  avatar: https://media.beatree.cn/wp-content/uploads/2020/02/2020020314051791.png
+-  nickname: 做棵大树
+   url: https://beatree.cn
+   discription: 一个分享知识和资源的博客  或  勇敢且上进，强大而谦逊。
+   avatar: https://media.beatree.cn/wp-content/uploads/2020/02/2020020314051791.png
+ 
+-  nickname: Ethan.Tzy
+   url: https://tzy1997.com/
+   avatar: https://bu.dusays.com/2022/05/02/626f92e193879.jpg
+   discription: 古今之成大事者，不惟有超世之才，亦必有坚忍不拔之志
 
-- nickname: Ethan.Tzy
-  url: https://tzy1997.com/
-  avatar: https://bu.dusays.com/2022/05/02/626f92e193879.jpg
-  discription: 古今之成大事者，不惟有超世之才，亦必有坚忍不拔之志
+-  nickname: 给时光以生命
+   avatar: https://data.allasone.cc/halo/chang'an.png
+   url: https://allasone.cc
+   discription: 君不见外州客，长安道，一回来，一回老。
 
-- nickname: 给时光以生命
-  avatar: https://data.allasone.cc/halo/chang'an.png
-  url: https://allasone.cc
-  discription: 君不见外州客，长安道，一回来，一回老。
+-  nickname: 小夏的博客
+   discription: Devops运维技术博客
+   avatar: https://cdn.jsdelivr.net/gh/summerking1/image@main/tx.png
+   url: https://www.xswsym.online/
 
-- nickname: 小夏的博客
-  discription: Devops运维技术博客
-  avatar: https://cdn.jsdelivr.net/gh/summerking1/image@main/tx.png
-  url: https://www.xswsym.online/
+-  nickname: 小城故事
+   discription: 欢迎光临小城故事
+   avatar: www.webxc.ml
+   avatar: https://npm.elemecdn.com/webxc/logo/logo.jpg
+
 
 #-  nickname: 
 #   url: 
