@@ -15,7 +15,7 @@ hasCJKLanguage = true
 
 enableEmoji = true
 
-enableRobotsTXT = true
+enableRobotsTXT = false
 
 relativeURLs = false
 summaryLength = 150
