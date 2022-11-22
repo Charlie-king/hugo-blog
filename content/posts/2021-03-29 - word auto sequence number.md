@@ -7,7 +7,7 @@ lastmod: 2022-08-27T16:41:35+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
+description: "把word文档里的自动序号转为文本的方法"
 keywords: 
 - word
 - 自动序号

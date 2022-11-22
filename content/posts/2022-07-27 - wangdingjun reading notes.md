@@ -8,8 +8,13 @@ draft: false
 author: ""
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "王鼎均回忆四部曲《昨天的云》《怒目少年》《关山夺路》《文学江湖》书摘"
+keywords: 
+- 王鼎均
+- 昨天的云
+- 怒目少年
+- 关山夺路
+- 文学江湖
 license: ""
 comment: true
 weight: 0

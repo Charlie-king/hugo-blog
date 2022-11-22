@@ -8,7 +8,7 @@ draft: false
 author: ""
 authorLink: ""
 authorEmail: ""
-description: ""
+description: "SQL server复制(导出)数据到excel/csv后行数缺失数据缺失解决方案"
 keywords: 
 - sql
 - 数据导出

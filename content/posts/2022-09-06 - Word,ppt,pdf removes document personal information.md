@@ -7,8 +7,10 @@ lastmod: 2022-09-06T15:45:41+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "word/excel/ppt/pdf文档删除个人隐私信息，避免留痕"
+keywords: 
+- word/excel/ppt/pdf
+- 文档删除个人信息
 comment: true
 weight: 0
 

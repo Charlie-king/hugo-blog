@@ -7,8 +7,10 @@ lastmod: 2022-09-07T16:41:35+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "kindle已连接WiFi网络，但无法连接互联网的解决方法"
+keywords: 
+- kindle
+- kindle联网异常
 comment: true
 weight: 0
 
@@ -38,7 +40,7 @@ seo:
 <!--more-->
 使用kindle时，有时突然遇到不能联网的问题，提示以下信息。
 
-> 您的kindle已连接WiFi网络,但无法连接互联网。请联系您的互联网服务供应商，寻求支持。
+> 您的kindle已连接WiFi网络，但无法连接互联网。请联系您的互联网服务供应商，寻求支持。
 
 ## 解决方法
 - **法1：** 数据线连接电脑在Kindle U盘根目录建立一个空白文件夹（不是文件），名为`WIFI_NO_NET_PROBE`（不含引号），重启。原理阻止wifi进行网络连接测试。

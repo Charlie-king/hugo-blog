@@ -7,8 +7,11 @@ draft: false
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "hugo博客通过github action部署后文章最后更新时间异常的解决方法"
+keywords:
+- hugo文章更新时间
+- git
+- github action
 license: ""
 comment: true
 weight: 0

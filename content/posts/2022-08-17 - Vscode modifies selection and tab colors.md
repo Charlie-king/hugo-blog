@@ -7,8 +7,10 @@ lastmod: 2022-08-17T17:41:35+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "自定义vscode选中内容和tab的颜色"
+keywords:
+- vscode tab
+- vs自定义标签颜色
 comment: true
 weight: 0
 

@@ -8,8 +8,11 @@ lastmod: 2022-09-06T16:50:35+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "valine评论系统设置邮件通知，以及通过leancloud配置valine-admin后台管理评论内容"
+keywords: 
+- valine
+- 评论邮件通知
+- valine-admin
 comment: true
 weight: 0
 

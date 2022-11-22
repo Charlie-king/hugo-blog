@@ -7,8 +7,11 @@ lastmod: 2022-08-25T16:41:35+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "hugo博客配置开启valine评论，利用leancloud提供的免费服务"
+keywords: 
+- valine评论
+- hubgo评论
+- leancloud
 comment: true
 weight: 0
 

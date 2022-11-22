@@ -7,8 +7,10 @@ lastmod: 2022-09-21T17:00:03+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "用cloudflare搭建免费的个人短链接平台，生成短链使用"
+keywords: 
+- cloudflare
+- 短链平台搭建
 comment: true
 weight: 0
 

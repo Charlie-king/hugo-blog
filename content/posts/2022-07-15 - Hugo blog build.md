@@ -7,8 +7,10 @@ draft: false
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: "我终于搭建了专属个人博客！"
-keywords: ""
+description: "hugo博客搭建"
+keywords:
+- hugo博客
+- 静态博客
 license: ""
 comment: true
 weight: 0

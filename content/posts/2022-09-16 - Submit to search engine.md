@@ -8,7 +8,10 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: "把个人博客或网站提交给百度，必应，谷歌，360搜索收录"
-keywords: ""
+keywords: 
+- 搜索引擎收录
+- 博客
+- 网站
 comment: true
 weight: 0
 
