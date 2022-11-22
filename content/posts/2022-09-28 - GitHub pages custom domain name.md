@@ -8,7 +8,11 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: "GitHub pages提供域名可供使用，但是国内访问很慢，通过cloudflare域名解析配置自定义域名，可以利用其cdn加速访问。"
-keywords: ""
+keywords: 
+- github pages
+- domain
+- cloudflare
+- 自定义域名
 comment: true
 weight: 0
 

@@ -5,7 +5,7 @@ date: 2022-10-18T16:44:42+08:00
 
 lastmod: 2022-11-02T22:44:42+08:00
 draft: false
-description: ""
+description: "通过cloudflare搭建z-library镜像站"
 tags:
 - cloudflare
 - book
@@ -18,7 +18,10 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 
-keywords: ""
+keywords:
+- z-library
+- cloudflare
+- z-library镜像站
 comment: true
 weight: 0
 

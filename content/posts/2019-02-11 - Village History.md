@@ -9,7 +9,9 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: ""
-keywords: ""
+keywords: 
+- 乡村
+- 往事
 license: ""
 comment: true
 weight: 0

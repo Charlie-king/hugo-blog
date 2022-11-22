@@ -8,7 +8,9 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: ""
-keywords: ""
+keywords: 
+- word
+- 自动序号
 comment: true
 weight: 0
 

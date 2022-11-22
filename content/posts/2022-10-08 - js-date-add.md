@@ -5,7 +5,7 @@ date: 2022-10-08T15:43:42+08:00
 
 lastmod: 2022-10-08T16:55:42+08:00
 draft: false
-description: ""
+description: "js月份和日期字段前补0的一种简单实现方法"
 tags:
 - JavaScript
 categories:
@@ -17,7 +17,9 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 
-keywords: ""
+keywords:
+- js时间字段
+- 日期前补0
 comment: true
 weight: 0
 

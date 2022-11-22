@@ -8,7 +8,8 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: "12个精美admonition样式的介绍"
-keywords: ""
+keywords: 
+- admonition
 license: ""
 comment: true
 weight: 0

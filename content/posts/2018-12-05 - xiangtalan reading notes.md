@@ -9,7 +9,9 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 description: "读《项塔兰》"
-keywords: ""
+keywords: 
+- 项塔兰
+- 孟买
 license: ""
 comment: true
 weight: 0

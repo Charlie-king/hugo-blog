@@ -7,8 +7,11 @@ lastmod: 2022-10-07T15:02:36+08:00
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""
-description: ""
-keywords: ""
+description: "解决shell中read在控制台不能删除内容的方法"
+keywords: 
+- 脚本
+- read
+- shell
 comment: true
 weight: 0
 

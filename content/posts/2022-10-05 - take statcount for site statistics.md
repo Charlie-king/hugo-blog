@@ -5,7 +5,7 @@ date: 2022-10-05T09:22:13+08:00
 
 lastmod: 2022-10-28T10:22:13+08:00
 draft: false
-description: ""
+description: "使用statcount提供的免费服务做静态网站全平台访问统计"
 tags:
 - hugo
 - 访问统计
@@ -18,7 +18,10 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 
-keywords: ""
+keywords:
+- statcount
+- 访问量统计
+
 comment: true
 weight: 0
 

@@ -5,7 +5,7 @@ date: 2022-11-18T15:24:44+08:00
 
 lastmod: 2022-11-18T15:34:44+08:00
 draft: false
-description: ""
+description: "通过批处理一键修改微软远程桌面端口"
 tags:
 - Microsoft
 categories:
@@ -17,7 +17,10 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 
-keywords: ""
+keywords: 
+- rdp
+- Microsoft
+- 远程桌面端口
 comment: true
 weight: 0
 

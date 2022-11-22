@@ -5,7 +5,7 @@ date: 2022-11-18T16:02:07+08:00
 
 lastmod: 2022-11-18T17:00:07+08:00
 draft: false
-description: ""
+description: "快速对word中的图片批量调整统一的长宽比例大小"
 tags:
 - Microsoft
 categories:
@@ -17,7 +17,11 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 
-keywords: ""
+keywords: 
+- Microsoft
+- word
+- 图片调整
+- word图片格式刷
 comment: true
 weight: 0
 

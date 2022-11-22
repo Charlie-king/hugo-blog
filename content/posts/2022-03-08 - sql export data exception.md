@@ -9,7 +9,10 @@ author: ""
 authorLink: ""
 authorEmail: ""
 description: ""
-keywords: ""
+keywords: 
+- sql
+- 数据导出
+- 数据缺失
 license: ""
 comment: true
 weight: 0

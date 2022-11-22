@@ -5,7 +5,7 @@ date: 2022-11-17T17:34:40+08:00
 
 lastmod: 2022-11-17T17:45:40+08:00
 draft: false
-description: ""
+description: "qq/tim群文件的被限速下载如何获得不限速下载的方法"
 tags:
 - qq
 categories:
@@ -17,7 +17,9 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 
-keywords: ""
+keywords:
+- qq群文件
+- 群文件下载限速
 comment: true
 weight: 0
 
