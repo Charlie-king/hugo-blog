@@ -4,7 +4,7 @@ subtitle: ""
 date: 2022-07-26T15:28:29+08:00
 lastmod: 2022-07-27T16:41:35+08:00
 
-draft: true
+draft: false
 author: ""
 authorLink: ""
 authorEmail: ""
@@ -18,11 +18,9 @@ keywords:
 license: ""
 comment: true
 weight: 0
-password: ""
-message: ""
+password: "1212"
+message: "请输入1212"
 
-password: 王鼎均
-message: 作者名
 
 tags:
 - 读书
