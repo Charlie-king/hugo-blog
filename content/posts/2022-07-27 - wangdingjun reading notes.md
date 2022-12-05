@@ -1,10 +1,10 @@
 ---
-title: "王鼎均回忆录四部曲书摘"
+title: "鼎公回忆录四部曲书摘"
 subtitle: ""
 date: 2022-07-26T15:28:29+08:00
 lastmod: 2022-07-27T16:41:35+08:00
 
-draft: false
+draft: true
 author: ""
 authorLink: ""
 authorEmail: ""
@@ -21,7 +21,8 @@ weight: 0
 password: ""
 message: ""
 
-
+password: 王鼎均
+message: 作者名
 
 tags:
 - 读书
