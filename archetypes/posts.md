@@ -14,6 +14,9 @@ categories:
 featuredImage: ""
 featuredImagePreview: ""
 
+password: ""
+message: "提示信息"
+
 author: "Kingpo"
 authorLink: ""
 authorEmail: ""

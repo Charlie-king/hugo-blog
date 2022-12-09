@@ -45,11 +45,11 @@ lightgallery: false
 seo:
   images: []
 
-# See details front matter: /theme-documentation-content/#front-matter
+
 ---
 
 <!--more-->
-##
+
 ### 第二章 吾家
  这个比喻，起得绝妙
 >看它那样辛苦，那样勤奋，使我十分痛惜。不错，它的外表是干净了，可是所有的污秽都吞进肚里。
