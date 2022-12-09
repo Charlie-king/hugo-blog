@@ -5,12 +5,12 @@ date: 2022-12-07T16:56:32+08:00
 
 lastmod: 2022-12-07T18:15:32+08:00
 draft: false
-description: "等保评测整改过程，操作"
+description: "等保评测整改过程，配置操作"
 keywords: "等保评测"
 tags:
-- 等保评测
+- 等保
 categories:
-- 等保评测
+- 网络安全
 featuredImage: ""
 featuredImagePreview: ""
 
@@ -33,8 +33,8 @@ seo:
 
 ## 操作系统基线配置
 
-### 第1章 Linux操作系统加固
 
+### 第1章 Linux操作系统加固
   
 
 #### 1.1 检查设备密码复杂度策略
