@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>等保评测整改措施教程 - 六月长河</title><meta name="author" content="Kingpo">
+<meta name="author-link" content="">
+<meta name="description" content="等保评测整改过程，配置操作" /><meta name="keywords" content='等保评测' /><meta itemprop="name" content="等保评测整改措施教程">
+<meta itemprop="description" content="等保评测整改过程，配置操作"><meta itemprop="datePublished" content="2022-12-07T16:56:32+08:00" />
+<meta itemprop="dateModified" content="2022-12-07T18:15:32+08:00" />
+<meta itemprop="wordCount" content="3463"><meta itemprop="image" content="https://ttzz.eu.org/logo.png"/>
+<meta itemprop="keywords" content="等保," /><meta property="og:title" content="等保评测整改措施教程" />
+<meta property="og:description" content="等保评测整改过程，配置操作" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/" /><meta property="og:image" content="https://ttzz.eu.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-07T16:56:32+08:00" />
+<meta property="article:modified_time" content="2022-12-07T18:15:32+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ttzz.eu.org/logo.png"/>
+
+<meta name="twitter:title" content="等保评测整改措施教程"/>
+<meta name="twitter:description" content="等保评测整改过程，配置操作"/>
+<meta name="application-name" content="六月长河">
+<meta name="apple-mobile-web-app-title" content="六月长河"><meta name="theme-color" data-light="#ffffff" data-dark="#252627" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/" /><link rel="prev" href="https://ttzz.eu.org/posts/2022-11-21-ways-to-fix-github-being-too-slow/" /><link rel="next" href="https://ttzz.eu.org/posts/2022-12-08-blog-type-statistics/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "等保评测整改措施教程",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/ttzz.eu.org\/posts\/2022-12-07-equal-insurance-evaluation\/"
+    },"image": ["https:\/\/ttzz.eu.org\/site-meta.jpg"],"genre": "posts","keywords": "等保","wordcount":  3463 ,
+    "url": "https:\/\/ttzz.eu.org\/posts\/2022-12-07-equal-insurance-evaluation\/","datePublished": "2022-12-07T16:56:32+08:00","dateModified": "2022-12-07T18:15:32+08:00","publisher": {
+      "@type": "Organization",
+      "name": "Kingpo","logo": "https:\/\/ttzz.eu.org\/images\/avatar.png"},"author": {
+        "@type": "Person",
+        "name": "Kingpo"
+      },"description": "等保评测整改过程，配置操作"
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="right">
+    <div class="header-title">
+      <a href="/" title="六月长河"><span class="header-title-text">六月长河</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/posts/"
+                title="所有文章"
+                
+              ><i class='fas fa-archive fa-fw fa-sm'></i> 文章</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class='fas fa-th fa-fw fa-sm'></i> 分类</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class='fas fa-tags fa-fw fa-sm'></i> 标签</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class='fas fa-users fa-fw fa-sm'></i> 友链</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class='fas fa-user-tie fa-fw fa-sm'></i> 关于</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/tool/"
+                
+                
+              ><i class='fas fa-cube fa-fw fa-sm'></i> 工具箱</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="六月长河"><span class="header-title-text">六月长河</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  title="所有文章"
+                  
+                ><i class='fas fa-archive fa-fw fa-sm'></i> 文章</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class='fas fa-th fa-fw fa-sm'></i> 分类</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class='fas fa-tags fa-fw fa-sm'></i> 标签</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/friends/"
+                  
+                  
+                ><i class='fas fa-users fa-fw fa-sm'></i> 友链</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class='fas fa-user-tie fa-fw fa-sm'></i> 关于</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/tool/"
+                  
+                  
+                ><i class='fas fa-cube fa-fw fa-sm'></i> 工具箱</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="narrow"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+  <div class="toc-content"
+    id="toc-content-auto"></div></aside>
+
+<aside class="aside-custom">
+  
+</aside>
+
+<article class="page single">
+  <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+      <span>等保评测整改措施教程</span>
+    </h1></div><div class="post-meta">
+    <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="/images/avatar.png"
+    data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+    data-sizes="auto"
+    alt="Kingpo"
+    title="Kingpo"/>&nbsp;Kingpo</span></span>
+      <span class="post-category">收录于 <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网络安全</a></span></div>
+    <div class="post-meta-line"><span title=2022-12-07&#32;16:56:32><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-07">2022-12-07</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 约 3463 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 预计阅读 7 分钟</span>&nbsp;<span id="/posts/2022-12-07-equal-insurance-evaluation/" class="leancloud_visitors comment-visitors" data-flag-title="等保评测整改措施教程">
+        <i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class="leancloud-visitors-count">-</span>&nbsp;次阅读
+      </span>&nbsp;<span class="comment-count" data-flag-title="等保评测整改措施教程">
+        <i class="fa-regular fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<span data-xid="/posts/2022-12-07-equal-insurance-evaluation/" class="valine-comment-count">-</span>&nbsp;条评论
+      </span>&nbsp;</div>
+  </div><div class="details toc" id="toc-static"
+    data-kept="false">
+    <div class="details-summary toc-title">
+      <span>目录</span>
+      <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+    </div>
+    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#操作系统基线配置">操作系统基线配置</a>
+      <ul>
+        <li><a href="#第1章-linux操作系统加固">第1章 Linux操作系统加固</a>
+          <ul>
+            <li><a href="#11-检查设备密码复杂度策略">1.1 检查设备密码复杂度策略</a></li>
+            <li><a href="#12-检查是否设置口令过期前警告天数">1.2 检查是否设置口令过期前警告天数</a></li>
+            <li><a href="#13-检查是否设置登录失败锁定超时自动退出">1.3 检查是否设置登录失败锁定、超时自动退出</a></li>
+            <li><a href="#14-检查是否禁用telnet">1.4 检查是否禁用telnet</a></li>
+            <li><a href="#15-如何禁用解禁账户">1.5 如何禁用解禁账户</a></li>
+            <li><a href="#16-检查是否禁止root用户远程登录">1.6 检查是否禁止root用户远程登录</a></li>
+            <li><a href="#17-添加审计员安全员账户">1.7 添加审计员、安全员账户</a></li>
+            <li><a href="#18-开启审计进程">1.8 开启审计进程</a></li>
+            <li><a href="#19-检查历史命令设置">1.9 检查历史命令设置</a></li>
+          </ul>
+        </li>
+        <li><a href="#第2章-windows操作系统加固">第2章 Windows操作系统加固</a>
+          <ul>
+            <li><a href="#21-管理缺省账户">2.1 管理缺省账户</a></li>
+            <li><a href="#22-删除或锁定与设备无关账户">2.2 删除或锁定与设备无关账户</a></li>
+            <li><a href="#23-密码复杂度要求">2.3 密码复杂度要求</a></li>
+            <li><a href="#24-配置密码最长留存期">2.4 配置密码最长留存期</a></li>
+            <li><a href="#25-账户锁定策略">2.5 账户锁定策略</a></li>
+            <li><a href="#26-远程关机">2.6 远程关机</a></li>
+            <li><a href="#27-本地关机">2.7 本地关机</a></li>
+            <li><a href="#28-授权账号登录">2.8 授权账号登录</a></li>
+            <li><a href="#29-远程访问注册表配置">2.9 远程访问注册表配置</a></li>
+            <li><a href="#210-限制匿名访问网络共享">2.10 限制匿名访问网络共享</a></li>
+            <li><a href="#211-配置限制取得文件或其他对象的所有权">2.11 配置限制取得文件或其他对象的所有权</a></li>
+            <li><a href="#212-配置限制从网络访问此计算机">2.12 配置限制从网络访问此计算机</a></li>
+            <li><a href="#213-系统日志完备性检查">2.13 系统日志完备性检查</a></li>
+            <li><a href="#214-防火墙配置">2.14 防火墙配置</a></li>
+            <li><a href="#215-系统服务配置">2.15 系统服务配置</a></li>
+            <li><a href="#216-关闭自动播放">2.16 关闭自动播放</a></li>
+            <li><a href="#217-配置远程登录空闲断开时间">2.17 配置远程登录空闲断开时间</a></li>
+            <li><a href="#218-更改默认远程端口">2.18 更改默认远程端口</a></li>
+            <li><a href="#219-不显示上次登录名">2.19 不显示上次登录名</a></li>
+            <li><a href="#220-关机前清除虚拟内存页面">2.20 关机前清除虚拟内存页面</a></li>
+            <li><a href="#221-禁止用可还原的加密来存储密码">2.21 禁止用可还原的加密来存储密码</a></li>
+            <li><a href="#222-关闭windows硬盘默认共享">2.22 关闭Windows硬盘默认共享</a></li>
+            <li><a href="#223-启用系统sync攻击保护">2.23 启用系统SYNC攻击保护</a></li>
+          </ul>
+        </li>
+        <li><a href="#第3章-tomcat安全配置">第3章 Tomcat安全配置</a>
+          <ul>
+            <li><a href="#31-http协议更换为https协议各平台研发已解决">3.1 http协议更换为https协议(各平台研发已解决)</a></li>
+            <li><a href="#32-配置管理员账号的口令或者删除控制台登录">3.2 配置管理员账号的口令(或者删除控制台登录)</a></li>
+            <li><a href="#33-隐藏版本号">3.3 隐藏版本号</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  </div><div class="content" id="content"  ><h2 id="操作系统基线配置">操作系统基线配置</h2>
+<h3 id="第1章-linux操作系统加固">第1章 Linux操作系统加固</h3>
+<h4 id="11-检查设备密码复杂度策略">1.1 检查设备密码复杂度策略</h4>
+<p>加固方案</p>
+<p>1、编辑配置文件/etc/pam.d/system-auth，在文件中找到开头为如下字样的内容：</p>
+<p>password requisite  pam_cracklib.so</p>
+<p>将其修改为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">password requisite  pam_cracklib.so try_first_pass retry=3 minlen=8 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1 ###口令长度不小于8，至少包含1位数字、大写字母、特殊字符、小写字母。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="12-检查是否设置口令过期前警告天数">1.2 检查是否设置口令过期前警告天数</h4>
+<p>加固方案</p>
+<p>1、修改策略设置，编辑文件/etc/login.defs，在文件中加入如下内容(如果存在则修改，不存在则添加)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PASS_MAX_DAYS     90
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PASS_MIN_DAYS     0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PASS_MIN_LEN      8
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PASS_WARN_AGE     7
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="13-检查是否设置登录失败锁定超时自动退出">1.3 检查是否设置登录失败锁定、超时自动退出</h4>
+<p>加固方案</p>
+<p>1、修改策略设置，编辑文件/etc/pam.d/sshd，在文件第二行加入如下内容(如果存在则修改，不存在则添加)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">password requisite  pam_tally2.so deny 5 lock_time 2 even_deny_root unlock_time=60
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、在/etc/profile文件中增加如下两行(存在则修改，不存在则添加)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">TMOUT=600
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">export TMOUT 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3、执行以下命令使TMOUT参数立即生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">###source /etc/profile    
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="14-检查是否禁用telnet">1.4 检查是否禁用telnet</h4>
+<p>加固方案</p>
+<p>1、 执行netstat -an | grep “:23”查看telnet是否在运行</p>
+<p>2、 禁用telnet运行，禁止开机启动chkconfig telnet off</p>
+<h4 id="15-如何禁用解禁账户">1.5 如何禁用解禁账户</h4>
+<p>加固方案</p>
+<p>把账号禁用可以有几个方法：
+1.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> ### usermod -L &lt;username&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    ### usermod -U &lt;username&gt;                // 解除禁用
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>修改/etc/passwd文件，可以有几个地方</li>
+</ol>
+<p>1）把第二个字段中的&quot;x&quot;变成其它的字符，该账号就不能登录</p>
+<p>2）把/bin/bash修改成/sbin/nologin</p>
+<ol start="3">
+<li>修改/etc/shadow文件</li>
+</ol>
+<p>1）在第二个密码字段的前面加上一个“!”，该账号就不能登录，这个其实就是usermod -L命令的结果</p>
+<p>2）在最后两个冒号之间加上数字&quot;1&quot;，表示该账号的密码自1970年1月1日起，过一天后立即过期，当然现在自然就不能登录了。</p>
+<p>如果想解禁，把修改的东西去掉就可以了。</p>
+<h4 id="16-检查是否禁止root用户远程登录">1.6 检查是否禁止root用户远程登录</h4>
+<p>加固方案</p>
+<p>1、新建一个普通用户并设置高强度密码(防止设备上只存在root用户可用时，无法远程访问)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">###useradd username
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">###passwd username
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、禁止root用户远程登录系统</p>
+<p>编辑文件/etc/ssh/sshd_config，修改PermitRootLogin值为no并去掉注释。</p>
+<p><code>PermitRootLogin no</code></p>
+<p>3、重启SSH服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">###/etc/init.d/sshd restart
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="17-添加审计员安全员账户">1.7 添加审计员、安全员账户</h4>
+<p>加固方案</p>
+<p>1、新建普通用户并设置高强度密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">###useradd username
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">###passwd username
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用chmod为添加的两个账户加合适的权限</p>
+<h4 id="18-开启审计进程">1.8 开启审计进程</h4>
+<p>加固方案</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">service auditd restart
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="19-检查历史命令设置">1.9 检查历史命令设置</h4>
+<p>加固方案</p>
+<p>1、编辑文件/etc/profile，在文件中加入如下两行(存在则修改)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HISTFILESIZE=0  ###HISTFILESIZE 定义了在 .bash_history 中保存命令的记录总数，可以理解为.bash_history文件中最多只有HISTFILESIZE行
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">HISTSIZE=0      ###定义了 history 命令输出的记录数，即输出.bash_history文件中的最后HISTSIZE行
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、执行以下命令让配置生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">###source /etc/profile
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">系统漏洞需注意升级最新版本的openssh 目前是8.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://s.imgkb.xyz/abcdocker/2022/12/09/f97863ff91bfb/f97863ff91bfb.png"
+    data-srcset="https://s.imgkb.xyz/abcdocker/2022/12/09/f97863ff91bfb/f97863ff91bfb.png, https://s.imgkb.xyz/abcdocker/2022/12/09/f97863ff91bfb/f97863ff91bfb.png 1.5x, https://s.imgkb.xyz/abcdocker/2022/12/09/f97863ff91bfb/f97863ff91bfb.png 2x"
+    data-sizes="auto"
+    alt="https://s.imgkb.xyz/abcdocker/2022/12/09/f97863ff91bfb/f97863ff91bfb.png"
+    title="https://s.imgkb.xyz/abcdocker/2022/12/09/f97863ff91bfb/f97863ff91bfb.png"/></p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://s.imgkb.xyz/abcdocker/2022/12/09/9273f78c8ade9/9273f78c8ade9.png"
+    data-srcset="https://s.imgkb.xyz/abcdocker/2022/12/09/9273f78c8ade9/9273f78c8ade9.png, https://s.imgkb.xyz/abcdocker/2022/12/09/9273f78c8ade9/9273f78c8ade9.png 1.5x, https://s.imgkb.xyz/abcdocker/2022/12/09/9273f78c8ade9/9273f78c8ade9.png 2x"
+    data-sizes="auto"
+    alt="https://s.imgkb.xyz/abcdocker/2022/12/09/9273f78c8ade9/9273f78c8ade9.png"
+    title="https://s.imgkb.xyz/abcdocker/2022/12/09/9273f78c8ade9/9273f78c8ade9.png"/></p>
+<h3 id="第2章-windows操作系统加固">第2章 Windows操作系统加固</h3>
+<h4 id="21-管理缺省账户">2.1 管理缺省账户</h4>
+<p>进入“开始→管理工具→服务器管理器”；</p>
+<p>进入“配置→本地用户和组→用户”，配置缺省帐户Administrator→重命名；</p>
+<p>配置Guest（来宾）帐号属性，勾选帐户禁用。</p>
+<h4 id="22-删除或锁定与设备无关账户">2.2 删除或锁定与设备无关账户</h4>
+<p>进入“开始→管理工具→服务器管理器”</p>
+<p>进入“配置→本地用户和组→用户”，根据业务的实际需求，删除或锁定与设备运行、维护等与工作无关的帐户</p>
+<h4 id="23-密码复杂度要求">2.3 密码复杂度要求</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→帐户策略→密码策略”</p>
+<p>配置“密码必须符合复杂性要求”为“已启用”</p>
+<p>配置“密码长度最小值”为“8个字符”。</p>
+<h4 id="24-配置密码最长留存期">2.4 配置密码最长留存期</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→帐户策略→密码策略”</p>
+<p>配置“密码最长使用期限”为90天</p>
+<p>配置“强制密码历史”为24个。</p>
+<h4 id="25-账户锁定策略">2.5 账户锁定策略</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→帐户策略→帐户锁定策略”</p>
+<p>配置“帐户锁定阀值” 为小于或等于 10次</p>
+<p>配置“帐户锁定时间”配置为小于或等于3分钟</p>
+<p>配置“复位帐户锁定计数器” 配置为大于或等于3分钟</p>
+<h4 id="26-远程关机">2.6 远程关机</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→用户权限分配”</p>
+<p>配置“从远程系统强制关机”指派给“Administrators”组</p>
+<h4 id="27-本地关机">2.7 本地关机</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→用户权限分配”</p>
+<p>配置“关闭系统”指派给“Administrators”组</p>
+<h4 id="28-授权账号登录">2.8 授权账号登录</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→用户权限分配”</p>
+<p>“允许在本地登录”配置为指派给指定授权用户</p>
+<h4 id="29-远程访问注册表配置">2.9 远程访问注册表配置</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→安全选项”</p>
+<p>配置“网络访问: 可远程访问的注册表路径”为空。</p>
+<p>配置“网络访问: 可远程访问的注册表路径和子路径”为空</p>
+<h4 id="210-限制匿名访问网络共享">2.10 限制匿名访问网络共享</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→安全选项”</p>
+<p>配置“网络访问: 可匿名访问的共享”为空。</p>
+<p>配置“网络访问: 可匿名访问的命名管道”为空</p>
+<h4 id="211-配置限制取得文件或其他对象的所有权">2.11 配置限制取得文件或其他对象的所有权</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→用户权限分配”</p>
+<p>配置“取得文件或其他对象的所有权”为指派给“Administrators”组</p>
+<h4 id="212-配置限制从网络访问此计算机">2.12 配置限制从网络访问此计算机</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→用户权限分配”</p>
+<p>配置“从网络访问此计算机”指派给“Administrators”组</p>
+<h4 id="213-系统日志完备性检查">2.13 系统日志完备性检查</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→审核策略”</p>
+<p>配置各项审核策略为“成功，失败”</p>
+<h4 id="214-防火墙配置">2.14 防火墙配置</h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动防火墙</td>
+<td>启动公共和局域网防火墙</td>
+</tr>
+<tr>
+<td>防火墙开放端口配置</td>
+<td>开放IPV4回显、开放远程桌面端口</td>
+</tr>
+<tr>
+<td>防火墙阻止端口配置</td>
+<td>阻止445、135-139端口</td>
+</tr>
+</tbody>
+</table>
+<h4 id="215-系统服务配置">2.15 系统服务配置</h4>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server服务关闭</td>
+<td>关闭后阻止文件共享</td>
+</tr>
+<tr>
+<td>Print Spooler服务关闭</td>
+<td>关闭打印服务(网络和本地)</td>
+</tr>
+<tr>
+<td>Windows Update服务关闭</td>
+<td>自动更新服务</td>
+</tr>
+<tr>
+<td>TCP/IP NetBIOS Helper</td>
+<td>服务关闭</td>
+</tr>
+<tr>
+<td>Distributed Link Tracking Client</td>
+<td>服务关闭</td>
+</tr>
+<tr>
+<td>Remote Registry</td>
+<td>服务关闭</td>
+</tr>
+<tr>
+<td>Workstartion</td>
+<td>服务关闭</td>
+</tr>
+<tr>
+<td>IP Helper</td>
+<td>服务关闭</td>
+</tr>
+</tbody>
+</table>
+<h4 id="216-关闭自动播放">2.16 关闭自动播放</h4>
+<p>进入“开始→运行”，在对话框中输入“gpedit.msc”命令</p>
+<p>进入“计算机配置→管理模板→Windows组件→自动播放策略”， 配置“关闭自动播放”为“已启用”</p>
+<h4 id="217-配置远程登录空闲断开时间">2.17 配置远程登录空闲断开时间</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→安全选项”</p>
+<p>配置“Microsoft 网络服务器: 暂停会话前所需的空闲时间量”是为“15分钟”</p>
+<h4 id="218-更改默认远程端口">2.18 更改默认远程端口</h4>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp</p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentContro1Set\Control\Tenninal Server\WinStations\RDP-Tcp</p>
+<p>运行regdit打开注册表，修改以上两项的10进制的值</p>
+<h4 id="219-不显示上次登录名">2.19 不显示上次登录名</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→安全选项”</p>
+<p>配置“交互式登录：不显示最后的用户名”为“已启用”</p>
+<h4 id="220-关机前清除虚拟内存页面">2.20 关机前清除虚拟内存页面</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→本地策略→安全选项”</p>
+<p>配置“关机: 清除虚拟内存页面文件”为“已启用”</p>
+<h4 id="221-禁止用可还原的加密来存储密码">2.21 禁止用可还原的加密来存储密码</h4>
+<p>进入“开始→管理工具→本地安全策略”</p>
+<p>进入“安全设置→帐户策略→密码策略”</p>
+<p>配置“用可还原的加密来存储密码” 为“不启用”</p>
+<h4 id="222-关闭windows硬盘默认共享">2.22 关闭Windows硬盘默认共享</h4>
+<p>进入“开始→运行→Regedit”，进入注册表编辑器</p>
+<p>在</p>
+<p>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanServer\Parameters下，增加REG_DWORD类型的AutoShareServer键，REG_DWORD类型的AutoShareWks键,值为0</p>
+<h4 id="223-启用系统sync攻击保护">2.23 启用系统SYNC攻击保护</h4>
+<p>进入“开始→运行→Regedit”，进入注册表编辑器</p>
+<p>配置</p>
+<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters下“SynAttackProtect、TcpMaxPortsExhausted、TcpMaxHalfOpen、TcpMaxHalfOpenRetried”键值</p>
+<p>SynAttackProtect; 推荐值：2。</p>
+<p>TcpMaxPortsExhausted; 推荐值：5。</p>
+<p>TcpMaxHalfOpen; 推荐值数据：500。</p>
+<p>TcpMaxHalfOpenRetried。推荐值数据：400</p>
+<h3 id="第3章-tomcat安全配置">第3章 Tomcat安全配置</h3>
+<h4 id="31-http协议更换为https协议各平台研发已解决">3.1 http协议更换为https协议(各平台研发已解决)</h4>
+<h4 id="32-配置管理员账号的口令或者删除控制台登录">3.2 配置管理员账号的口令(或者删除控制台登录)</h4>
+<p>vi tomcat-users.xml</p>
+<p>添加</p>
+<user username="tomone" password="T0mone" roles="admin-gui,admin,manager-gui,manager"/>
+<p>删除:/webapps目录下的admin、manager、ROOT目录删除</p>
+<h4 id="33-隐藏版本号">3.3 隐藏版本号</h4>
+<p>$cd lib</p>
+<p>$unzip catalina.jar</p>
+<p>$cd org/apache/catalina/util/</p>
+<p>$ServerInfo.properties</p>
+<p>将其中参数修改掉</p>
+<p>将修改后的文件替换到jar包中</p>
+<p>$jar uvf catalina.jar org/apache/catalina/util/ServerInfo.properties</p><div class="post-promote">
+    <input type="checkbox" name="promote" id="promote" hidden />
+    <label class="promote-button" for="promote">关注一下有惊喜</label>
+    <div class="qr-code">
+        <label class="qr-code-image" for="promote">
+            <img class="image" src="/images/wxqr.png">
+            <span>公众号</span>
+        </label>
+        
+    </div>
+</div><div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+        <label class="qr-code-image" for="reward">
+            <img class="image" src="/images/wechatpay.png">
+            <span>微信打赏</span>
+        </label>
+        <label class="qr-code-image" for="reward">
+            <img class="image" src="/images/alipay.png">
+            <span>支付宝打赏</span>
+        </label>
+    </div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-12-07&#32;18:15:32>更新于 2022-12-07&nbsp;<a class="git-hash" href="https://github.com/Charlie-king/hugo-blog/commit/07faf2b5d8ed29129945fa42bfb136e9262052de" rel="external nofollow noopener noreferrer" target="_blank" title="commit by jinbo(zhjin66@qq.com) 07faf2b5d8ed29129945fa42bfb136e9262052de: :pencil: ��������"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i>07faf2b</a></span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="/posts/2022-12-07-equal-insurance-evaluation/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span><span><a href="https://github.com/Charlie-king/hugo-blog/edit/main/content/posts%5c2022-12-07%20-%20Equal%20insurance%20evaluation.md" title="编辑此页"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-edit">编辑此页</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/" data-title="等保评测整改措施教程" data-ralateuid="2296265347"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/" data-title="等保评测整改措施教程"><i data-svg-src="/lib/simple-icons/icons/baidu.min.svg" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/" data-title="等保评测整改措施教程"><i class="fa-brands fa-evernote fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E7%AD%89%E4%BF%9D/">等保</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/2022-11-21-ways-to-fix-github-being-too-slow/" class="prev" rel="prev" title="解决github过慢或无法访问的方法"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>解决github过慢或无法访问的方法</a>
+      <a href="/posts/2022-12-08-blog-type-statistics/" class="next" rel="next" title="博客平台，自建博客，静态博客生成器搜集">博客平台，自建博客，静态博客生成器搜集<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+        Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/" rel="external nofollow noopener noreferrer">Valine</a>.
+      </noscript></div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">本站多线部署：
+<a href="https://ttzz.eu.org" target="_blank">【github】</a>
+<a href="https://ajin.eu.org" target="_blank">【cloudflare】</a>
+<a href="https://zhjin.eu.org" target="_blank">【vercel】</a>
+<a href="https://kingpo.netlify.app/" target="_blank">【netlify】</a>
+<a href="https://kpo.onrender.com/" target="_blank">【render】</a>
+<br>
+<!-- Default Statcounter code for blog https://ttzz.eu.org/
+-->
+<a href="https://statcounter.com/p12800592/?guest=1" target="_blank">全线路总访问量统计</a>
+<script type="text/javascript">
+var sc_project=12800592; 
+var sc_invisible=0; 
+var sc_security="6f21fa5b"; 
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12800592/0/6f21fa5b/0/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+      </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">Kingpo</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"><span class="site-time" title='网站已持续运行这么多天啦'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i>&nbsp;<span class="run-times">网站已持续运行这么多天啦</span></span></div><div class="footer-line ibruce">
+          <span id="busuanzi_container_site_uv" title='总访客数'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='总访问量'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div><div class="fixed-button view-comments d-none" role="button" aria-label="查看评论"><i class="fa-solid fa-comment fa-fw" aria-hidden="true"></i></div></div><a href="https://github.com/Charlie-king/charlie-king.github.io" title="在 GitHub 上查看"target="_blank" rel="external nofollow" class="github-corner right d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;--progress-h: 3px;--bg-progress-dark: top;"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/valine/Valine.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/twemoji/twemoji.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":20},"comment":{"enable":true,"valine":{"appId":"fBVoqMFU1xet9Og99sfzU2Pu-MdYXbMMI","appKey":"tdTYEKQLqjlE8Mh6tmCs2Vtz","avatar":"monsterid","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-CN","meta":["nick","mail","link"],"pageSize":10,"placeholder":"欢迎交流！已开启邮箱留言通知。您所留邮箱信息不会被公开，可第一时间收到回复通知。","recordIP":true,"serverURLs":"https://le.kinpo.eu.org","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"enablePangu":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"B6R922P6DD","algoliaIndex":"dev_hugo","algoliaSearchKey":"65d9478dcc1a7a885ab0286fc7721433","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"siteTime":"2022-07-13T19:30:34+08:00","twemoji":true};</script><script src="/js/theme.min.js" defer></script><script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7cb809210cfc0651ecb64a362e53bf99";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2111c670794ab20de2746cf028182bbb";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3e2c1ee7bae67fc556147b956290102f";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?62f2a79138a93ccdae1fd51bc7f41dc4";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script></body>
+</html>

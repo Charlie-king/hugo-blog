@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>评论系统 - 标签 - 六月长河</title>
+    <link>https://ttzz.eu.org/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
+    <description>评论系统 - 标签 - 六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Tue, 06 Sep 2022 16:50:35 &#43;0800</lastBuildDate><atom:link href="https://ttzz.eu.org/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+  <title>valine评论设置邮件通知和valine-admin后台管理</title>
+  <link>https://ttzz.eu.org/posts/2022-09-06-valine-admin-and-email-notifications/</link>
+  <pubDate>Tue, 06 Sep 2022 16:50:35 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-06-valine-admin-and-email-notifications/</guid>
+  <description><![CDATA[<p></p>]]></description>
+</item>
+</channel>
+</rss>

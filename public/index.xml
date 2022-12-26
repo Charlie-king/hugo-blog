@@ -1,0 +1,170 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>六月长河</title>
+    <link>https://ttzz.eu.org/</link>
+    <description>六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Mon, 26 Dec 2022 12:41:51 &#43;0800</lastBuildDate>
+      <atom:link href="https://ttzz.eu.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+  <title>后疫情时代</title>
+  <link>https://ttzz.eu.org/posts/2022-12-26-after-covid-19-was-released/</link>
+  <pubDate>Mon, 26 Dec 2022 12:41:51 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-12-26-after-covid-19-was-released/</guid>
+  <description><![CDATA[国内疫情三年，从开始到结束，到全放开的一些经历和想法]]></description>
+</item>
+<item>
+  <title>VScode高效率的快捷键</title>
+  <link>https://ttzz.eu.org/posts/2022-12-10-vscode-shortcut-key/</link>
+  <pubDate>Sat, 10 Dec 2022 00:45:40 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-12-10-vscode-shortcut-key/</guid>
+  <description><![CDATA[VScode是个极其强大的编辑器，记录一下vscode中使用频率高可极大提高生产力的快捷操作方式和快捷键。]]></description>
+</item>
+<item>
+  <title>博客平台，自建博客，静态博客生成器搜集</title>
+  <link>https://ttzz.eu.org/posts/2022-12-08-blog-type-statistics/</link>
+  <pubDate>Thu, 08 Dec 2022 14:25:27 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-12-08-blog-type-statistics/</guid>
+  <description><![CDATA[各种博客平台，自建博客，静态博客生成器收集，供进一步探索。]]></description>
+</item>
+<item>
+  <title>等保评测整改措施教程</title>
+  <link>https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/</link>
+  <pubDate>Wed, 07 Dec 2022 16:56:32 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/</guid>
+  <description><![CDATA[等保评测整改过程，配置操作]]></description>
+</item>
+<item>
+  <title>解决github过慢或无法访问的方法</title>
+  <link>https://ttzz.eu.org/posts/2022-11-21-ways-to-fix-github-being-too-slow/</link>
+  <pubDate>Mon, 21 Nov 2022 17:40:50 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-11-21-ways-to-fix-github-being-too-slow/</guid>
+  <description><![CDATA[通过修改hosts解决github过慢或无法访问]]></description>
+</item>
+<item>
+  <title>word中图片批量调整统一长宽比例大小</title>
+  <link>https://ttzz.eu.org/posts/2022-11-18-word-pic-format-painter/</link>
+  <pubDate>Fri, 18 Nov 2022 16:02:07 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-11-18-word-pic-format-painter/</guid>
+  <description><![CDATA[快速对word中的图片批量调整统一的长宽比例大小]]></description>
+</item>
+<item>
+  <title>一键修改微软远程桌面的端口</title>
+  <link>https://ttzz.eu.org/posts/2022-11-18-change-rdp-port/</link>
+  <pubDate>Fri, 18 Nov 2022 15:24:44 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-11-18-change-rdp-port/</guid>
+  <description><![CDATA[通过批处理一键修改微软远程桌面端口]]></description>
+</item>
+<item>
+  <title>qq群文件的一种快速下载方法</title>
+  <link>https://ttzz.eu.org/posts/2022-11-17-qq-file-download/</link>
+  <pubDate>Thu, 17 Nov 2022 17:34:40 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-11-17-qq-file-download/</guid>
+  <description><![CDATA[qq/tim群文件的被限速下载如何获得不限速下载的方法]]></description>
+</item>
+<item>
+  <title>2分钟免费自建你的专属z-library镜像站，找书没烦恼</title>
+  <link>https://ttzz.eu.org/posts/2022-10-18-build-zlibrary-mirror/</link>
+  <pubDate>Tue, 18 Oct 2022 16:44:42 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-10-18-build-zlibrary-mirror/</guid>
+  <description><![CDATA[通过cloudflare搭建z-library镜像站]]></description>
+</item>
+<item>
+  <title>徒步牛木线</title>
+  <link>https://ttzz.eu.org/posts/2022-10-09-hiking/</link>
+  <pubDate>Sun, 09 Oct 2022 10:36:09 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-10-09-hiking/</guid>
+  <description><![CDATA[广州徒步牛木线]]></description>
+</item>
+<item>
+  <title>js月份和日期前补0的一种简单实现方法</title>
+  <link>https://ttzz.eu.org/posts/2022-10-08-js-date-add/</link>
+  <pubDate>Sat, 08 Oct 2022 15:43:42 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-10-08-js-date-add/</guid>
+  <description><![CDATA[js月份和日期字段前补0的一种简单实现方法]]></description>
+</item>
+<item>
+  <title>使用statcount做静态网站全平台访问统计</title>
+  <link>https://ttzz.eu.org/posts/2022-10-05-take-statcount-for-site-statistics/</link>
+  <pubDate>Wed, 05 Oct 2022 09:22:13 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-10-05-take-statcount-for-site-statistics/</guid>
+  <description><![CDATA[使用statcount提供的免费服务做静态网站全平台访问统计]]></description>
+</item>
+<item>
+  <title>shell中read在控制台不能删除内容的解决方式</title>
+  <link>https://ttzz.eu.org/posts/2022-10-05-shell-read-config/</link>
+  <pubDate>Wed, 05 Oct 2022 00:02:36 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-10-05-shell-read-config/</guid>
+  <description><![CDATA[解决shell中read在控制台不能删除内容的方法]]></description>
+</item>
+<item>
+  <title>hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题</title>
+  <link>https://ttzz.eu.org/posts/2022-10-04-added-reward-function/</link>
+  <pubDate>Tue, 04 Oct 2022 16:44:58 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-10-04-added-reward-function/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
+  <title>GitHub pages配置自定义域名利用Cloudflare全球CDN</title>
+  <link>https://ttzz.eu.org/posts/2022-09-28-github-pages-custom-domain-name/</link>
+  <pubDate>Wed, 28 Sep 2022 17:12:26 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-28-github-pages-custom-domain-name/</guid>
+  <description><![CDATA[GitHub pages提供域名可供使用，但是国内访问很慢，通过cloudflare域名解析配置自定义域名，可以利用其cdn加速访问。]]></description>
+</item>
+<item>
+  <title>用cloudflare搭建免费的个人短链接平台</title>
+  <link>https://ttzz.eu.org/posts/2022-09-21-personal-short-chain-services/</link>
+  <pubDate>Wed, 21 Sep 2022 16:00:03 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-21-personal-short-chain-services/</guid>
+  <description><![CDATA[用cloudflare搭建免费的个人短链接平台，生成短链使用]]></description>
+</item>
+<item>
+  <title>个人博客或网站提交搜索引擎收录</title>
+  <link>https://ttzz.eu.org/posts/2022-09-16-submit-to-search-engine/</link>
+  <pubDate>Fri, 16 Sep 2022 08:04:59 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-16-submit-to-search-engine/</guid>
+  <description><![CDATA[把个人博客或网站提交给百度，必应，谷歌，360搜索收录]]></description>
+</item>
+<item>
+  <title>Markdown博客文章写作最佳体验，hugo&#43;Obisidian&#43;Vscode</title>
+  <link>https://ttzz.eu.org/posts/2022-09-11-hugo-obisidian-vscode/</link>
+  <pubDate>Sun, 11 Sep 2022 00:44:43 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-11-hugo-obisidian-vscode/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
+  <title>Tim邮箱密码错误的解决办法</title>
+  <link>https://ttzz.eu.org/posts/2022-09-10-tim-email-exception/</link>
+  <pubDate>Sat, 10 Sep 2022 09:07:11 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-10-tim-email-exception/</guid>
+  <description><![CDATA[Tim邮箱模块提示密码错误原因及其解决方法]]></description>
+</item>
+<item>
+  <title>valine评论设置邮件通知和valine-admin后台管理</title>
+  <link>https://ttzz.eu.org/posts/2022-09-06-valine-admin-and-email-notifications/</link>
+  <pubDate>Tue, 06 Sep 2022 16:50:35 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-06-valine-admin-and-email-notifications/</guid>
+  <description><![CDATA[<p></p>]]></description>
+</item>
+</channel>
+</rss>

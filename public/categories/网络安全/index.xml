@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>网络安全 - 分类 - 六月长河</title>
+    <link>https://ttzz.eu.org/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
+    <description>网络安全 - 分类 - 六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Wed, 07 Dec 2022 16:56:32 &#43;0800</lastBuildDate><atom:link href="https://ttzz.eu.org/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="self" type="application/rss+xml" /><item>
+  <title>等保评测整改措施教程</title>
+  <link>https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/</link>
+  <pubDate>Wed, 07 Dec 2022 16:56:32 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-12-07-equal-insurance-evaluation/</guid>
+  <description><![CDATA[等保评测整改过程，配置操作]]></description>
+</item>
+</channel>
+</rss>

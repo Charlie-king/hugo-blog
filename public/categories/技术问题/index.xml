@@ -1,0 +1,34 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>技术问题 - 分类 - 六月长河</title>
+    <link>https://ttzz.eu.org/categories/%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98/</link>
+    <description>技术问题 - 分类 - 六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Tue, 06 Sep 2022 16:26:03 &#43;0800</lastBuildDate><atom:link href="https://ttzz.eu.org/categories/%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98/" rel="self" type="application/rss+xml" /><item>
+  <title>kindle联网异常的解决方法</title>
+  <link>https://ttzz.eu.org/posts/2022-09-06-kindle-networking-exception/</link>
+  <pubDate>Tue, 06 Sep 2022 16:26:03 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-06-kindle-networking-exception/</guid>
+  <description><![CDATA[kindle已连接WiFi网络，但无法连接互联网的解决方法]]></description>
+</item>
+<item>
+  <title>word/excel/ppt/pdf删除文档个人信息的方式</title>
+  <link>https://ttzz.eu.org/posts/2022-09-06-wordpptpdf-removes-document-personal-information/</link>
+  <pubDate>Tue, 06 Sep 2022 15:43:41 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-06-wordpptpdf-removes-document-personal-information/</guid>
+  <description><![CDATA[<div class="featured-image">
+        <img src="https://s3.bmp.ovh/imgs/2022/09/06/7983564a617c1fc0.png" referrerpolicy="no-referrer">
+      </div><p></p>]]></description>
+</item>
+<item>
+  <title>SQL复制(导出)数据到excel行数缺失解决方案</title>
+  <link>https://ttzz.eu.org/posts/2022-03-08-sql-export-data-exception/</link>
+  <pubDate>Tue, 08 Mar 2022 15:27:47 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>https://ttzz.eu.org/posts/2022-03-08-sql-export-data-exception/</guid>
+  <description><![CDATA[SQL server复制(导出)数据到excel/csv后行数缺失数据缺失解决方案]]></description>
+</item>
+</channel>
+</rss>

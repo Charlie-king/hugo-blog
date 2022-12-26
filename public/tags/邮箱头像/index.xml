@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>邮箱头像 - 标签 - 六月长河</title>
+    <link>https://ttzz.eu.org/tags/%E9%82%AE%E7%AE%B1%E5%A4%B4%E5%83%8F/</link>
+    <description>邮箱头像 - 标签 - 六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Mon, 22 Aug 2022 11:15:54 &#43;0800</lastBuildDate><atom:link href="https://ttzz.eu.org/tags/%E9%82%AE%E7%AE%B1%E5%A4%B4%E5%83%8F/" rel="self" type="application/rss+xml" /><item>
+  <title>全球通用头像Gravatar配置和镜像地址搜集</title>
+  <link>https://ttzz.eu.org/posts/2022-08-22-gravatar/</link>
+  <pubDate>Mon, 22 Aug 2022 11:15:54 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-08-22-gravatar/</guid>
+  <description><![CDATA[全球通用邮箱头像Gravatar配置和国内可用镜像地址搜集]]></description>
+</item>
+</channel>
+</rss>

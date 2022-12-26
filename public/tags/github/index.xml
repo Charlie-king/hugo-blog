@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>GitHub - 标签 - 六月长河</title>
+    <link>https://ttzz.eu.org/tags/github/</link>
+    <description>GitHub - 标签 - 六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Mon, 21 Nov 2022 17:40:50 &#43;0800</lastBuildDate><atom:link href="https://ttzz.eu.org/tags/github/" rel="self" type="application/rss+xml" /><item>
+  <title>解决github过慢或无法访问的方法</title>
+  <link>https://ttzz.eu.org/posts/2022-11-21-ways-to-fix-github-being-too-slow/</link>
+  <pubDate>Mon, 21 Nov 2022 17:40:50 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-11-21-ways-to-fix-github-being-too-slow/</guid>
+  <description><![CDATA[通过修改hosts解决github过慢或无法访问]]></description>
+</item>
+<item>
+  <title>GitHub pages配置自定义域名利用Cloudflare全球CDN</title>
+  <link>https://ttzz.eu.org/posts/2022-09-28-github-pages-custom-domain-name/</link>
+  <pubDate>Wed, 28 Sep 2022 17:12:26 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-28-github-pages-custom-domain-name/</guid>
+  <description><![CDATA[GitHub pages提供域名可供使用，但是国内访问很慢，通过cloudflare域名解析配置自定义域名，可以利用其cdn加速访问。]]></description>
+</item>
+</channel>
+</rss>

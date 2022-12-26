@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>kindle - 标签 - 六月长河</title>
+    <link>https://ttzz.eu.org/tags/kindle/</link>
+    <description>kindle - 标签 - 六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Tue, 06 Sep 2022 16:26:03 &#43;0800</lastBuildDate><atom:link href="https://ttzz.eu.org/tags/kindle/" rel="self" type="application/rss+xml" /><item>
+  <title>kindle联网异常的解决方法</title>
+  <link>https://ttzz.eu.org/posts/2022-09-06-kindle-networking-exception/</link>
+  <pubDate>Tue, 06 Sep 2022 16:26:03 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2022-09-06-kindle-networking-exception/</guid>
+  <description><![CDATA[kindle已连接WiFi网络，但无法连接互联网的解决方法]]></description>
+</item>
+</channel>
+</rss>

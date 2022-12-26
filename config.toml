@@ -738,7 +738,7 @@ enable = true
 start = "left"
 # 可用值：["top", "bottom"]
 dark = "top"
-height = "3px"
+height = "2px"
 light = ""
 position = "top"
 reversed = false

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题 - 六月长河</title><meta name="author" content="Kingpo">
+<meta name="author-link" content="">
+<meta name="description" content="" /><meta name="keywords" content='hugo' /><meta itemprop="name" content="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2022-10-04T16:44:58+08:00" />
+<meta itemprop="dateModified" content="2022-10-04T23:39:58+08:00" />
+<meta itemprop="wordCount" content="1599"><meta itemprop="image" content="https://ttzz.eu.org/logo.png"/>
+<meta itemprop="keywords" content="hugo," /><meta property="og:title" content="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ttzz.eu.org/posts/2022-10-04-added-reward-function/" /><meta property="og:image" content="https://ttzz.eu.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-04T16:44:58+08:00" />
+<meta property="article:modified_time" content="2022-10-04T23:39:58+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ttzz.eu.org/logo.png"/>
+
+<meta name="twitter:title" content="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题"/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="六月长河">
+<meta name="apple-mobile-web-app-title" content="六月长河"><meta name="theme-color" data-light="#ffffff" data-dark="#252627" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ttzz.eu.org/posts/2022-10-04-added-reward-function/" /><link rel="prev" href="https://ttzz.eu.org/posts/2022-09-28-github-pages-custom-domain-name/" /><link rel="next" href="https://ttzz.eu.org/posts/2022-10-05-shell-read-config/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/ttzz.eu.org\/posts\/2022-10-04-added-reward-function\/"
+    },"image": ["https:\/\/ttzz.eu.org\/site-meta.jpg"],"genre": "posts","keywords": "hugo","wordcount":  1599 ,
+    "url": "https:\/\/ttzz.eu.org\/posts\/2022-10-04-added-reward-function\/","datePublished": "2022-10-04T16:44:58+08:00","dateModified": "2022-10-04T23:39:58+08:00","publisher": {
+      "@type": "Organization",
+      "name": "Kingpo","logo": "https:\/\/ttzz.eu.org\/images\/avatar.png"},"author": {
+        "@type": "Person",
+        "name": "Kingpo"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="right">
+    <div class="header-title">
+      <a href="/" title="六月长河"><span class="header-title-text">六月长河</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/posts/"
+                title="所有文章"
+                
+              ><i class='fas fa-archive fa-fw fa-sm'></i> 文章</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class='fas fa-th fa-fw fa-sm'></i> 分类</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class='fas fa-tags fa-fw fa-sm'></i> 标签</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/friends/"
+                
+                
+              ><i class='fas fa-users fa-fw fa-sm'></i> 友链</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/about/"
+                
+                
+              ><i class='fas fa-user-tie fa-fw fa-sm'></i> 关于</a></li><li class="menu-item text-center">
+              <a
+                class="menu-link"
+                href="/tool/"
+                
+                
+              ><i class='fas fa-cube fa-fw fa-sm'></i> 工具箱</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="六月长河"><span class="header-title-text">六月长河</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  title="所有文章"
+                  
+                ><i class='fas fa-archive fa-fw fa-sm'></i> 文章</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class='fas fa-th fa-fw fa-sm'></i> 分类</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class='fas fa-tags fa-fw fa-sm'></i> 标签</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/friends/"
+                  
+                  
+                ><i class='fas fa-users fa-fw fa-sm'></i> 友链</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/about/"
+                  
+                  
+                ><i class='fas fa-user-tie fa-fw fa-sm'></i> 关于</a></li><li
+              class="menu-item text-center"
+            ><a
+                  class="menu-link"
+                  href="/tool/"
+                  
+                  
+                ><i class='fas fa-cube fa-fw fa-sm'></i> 工具箱</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="narrow"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+  <div class="toc-content"
+    id="toc-content-auto"></div></aside>
+
+<aside class="aside-custom">
+  
+</aside>
+
+<article class="page single">
+  <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+      <span>hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题</span>
+    </h1></div><div class="post-meta">
+    <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="/images/avatar.png"
+    data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+    data-sizes="auto"
+    alt="Kingpo"
+    title="Kingpo"/>&nbsp;Kingpo</span></span>
+      <span class="post-category">收录于 <a href="/categories/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 静态博客</a></span></div>
+    <div class="post-meta-line"><span title=2022-10-04&#32;16:44:58><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-04">2022-10-04</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 约 1599 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 预计阅读 4 分钟</span>&nbsp;<span id="/posts/2022-10-04-added-reward-function/" class="leancloud_visitors comment-visitors" data-flag-title="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题">
+        <i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class="leancloud-visitors-count">-</span>&nbsp;次阅读
+      </span>&nbsp;<span class="comment-count" data-flag-title="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题">
+        <i class="fa-regular fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<span data-xid="/posts/2022-10-04-added-reward-function/" class="valine-comment-count">-</span>&nbsp;条评论
+      </span>&nbsp;</div>
+  </div><div class="details toc" id="toc-static"
+    data-kept="false">
+    <div class="details-summary toc-title">
+      <span>目录</span>
+      <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+    </div>
+    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#配置赞赏开关">配置赞赏开关</a>
+      <ul>
+        <li><a href="#全局配置">全局配置</a></li>
+        <li><a href="#单篇文章配置">单篇文章配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改主题中的文件">修改主题中的文件</a>
+      <ul>
+        <li><a href="#1修改国际化文件">1.修改国际化文件</a></li>
+        <li><a href="#2添加页面模板文件">2.添加页面模板文件</a></li>
+        <li><a href="#3修改文章模板文件">3.修改文章模板文件</a></li>
+        <li><a href="#4增加css样式代码">4.增加css样式代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#测试查看效果">测试查看效果</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+  </div><div class="content" id="content"  ><h2 id="前言">前言</h2>
+<p>博客赞赏，虽说打赏的人不一定会有很多，但这个功能不能少，赞赏是一种美德，有余力而为之。多数主题不自带赞赏功能，这篇文章的这套打赏支持方案，基于LoveIt，LeaveIt，FixIt这系列主题，他们本质都是由同一个主题演变迭代。其余博客主题可以自行尝试，区别不大，只要把主题中修改的模板直接改到hugo的模板里即可。</p>
+<div class="details admonition warning open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-exclamation-triangle fa-fw" aria-hidden="true"></i>特别提示<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content">赞赏功能需要用到.scss样式，hugo版本需要使用扩展版hugo_extended才能支持。大家编译时要选用对应系统的扩展版本。</div>
+    </div>
+  </div>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://s3.bmp.ovh/imgs/2022/10/04/aef4aaadfe233606.png"
+    data-srcset="https://s3.bmp.ovh/imgs/2022/10/04/aef4aaadfe233606.png, https://s3.bmp.ovh/imgs/2022/10/04/aef4aaadfe233606.png 1.5x, https://s3.bmp.ovh/imgs/2022/10/04/aef4aaadfe233606.png 2x"
+    data-sizes="auto"
+    alt="https://s3.bmp.ovh/imgs/2022/10/04/aef4aaadfe233606.png"
+    title="https://s3.bmp.ovh/imgs/2022/10/04/aef4aaadfe233606.png"/></p>
+<h2 id="配置赞赏开关">配置赞赏开关</h2>
+<h3 id="全局配置">全局配置</h3>
+<p>在 <code>config.toml</code> 配置文件中修改中文预演代码为小写的 <code>zh-cn</code>，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">defaultContentLanguage</span> <span class="p">=</span> <span class="s2">&#34;zh-cn&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 <code>config.toml</code> 添加以下变量。这里配置的全局生效，即所有文章都会生效。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">reward</span><span class="p">]</span>                           <span class="c"># 文章打赏</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">enable</span> <span class="p">=</span> <span class="kc">true</span>                           <span class="c"># true为开启 flase为关闭</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">wechat</span> <span class="p">=</span> <span class="s2">&#34;/images/wechat.png&#34;</span>           <span class="c"># 微信二维码文件路径</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">alipay</span> <span class="p">=</span> <span class="s2">&#34;/images/alipay.png&#34;</span>           <span class="c"># 支付宝二维码文件路径</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="单篇文章配置">单篇文章配置</h3>
+<p>也可对单篇文章单独配置，在文章的开头参数添加变量配置。</p>
+<p>全局配置和单篇文章配置都设置的情况下，优先以文章的配置为生效依据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">reward: false  # true为开启 flase为关闭
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://s3.bmp.ovh/imgs/2022/10/04/cafb825149308838.png"
+    data-srcset="https://s3.bmp.ovh/imgs/2022/10/04/cafb825149308838.png, https://s3.bmp.ovh/imgs/2022/10/04/cafb825149308838.png 1.5x, https://s3.bmp.ovh/imgs/2022/10/04/cafb825149308838.png 2x"
+    data-sizes="auto"
+    alt="https://s3.bmp.ovh/imgs/2022/10/04/cafb825149308838.png"
+    title="https://s3.bmp.ovh/imgs/2022/10/04/cafb825149308838.png"/></p>
+<h2 id="修改主题中的文件">修改主题中的文件</h2>
+<h3 id="1修改国际化文件">1.修改国际化文件</h3>
+<p>在 <code>\themes\FixIt\i18n\zh-CN.toml</code> 配置文件中添加如下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[reward]
+</span></span><span class="line"><span class="cl">other = &#34;赞赏支持&#34;                          #other中的文字可以自由更改
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[rewardAlipay]
+</span></span><span class="line"><span class="cl">other = &#34;支付宝打赏&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[rewardWechat]
+</span></span><span class="line"><span class="cl">other = &#34;微信打赏&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2添加页面模板文件">2.添加页面模板文件</h3>
+<p>在 <code>\themes\FixIt\layouts\partials\single\</code> 中新建 <code>reward.html</code> html内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{ if or .Params.reward (and .Site.Params.reward.enable (ne .Params.reward false)) -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;post-reward&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;reward&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;reward&#34;</span> <span class="na">hidden</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;reward-button&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;reward&#34;</span><span class="p">&gt;</span>{{ T &#34;reward&#34; }}<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;qr-code&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {{ $qrCode := .Site.Params.reward }}
+</span></span><span class="line"><span class="cl">        {{- $cdnPrefix := .Site.Params.cdnPrefix -}}
+</span></span><span class="line"><span class="cl">        {{ with $qrCode.wechat -}}
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;qr-code-image&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;reward&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;image&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ $cdnPrefix }}{{ . }}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{{ T &#34;rewardWechat&#34; }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {{- end }}
+</span></span><span class="line"><span class="cl">        {{ with $qrCode.alipay -}}
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;qr-code-image&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;reward&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;image&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ $cdnPrefix }}{{ . }}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{{ T &#34;rewardAlipay&#34; }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {{- end }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">{{- end }}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3修改文章模板文件">3.修改文章模板文件</h3>
+<p>修改 <code>/themes/FixIt/layouts/posts/single.html</code> 找到 <code>{{- /* Content */ -}}</code>，由于不同版本这里模块内容比较多，避免混淆，这里小技巧，找到 <code>{{- /* Content */ -}}</code>模块里的 <code>&lt;/div&gt;</code>标签，在其前添加下面代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  {{- /* Reward */ -}}                 
+</span></span><span class="line"><span class="cl">  {{- partial &#34;single/reward.html&#34; . -}} 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改后如下【（# 添加打赏模块）字眼需删除】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  {{- /* Content */ -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- $content := dict &#34;Content&#34; .Content &#34;Ruby&#34; $params.ruby &#34;Fraction&#34; $params.fraction &#34;Fontawesome&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  $params.fontawesome | partial &#34;function/content.html&#34; | safeHTML -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- if $params.password -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- $saltLen := strings.RuneCount (trim $params.password &#34;&#34;) -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- $saltLen = cond (eq (mod $saltLen 2) 0) (add $saltLen 1) $saltLen -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- $base64EncodeContent := $content | base64Encode -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- $content = printf &#34;%v%v%v&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  (substr $base64EncodeContent 0 $saltLen)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  (substr (sha256 $params.password) $saltLen)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  (substr $base64EncodeContent $saltLen)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- end -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  &lt;div class=&#34;content&#34; id=&#34;content&#34; {{ with $params.password }}data-password=&#34;{{ md5 $params.password }}&#34; {{ end }} {{
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    with $params.password }}data-content=&#34;{{ $content }}&#34; {{ end }}&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- if not $params.password -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- /* Expiration Reminder */ -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- partial &#34;single/expiration-reminder.html&#34; . -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- $content -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- else -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- partial &#34;single/fixit-decryptor.html&#34; . -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- end -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- /* promote */ -}}  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- partial &#34;single/promote.html&#34; . -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- /* Reward */ -}}                   #添加打赏模块
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- partial &#34;single/reward.html&#34; . -}} #添加打赏模块
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  &lt;/div&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4增加css样式代码">4.增加css样式代码</h3>
+<p>在<code>themes\FixIt\assets\css\_custom.scss</code>中，添加以下样式代码：
+以下代码实现效果是赞赏码自动折叠，点击【赞赏支持】按钮，展开二维码，如果你想让赞赏码直接展示而不是折叠，注释掉<code>display: none</code>这行，代码里已有说明。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 打赏 */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">padding-top</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">border-top</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">dashed</span> <span class="mh">#e6e6e6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">.</span><span class="nc">reward-button</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">margin</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">padding</span><span class="p">:</span> <span class="mi">3</span><span class="kt">px</span> <span class="mi">7</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="mh">#c05b4d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#c05b4d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">border-radius</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">cursor</span><span class="p">:</span> <span class="kc">pointer</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">.</span><span class="nc">reward-button</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="mh">#fefefe</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#c05b4d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">transition</span><span class="p">:</span> <span class="mf">.5</span><span class="kt">s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">#</span><span class="nn">reward</span><span class="p">:</span><span class="nd">checked</span><span class="o">~</span><span class="p">.</span><span class="nc">qr-code</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">#</span><span class="nn">reward</span><span class="p">:</span><span class="nd">checked</span><span class="o">~</span><span class="p">.</span><span class="nc">reward-button</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">none</span>  <span class="o">//</span><span class="err">如果要让赞赏码直接展示而不是折叠，这行直接注释掉</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">.</span><span class="nc">qr-code</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">none</span> <span class="o">//</span><span class="err">如果要让赞赏码直接展示而不是折叠，这行直接注释掉</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">.</span><span class="nc">qr-code</span> <span class="p">.</span><span class="nc">qr-code-image</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">min-width</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">40</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">15</span><span class="kt">px</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">.</span><span class="nc">qr-code</span> <span class="p">.</span><span class="nc">qr-code-image</span> <span class="nt">span</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">margin</span><span class="p">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">article</span> <span class="p">.</span><span class="nc">post-reward</span> <span class="p">.</span><span class="nc">qr-code</span> <span class="p">.</span><span class="nc">image</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">height</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><div class="details admonition tips open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>小提示<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content">这里主题文件的修改，你可以完全拷贝一份复制到hugo站点框架里对应目录下，如果无此目录则直接新建，然后再做修改，这样不会影响主题里文件，避免你主题升级之类直接覆盖更新。hugo会优先从站点框架里调用模板文件，匹配不到再在主题模板文件里调用。</div>
+    </div>
+  </div>
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://s3.bmp.ovh/imgs/2022/10/04/2d0da5f24f8ba19c.png"
+    data-srcset="https://s3.bmp.ovh/imgs/2022/10/04/2d0da5f24f8ba19c.png, https://s3.bmp.ovh/imgs/2022/10/04/2d0da5f24f8ba19c.png 1.5x, https://s3.bmp.ovh/imgs/2022/10/04/2d0da5f24f8ba19c.png 2x"
+    data-sizes="auto"
+    alt="https://s3.bmp.ovh/imgs/2022/10/04/2d0da5f24f8ba19c.png"
+    title="https://s3.bmp.ovh/imgs/2022/10/04/2d0da5f24f8ba19c.png"/></p>
+<h2 id="测试查看效果">测试查看效果</h2>
+<p>翻到文章文末，查看效果，我这里还添加了关注公众号的二维码，添加过程和赞赏模式一样的。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://s3.bmp.ovh/imgs/2022/10/04/f68ecc158a739250.png"
+    data-srcset="https://s3.bmp.ovh/imgs/2022/10/04/f68ecc158a739250.png, https://s3.bmp.ovh/imgs/2022/10/04/f68ecc158a739250.png 1.5x, https://s3.bmp.ovh/imgs/2022/10/04/f68ecc158a739250.png 2x"
+    data-sizes="auto"
+    alt="https://s3.bmp.ovh/imgs/2022/10/04/f68ecc158a739250.png"
+    title="https://s3.bmp.ovh/imgs/2022/10/04/f68ecc158a739250.png"/></p>
+<h2 id="参考资料">参考资料</h2>
+<blockquote>
+<p><a href="https://cywhat.cn/Loveit%E4%B8%BB%E9%A2%98%E5%BC%80%E5%90%AF%E6%96%87%E7%AB%A0%E8%B5%9E%E8%B5%8F/#%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD"target="_blank" rel="external nofollow noopener noreferrer">https://cywhat.cn/Loveit%E4%B8%BB%E9%A2%98%E5%BC%80%E5%90%AF%E6%96%87%E7%AB%A0%E8%B5%9E%E8%B5%8F/#%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD</a>
+<a href="http://imfang.net/web/119.html"target="_blank" rel="external nofollow noopener noreferrer">http://imfang.net/web/119.html</a></p>
+</blockquote><div class="post-promote">
+    <input type="checkbox" name="promote" id="promote" hidden />
+    <label class="promote-button" for="promote">关注一下有惊喜</label>
+    <div class="qr-code">
+        <label class="qr-code-image" for="promote">
+            <img class="image" src="/images/wxqr.png">
+            <span>公众号</span>
+        </label>
+        
+    </div>
+</div><div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+        <label class="qr-code-image" for="reward">
+            <img class="image" src="/images/wechatpay.png">
+            <span>微信打赏</span>
+        </label>
+        <label class="qr-code-image" for="reward">
+            <img class="image" src="/images/alipay.png">
+            <span>支付宝打赏</span>
+        </label>
+    </div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-10-04&#32;23:39:58>更新于 2022-10-04&nbsp;<a class="git-hash" href="https://github.com/Charlie-king/hugo-blog/commit/9f6d16f4025418080336aa5d721c33a6c2c3f74e" rel="external nofollow noopener noreferrer" target="_blank" title="commit by jinbo(zhjin66@qq.com) 9f6d16f4025418080336aa5d721c33a6c2c3f74e: :pencil: ���������ļ����Ƹ�ʽ"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i>9f6d16f</a></span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"><span><a href="/posts/2022-10-04-added-reward-function/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span><span><a href="https://github.com/Charlie-king/hugo-blog/edit/main/content/posts%5c2022-10-04%20-%20Added%20reward%20function.md" title="编辑此页"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-edit">编辑此页</a></span></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://ttzz.eu.org/posts/2022-10-04-added-reward-function/" data-title="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题" data-ralateuid="2296265347"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://ttzz.eu.org/posts/2022-10-04-added-reward-function/" data-title="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题"><i data-svg-src="/lib/simple-icons/icons/baidu.min.svg" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://ttzz.eu.org/posts/2022-10-04-added-reward-function/" data-title="hugo博客增加赞赏功能，基于LoveIt/LeaveIt/FixIt主题"><i class="fa-brands fa-evernote fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hugo/">hugo</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/2022-09-28-github-pages-custom-domain-name/" class="prev" rel="prev" title="GitHub pages配置自定义域名利用Cloudflare全球CDN"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>GitHub pages配置自定义域名利用Cloudflare全球CDN</a>
+      <a href="/posts/2022-10-05-shell-read-config/" class="next" rel="next" title="shell中read在控制台不能删除内容的解决方式">shell中read在控制台不能删除内容的解决方式<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+        Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/" rel="external nofollow noopener noreferrer">Valine</a>.
+      </noscript></div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line custom">本站多线部署：
+<a href="https://ttzz.eu.org" target="_blank">【github】</a>
+<a href="https://ajin.eu.org" target="_blank">【cloudflare】</a>
+<a href="https://zhjin.eu.org" target="_blank">【vercel】</a>
+<a href="https://kingpo.netlify.app/" target="_blank">【netlify】</a>
+<a href="https://kpo.onrender.com/" target="_blank">【render】</a>
+<br>
+<!-- Default Statcounter code for blog https://ttzz.eu.org/
+-->
+<a href="https://statcounter.com/p12800592/?guest=1" target="_blank">全线路总访问量统计</a>
+<script type="text/javascript">
+var sc_project=12800592; 
+var sc_invisible=0; 
+var sc_security="6f21fa5b"; 
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12800592/0/6f21fa5b/0/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+      </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">Kingpo</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"><span class="site-time" title='网站已持续运行这么多天啦'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i>&nbsp;<span class="run-times">网站已持续运行这么多天啦</span></span></div><div class="footer-line ibruce">
+          <span id="busuanzi_container_site_uv" title='总访客数'><i class="fa-regular fa-user fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='总访问量'><i class="fa-regular fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div><div class="fixed-button view-comments d-none" role="button" aria-label="查看评论"><i class="fa-solid fa-comment fa-fw" aria-hidden="true"></i></div></div><a href="https://github.com/Charlie-king/charlie-king.github.io" title="在 GitHub 上查看"target="_blank" rel="external nofollow" class="github-corner right d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><div class="reading-progress-bar" style="left: 0;top: 0;--progress-h: 3px;--bg-progress-dark: top;"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/valine/Valine.min.js"></script><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/twemoji/twemoji.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script>window.config={"autoBookmark":true,"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":20},"comment":{"enable":true,"valine":{"appId":"fBVoqMFU1xet9Og99sfzU2Pu-MdYXbMMI","appKey":"tdTYEKQLqjlE8Mh6tmCs2Vtz","avatar":"monsterid","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-CN","meta":["nick","mail","link"],"pageSize":10,"placeholder":"欢迎交流！已开启邮箱留言通知。您所留邮箱信息不会被公开，可第一时间收到回复通知。","recordIP":true,"serverURLs":"https://le.kinpo.eu.org","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"enablePWA":true,"enablePangu":true,"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"B6R922P6DD","algoliaIndex":"dev_hugo","algoliaSearchKey":"65d9478dcc1a7a885ab0286fc7721433","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"siteTime":"2022-07-13T19:30:34+08:00","twemoji":true};</script><script src="/js/theme.min.js" defer></script><script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?7cb809210cfc0651ecb64a362e53bf99";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2111c670794ab20de2746cf028182bbb";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3e2c1ee7bae67fc556147b956290102f";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?62f2a79138a93ccdae1fd51bc7f41dc4";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script></body>
+</html>

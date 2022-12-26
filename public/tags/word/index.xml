@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>word - 标签 - 六月长河</title>
+    <link>https://ttzz.eu.org/tags/word/</link>
+    <description>word - 标签 - 六月长河</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>zhjin@qq.com (Kingpo)</managingEditor>
+      <webMaster>zhjin@qq.com (Kingpo)</webMaster><lastBuildDate>Mon, 29 Mar 2021 16:32:13 &#43;0800</lastBuildDate><atom:link href="https://ttzz.eu.org/tags/word/" rel="self" type="application/rss+xml" /><item>
+  <title>把word文档里自动序号转为文本</title>
+  <link>https://ttzz.eu.org/posts/2021-03-29-word-auto-sequence-number/</link>
+  <pubDate>Mon, 29 Mar 2021 16:32:13 &#43;0800</pubDate>
+  <author>Kingpo</author>
+  <guid>https://ttzz.eu.org/posts/2021-03-29-word-auto-sequence-number/</guid>
+  <description><![CDATA[把word文档里的自动序号转为文本的方法]]></description>
+</item>
+</channel>
+</rss>
