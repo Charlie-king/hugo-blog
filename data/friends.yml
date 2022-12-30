@@ -96,8 +96,14 @@
 
 -  nickname: 小城故事
    discription: 欢迎光临小城故事
-   avatar: www.webxc.ml
+   url: www.webxc.ml
    avatar: https://npm.elemecdn.com/webxc/logo/logo.jpg
+
+-  nickname: 老麦的书房
+   discription: 老麦的书房
+   url: https://tangx.in/
+   avatar: https://tangx.in/logo/avatar.png
+
 
 
 #-  nickname: 
