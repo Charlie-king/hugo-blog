@@ -4,7 +4,7 @@ subtitle: ""
 date: 2023-04-22T11:23:23+08:00
 
 lastmod: 2023-04-22T13:23:23+08:00
-draft: false
+draft: true
 description: "分盘安装windows和Linux双系统，以及踩坑记录"
 keywords: ""
 tags:
