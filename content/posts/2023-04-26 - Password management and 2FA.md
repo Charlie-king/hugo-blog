@@ -16,7 +16,7 @@ tags:
 - 2FA
 - authentication
 categories:
-- 学习研究
+- 研究学习
 featuredImage: ""
 featuredImagePreview: ""
 
