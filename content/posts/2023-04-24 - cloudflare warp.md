@@ -107,9 +107,11 @@ WARP界面如下图，右下角设置点击可查看常规，连接，账户，�
 
 WARP已经允许自定义修改endpoint IP端口，也有第三方脚本可以直接修改。当默认的连接不上时，只要修改endpoint IP端口找到可用的即可。
 
+【待更新】
+
 ## WARP IP优选扫描
 
-IP
+IP【待更新】
 
 ## wireguard上使用WARP节点
 
@@ -123,7 +125,7 @@ https://replit.com/@gunethra/WarpKeyGen
 
 在线生成wireguard配置文件
 
-
+【待更新】
 
 
 ## loon上使用WARP节点
@@ -138,4 +140,4 @@ https://replit.com/@gunethra/WarpKeyGen
 > 3. [Loon新手起步折腾WARP](https://github.com/getsomecat/GetSomeCats/blob/Surge/Loon%E6%96%B0%E6%89%8B%E8%B5%B7%E6%AD%A5%E6%8A%98%E8%85%BEWARP.md)
 > 4. [Cloudflare WARP 给服务器额外添加“原生”IPv4/IPv6 网络](https://www.moeelf.com/archives/301.html)
 > 5. [Cloudflare WARP免费网络加速服务裸连外网](https://jiemahao.com/cloudflare-WARP-vpn/)
-> 6. [](https://p3terx.com/archives/use-cloudflare-WARP-to-add-extra-ipv4-or-ipv6-network-support-to-vps-servers-for-free.html)
+> 6. [Cloudflare WARP 给 Linux VPS 云服务器添加原生 IPv4/IPv6 双栈网络](https://p3terx.com/archives/use-cloudflare-WARP-to-add-extra-ipv4-or-ipv6-network-support-to-vps-servers-for-free.html)
