@@ -127,8 +127,8 @@ enable = true
 #  自定义内容（支持 HTML 格式）
 custom = """
 本站多线部署：
-<a href="https://ttzz.eu.org" target="_blank">【github】</a>
-<a href="https://ajin.eu.org" target="_blank">【cloudflare】</a>
+<a href="https://charlie-king.github.io" target="_blank">【github】</a>
+<a href="https://ttzz.eu.org" target="_blank">【cloudflare】</a>
 <a href="https://zhjin.eu.org" target="_blank">【vercel】</a>
 <a href="https://kingpo.netlify.app/" target="_blank">【netlify】</a>
 <a href="https://kpo.onrender.com/" target="_blank">【render】</a>
@@ -236,7 +236,7 @@ paginate = 10
 
 Bilibili = "toolkz"
 Douban = "81104029"
-Email = "ai@ttzz.eu.org"
+Email = "ai@111520.xyz"
 GitHub = "charlie-king"
 Weibo = "2296265347"
 Zhihu = "xiao-bo-88-88"
@@ -643,7 +643,7 @@ fontFamily = 'inherit'
 
 #  访问量统计
 [params.ibruce]
-enable = true
+enable = false
 # 在文章中开启
 enablePost = false
 #   网站创立时间
@@ -789,7 +789,7 @@ startLevel = 2
 
 # 作者配置
 [author]
-email = "zhjin@qq.com"
+email = "ai@111520.xyz"
 link = ""
 name = "Kingpo"
 

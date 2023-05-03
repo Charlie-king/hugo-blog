@@ -35,18 +35,19 @@ comment: true
 
 {{< admonition success "部署" >}}
 #### 本站多线部署于以下平台，请选择一个访问最快的进行访问
-- [github.io](https://charlie-king.github.io) 主域名[ttzz.eu.org](https://ttzz.eu.org/)
-- [cloudflare](https://charlie-king-github-io.pages.dev/) 独立域名[ajin.eu.org](https://ajin.eu.org/)
+- [github.io](https://charlie-king.github.io) 主域名[hugo.111520.xyz](https://hugo.111520.xyz)
+- [cloudflare](https://charlie-king-github-io.pages.dev/) 独立域名[ttzz.eu.org](https://ttzz.eu.org/)
 - [vercel.app](https://zhjin.eu.org/)
 - [netlify.app](https://kingpo.netlify.app/)
 - [render.com](https://kpo.onrender.com)
 
-vercel.app域名从8.21起国内已被墙，配置的独立域名不受影响
+vercel.app域名从2022.8.21起国内已被墙，配置的独立域名不受影响
 
 {{< /admonition >}}
 
 
 {{< admonition note "站点调整记录" >}}
+* 2023-05-03 主域名启用新域名(hugo.111520.xyz)，(ttzz.eu.org)保留为cloudflare平台独立域名
 - 2022-10-28 主域名启用新域名(ttzz.eu.org)，堂堂正正首拼
 - 2022-10-05 调整所有文章文件名称为英文名，调整展示链接，升级主题版本
 - 2022-08-01 调整各托管平台同步博客模式

@@ -12,7 +12,7 @@ keywords:
 tags:
 - 博客
 categories:
-- 博客
+- 静态博客
 featuredImage: ""
 featuredImagePreview: ""
 
