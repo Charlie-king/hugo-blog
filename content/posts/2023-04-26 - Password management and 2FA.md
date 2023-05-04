@@ -71,7 +71,7 @@ seo:
 
 ### 密码分级： 
 
-密码设置时，建议按账户重要性进行分级管理，比如涉及支付类的，为最高等级，要重点管理，密码设置和使用要加强验证。社交类软件，为一个等级，普通日常网站的为一个等级，不同级别的密码千万不要雷同。
+密码设置时，建议按账户重要性进行分级管理，比如涉及支付类的，为最高等级，要重点管理，密码设置和使用要加强验证。社交类软件，为一个等级，普通日常网站的为一个等级，不同级别的密码千万不要雷同，可按不同规则进行设置，确保不被撞库攻击。
 
 
 ### 密码记忆：  
@@ -82,10 +82,10 @@ seo:
 
 举例：
 
-8位固定字符+产品名最后一个字的声调+第一个字笔画+开发者第一个字的拼音并且第二个字母大写
+8位固定字符+开发者第一个字第二个声调+第一个字笔画+开发者第二个字的拼音且第二个字母大写
 
-以qq为例，8位固定字符!!6&3@1#（自己记忆好）+1（Q第一声）+2（Q笔画2）+tEng   
-那么密码就是：!!6&3@1#12tEng   
+以qq为例，8位固定字符!!6&3@1#（自己记忆好）+2（腾讯第一声）+13（腾笔画）+ xUn   
+那么密码就是：!!6&3@1#213xUn   
 
 这样，你就可以给每个网站设置唯一的密码，并且密码也足够复杂，而且还方便记忆，你只要记住了你的公式即可。建议多备几个公式，不同等级的用不同的公式。
 
@@ -104,18 +104,122 @@ seo:
 
 最安全的是文档加密记录后离线备份，相当于你存在U盘里，然后拔掉存放起来。
 
-如果要上传云笔记云空间切记一定要先登记在文档上加密后再上传，不要直接使用云笔记记录。国内厂家云笔记云服务厂家要慎重，除了阿里，腾讯这几个大厂，小厂的不能信，关停和信息泄露是常有的事。
+如果要上传云笔记云空间切记一定要先登记在文档上加密后再上传，不要直接使用云笔记记录。国内厂家云笔记云服务厂家要慎重，除了阿里，腾讯这几个大厂，小厂的坚决不能信，关停和信息泄露是常有的事。
 
 ## 密码管理软件
 
-密码管理软件可能有些人比较陌生，这是专门管理密码和存放的
+密码管理软件可能有些人比较陌生，这是专门管理密码的软件。
 
-【待更新】
+密码管理器（这里是包括了硬件的介绍）维基百科上是这样解释的：
+
+> **密码管理器**或**密钥管理员**是一类用于生成、检索、保存及管理[复杂密码](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A2%BC_(%E8%AA%8D%E8%AD%89) "密码 (认证)")、数字签名的措施，可以由[硬件](https://zh.wikipedia.org/wiki/%E7%A1%AC%E9%AB%94 "硬件")或[软件](https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94 "软件")实现。复杂密码的生成一般按需要以[随机算法产生](https://zh.wikipedia.org/w/index.php?title=%E9%9A%A8%E6%A9%9F%E5%AF%86%E7%A2%BC%E7%94%9F%E6%88%90&action=edit&redlink=1)，而密码资料则保存于一个以密码、[数字签名](https://zh.wikipedia.org/wiki/%E6%95%B8%E4%BD%8D%E7%B0%BD%E7%AB%A0 "数字签名")等方式[加密](https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%AF%86 "加密")的[数据库](https://zh.wikipedia.org/wiki/%E8%B3%87%E6%96%99%E5%BA%AB "数据库")内。它的作用类似于[钥匙圈](https://zh.wikipedia.org/wiki/%E9%91%B0%E5%8C%99%E5%9C%88 "钥匙圈")，方便个人或企业组织集中管理密码、数字签名等身份管理要素。[[1]](https://zh.wikipedia.org/zh-my/%E5%AF%86%E7%A2%BC%E7%AE%A1%E7%90%86%E5%93%A1#cite_note-1)[[2]](https://zh.wikipedia.org/zh-my/%E5%AF%86%E7%A2%BC%E7%AE%A1%E7%90%86%E5%93%A1#cite_note-2)
+> 
+> 如今常见的密码管理器有三类：
+> 
+> - 本机安装并在本机访问的应用程序（如[KeePass](https://zh.wikipedia.org/wiki/KeePass "KeePass")）
+> - 在线服务，通常经网站访问（如[客户端](https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B6%E7%AB%AF "客户端")、[网络应用程序](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F "网络应用程序")等）
+> - 经本机访问的外挂硬件设备，如[U盾](https://zh.wikipedia.org/wiki/U%E7%9B%BE "U盾")、[FIDO](https://zh.wikipedia.org/wiki/FIDO%E8%81%94%E7%9B%9F "FIDO联盟")等USB Key。
+
+> 它们的主要区别是保存密码及数字签名的加密数据库是保存在本机使用的，还是保存在在线存储服务的，还是保存在特定存储设备的。一些密码管理器，如[GNOME 钥匙圈](https://zh.wikipedia.org/wiki/GNOME_%E9%91%B0%E5%8C%99%E5%9C%88 "GNOME 钥匙圈")、[钥匙串](https://zh.wikipedia.org/wiki/%E9%92%A5%E5%8C%99%E4%B8%B2_(OS_X) "钥匙串 (OS X)")、大部分[浏览器](https://zh.wikipedia.org/wiki/%E7%80%8F%E8%A6%BD%E5%99%A8 "浏览器")内置的密码窗体存储功能等，既可在本机访问，也可在用户经过设置以后能使用[在线存储服务](https://zh.wikipedia.org/wiki/%E9%9B%B2%E5%84%B2%E5%AD%98)的。一般密码管理器会要求用户至少需要一个“主控密码”来解锁经过该主控密码加密的存有账号密码信息的数据库。[[3]](https://zh.wikipedia.org/zh-my/%E5%AF%86%E7%A2%BC%E7%AE%A1%E7%90%86%E5%93%A1#cite_note-3)[[4]](https://zh.wikipedia.org/zh-my/%E5%AF%86%E7%A2%BC%E7%AE%A1%E7%90%86%E5%93%A1#cite_note-4)
+
+简单讲密码管理软件就是可以进行复杂密码生成，自动填充，密码安全存储，部分还支持TOTP等功能的安全应用软件。
+
+密码管理在线服务最常见的莫如edge、chrome等浏览器内置的自动记住密码功能，苹果华为等智能手机上保存密码的钥匙链功能，这里我们常用到的密码管理功能是密码保存和自动填充，还有自动生成强密码，比如你注册某个网站的时候，浏览器会生成一个复杂的强密码，你只要点确认填充即可，基于自动生成的强密码是很难记住的，基本要依靠密码管理软件自动填充。
+
+此外，还有很多独立本机安装的密码管理软件，包括开源的，付费的等，提供全平台的服务。
+
+### KeePass
+
+[KeePass](https://link.zhihu.com/?target=http%3A//keepass.info/) 是一款免费、小巧、绿色且开源的密码管理工具，多年来一直深受大众的好评。它能为用户提供一个足够安全的加密技术来保存各种各样的账号和密码。可以生成、存储你所有的密码（包括用户名），并备注信息。
+
+密码数据库是加密后本地保存的，不过数据库文件可以用WebDAV进行同步，多设备使用起来会更加方便。
+
+**【费用】** 官方 PC 端免费，移动端没有官方发布的版本，但由于是开源的应用，所有有很多优秀的第三方客户端，也都是免费使用（有的需要挂梯子，国内应用市场不一定可以下载）。
+
+-   安卓：Keepass2Android
+-   iOS：MiniKeePass，iKeePass，Passwordix 等
+
+
+### LastPass
+
+[LastPass](https://link.zhihu.com/?target=https%3A//www.lastpass.com/) 是一个优秀的在线密码管理器和页面过滤器，支持 Windows, Mac, Linux, iOS, Android, Windows Phone, 主流浏览器（IE, Chrome, FireFox, Opera, Safari）。与 KeePass 相比，**LastPass 在浏览器里使用功能更加强大。**
+
+它的特点是以浏览器扩展的形式使用，当你登录任何一个网站，它就会提示你保存登录信息，并在云端自动同步，以后访问该网站时它就会自动为你填写登录表单。 由于 LastPass 是将用户的数据保存网络上的，虽然是在将用户的密码数据加密后才将其发送到服务器，但安全性也受到部分用户的质疑。
+
+**【费用】** PC 端免费；手机端收费：每月 1 美元，按年收费。
+
+
+### 1Password
+
+[1Password](https://link.zhihu.com/?target=https%3A//1password.com/) 是一款来自加拿大开发商 agilebits 的跨平台密码管理应用，目前支持 Windows, Mac, Android, iPhone, iPad，浏览器扩展支持：Chrome, FireFox, Opera, Safari。口碑较好。Mac / iOS / Android版本已经支持中文，但是 Window 目前只有英文版。另外作为一款收费软件，价格相对较高，愿意付费使用的人并不普遍。
+
+1Password 包含[密码管理器](https://www.zhihu.com/search?q=%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A194898910%7D)与浏览器扩展两个部分，前文中我们介绍的 KeePass 和 LastPass 这两款软件，可以认为 1Password 是两者的完美合体。
+
+**【费用】** 目前 1Password 是订阅式，分为个人版和家庭版：个人版每月 2.99 美元；家庭版每月4.99 美元，可以包含 5 个账号使用。购买后，一个账号可以在多个平台登录进行同步使用。
+
+1Password 提供 30 天免费试用，可以体验后根据需求选择购买。
+
+### Enpass
+
+[Enpass](https://link.zhihu.com/?target=https%3A//www.enpass.io/) 中文版是一款安全可靠的跨平台密码管理器软件，它可以支持目前市面所有常用的平台：Windows, Mac, Linux 以及 iOS, Android, Blackberry, Windows UWP, ChromeBook 在内的客户端，并且提供主流浏览器的一键登录扩展，基本能覆盖你所有的密码应用场景。只需要记住一个主密码，就可以轻松管理所有的账号密码。
+
+**【费用】** PC 端免费，手机端可以免费显示 20 个密码项目。
+
+专业版目前费用是 68 元人民币一次性购买永久使用，解锁20个密码项目限制。相比较其他按月收费的还是比较划算的。可以作为 1Password 的替代品进行使用。
+
+
+### Bitwarden
+
+**Bitwarden**是一款[自由且开源](https://zh.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E5%8F%8A%E5%BC%80%E6%94%BE%E6%BA%90%E4%BB%A3%E7%A0%81%E8%BD%AF%E4%BB%B6 "自由及开放源代码软件")的[密码管理服务](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A2%BC%E7%AE%A1%E7%90%86%E5%93%A1 "密码管理员")，用户可在加密的保管库中存储敏感信息（例如[网站](https://zh.wikipedia.org/wiki/%E7%BD%91%E7%AB%99 "网站")登录凭据）。Bitwarden平台提供有多种[客户端](https://zh.wikipedia.org/wiki/%E5%AE%A2%E6%88%B7%E7%AB%AF "客户端")[应用程序](https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F "应用程序")，包括[网页](https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5 "网页")[用户界面](https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2 "用户界面")、[桌面应用](https://zh.wikipedia.org/wiki/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8 "桌面应用")，[浏览器扩展](https://zh.wikipedia.org/wiki/%E7%80%8F%E8%A6%BD%E5%99%A8%E6%93%B4%E5%85%85%E5%8A%9F%E8%83%BD "浏览器扩展")、[移动应用](https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8 "移动应用")以及[命令行界面](https://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2 "命令行界面")。[[2]](https://zh.wikipedia.org/wiki/Bitwarden#cite_note-Downloads-2)Bitwarden提供[云端托管](https://zh.wikipedia.org/wiki/%E9%9B%B2%E7%AB%AF%E9%81%8B%E7%AE%97 "云计算")服务，并支持[自行部署](https://zh.wikipedia.org/w/index.php?title=On-premises_software&action=edit&redlink=1)解决方案。[[3]](https://zh.wikipedia.org/wiki/Bitwarden#cite_note-On-premise-3)
+
+Bitwarden官方提供的服务有免费版和付费版，对多数人来说，个人免费版已经足够使用，不限制密码数量，不限制设备数，不过没有2FA功能。
+
+如果你信不过厂家数据保存，可以自建服务端，目前我所了解到的，自建服务端使用开源bitwarden的是最多的，准确讲是民间大神用Rust重写的版本bitwarden_rs，现在更名[vaultwarden](https://github.com/dani-garcia/vaultwarden)，最受欢迎，解锁所有高级功能。
+
 
 ## 2FA双因素认证
 
-【待更新】
+### 2FA
+双因素身份验证 (2FA) 是一种身份和访问管理安全方法，是指需要经过两种形式的身份验证才能访问资源和数据。提高身份认证的安全性。
+
+2FA与MFA（Multi-Factor Authentication）多因素认证的区别是，用户需要使用两个或更多因素或流程来识别用户。
+
+常见的验证方法如下：
+
+-  #### 硬件令牌
+    
+    企业可以以密钥卡的形式向员工提供硬件令牌，该密钥卡每隔几秒到一分钟时间生成一次代码。这是最早的双因素身份验证形式之一。
+    
+-  #### 推送通知
+    
+    推送双因素身份验证方法不需要密码。这种类型的 2FA 向你的手机发送信号，以批准/拒绝或接受/拒绝访问网站或应用程序以验证身份的请求。
+    
+-   #### SMS 验证
+    
+    SMS（也称为短信）可用作一种双因素身份验证形式，具体方式是将短信发送到受信任的电话号码。系统会提示用户与短信交互或使用一次性代码来验证其在站点或应用上的身份。
+    
+-   #### 基于语音的身份验证
+    
+    语音身份验证的工作方式与推送通知类似，但身份是自动确认的。系统通过语音要求你按一个键或说出自己的名字以表明自己的身份。
+
+
+### TOTP
+
+TOTP（Time-Based One-Time Password）算法是基于时间的一次性密码算法，根据预共享的密钥与当前时间计算一次性密码。它已被互联网工程任务组接纳为RFC 6238标准，成为主动开放认证的基石，并被用于众多多因子/双因子认证系统当中。
+
+
+### 手机认证应用程序
+
+认证应用程序可在没有互联网或手机网络连接的情况下生成令牌。 用户通过扫描服务提供商显示的二维码将应用程序与帐户配对；然后，应用程序会为每个帐户持续生成基于时间的一次性密码 OTP (TOTP) 或其他软件令牌，通常每 30-60 秒生成一次。 
+
+最常用的认证应用程序包括 Google Authenticator、Authy、Microsoft Authenticator、LastPass Authenticator 和 Duo，这些都使用推送通知同时也支持生成TOTP。
+
 
 ## 安全备份策略
 
 【待更新】
+
+
+## 参考
+> 1. [有什么值得推荐的密码管理软件？](https://www.zhihu.com/question/27338793/answer/194898910 )
+> 2. [身份认证之双因素认证 2FA](https://zhuanlan.zhihu.com/p/351590048)
