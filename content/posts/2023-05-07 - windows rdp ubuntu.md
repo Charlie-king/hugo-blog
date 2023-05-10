@@ -11,7 +11,7 @@ tags:
 - ubuntu
 - linux
 categories:
-- 研究学习
+- linux
 featuredImage: ""
 featuredImagePreview: ""
 
