@@ -1,0 +1,53 @@
+/* 推广 */
+article .post-promote {
+    margin-top: 20px;
+    padding-top: 10px;
+    text-align: center;
+    border-top: 1px dashed #e6e6e6
+}
+
+article .post-promote .promote-button {
+    margin: 15px 0;
+    padding: 3px 7px;
+    display: inline-block;
+    color: #c05b4d;
+    border: 1px solid #c05b4d;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+article .post-promote .promote-button:hover {
+    color: #fefefe;
+    background-color: #c05b4d;
+    transition: .5s
+}
+
+article .post-promote #promote:checked~.qr-code {
+    display: block
+}
+
+article .post-promote #promote:checked~.promote-button {
+    //display: none
+}
+
+article .post-promote .qr-code {
+    //display: none
+}
+
+article .post-promote .qr-code .qr-code-image {
+    display: inline-block;
+    min-width: 200px;
+    width: 40%;
+    margin-top: 15px
+}
+
+article .post-promote .qr-code .qr-code-image span {
+    display: inline-block;
+    width: 100%;
+    margin: 8px 0
+}
+
+article .post-promote .qr-code .image {
+    width: 200px;
+    height: 200px
+}
