@@ -165,7 +165,81 @@ Nginx Proxy Manager (NPM) 默认监听80和443端口，但如果你想修改为�
 ### vaultwarden
 
 
+个人云盘
 
+博客
 
+vscode ssh remote
+
+wireguard
+
+minio
+rclone webdav 服务,局域网看片真爽  
+navidrome 听歌  
+  
+uptime-kuma 监控(网络延迟 /ssl 证书)  
+nocodb 快速生成 restapi  
+nsqd 轻量消息队列  
+stackedit markdown 编辑器  
+gogs 代码托管  
+portainer docker 管理  
+speedtest 局域网测速  
+miniflux Rss  
+vaultwarden 开源 bitwarden 密码服务  
+dendrite && element-web 局域网 IM  
+代理服务器用的 traefik 再也不用手写 nginx 配置了
+
+Homarr  
+bitwardenrs  
+homeassistant  
+nextcloud  
+OnlyOffice  
+urbackup  
+chinesesubfinder  
+NocoDB  
+Gitea  
+RustDeskServer-Relay  
+RustDeskServer-Server  
+  
+照片展示的：  
+hexo-blog  
+PhotoPrism  
+PhotoStructure  
+  
+自动下片的：  
+Plex  
+EmbyServer  
+qbittorrent  
+overseerr  
+prowlarr  
+radarr  
+sonarr  
+tautulli
+局域网文件传输：windows 用 Raidrive 通过 SFTP 挂载一块 16T 硬盘；外网访问通过端口映射；  
+其他服务大部分都是 docker 部署的：  
+Docker 容器管理：portainer  
+Nginx 反向代理：Nginx Proxy Manager  
+相册：PhotoPrism  
+浏览器端文件下载：WebDav
+
+Bitwarden - 密码管理器；  
+Alist - 网盘；  
+Linkding - 跨平台网络书签；  
+E5-Renew - E5 自动调用 API 续期；  
+Wiznote - 为知笔记私有部署；  
+kms - 你懂得；  
+Bark - 推送；  
+Qiandao - 一个自动签到模板；  
+IPSec - 翻回家里；  
+Genshinhelper - 一个原神社区的自动签到；  
+Rustdesk - 远程控制；  
+Synology Photos - 群晖的相册服务；  
+Synology Drive - 群晖的私有网盘；  
+Synology Calendar - 群晖日历服务，每天定时发送通知到邮箱通知女朋友吃药。
+
+seafile ，文件同步，最近感觉比群晖 Drive 好用  
+MT photos ，同步照片，感觉比较轻量，快捷，比 PhotoPrism 占用少
+
+jellyfin媒体中心
 
 https://zhuanlan.zhihu.com/p/595775684
