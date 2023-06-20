@@ -3,7 +3,7 @@ title: "linux系列之ubuntu新装后高效环境配置处理"
 subtitle: ""
 date: 2023-06-01T14:29:53+08:00
 
-lastmod: 2023-06-06T10:55:53+08:00
+lastmod: 2023-06-19T10:55:53+08:00
 draft: false
 description: "ubuntu安装后常见的初始环境设置处理，提高生效效率"
 keywords: 
@@ -250,6 +250,12 @@ docker run -d \
  # 安装成功执行下面语句，如果有类似回显，说明安装成功
  docker --version
 Docker version 18.06.1-ce, build e68fc7a
+```
+
+gitee国内版一键安装，可选国内源及官方源，完整安装docker所有功能
+```
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)`  
+
 ```
 
 ### Ubuntu安装dokcer

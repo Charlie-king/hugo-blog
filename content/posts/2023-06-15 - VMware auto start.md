@@ -4,7 +4,7 @@ subtitle: ""
 date: 2023-06-15T09:57:06+08:00
 
 lastmod: 2023-06-15T10:30:06+08:00
-draft: true
+draft: false
 description: "VMware pro 17设置虚拟机随宿主机开机自启动的方法和注意事项"
 keywords: 
 - 虚拟机
