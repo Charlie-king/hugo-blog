@@ -1,5 +1,5 @@
 # 网站标题
-baseURL = "https://ttzz.eu.org/"
+baseURL = "https://hugo.111520.xyz/"
 title = "六月长河"
 # [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
@@ -31,9 +31,9 @@ lastmod = ["lastmod", ":git", ":fileModTime", ":defalut"]
 #  FixIt 主题版本
 version = "0.2.X"
 # 网站描述
-description = ""
+description = "六月长河的hugo博客，分享技术与生活点滴。"
 # 网站关键词
-keywords = ["charlie-King", "六月长河", "六月长河的博客", "Kingpo", "hugo"]
+keywords = ["charlie-King", "六月长河", "六月长河的博客", "六月河", "Kingpo", "hugo"]
 # 网站默认主题样式 ("light", "dark", "auto")
 defaultTheme = "auto"
 # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
