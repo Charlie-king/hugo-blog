@@ -211,27 +211,6 @@ sudo apt install openssh-server
 sudo ufw allow ssh
 ```
 
-## 安装v2rayA
-
-开源的代理工具，可以实现全局透明代理，这里用docker安装
-```
-# run v2raya 
-docker run -d \ 
-  --restart=always \ 
-  --privileged \ 
-  --network=host \ 
-  --name v2raya \ 
-  -e V2RAYA_LOG_FILE=/tmp/v2raya.log \ 
-  -v /lib/modules:/lib/modules:ro \ 
-  -v /etc/resolv.conf:/etc/resolv.conf \ 
-  -v /etc/v2raya:/etc/v2raya \ 
-  mzz2017/v2raya
-```
-
-> 详细介绍：https://v2raya.org/docs/prologue/installation/docker/#%E8%BF%90%E8%A1%8C
-
-
-
 ## 安装docker和修改docker下载源
 
 ### 一键安装docker
@@ -371,29 +350,53 @@ docker deamon，即docker守护进程/docker引擎，在安装完成后会自动
 
 ### 修改docker下载源
 
-打开daemon.json文件，若不存在则新增：
-```
-sudo vi /etc/docker/daemon.json
-```
+打开daemon.json文件，若不存在则新增，
 
 添加以下下载源：
 ```
+sudo tee /etc/docker/daemon.json << 'EOF'
 {
-  "registry-mirrors":
-    [
-      "http://hub-mirror.c.163.com",
-    "https://docker.mirrors.ustc.edu.cn",
-    "https://mirror.baidubce.com",
-    "https://ljqvceaj.mirror.aliyuncs.com"
-    ]
+"registry-mirrors": [
+"https://dockerproxy.com"，
+"https://docker.nju.edu.cn",
+"https://mirror.baidubce.com",
+"https://mirror.gcr.io"
+]
 }
+EOF
+
+# docker hub在2023-06-20基本已经确认被墙了，DNS污染。以上镜像源截至当前可用，阿里云不及时，很多镜像源如网易云也不可用了。
 ```
+
+
+
 ### 添加用户docker权限
 将docker权限添加到当前用户，免去每次都输sudo命令。
 
 1. 创建docker组：`sudo groupadd docker`
 2. 将用户添加到docker组：`sudo gpasswd -a ${USER} docker`
 3. 重启docker服务：`sudo systemctl restart docker`
+
+
+
+## 安装v2rayA
+
+开源的代理工具，可以实现全局透明代理，这里用docker安装
+```
+# run v2raya 
+docker run -d \ 
+  --restart=always \ 
+  --privileged \ 
+  --network=host \ 
+  --name v2raya \ 
+  -e V2RAYA_LOG_FILE=/tmp/v2raya.log \ 
+  -v /lib/modules:/lib/modules:ro \ 
+  -v /etc/resolv.conf:/etc/resolv.conf \ 
+  -v /etc/v2raya:/etc/v2raya \ 
+  mzz2017/v2raya
+```
+
+> 详细介绍：[v2rayA官方文档](https://v2raya.org/docs/prologue/installation/docker/#%E8%BF%90%E8%A1%8C)
 
 
 
@@ -408,6 +411,16 @@ sudo apt install docker-compose
 docker-compose -v
 ```
 输出版本信息说明安装成功。
+
+## 安装配置Portainer
+
+```
+# 建立一个Docker卷
+docker volume create portainer_data
+
+# 启用Portainer
+docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
 
 ## 解决无法访问github
 
