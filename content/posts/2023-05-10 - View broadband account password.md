@@ -70,6 +70,49 @@ seo:
 
 
 
+
+例如HS8545M5的超级账户密码是（广东等地区）：CMCCAdmin aDm8H%MdA
+还有一些其它可尝试的超级账户：
+CMCCAdmin Cmcc10086#
+telecomadmin nE7jA%5m
+telecomadmin admintelecom
+
+账户
+text
+base64，md5加密
+
+移动宽带账号
+一般6位数：123123，账号后六位
+
+
+电信和移动的光猫（华为制造）一般都使用sha256(md5(明文密码))作为加密手段（加密后是64位密文）
+md5.cn
+https://blog.csdn.net/qq_26373925/article/details/112798210
+
+
+移动：
+1./首先获取超级密码，网上查到
+账号：CMCCAdmin
+密码：aDm8H%MdA
+师傅设置的光猫拨号，浏览器输入192.168.1.1，试了下，可以登入
+
+2./找到”网络“-->宽带设置,可以看到一个PPPOE模式，将使能勾去掉，端口绑定也取消打勾，记下自己的VLAN ID 然后点击修改。
+3./新建WAN连接，
+模式：“桥模式”，
+使能：打勾，
+LAN 1234可以全打勾，意思是四个LAN全可以拨号，
+DHCP服务去掉打勾，
+桥类型，我选择的 IP BRIDGE，不知道和PPPOE BRIDGE有何区别
+业务模式选择INTERNET
+VLAN模式选择改写tag，VLAN ID填写刚才记下的VLAN
+其他默认即可，最后点击修改
+4./路由器填入你的账号密码即可，一般即可拨号成功
+
+5./TR069服务使能的钩子是灰色的，按F12搜索disable找到对应按钮，改为enable回车即可，
+论坛有教程在此不再赘述。还有开启TTL服务，暂时不知道密码。
+6./TELNET服务，在管理里边，打勾即可，查看密码也是F12的方法，把密码选项PASSAORD改为TEXT。
+
+
 ## 参考
 > https://blog.csdn.net/weixin_39921904/article/details/124545471
 > https://post.smzdm.com/p/apz3p8w0/
