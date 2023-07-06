@@ -10,9 +10,10 @@ keywords:
 - 青龙面板
 - 依赖
 tags:
-- draft
+- linux
+- 青龙面板
 categories:
-- draft
+- linux
 featuredImage: ""
 featuredImagePreview: ""
 
