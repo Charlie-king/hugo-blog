@@ -43,9 +43,6 @@ seo:
 
 这里提供一个脚本，桌面新建一个txt，粘贴以下代码，`txt`后缀改为`bat`，双击运行修改默认端口为其他自定义端口：
 
-直接云盘下载：[点击下载](https://toolkz.lanzouk.com/iNQBm11gvtkj)  
-密码:toolkz
-
 **注意：文本编码格式需要改为：GB18030，否则运行会显示乱码。**
 
 ```sh
@@ -99,3 +96,10 @@ exit
 
 
 ```
+
+## 脚本下载
+
+直接把脚本备份云盘了。
+
+云盘下载：[点击下载](https://toolkz.lanzouk.com/iNQBm11gvtkj)  
+密码:toolkz
