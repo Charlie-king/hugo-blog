@@ -71,11 +71,22 @@ seo:
 
 
 
+
 例如HS8545M5的超级账户密码是（广东等地区）：CMCCAdmin aDm8H%MdA
 还有一些其它可尝试的超级账户：
 CMCCAdmin Cmcc10086#
 telecomadmin nE7jA%5m
 telecomadmin admintelecom
+
+超级账号：CMCCAdmin 超级密码：aDm8H%MdA
+超级用户名:telecomadmin 超级密码:nE7jA%5m
+用户名 telecomadmin 密码 admintelecom
+超级用户名 : fiberhomehg2×0 超级密码 : hg2×0
+超级帐户名是：admin 密码：Cmcc10086#
+1、电信超级密码 telecomadmin nE7jA%5m
+2、移动超级密码 CMCCAdmin aDm8H%MdA
+3、联通超级密码 CUAdmin CUAdmin
+
 
 账户
 text
@@ -86,11 +97,11 @@ base64，md5加密
 
 
 电信和移动的光猫（华为制造）一般都使用sha256(md5(明文密码))作为加密手段（加密后是64位密文）
-md5.cn
+解密网站：md5.cn
 https://blog.csdn.net/qq_26373925/article/details/112798210
 
 
-移动：
+## 移动：
 1./首先获取超级密码，网上查到
 账号：CMCCAdmin
 密码：aDm8H%MdA
@@ -111,6 +122,97 @@ VLAN模式选择改写tag，VLAN ID填写刚才记下的VLAN
 5./TR069服务使能的钩子是灰色的，按F12搜索disable找到对应按钮，改为enable回车即可，
 论坛有教程在此不再赘述。还有开启TTL服务，暂时不知道密码。
 6./TELNET服务，在管理里边，打勾即可，查看密码也是F12的方法，把密码选项PASSAORD改为TEXT。
+
+## 联通
+
+192.168.2.1/hidden_version_switch.html
+
+lnadmin
+
+广东部分地区联通超密，账号：CUAdmin
+密码：cuadmin加上光猫背面MAC前6位小写
+cuadmin
+
+
+http://192.168.2.1/telnet?enable=1&key=40F4FD422CA9
+
+192.168.2.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=40F4FD422CA9   （光猫mac，大写或小写）
+
+lnadmin12643745
+
+法1：
+https://www.right.com.cn/forum/thread-8163087-1-1.html
+
+联通光猫创维DT741-csf破解超级密码+桥接教程
+telnet
+https://www.right.com.cn/forum/thread-4057681-1-1.html
+
+正式发布自编译中兴F7607P及7615光猫本地离线开Telnet工具及使用说明
+https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=8273857&highlight=7607P
+
+河南联通7607P 获取超密
+https://www.right.com.cn/forum/thread-8278412-1-1.html
+
+中国联通sk-d740-c光猫超级密码获取
+https://www.right.com.cn/FORUM/thread-8253868-1-1.html
+
+天邑TEWA-707G光猫获取超密教程
+https://www.right.com.cn/forum/thread-8257312-1-1.html
+
+
+天邑TEWA-707G光猫获取超密教程
+https://www.right.com.cn/forum/thread-8257312-1-1.html
+```
+ftp 192.168.1.1 \\到光猫 用普通用户身份登录
+
+get userconfig/cfg/db_user_cfg.xml \\获取到C:\Users\你的登录名
+
+解密此文件 (感谢楼下提供解密工具下载)
+链接
+直连
+蓝奏云
+https://c78.lanzoub.com/iH0qe08cbe9a  \\把db_user_cfg.xml拖到工具上，会生成一个解密好的文件
+
+记事本打开 搜索 telecomadmin 即可
+
+记得在光猫里删除电信下发链接TR069_R_VID_46
+```
+
+
+TEWA-766G等新款天邑光猫获取超密及开启telnet
+https://www.right.com.cn/forum/thread-8234040-1-1.html
+
+
+关于移动光猫吉比特GM220-S超级密码获得和移动自动改密
+https://www.right.com.cn/forum/thread-4005957-1-1.html
+
+联通光猫超级密码(无需繁琐获取)适用大部分地区(手机/P
+https://www.bilibili.com/read/cv14851248/
+```
+北京地区：联通光猫TEWA-800E超级管理员(亲测有效)
+document.getElementById('loginfrm').setAttribute('method','get');
+document.getElementById('username').value = 'CUAdmin';
+document.getElementById('password').value = 'CUAdmin';
+document.getElementById('loginfrm').submit();
+```
+
+联通宽带光猫获取超级密码教程吉比特无源光纤接入用户端设备（GPON ONU）
+型号：HG6543C
+https://blog.csdn.net/Adam12321/article/details/108369917
+
+
+吉比特CM115Z,CM113Z光猫破解超级权限教程
+https://www.right.com.cn/forum/thread-2270800-1-1.html
+```
+直接访问
+http://192.168.1.1/cgi-bin/upgrade.asp
+下载romfile
+搜索：
+   注意看是这个0
+<Entry0 Active="Yes" username="CMCCAdmin"
+web_passwd="您的超级密码"
+
+```
 
 
 ## 参考
