@@ -5,8 +5,7 @@ date: 2023-07-04T09:16:06+08:00
 
 lastmod: 2023-07-04T09:25:06+08:00
 draft: false
-description: "Job for docker.service failed because the control process exited with error code.
-See "systemctl status docker.service" and "journalctl -xeu docker.service" for details."
+description: " Job for docker.service failed because the control process exited with error code.See 'systemctl status docker.service' and 'journalctl -xeu docker.services' for details."
 keywords: 
 - docker
 - linux
