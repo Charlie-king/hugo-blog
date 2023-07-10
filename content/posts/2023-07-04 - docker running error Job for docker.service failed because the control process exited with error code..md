@@ -40,10 +40,14 @@ seo:
 <!--more-->
 ## docker 运行报错
 
+本来docker能正常运行，突然报错了，容器无法跑，docker无法运行，报错。
+
 报错提示为：
 ```
 Job for docker.service failed because the control process exited with error code. See "systemctl status docker.service" and "journalctl -xeu docker.service" for details.
 ```
+
+查了一下，想到刚改了docker下载源，可能原因是下载源文件的配置问题。
 
 ## 一种原因
 
