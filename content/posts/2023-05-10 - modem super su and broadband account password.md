@@ -75,18 +75,26 @@ seo:
 
 例如HS8545M5的超级账户密码是（广东等地区）：CMCCAdmin aDm8H%MdA
 还有一些其它可尝试的超级账户：
+
 CMCCAdmin Cmcc10086#
+
 telecomadmin nE7jA%5m
+
 telecomadmin admintelecom
 
 超级账号：CMCCAdmin 超级密码：aDm8H%MdA
+
 超级用户名:telecomadmin 超级密码:nE7jA%5m
+
 用户名 telecomadmin 密码 admintelecom
+
 超级用户名 : fiberhomehg2×0 超级密码 : hg2×0
+
 超级帐户名是：admin 密码：Cmcc10086#
-1、电信超级密码 telecomadmin nE7jA%5m
-2、移动超级密码 CMCCAdmin aDm8H%MdA
-3、联通超级密码 CUAdmin CUAdmin
+
+1. 电信超级密码 telecomadmin nE7jA%5m
+2. 移动超级密码 CMCCAdmin aDm8H%MdA
+3. 联通超级密码 CUAdmin CUAdmin
 
 
 账户
