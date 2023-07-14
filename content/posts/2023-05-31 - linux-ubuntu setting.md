@@ -484,3 +484,25 @@ https://github.com/mrabit/aliyundriveDailyCheck
 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对应的域名服务。主要是对动态公网ip进行ddns。
 
 github：https://github.com/jeessy2/ddns-go
+
+## 15. Alist
+
+docker-compose安装：
+这里
+```yaml
+
+version: '3.3'
+services:
+    alist:
+        restart: always
+        volumes:
+            - '/home/char/compose/alist:/opt/alist/data'
+        ports:
+            - '5244:5244'
+        environment:
+            - PUID=0
+            - PGID=0
+            - UMASK=022
+        container_name: alist
+        image: 'xhofe/alist:main'
+```

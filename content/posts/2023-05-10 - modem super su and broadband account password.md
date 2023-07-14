@@ -224,6 +224,30 @@ web_passwd="您的超级密码"
 ```
 
 
+移动H2-3s破解Telnet
+https://bbs.luobotou.org/thread-49853-1-1.html
+```
+本帖最后由 PencilNavigator 于 2022-4-5 01:55 编辑_  
+  
+继我GM232开启telnet成功但没有获取密码后（更新：已破解密码：[https://bbs.luobotou.org/forum.php?mod=viewthread&tid=49623&fromuid=193018](https://bbs.luobotou.org/forum.php?mod=viewthread&tid=49623&fromuid=193018)），我又一光猫破解telnet，没错，那就是H2-3s  
+方法很简单，使用CMCCAdmin（密码aDm8H%MdA）登录192.168.1.1，然后打开这个链接：[http://192.168.1.1/bd/vermod.asp](http://192.168.1.1/bd/vermod.asp)  
+你就会进到这个界面：  
+  
+  
+![](https://bbs.luobotou.org/forum.php?mod=attachment&aid=MjcyMzh8ODE3NmU0MjB8MTY4OTIxNjY5MHwwfDQ5ODUz)  
+红框框里的telnet点开启（这里我已经事先开启了），在命令提示符里输入Telnet 192.168.1.1,（账密同CMCCAdmin），就可以进入Telnet后台  
+![](https://bbs.luobotou.org/forum.php?mod=attachment&aid=MjcyMzl8NGE4ZTBiYTV8MTY4OTIxNjY5MHwwfDQ5ODUz)  
+  
+不得不说，某移真是煞费苦心，基本上每一款光猫开启telnet的方法都不一样（GM232的方法就没法用在H2-3s上），而且一些telnet账号是CMCCAdmin但密码不是aDm8H%MdA...  
+如果有同款光猫想折腾的可以参照我的方法试试
+
+```
+
+移动吉比特H2-3s 光猫超级密码
+https://www.right.com.cn/forum/thread-4051132-1-1.html
+(出处: 恩山无线论坛)
+
+
 ## 参考
 > https://blog.csdn.net/weixin_39921904/article/details/124545471
 > https://post.smzdm.com/p/apz3p8w0/
