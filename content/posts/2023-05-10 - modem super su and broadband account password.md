@@ -70,6 +70,59 @@ seo:
 ![](https://s3.bmp.ovh/imgs/2023/05/10/d6c53e43741b3cb4.jpg)
 
 
+# 成功案例
+
+吉比特CM115Z,CM113Z光猫破解超级权限教程
+https://www.right.com.cn/forum/thread-2270800-1-1.html
+
+### 北京移动吉比特SK-D746，联通吉比特UNG310H
+普通账户登录后，输下面，下载romfile.cfg文件，搜索admin
+http://192.168.1.1/cgi-bin/upgrade.asp
+http://192.168.1.1/romfile.cfg
+CMCCAdmin
+aDm8H%MdAPc7T#8Mq
+
+
+### 移动光猫GS3101
+
+测试：
+http://192.168.1.1/cgi-bin/
+tmp/ctromfile.cfg
+
+1. 登陆路由器之后打开这个地址[http://192.168.1.1/cgi-bin/getGateWay.cgi](http%3A//192.168.1.1/cgi-bin/getGateWay.cgi)，页面返回Yes字样一般即为成功，我这里返回的是：
+
+Family GateWay
+Yes
+
+2. 连接并登陆Telnet
+
+打开成功后使用Telnet连接工具连接到路由器
+
+telnet 192.168.1.1
+
+然后输入账号密码`admin` `s2@We3%Dc#`
+
+如果登陆后界面一般显示# 就是成功
+
+3. 接着查看密码
+
+登陆成功后输入`cat /tmp/ctromfile.cfg | grep 'Admin'`就可以查看超级管理员的密码
+
+如我这里返回
+```
+
+# cat /tmp/ctromfile.cfg | grep 'Admin'
+
+<Entry0 Active="Yes" username="CMCCAdmin"
+
+web_passwd="CMCCAdmin****"
+```
+其中的username=后面的就是管理员账号，一般为CMCCAdmin，web_passwd=后面的就是密码，这里对应的是CMCCAdmin****，注意不要带引号。
+
+&amp;等于&
+
+
+
 
 
 
@@ -140,12 +193,12 @@ lnadmin
 
 广东部分地区联通超密，账号：CUAdmin
 密码：cuadmin加上光猫背面MAC前6位小写
-cuadmin
+cuadmin28563AFA4BA0
 
 
 http://192.168.2.1/telnet?enable=1&key=40F4FD422CA9
 
-192.168.2.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=40F4FD422CA9   （光猫mac，大写或小写）
+192.168.2.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=28563AFA4BA0   （光猫mac，大写或小写）
 
 lnadmin12643745
 
