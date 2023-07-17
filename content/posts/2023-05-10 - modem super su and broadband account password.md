@@ -123,8 +123,35 @@ web_passwd="CMCCAdmin****"
 
 
 
+### 尝试修改
 
+先试一试最简单的步骤：  
+1用user登录  
+2进入到user修改密码页面  
+3打开chrome F12 开发者工具  
+4定位到用户名user框  
+5看看value有没有值  
+如果是0改成1，如果是1改成0，或者user 改为 root、CMCCAdmin
+6输入user原密码，输入要修改的管理员密码
 
+### 联通sk-d740-c，SK-D748-C，SK-D742C，SK-D748
+详情步骤：  
+【1】保证正常访问光猫web  
+
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：[http://192.168.1.1/hidden_version_switch.html](http://192.168.1.1/hidden_version_switch.html)，勾选telnet功能，一闪而过不用在意。）  
+
+账户密码都是useradmin/useradmin
+【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
+【4】ftp链接光猫。这里我使用的是winscp，ftp连接光猫，账户密码都是useradmin/useradmin（看下图），/var/tmp/目录下，找到telnet_su_passwd 文件，打开即可获得
+
+### 郑州联通 dt741-csf  
+记下LOID还有VID  
+不插光纤按住光猫后边的重置键直到光猫重启，[http://192.168.1.1/hidden_version_switch.html](http://192.168.1.1/hidden_version_switch.html) 勾选开启telnet  
+telnet登录root CUAdmin  
+sendcmd 1 DB DevAuthInfo  
+sendcmd 1 DB set DevAuthInfo 0 User CUAdmin  
+sendcmd 1 DB set DevAuthInfo 0 Pass 11223344  
+[http://192.168.1.1/cu.html](http://192.168.1.1/cu.html) 账户CUAdmin 密码11223344 设置完插上光纤就行
 
 例如HS8545M5的超级账户密码是（广东等地区）：CMCCAdmin aDm8H%MdA
 还有一些其它可尝试的超级账户：
@@ -304,3 +331,15 @@ https://www.right.com.cn/forum/thread-4051132-1-1.html
 ## 参考
 > https://blog.csdn.net/weixin_39921904/article/details/124545471
 > https://post.smzdm.com/p/apz3p8w0/
+
+http://192.168.1.1/hidden_version_switch.gch
+/userconfig/cfg/db_user_cfg.xml
+/backpresettings.conf
+/backupsettings.conf
+fhconf/backpresettings.conf
+http://192.168.1.1/servmngr.html
+
+document.getElementById('loginfrm').setAttribute('method','get');  
+document.getElementById('username').value = 'CUAdmin';  
+document.getElementById('password').value = 'CUAdmin';  
+document.getElementById('loginfrm').submit();
