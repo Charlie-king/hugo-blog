@@ -39,16 +39,16 @@ seo:
 
 <!--more-->
 
-### 登录光猫
+#### 登录光猫
 
 忘了宽带账号密码，一种自己查询的途径是登录光猫超级管理员后台查。光猫超级管理员账号密码一般在光猫上贴纸有写。
 
 ![](https://s3.bmp.ovh/imgs/2023/05/10/636d5de805cbaa29.png)
 
 
-### 查看宽带账号密码方式
+#### 查看宽带账号密码方式
 
-#### 方法1：框架源码查询
+##### 方法1：框架源码查询
 
 - 进到超管界面后，选 网络 - 网络设置 - 网络连接，连接名称切换到 41结尾的项，可以看到拨号账号密码页，右键 查看框架源代码。
 
@@ -62,7 +62,7 @@ seo:
 
 - PS：如果看到不是6或8为数字或字符，说明此法不通。
 
-#### 方法2：修改页面元素
+##### 方法2：修改页面元素
 
 法1不通时，可以尝试法2。
 
@@ -122,6 +122,140 @@ web_passwd="CMCCAdmin****"
 &amp;等于&
 
 
+### 移动光猫-吉比特 H3-1S/H3-2S/H3-2Sse
+获取超级密码方法
+https://www.right.com.cn/forum/thread-8266942-1-1.html
+> 
+ 1. 使用光猫背后的普通用户名登录进光猫，浏览器复制以下链接打开  
+  
+[http://192.168.1.1/usr=CMCCAdmin ... md=1&telnet.gch](http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch)  
+  
+2. 电脑启用 telnet  
+  
+3. 通过telnet进入光猫  
+   
+输入：  
+  
+telnet 192.168.1.1  
+  
+用户名、密码如下：  
+CMCCAdmin  
+aDm8H%MdA    
+  
+注意：密码默认不显示 不需要重复输入  
+  
+  
+4. 查看一下登陆信息,可以看到账号密码全部进行了加密  
+sidbg 1 DB p DevAuthInfo  
+  
+输入上面的命令后将会显示下面的内容：  
+```
+<Tbl name="DevAuthInfo" RowCount="2">
+<Row No="0">
+<DM name="ViewName" val="IGD.AU1"/>
+<DM name="Enable" val="1"/>
+<DM name="IsOnline" val="0"/>
+<DM name="AppID" val="1"/>
+<DM name="User" val="******"/>
+<DM name="Pass" val="******"/>
+<DM name="Level" val="1"/>
+<DM name="Extra" val=""/>
+<DM name="ExtraInt" val="0"/>
+</Row>
+<Row No="1">
+<DM name="ViewName" val="IGD.AU2"/>
+<DM name="Enable" val="1"/>
+<DM name="IsOnline" val="0"/>
+<DM name="AppID" val="1"/>
+<DM name="User" val="******"/>
+<DM name="Pass" val="******"/>
+<DM name="Level" val="2"/>
+<DM name="Extra" val=""/>
+<DM name="ExtraInt" val="0"/>
+</Row>
+</Tbl> 
+```
+
+
+5. 修改CMCCAdmin用户的登录密码  
+  
+输入下面的命令更改CMCCAdmin的密码：  
+  
+sidbg 1 DB set DevAuthInfo 0 Pass admin  
+  
+Pass后面是CMCCAdmin的登录密码  
+  
+再输入下面的命令保存即可  
+
+sidbg 1 DB save
+
+完成后即可使用CMCCAdmin+更改后的密码即可登录光猫后台。
+
+### 联通MSG2100E-UPON-4V
+
+管理员192.168.1.1/cu.php
+CUAdmin
+CUAdmin
+
+## 超简单破解上海移动 华为HS8546V5
+https://www.right.com.cn/forum/thread-4092011-1-1.html
+(出处: 恩山无线论坛)
+
+
+
+### 烽火HG261GS/HG260
+（广西电信）
+
+	192.168.1.1
+	进入维护账号
+	http://192.168.1.1/logoffaccount.html 先刷一下，再进
+用户名：fiberhomehg2x0  
+密码：hg2x0
+
+出厂设置保存一下即可
+
+开telnet
+root  hg2x0
+
+### 烽火吉比特 HG6145F/HG6045F3
+移动烽火-吉比特-JBT-HG6145F超密破解-TJ
+https://www.right.com.cn/forum/thread-8252579-1-1.html
+
+第一步：打开telnet  
+获得光猫的MAC地址  
+电脑打开CMD界面，输入   
+```
+arp -a 192.168.1.1
+```
+
+这时将显示你的光猫MAC，红色位置就是。  
+  
+浏览器中录入
+```
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=
+```
+这个等号后面写上你上面获得的MAC 字母大写去除横线然后回车，将会提示telnet已启用。  
+  
+第二部 获得超密  
+打开CMD命令窗口录入：telnet 192.168.1.1  
+链接成功后输入账号：admin 在北京天津这边用这个admin，其他地方如果不管用就试试  root  
+录入密码为  Fh@+你上面获得的MAC的后六位大写。  
+链接成功后将会显示一个#  
+  
+  
+继续在#后录入  
+load_cli factory  
+Config\factorydir# show admin_name  
+
+这时将显示你的超级账号名称  
+Success! admin_name=CMCCAdmin  
+  
+继续录入  
+Config\factorydir# show admin_pwd  
+  
+这时将显示你的超级密码  
+Success! admin_pwd=CMCCAdminFa5&G3Pk
+
 
 ### 尝试修改
 
@@ -138,7 +272,7 @@ web_passwd="CMCCAdmin****"
 详情步骤：  
 【1】保证正常访问光猫web  
 
-【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：[http://192.168.1.1/hidden_version_switch.html](http://192.168.1.1/hidden_version_switch.html)，勾选telnet功能，一闪而过不用在意。）  
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：http://192.168.1.1/hidden_version_switch.html，勾选telnet功能，一闪而过不用在意。）  
 
 账户密码都是useradmin/useradmin
 【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
@@ -146,12 +280,22 @@ web_passwd="CMCCAdmin****"
 
 ### 郑州联通 dt741-csf  
 记下LOID还有VID  
-不插光纤按住光猫后边的重置键直到光猫重启，[http://192.168.1.1/hidden_version_switch.html](http://192.168.1.1/hidden_version_switch.html) 勾选开启telnet  
+不插光纤按住光猫后边的重置键直到光猫重启，
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+ 勾选开启telnet  
 telnet登录root CUAdmin  
-sendcmd 1 DB DevAuthInfo  
-sendcmd 1 DB set DevAuthInfo 0 User CUAdmin  
-sendcmd 1 DB set DevAuthInfo 0 Pass 11223344  
-[http://192.168.1.1/cu.html](http://192.168.1.1/cu.html) 账户CUAdmin 密码11223344 设置完插上光纤就行
+```
+sendcmd 1 DB DevAuthInfo
+sendcmd 1 DB set DevAuthInfo 0 User CUAdmin
+sendcmd 1 DB set DevAuthInfo 0 Pass 11223344
+```
+
+```
+http://192.168.1.1/cu.html
+```
+账户CUAdmin 密码11223344 设置完插上光纤就行
 
 例如HS8545M5的超级账户密码是（广东等地区）：CMCCAdmin aDm8H%MdA
 还有一些其它可尝试的超级账户：
@@ -251,7 +395,7 @@ https://www.right.com.cn/forum/thread-8257312-1-1.html
 
 天邑TEWA-707G光猫获取超密教程
 https://www.right.com.cn/forum/thread-8257312-1-1.html
-```
+
 ftp 192.168.1.1 \\到光猫 用普通用户身份登录
 
 get userconfig/cfg/db_user_cfg.xml \\获取到C:\Users\你的登录名
@@ -265,7 +409,7 @@ https://c78.lanzoub.com/iH0qe08cbe9a  \\把db_user_cfg.xml拖到工具上，会�
 记事本打开 搜索 telecomadmin 即可
 
 记得在光猫里删除电信下发链接TR069_R_VID_46
-```
+
 
 
 TEWA-766G等新款天邑光猫获取超密及开启telnet
@@ -306,7 +450,7 @@ web_passwd="您的超级密码"
 
 移动H2-3s破解Telnet
 https://bbs.luobotou.org/thread-49853-1-1.html
-```
+
 本帖最后由 PencilNavigator 于 2022-4-5 01:55 编辑_  
   
 继我GM232开启telnet成功但没有获取密码后（更新：已破解密码：[https://bbs.luobotou.org/forum.php?mod=viewthread&tid=49623&fromuid=193018](https://bbs.luobotou.org/forum.php?mod=viewthread&tid=49623&fromuid=193018)），我又一光猫破解telnet，没错，那就是H2-3s  
@@ -321,7 +465,7 @@ https://bbs.luobotou.org/thread-49853-1-1.html
 不得不说，某移真是煞费苦心，基本上每一款光猫开启telnet的方法都不一样（GM232的方法就没法用在H2-3s上），而且一些telnet账号是CMCCAdmin但密码不是aDm8H%MdA...  
 如果有同款光猫想折腾的可以参照我的方法试试
 
-```
+
 
 移动吉比特H2-3s 光猫超级密码
 https://www.right.com.cn/forum/thread-4051132-1-1.html
@@ -338,8 +482,27 @@ http://192.168.1.1/hidden_version_switch.gch
 /backupsettings.conf
 fhconf/backpresettings.conf
 http://192.168.1.1/servmngr.html
+192.168.1.1 输入密码进去看到自动拨号页面  然后在原页面上打开http://192.168.100.1/backupsettings.txt
 
 document.getElementById('loginfrm').setAttribute('method','get');  
 document.getElementById('username').value = 'CUAdmin';  
 document.getElementById('password').value = 'CUAdmin';  
 document.getElementById('loginfrm').submit();
+
+
+https://www.right.com.cn/FORUM/thread-8253868-1-1.html
+灵感来自【感谢~！】：【[https://blog.csdn.net/nordpol/article/details/124937187](https://blog.csdn.net/nordpol/article/details/124937187)】  
+详情步骤：  
+【1】保证正常访问光猫web  
+  
+  
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：[http://192.168.1.1/hidden_version_switch.html](http://192.168.1.1/hidden_version_switch.html)，勾选telnet功能，一闪而过不用在意。）  
+  
+  
+【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
+【4】ftp链接光猫。这里我使用的是winscp，ftp连接光猫，账户密码都是useradmin/useradmin（看下图），/var/tmp/目录下，找到telnet_su_passwd 文件，打开即可获得  
+  
+  
+  
+那么上面就是超级密码了。  
+使用超级管理员登录就可以了~~！

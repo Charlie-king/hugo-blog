@@ -321,6 +321,11 @@ if(false)
 ```
 ![](https://s3.bmp.ovh/imgs/2023/07/07/e9a8daf415ce64d3.png)
 
+## 网卡驱动r8168
+
+lspci -v
+查看
+
 ## 参考
 
 > https://www.wanuse.com/2022/01/proxmox-ve.html
