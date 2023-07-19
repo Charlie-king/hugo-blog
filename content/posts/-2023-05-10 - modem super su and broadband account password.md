@@ -38,39 +38,22 @@ seo:
 ---
 
 <!--more-->
+## 通用账号密码
+CMCCAdmin  aDm8H%MdA  
+CMCCAdmin  Cmcc10086#  
+admin  Cmcc10086#  
 
-#### 登录光猫
+CUAdmin  CUAdmin  
 
-忘了宽带账号密码，一种自己查询的途径是登录光猫超级管理员后台查。光猫超级管理员账号密码一般在光猫上贴纸有写。
+telecomadmin  nE7jA%5m  
+telecomadmin  admintelecom  
+telecomadmin  admintelecom
 
-![](https://s3.bmp.ovh/imgs/2023/05/10/636d5de805cbaa29.png)
-
-
-#### 查看宽带账号密码方式
-
-##### 方法1：框架源码查询
-
-- 进到超管界面后，选 网络 - 网络设置 - 网络连接，连接名称切换到 41结尾的项，可以看到拨号账号密码页，右键 查看框架源代码。
-
-![800](https://s3.bmp.ovh/imgs/2023/05/10/67cb8d4034a639fe.png)
-
-**Tips：** 光猫拔了光纤，按reset键重置不会丢失LOID和上网的账号密码，但可以将超级管理员密码重置为默认密码，电信光猫常用的超级管理员账号密码: telecomadmin, nE7jA%5m（此法来源网络未经本人验证）
+运维工厂账号: fiberhomehg2×0  超级密码: hg2×0
 
 
-- 源代码中按ctrl+F搜索宽带账户名，一般后面紧跟的6位数字就是账号密码。（下图红色为账号，绿色为密码）
-![](https://s3.bmp.ovh/imgs/2023/05/10/70584b784c5ae612.png)
 
-- PS：如果看到不是6或8为数字或字符，说明此法不通。
-
-##### 方法2：修改页面元素
-
-法1不通时，可以尝试法2。
-
-- 一样进到可以查看拨号账号密码页，edge或chrome按F12，调出开发者工具，点击element（元素），鼠标点击网页密码那列，在元素中将type="password"改为type="text"，在网页中就看到**密码那里变成了明文显示**，这串字符再用[base64解码](https://base64.us/)一下就是宽带密码了。
-![](https://s3.bmp.ovh/imgs/2023/05/10/d6c53e43741b3cb4.jpg)
-
-
-# 成功案例
+## 成功案例
 
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
@@ -79,6 +62,7 @@ https://www.right.com.cn/forum/thread-2270800-1-1.html
 普通账户登录后，输下面，下载romfile.cfg文件，搜索admin
 http://192.168.1.1/cgi-bin/upgrade.asp
 http://192.168.1.1/romfile.cfg
+
 CMCCAdmin
 aDm8H%MdAPc7T#8Mq
 
@@ -128,7 +112,7 @@ https://www.right.com.cn/forum/thread-8266942-1-1.html
 > 
  1. 使用光猫背后的普通用户名登录进光猫，浏览器复制以下链接打开  
   
-[http://192.168.1.1/usr=CMCCAdmin ... md=1&telnet.gch](http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch)  
+http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch  
   
 2. 电脑启用 telnet  
   
@@ -197,7 +181,7 @@ sidbg 1 DB save
 CUAdmin
 CUAdmin
 
-## 超简单破解上海移动 华为HS8546V5
+### 超简单破解上海移动 华为HS8546V5
 https://www.right.com.cn/forum/thread-4092011-1-1.html
 (出处: 恩山无线论坛)
 
@@ -506,3 +490,36 @@ https://www.right.com.cn/FORUM/thread-8253868-1-1.html
   
 那么上面就是超级密码了。  
 使用超级管理员登录就可以了~~！
+
+
+
+
+#### 登录光猫
+
+忘了宽带账号密码，一种自己查询的途径是登录光猫超级管理员后台查。光猫超级管理员账号密码一般在光猫上贴纸有写。
+
+![](https://s3.bmp.ovh/imgs/2023/05/10/636d5de805cbaa29.png)
+
+
+#### 查看宽带账号密码方式
+
+##### 方法1：框架源码查询
+
+- 进到超管界面后，选 网络 - 网络设置 - 网络连接，连接名称切换到 41结尾的项，可以看到拨号账号密码页，右键 查看框架源代码。
+
+![800](https://s3.bmp.ovh/imgs/2023/05/10/67cb8d4034a639fe.png)
+
+**Tips：** 光猫拔了光纤，按reset键重置不会丢失LOID和上网的账号密码，但可以将超级管理员密码重置为默认密码，电信光猫常用的超级管理员账号密码: telecomadmin, nE7jA%5m（此法来源网络未经本人验证）
+
+
+- 源代码中按ctrl+F搜索宽带账户名，一般后面紧跟的6位数字就是账号密码。（下图红色为账号，绿色为密码）
+![](https://s3.bmp.ovh/imgs/2023/05/10/70584b784c5ae612.png)
+
+- PS：如果看到不是6或8为数字或字符，说明此法不通。
+
+##### 方法2：修改页面元素
+
+法1不通时，可以尝试法2。
+
+- 一样进到可以查看拨号账号密码页，edge或chrome按F12，调出开发者工具，点击element（元素），鼠标点击网页密码那列，在元素中将type="password"改为type="text"，在网页中就看到**密码那里变成了明文显示**，这串字符再用[base64解码](https://base64.us/)一下就是宽带密码了。
+![](https://s3.bmp.ovh/imgs/2023/05/10/d6c53e43741b3cb4.jpg)
