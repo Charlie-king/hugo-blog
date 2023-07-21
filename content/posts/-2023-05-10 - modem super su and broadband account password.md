@@ -72,10 +72,13 @@ CMCCAdmin
 aDm8H%MdAPc7T#8Mq  
 
 
-### 移动光猫GS3101
+### 移动光猫GS3101（GS3202不同，试标密）
 
-测试：
+**测试：**
 http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg  
+
+**浙江金华：GS3202尝试标密成功**  
+CMCCAdmin  aDm8H%MdA  
 
 1. 登陆路由器之后打开这个地址  
 http://192.168.1.1/cgi-bin/getGateWay.cgi  
@@ -111,7 +114,7 @@ web_passwd="CMCCAdmin****"
 &amp;等于&
 
 
-### 移动光猫-吉比特 H3-1S/H3-2S/H3-2Sse
+### 移动光猫-吉比特 H3-1S/H3-2S/H3-2Sse/H5-8 
 获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
 
  1. 使用光猫背后的普通用户名登录进光猫，浏览器复制以下链接打开  
@@ -170,7 +173,7 @@ sidbg 1 DB p DevAuthInfo
   
 输入下面的命令更改CMCCAdmin的密码：  
 
-```
+```shell
 sidbg 1 DB set DevAuthInfo 0 Pass admin  
 ```
   
@@ -178,7 +181,7 @@ Pass后面是CMCCAdmin的登录密码
   
 再输入下面的命令保存即可  
 
-```
+```shell
 sidbg 1 DB save
 ```
 
@@ -186,19 +189,75 @@ sidbg 1 DB save
 
 ftp账密是相同的：e8ftp
 
+移动吉比特系列光猫均可参考。
+
+
+
 ### 联通MSG2100E-UPON-4V
 
 管理员192.168.1.1/cu.php   
 CUAdmin   
 CUAdmin   
 
-### 超简单破解上海移动 华为HS8546V5
-https://www.right.com.cn/forum/thread-4092011-1-1.html
-(出处: 恩山无线论坛)
+### 河南联通HS8346V5，HS8346R5，上海移动 华为HS8546V5
+> https://www.right.com.cn/forum/thread-4092011-1-1.html
+> https://www.xxshell.com/3387.html
+
+**备份：**  
+通过光猫背面user用户登录，记录光猫原有的 INTERNET的VLAN、LOID、MAC地址、宽带账号密码。
+
+1. 拔掉光猫的光纤，并重启光猫
+
+2. 使用工具开启光猫Telnet功能
+
+电脑直接连接光猫，使用"ONT组播配置工具V3-V5_2.0.exe"选择V5版本，然后点击启动，启动后会配置光猫右侧状态栏显示success，然后光猫LED灯会全亮，然后**手动断电重启光猫**。
+
+![](https://www.xxshell.com/wp-content/uploads/2021/05/1-1.jpg?v=1663209753)
+
+3. 获取光猫超级用户密码
+
+光猫启动后，telnet 192.168.1.1  
+输入用户名:root   密码:adminHW  登录shell。其他可能密码：
+- Hw8@CMCC
+- Hw8@cMcc
+- useradmin
+- admin
+- hg2x0
+配置下面的命令获取密文密码：
+
+```
+su
+shell
+cp  /mnt/jffs2/hw_ctree.xml /mnt/jffs2/myhwcfg.xml.gz
+cd /mnt/jffs2/
+aescrypt2 1 myhwcfg.xml.gz tem
+gzip -d myhwcfg.xml.gz
+grep WebUserInfoInstance myhwcfg.xml
+```
+
+![](https://www.xxshell.com/wp-content/uploads/2021/05/2.jpg?v=1663209753)
+
+4. 解密超级用户密文密码
+
+使用"华为光猫配置加解密工具.exe"软件将密文复制到软件里面选择$2解密，则可以得到明文的超级密码。
+
+![](https://www.xxshell.com/wp-content/uploads/2021/05/2.1.jpg?v=1663209752)
+
+5. 配置光猫桥接
+
+1) 登录光猫
+
+使用链接http://192.168.1.1/cu.html输入解密的密码，然后登录，登录关闭无用功能，如关闭WIFI功能等。
+
+2) 修改桥接
+
+直接选择internet连接，将WAN类型修改为"桥接WAN"，然后就大功告成了，然后就可以使用路由器拨号了。
+
+![](https://www.xxshell.com/wp-content/uploads/2021/05/3.jpg?v=1663209751)
 
 
 
-### 烽火HG261GS/HG260
+### 广西电信 烽火HG261GS/HG260 
 （广西电信）
 
 	192.168.1.1
@@ -342,6 +401,19 @@ db_user_cfg.xml
 5看看value有没有值  
 如果是0改成1，如果是1改成0，或者user 改为 root、CMCCAdmin
 6输入user原密码，输入要修改的管理员密码
+
+## 失败
+### [x]上海移动 中兴ZXHN F7610M
+使能失败，重置后自动下发路由拨号，删除后监控69后无法注册。
+有个py脚本可以使能。
+
+
+### [x]天翼HG2543C3不行，C2，C1可以
+c1，c2的使能telnet在c3不生效
+
+### [x]山东联通
+
+### [x]中兴ZXHNG7615
 
 ## 其他
 例如HS8545M5的超级账户密码是（广东等地区）：CMCCAdmin aDm8H%MdA
@@ -548,7 +620,7 @@ https://www.right.com.cn/FORUM/thread-8253868-1-1.html
 【1】保证正常访问光猫web  
   
   
-【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：[http://192.168.1.1/hidden_version_switch.html](http://192.168.1.1/hidden_version_switch.html)，勾选telnet功能，一闪而过不用在意。）  
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：http://192.168.1.1/hidden_version_switch.html，勾选telnet功能，一闪而过不用在意。）  
   
   
 【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
