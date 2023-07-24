@@ -117,7 +117,7 @@ web_passwd="CMCCAdmin****"
 ### 移动光猫-吉比特 H3-1S/H3-2S/H3-2Sse/H5-8（H2-3不同）
 获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
 
-**（H2-3不同，福建移动标密）**
+**（H2-3不同，下面方法不适用，福建移动标密）**
 
  1. 使用光猫背后的普通用户名登录进光猫，浏览器复制以下链接打开  
   
@@ -276,6 +276,8 @@ root  hg2x0
 ### 烽火吉比特 HG6145F/HG6045F3
 移动烽火-吉比特-JBT-HG6145F超密破解-TJ
 https://www.right.com.cn/forum/thread-8252579-1-1.html
+北京联通/移动 烽火HG6145D/HG6145D1 获取管理员密码 改省份 改桥接 破解 拆解
+https://www.right.com.cn/forum/thread-8230876-1-1.html
 
 第一步：打开telnet  
 获得光猫的MAC地址  
@@ -311,6 +313,8 @@ Config\factorydir# show admin_pwd
   
 这时将显示你的超级密码  
 Success! admin_pwd=CMCCAdminFa5&G3Pk
+
+
 
 
 
