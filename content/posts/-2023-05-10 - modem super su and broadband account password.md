@@ -3,7 +3,7 @@ title: "光猫超密和宽带拨号账号密码查询资料"
 subtitle: ""
 date: 2023-05-10T10:57:27+08:00
 
-lastmod: 2023-07-22T10:57:27+08:00
+lastmod: 2023-08-13T10:57:27+08:00
 draft: flase
 description: "三个运营商的光猫超密和查看宽带账号密码的资料整理"
 keywords: 
@@ -26,7 +26,7 @@ author: "Kingpo"
 authorLink: ""
 authorEmail: ""
 
-comment: true
+comment: false
 weight: 0
 
 toc:
@@ -39,18 +39,44 @@ seo:
 
 <!--more-->
 ## 通用账号密码
-CMCCAdmin  aDm8H%MdA  
-CMCCAdmin  Cmcc10086#  
-admin  Cmcc10086#  
+```账号
+CMCCAdmin
+```
 
-CUAdmin  CUAdmin  
+```
+admin
+```
 
-telecomadmin  nE7jA%5m  
-telecomadmin  admintelecom  
-telecomadmin  admintelecom
+```
+aDm8H%MdA
+```  
 
-运维工厂账号: fiberhomehg2x0  超级密码: hg2x0
+```
+Cmcc10086#
+```
 
+
+CUAdmin    
+```
+telecomadmin
+```
+
+```
+nE7jA%5m
+```  
+
+```
+admintelecom
+``` 
+
+HG烽火运维工厂账号: 
+```
+fiberhomehg2x0
+```  
+
+```
+hg2x0
+```
 
 
 ## 成功案例
@@ -114,16 +140,32 @@ web_passwd="CMCCAdmin****"
 &amp;等于&
 
 
-### 移动光猫-吉比特 H3-1S/H3-2S/H3-2Sse/H5-8（H2-3，H2-3s重置非标密，H2-2广西可以，新疆移动H2-2新版本不行）
+### 移动光猫-吉比特 H3-1S/H3-2S/H3-2Sse/H5-8/GS8108/GM630（H2-3，H2-3s重置非标密，H2-2广西可以，新疆移动H2-2新版本不行，南京H2-3e）
 获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
 
 **（H2-3不同，下面方法不适用，福建移动标密）**
 
  1. 使用光猫背后的普通用户名登录进光猫，浏览器复制以下链接打开  
-  
-http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch  
+```
+http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
+```
 
+```
 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+
+```
+192.168.1.1/cgi-bin/getGateWay.cgi
+```
+
+
+江苏南京移动H2-3e（商宽测试成功），用第二个开启telnet，查看tn账密，进入后su提权，密码aDm8H%MdA，然后改超管密码。
+
+广西GM630-R，重置后，下发配置，再去删除tr069和关闭上报，第二个地址开启telnet。
+
+![](https://s3.bmp.ovh/imgs/2023/08/04/fbdb3ccf174e7fa0.png)
+
+
 或者reset后，超密进去，在 安全 telnet配置，启用telnet，再注册loid。
 H2-2部分测试失败，河南平顶山T51G测
 
@@ -141,14 +183,28 @@ H2-2部分测试失败，河南平顶山T51G测
 telnet 192.168.1.1  
   
 用户名、密码如下：  
-CMCCAdmin  
-aDm8H%MdA    
+```
+CMCCAdmin
+```  
+
+```
+aDm8H%MdA
+```
+联通telenet账户密码：
+```
+admin
+```
+
+```
+chzhdpl@246
+```
 
 注意：密码默认不显示 不需要重复输入  
 
 输su 提权，密码也是aDm8H%MdA，输入符由/$变成 /#，就成功登录了。
 
 1. 查看一下登陆信息,可以看到账号密码全部进行了加密  
+
 ```
 sidbg 1 DB p DevAuthInfo
 ```  
@@ -188,7 +244,7 @@ sidbg 1 DB p DevAuthInfo
 输入下面的命令更改CMCCAdmin的密码：  
 
 ```shell
-sidbg 1 DB set DevAuthInfo 0 Pass admin  
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
 ```
   
 Pass后面是CMCCAdmin的登录密码  
@@ -250,18 +306,61 @@ send，开启的telnet，意思是将光猫的telnet账号密码分别设置为`
 
 https://www.5v13.com/mesh/26321.html
 
+### 移动贝尔G-140-MD
+
+Password：*****（移动的光认证密码，对应电信联通的loid）  
+INTERNET_*_VID_**（上网的VLAN ID号）  
+VOICE_*_VID_*（语音鉴权配置和密码）  
+Other_*_VID_*（IPTV参数）  
+（由于楼主没办理iptv和固话，所以我这里是空的，这两个参数请自行百度需要备份的内容）  
+你的宽带账号  
+你的宽带密码
+
+开机正常上网状态，直接拔掉光纤！（不这样操作它会自动还原配置）  
+用尖锐物品按住背面的复位孔十秒以上，直到自动重启！
+**账号：CMCCAdmin**  
+**密码：aDm8H%MdA**  
+**个别地区可能是：**  
+**账号：admin**  
+**密码：Cmcc10086#**  
+登录成功之后在地址栏访问这个地址，点击开启telnet：  
+```
+http://192.168.1.1/system.cgi?telnet
+```
+进入网络，远程管理菜单里找到password认证，填入你刚才备份的password，点应用。![](https://s1.ax1x.com/2020/03/17/8de8Te.jpg)  
+接下来插上光纤，回到后台主页，如果没问题的话就会开始自动下发配置：
+
+
+### 吉比特GM630，GM232
+https://www.right.com.cn/forum/thread-4267874-1-1.html
+请全部理解且做好足够心理准备再继续进行。重置光猫之后不能上网，如果你自己设置不成功，就得打电话叫装维上门修复。  
+1、捅复位键，45～60秒。  
+2、打开登录页面，用管理员帐号CMCCAdmin和初始密码aDm8H%MdA登录进去。  
+3、在此页面  
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+开启telnet,LAN，保存  
+4、退出登录，到主页“注册安装"，填入ONT密码，操作业务下发  
+5、下发完成后，现在可以正常上网，然后再提供远程
+6、使用windows自带的telnet，或者Xshell、SecureCRT等工具连接到光猫，登录用户CMCCAdmin，密码输入光猫反面写的user密码@C1，如xxxxxxxx@C1。（我这里是C1，如果不对请尝试省份首字母，比如@BJ）  
+待出现~$符号后，输入sidbg 1 DB p DevAuthInfo，超级密码一目了然。
+
+
 ### 联通MSG2100E-UPON-4V
 
 管理员192.168.1.1/cu.php   
 CUAdmin   
 CUAdmin   
 
-### 河南联通HS8346V5，HS8346R5，上海移动 华为HS8546V5
+### 河南联通HS8346V5，HS8346R5，上海移动 华为HS8546V5 山东联通HS8346X6
 > https://www.right.com.cn/forum/thread-4092011-1-1.html
 > https://www.xxshell.com/3387.html
 
 **备份：**  
 通过光猫背面user用户登录，记录光猫原有的 INTERNET的VLAN、LOID、MAC地址、宽带账号密码。
+
+- 拔光纤，重置，CUAdmin进入，导出配置文件，解密，修改telnet，user提权，超密变化参数设0。注册，导入文件。
 
 1. 拔掉光猫的光纤，并重启光猫
 
@@ -330,7 +429,7 @@ telecomadmin18597177
 开telnet  
 root  hg2x0
 
-### 烽火吉比特 HG6145F/HG6045F3
+### 烽火吉比特 HG6145F/HG6045F3 移动联通电信
 移动烽火-吉比特-JBT-HG6145F超密破解-TJ
 https://www.right.com.cn/forum/thread-8252579-1-1.html
 北京联通/移动 烽火HG6145D/HG6145D1 获取管理员密码 改省份 改桥接 破解 拆解
@@ -347,7 +446,13 @@ arp -a 192.168.1.1
   
 浏览器中录入
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=2025D2C72800
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=
+485AEA2DA583
+```
+
+```电信
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=
+485AEA2DA583
 ```
 这个等号后面写上你上面获得的MAC 字母大写去除横线然后回车，将会提示telnet已启用。  
   
@@ -481,6 +586,29 @@ http://192.168.1.1/cu.html
 ```
 账户CUAdmin 密码11223344 设置完插上光纤就行  
 
+### 河南联通F657GV9改桥接
+
+改桥接，先记录Loid，直接断光纤，重置，进超管CUAdmin，改好桥接后，注册即可。
+
+vlan id：22
+ppp
+039407181531
+
+loid
+0774758096
+user
+cu79ct5f
+
+
+loid
+0774758355
+
+宽带账号
+039407286778
+
+user
+密码
+e6ya664z
 
 ### 中兴F650全系使能
 
@@ -541,7 +669,7 @@ db_user_cfg.xml
 ### 中兴系列天翼4.0（浙江江苏）获取方法
 https://www.right.com.cn/forum/thread-8163087-1-1.html
 
-第一步光猫拔掉光纤 然后恢复出厂设置 然后进行破解
+1. 第一步光猫拔掉光纤 然后恢复出厂设置 然后进行破解
 
 factorymode_crack.exe工具所在位置自己修改  
 然后输入
@@ -555,36 +683,29 @@ factorymode_crack.exe -l xxx open -i 192.168.1.1 -p 8080
 
 telnet 192.168.1.1
 
-
-确保自己的Windows安装了telnet服务 具体可以百度下  
-使用临时的帐号密码登录telnet  
+确保自己的Windows安装了telnet服务，使用临时的帐号密码登录telnet  
 
 登录完成我们获取一下光猫的配置我们需要得到telnet的永久帐号和密码  
-  
-接着打开TFTP软件 在telnet中输入  
+打开TFTP软件，在telnet中输入  
 
 ```
 tftp -p -l userconfig/cfg/db_user_cfg.xml -r db_user_cfg.xml 192.168.1.2
 ```
-
-
 ip根据TFTP软件中的ip进行修改  
   
 
-这样我们就得到了光猫的配置文件但是这个配置是加密的 我们需要解密 此Telnet窗口不要关闭接下来还需要用到  
+这样我们就得到了光猫的配置文件但是这个配置是加密的，我们需要解密，此Telnet窗口不要关闭接下来还需要用到  
   
-使用CMD 打开ztecfg.exe软件所在位置 ztecfg.exe 和光猫配置放在同一目录  
-
+使用CMD 打开ztecfg.exe软件所在位置 ztecfg.exe 和光猫配置放在同一目录 
 ```
 .\ztecfg.exe -d AESCBC -i .\db_user_cfg.xml -o break.cfg
 ```
 
-完成后我们会得到一个break.cfg 文件 打开文件搜索 关键字找到TelnetCfg  
+完成后我们会得到一个break.cfg 文件 打开文件搜索 关键字找到TelnetCfg 
   
 查看user得到Telnet 永久账户和密码
 
 > user
-
 > ZTEGC4813648
 
 但是这个帐号和密码暂时还不能登录Telnet  
@@ -667,10 +788,6 @@ csdn：
 ### [x]上海移动 中兴ZXHN F7610M
 使能失败，重置后自动下发路由拨号，删除后监控69后无法注册。
 有个py脚本可以使能。
-
-
-### [x]天翼HG2543C3不行，C2，C1可以
-c1，c2的使能telnet在c3不生效
 
 ### [x]山东联通
 
@@ -755,7 +872,7 @@ cuadmin28563AFA4BA0
 50E24EBCB7D1
 http://192.168.1.1/telnet?enable=1&key=50E24EBCB7D1
 
-192.168.2.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=28563AFA4BA0   （光猫mac，大写或小写）
+192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=28563AFA4BA0   （光猫mac，大写或小写）
 
 lnadmin12643745
 
