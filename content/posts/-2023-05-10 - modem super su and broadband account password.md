@@ -316,19 +316,45 @@ Other_*_VID_*（IPTV参数）
 你的宽带账号  
 你的宽带密码
 
+**法一：直接查**
+```
+http://192.168.1.1/dumpdatamodel.cgi
+```
+
+查找cmccadmin，base64解密
+
+**法二：重置**
 开机正常上网状态，直接拔掉光纤！（不这样操作它会自动还原配置）  
 用尖锐物品按住背面的复位孔十秒以上，直到自动重启！
-**账号：CMCCAdmin**  
-**密码：aDm8H%MdA**  
-**个别地区可能是：**  
-**账号：admin**  
-**密码：Cmcc10086#**  
+
+重置后标密，注册后密码不会马上变更，可以删除069。
+
+账号：CMCCAdmin  
+密码：aDm8H%MdA  
+个别地区可能是：  
+账号：admin  
+密码：Cmcc10086#
 登录成功之后在地址栏访问这个地址，点击开启telnet：  
 ```
 http://192.168.1.1/system.cgi?telnet
 ```
 进入网络，远程管理菜单里找到password认证，填入你刚才备份的password，点应用。![](https://s1.ax1x.com/2020/03/17/8de8Te.jpg)  
 接下来插上光纤，回到后台主页，如果没问题的话就会开始自动下发配置：
+
+telnet登录的话并不需要输入用户名和密码就可以直接登录，实际上登陆的用户名是root，密码不得而知，hg2x0，但是可以用passwd命令修改。用修改后的密码和用户名root可以登录TTL。cfe的用户名密码为telecomadmin和nE7jA%5m
+
+移动光猫帐号 CMCCAdmin密码 aDm8H%MdA
+最后附上setttt大神发出的关于路由模式下弹注册提示的解决办法。
+
+设备注册提示：1是关闭，0是开启
+```
+cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Status 0
+```
+
+```
+cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
+```
+
 
 
 ### 吉比特GM630，GM232
@@ -943,6 +969,7 @@ https://www.right.com.cn/forum/thread-2270800-1-1.html
 直接访问
 http://192.168.1.1/cgi-bin/upgrade.asp
 下载romfile
+
 搜索：
    注意看是这个0
 <Entry0 Active="Yes" username="CMCCAdmin"
