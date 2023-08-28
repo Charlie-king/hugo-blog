@@ -78,8 +78,45 @@ fiberhomehg2x0
 hg2x0
 ```
 
+```开启烽火隐藏页面
+http://192.168.1.1/logoffaccount.html
+```
+
+联通光猫超级管理员访问地址：192.168.1.1/cu.html
+上海联通：用户名与超密同是 CUAdmin(本人测试成功登陆了)
+
+浙江/内蒙/河北: cuadmin 
+辽宁：lnadmin 
+青海：qhuniadmin 
+湖南：CUAdmin#HGU 
+重庆：cqunicom 
+北京：123qweasdzxc 
+海南：cu@HNunicom 
+黑龙江：8MCU@HLJ
+
+广东省联通光猫超级密码汇总，广东联通用户可以自行测试超密。
+全省智能网关（HGU）光猫自动开通实行路由模式，自动开通后无需拨号直接插网线使用，
+如有不需要路由模式可以将光猫调测为桥接模式，
+方式如下，
+1:根据光猫背面的账号密码进行调试，
+
+2使用联通光猫统一账号密码，账号统一CUAdmin，密码
+华为光猫联通维护帐号密码：cuadmin00259e
+烽火光猫联通维护帐号密码：cuadmin741e93  
+创维光猫联通维护帐号密码：cuadmin2c1875
+中兴光猫联通维护帐号密码：cuadmin309935   cuadmin38e1aa
+贝尔光猫联通维护帐号密码：cuadmin4cf2bf  
+天邑光猫联通维护帐号密码：cuadmin9c32a9  
+友华光猫联通维护帐号密码：cuadmin34e71c 
+
+
+中兴F607ZA查看超级管理员密码
+Telnet连接光猫，用户名root，密码Zte521，输入命令sendcmd 1 DB p DevAuthInfo即可查看所有的用户名密码，
+但是中兴F607ZA比较奇葩，普通用户和超级管理员登录的页面是不同的，超级管理员的登录页面是：http://192.168.1.1/cu.html
 
 ## 成功案例
+
+
 
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
@@ -290,7 +327,8 @@ vi /tmp/debug-decry-cfg
 移动吉比特系列光猫均可参考。
 
 ### H2-3可尝试
-火狐浏览器插件，HTTP Header Live。  
+
+特定版本的火狐浏览器插件，HTTP Header Live。  
 打开`HTTP Header Live`插件，在页面上随便点击一个页面，再次查看`HTTP Header Live`插件，捕捉到了`post`信息，选择一个post。  
 post修改为：
 ```
@@ -360,7 +398,7 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ### 吉比特GM630，GM232
 https://www.right.com.cn/forum/thread-4267874-1-1.html
 请全部理解且做好足够心理准备再继续进行。重置光猫之后不能上网，如果你自己设置不成功，就得打电话叫装维上门修复。  
-1、捅复位键，45～60秒。  
+1、捅复位键，45～60秒。很关键，捅后，要断电重启。 
 2、打开登录页面，用管理员帐号CMCCAdmin和初始密码aDm8H%MdA登录进去。  
 3、在此页面  
 ```
@@ -390,7 +428,7 @@ CUAdmin
 
 1. 拔掉光猫的光纤，并重启光猫
 
-2. 使用工具开启光猫Telnet功能
+2. 使用工具开启光联通猫Telnet功能
 
 电脑直接连接光猫，使用"ONT组播配置工具V3-V5_2.0.exe"选择V5版本，然后点击启动，启动后会配置光猫右侧状态栏显示success，然后光猫LED灯会全亮，然后**手动断电重启光猫**。
 
@@ -440,6 +478,14 @@ telecomadmin18597177
 ![](https://www.xxshell.com/wp-content/uploads/2021/05/3.jpg?v=1663209751)
 
 
+```
+http://192.168.1.1/bridge_route.gch
+```
+
+```
+
+```
+
 
 ### 广西电信 烽火HG261GS/HG260 
 （广西电信）
@@ -471,27 +517,49 @@ arp -a 192.168.1.1
 这时将显示你的光猫MAC，红色位置就是。  
   
 浏览器中录入
+```移动
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=0846C7B92980
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=
-485AEA2DA583
+
+```联通
+http://192.168.1.1/telnet?enable=1&key=24B7DAFA5770
 ```
 
 ```电信
 http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=
 485AEA2DA583
 ```
+
+```
+root  或者  admin
+```
+
+```
+Fh@4D4F70
+```
+
 这个等号后面写上你上面获得的MAC 字母大写去除横线然后回车，将会提示telnet已启用。  
   
 第二部 获得超密  
 打开CMD命令窗口录入：telnet 192.168.1.1  
 链接成功后输入账号：admin 在北京天津这边用这个admin，其他地方如果不管用就试试  root  
-录入密码为  Fh@+你上面获得的MAC的后六位大写。  
+录入密码为  Fh@644D90+你上面获得的MAC的后六位大写。  
 链接成功后将会显示一个#  
-  
+Fh@FA5770
   
 继续在#后录入  
-load_cli factory  
-Config\factorydir# show admin_name  
+```
+load_cli factory
+```
+ 
+Config\factorydir#   
+```
+show admin_name
+```
+
+```
+show admin_pwd
+```
 
 这时将显示你的超级账号名称  
 Success! admin_name=CMCCAdmin  
@@ -578,7 +646,8 @@ https://www.right.com.cn/forum/thread-8279408-1-1.html
 详情步骤：  
 【1】保证正常访问光猫web  
 
-【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：http://192.168.1.1/hidden_version_switch.html，勾选telnet功能，一闪而过不用在意。）  
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：http://192.168.1.1/hidden_version_switch.html
+勾选telnet功能，一闪而过不用在意。）  
 
 账户密码都是useradmin/useradmin  
 【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
@@ -616,25 +685,6 @@ http://192.168.1.1/cu.html
 
 改桥接，先记录Loid，直接断光纤，重置，进超管CUAdmin，改好桥接后，注册即可。
 
-vlan id：22
-ppp
-039407181531
-
-loid
-0774758096
-user
-cu79ct5f
-
-
-loid
-0774758355
-
-宽带账号
-039407286778
-
-user
-密码
-e6ya664z
 
 ### 中兴F650全系使能
 
@@ -968,6 +1018,8 @@ https://www.right.com.cn/forum/thread-2270800-1-1.html
 ```
 直接访问
 http://192.168.1.1/cgi-bin/upgrade.asp
+http://192.168.1.1/romfile.cfg
+
 下载romfile
 
 搜索：
