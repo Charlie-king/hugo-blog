@@ -55,8 +55,10 @@ aDm8H%MdA
 Cmcc10086#
 ```
 
-
-CUAdmin    
+```
+CUAdmin  
+```
+  
 ```
 telecomadmin
 ```
@@ -101,12 +103,19 @@ http://192.168.1.1/logoffaccount.html
 1:根据光猫背面的账号密码进行调试，
 
 2使用联通光猫统一账号密码，账号统一CUAdmin，密码
+
 华为光猫联通维护帐号密码：cuadmin00259e
+
 烽火光猫联通维护帐号密码：cuadmin741e93  
+
 创维光猫联通维护帐号密码：cuadmin2c1875
+
 中兴光猫联通维护帐号密码：cuadmin309935   cuadmin38e1aa
+
 贝尔光猫联通维护帐号密码：cuadmin4cf2bf  
+
 天邑光猫联通维护帐号密码：cuadmin9c32a9  
+
 友华光猫联通维护帐号密码：cuadmin34e71c 
 
 
@@ -501,12 +510,13 @@ http://192.168.1.1/bridge_route.gch
 开telnet  
 root  hg2x0
 
-### 烽火吉比特 HG6145F/HG6045F3 移动联通电信
+### 烽火吉比特 HG6145F/HG6045F3 移动联通 HG5143F电信
 移动烽火-吉比特-JBT-HG6145F超密破解-TJ
 https://www.right.com.cn/forum/thread-8252579-1-1.html
 北京联通/移动 烽火HG6145D/HG6145D1 获取管理员密码 改省份 改桥接 破解 拆解
 https://www.right.com.cn/forum/thread-8230876-1-1.html
-
+电信烽火HG5143F光猫开启telnet获取超级密
+https://think-me.github.io/post/2023/04/08/18531/index.html
 第一步：打开telnet  
 获得光猫的MAC地址  
 电脑打开CMD界面，输入   
@@ -518,7 +528,7 @@ arp -a 192.168.1.1
   
 浏览器中录入
 ```移动
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=0846C7B92980
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=54E0053E36C0
 ```
 
 ```联通
@@ -535,8 +545,18 @@ root  或者  admin
 ```
 
 ```
-Fh@4D4F70
+Fh@3E36C0
 ```
+
+电信telnet账密是
+```
+telecom
+```
+
+```
+nE7jA%5m
+```
+输su再输Fh@
 
 这个等号后面写上你上面获得的MAC 字母大写去除横线然后回车，将会提示telnet已启用。  
   
