@@ -38,7 +38,7 @@ seo:
 ---
 
 <!--more-->
-## 通用账号密码
+ ## 通用账号密码
 ```账号
 CMCCAdmin
 ```
@@ -87,7 +87,7 @@ http://192.168.1.1/logoffaccount.html
 联通光猫超级管理员访问地址：192.168.1.1/cu.html
 上海联通：用户名与超密同是 CUAdmin(本人测试成功登陆了)
 
-浙江/内蒙/河北: cuadmin 
+浙江/内蒙/河北/浙江: cuadmin 
 辽宁：lnadmin 
 青海：qhuniadmin 
 湖南：CUAdmin#HGU 
@@ -125,10 +125,137 @@ Telnet连接光猫，用户名root，密码Zte521，输入命令sendcmd 1 DB p D
 
 ## 成功案例
 
+### 天邑TEWA 700G
+#### 电信
+法1：192.168.1.1  普通管理员进入，关闭电脑防火墙。  
+在“Windows PowerShell（管理员）”中按顺序输入命令
+
+输入 ftp 192.168.1.1
+
+输入 密码（光猫后面贴出的登录密码）
+
+输入 cd ..
+
+输入 cd var
+
+输入 cd config
+``
+输入 
+```
+get lastgood.xml c:\aa.xml
+```
+
+以上完成之后会在C盘生成一个aa.xml文件。
+搜索此配置文件
+
+### 友华PT926G/E
+#### 电信
+法1：ftp  
+普通管理员登录，打开powershell
+
+
+法2：telnet
+普通管理员登录，网页开启telnet，三网适用。
+```
+http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
+```
+telnet用户名密码：普通账号命令残缺，输入目录后双击tap能补全显示目录
+移动：
+```
+yhtcAdmin
+```
+```
+Cec@YHfw
+```
+su
+```
+aDm8H%MdA
+```
+联通：
+```
+yhtcAdmin
+```
+```
+Cuc@YHfw
+```
+su
+```
+CUAdmin
+```
+电信
+
+```
+admin
+```
+```
+TeleCom_1234
+```
+su
+```
+TeleCom_mac后6位小写
+```
+
+
+
+
+### 烽火HG6201M
+
+1. 开telnet，
+```
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1
+```
+
+2. telnet账户密码
+```
+root
+```
+
+```
+hg2x0
+```
+或者Fh@MAC后6位大写
+```
+root/admin
+```
+```
+Fh@21IY23
+```
+
+3. 输入命令
+```
+cat /flash/cfg/agentconf/factory.conf
+```
+
+第一二行就是超管账户密码。宽带密码网页端可看。
+
+
+### H60G/H61G/H80G
+
+
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+admin
+```
+1234qwer@@
+```
+
+```
+sidbg 1 DB set DevAuthInfo 0 User CMCCAdmin
+```
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass aDm8H%MdA
+```
+```shell
+sidbg 1 DB save
+```
+
 
 
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
+
 
 ### 北京移动吉比特SK-D746，联通吉比特UNG310H
 普通账户登录后，输下面，下载romfile.cfg文件，搜索admin  
@@ -186,7 +313,7 @@ web_passwd="CMCCAdmin****"
 &amp;等于&
 
 
-### 移动光猫-吉比特 H3-1S/H3-2S/H3-2Sse/H5-8/GS8108/GM630（H2-3，H2-3s重置非标密，H2-2广西可以，新疆移动H2-2新版本不行，南京H2-3e）
+### 移动H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/GS8108/GM630（H2-3，H2-3s重置非标密，H2-2广西可以，新疆移动H2-2新版本不行，南京H2-3e）
 获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
 
 **（H2-3不同，下面方法不适用，福建移动标密）**
@@ -526,18 +653,18 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC，红色位置就是。  
   
-浏览器中录入
-```移动
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=54E0053E36C0
+浏览器中录入  
+移动
 ```
-
-```联通
-http://192.168.1.1/telnet?enable=1&key=24B7DAFA5770
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=54E0240007C0
 ```
-
-```电信
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=
-485AEA2DA583
+联通
+```
+http://192.168.1.1/telnet?enable=1&key=ACC4A959D450
+```
+电信
+```
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=28F7D63F3A5C
 ```
 
 ```
@@ -545,8 +672,12 @@ root  或者  admin
 ```
 
 ```
-Fh@3E36C0
+Fh@0007C0
 ```
+```
+hg2x0
+```
+
 
 电信telnet账密是
 ```
