@@ -40,7 +40,7 @@
 
 -  nickname: biaoblog - 个人博客
    url: http://biaoblog.cn
-   avatar: http://biaoblog.run:3000/uploads/1653375680185.png
+   avatar: http://biaoblog.cn:3000/uploads/1642658080996.jpg
    discription: 专注web技术分享
 
 -  nickname: 点滴日记
@@ -104,18 +104,17 @@
    url: https://tangx.in/
    avatar: https://tangx.in/logo/avatar.png
 
-- name: 二丫讲梵 
+- nickname: 二丫讲梵 
   discription: 💻学习📝记录🔗分享 
   avatar: https://file.mcaoyuan.com/blog/IMG_1477.JPG
   url: https://wiki.eryajf.net/  
 
-- name: 马草原 の Blog
+- nickname: 马草原 の Blog
   discription: 记录成长，分享生活～
   avatar: https://wiki.eryajf.net/img/logo.png 
   url: https://www.mcaoyuan.com
 
-
-- name: 免费 clash 节点
+- nickname: 免费 clash 节点 
   discription: 免费公益 SSR/V2ray/Shadowrocket/Clash 节点 / 小火箭订阅链接 | 科学上网 | 免费梯子
   avatar: https://clashgithub.com/wp-content/uploads/avatar.png
   url: https://clashgithub.com
