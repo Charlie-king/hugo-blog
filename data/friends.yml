@@ -69,7 +69,7 @@
    discription: Let’s start talking
 
 -  nickname: 爱编程的小明
-   url: https://blog.kobal.cn/
+   url: https://blog.kobal.top/
    avatar: https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/avatar.webp
    discription: 不要温和地走进那个良夜 
 
@@ -106,10 +106,19 @@
 
 - name: 二丫讲梵 
   discription: 💻学习📝记录🔗分享 
-  avatar: https://wiki.eryajf.net/img/logo.png 
+  avatar: https://file.mcaoyuan.com/blog/IMG_1477.JPG
   url: https://wiki.eryajf.net/  
 
+- name: 马草原 の Blog
+  discription: 记录成长，分享生活～
+  avatar: https://wiki.eryajf.net/img/logo.png 
+  url: https://www.mcaoyuan.com
 
+
+- name: 免费 clash 节点
+  discription: 免费公益 SSR/V2ray/Shadowrocket/Clash 节点 / 小火箭订阅链接 | 科学上网 | 免费梯子
+  avatar: https://clashgithub.com/wp-content/uploads/avatar.png
+  url: https://clashgithub.com
 
 #-  nickname: 
 #   url: 

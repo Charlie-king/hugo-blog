@@ -463,6 +463,24 @@ vi etc/hosts
 
 支持 Python3、JavaScript、Shell、Typescript 的定时任务管理平台。
 
+```
+version: '2'
+services:
+  web:
+    # alpine 基础镜像版本
+    image: whyour/qinglong:2.15.16
+    # debian-slim 基础镜像版本
+    # image: whyour/qinglong:debian  
+    volumes:
+      - /home/char/compose/ql:/ql/data
+    ports:
+      - "0.0.0.0:5700:5700"
+    environment:
+      # 部署路径非必须，以斜杠开头和结尾，比如 /test/
+      QlBaseUrl: '/'
+    restart: unless-stopped
+```
+
 github: https://github.com/whyour/qinglong
 
 当前个人在用镜像版本：whyour/qinglong:2.15.16

@@ -44,12 +44,12 @@ CMCCAdmin
 ```
 
 ```
-admin
-```
-
-```
 aDm8H%MdA
 ```  
+
+```
+admin
+```
 
 ```
 Cmcc10086#
@@ -354,7 +354,7 @@ sidbg 1 DB set DevAuthInfo 0 User CMCCAdmin
 ```
 
 ```
-sidbg 1 DB set DevAuthInfo 0 Pass aDm8H%MdA
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
 ```
 
 ```
@@ -387,7 +387,6 @@ aDm8H%MdAPc7T#8Mq
 http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg  
 
 **浙江金华：GS3202尝试标密成功**  
-CMCCAdmin  aDm8H%MdA  
 
 1. 登陆路由器之后打开这个地址  
 http://192.168.1.1/cgi-bin/getGateWay.cgi  
@@ -515,7 +514,7 @@ chzhdpl@246
 sidbg 1 DB p DevAuthInfo
 ```  
   
-输入上面的命令后将会显示下面的内容：  
+输入上面的命令后将会显示下面的账号密码经过加密的内容：  
 ```
 <Tbl name="DevAuthInfo" RowCount="2">
 <Row No="0">
