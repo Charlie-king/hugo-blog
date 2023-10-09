@@ -194,14 +194,24 @@ get lastgood.xml c:\aa.xml
 ```
 http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 ```
+电信加8080
+```
+http://192.168.1.1:8080/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
+```
 telnet用户名密码：普通账号命令残缺，输入目录后双击tap能补全显示目录
 移动：
 ```
 yhtcAdmin
 ```
+
 ```
 Cec@YHfw
 ```
+移动pt927G
+```
+Cm1@YHfw
+```
+
 su
 ```
 aDm8H%MdA
@@ -241,6 +251,11 @@ cd /var/config
 ```
 cat lastgood.xml|grep SUSER_PASSWORD
 ```
+直接
+```
+cat /var/config/lastgood.xml | grep "SUSER_PASSWORD"
+```
+
 lastgood.xml  里的拨号密码是初始的，实时的在var/ppp/ppp.conf
 ```
 var/ppp/ppp.conf
@@ -266,10 +281,10 @@ telnet账号为：telecomadmin密码为:TeleCom_1234
 
 
 ### HG6201M
-
+#### 法1
 1. 开telnet
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
 ```
 
 2. telnet账户密码
@@ -285,7 +300,7 @@ hg2x0
 root/admin
 ```
 ```
-Fh@21IY23
+Fh@AE63D0
 ```
 
 3. 输入命令
@@ -294,6 +309,45 @@ cat /flash/cfg/agentconf/factory.conf
 ```
 
 第一二行就是超管账户密码。宽带密码网页端可看。
+
+#### 法2
+192.168.1.1:8080  登录userdmin后打开
+```
+http://192.168.1.1:8080/cgi-bin/baseinfoSet.cgi
+```
+
+直接解密网站：https://www.iwanyx.com/abc/
+在线跑java：https://www.bejson.com/runcode/java/
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+       
+        public static void main(String[] args) {
+
+        Map<String, String> map = new HashMap<>();
+        //  获取信息的方式 http://192.168.1.1:8080/cgi-bin/baseinfoSet.cgi
+        // fixme,下面两行把从路由器拿到的信息放在这里
+        map.put("telecomadmin", "120&105&112&105&103&115&113&101&104&113&109&114&57&56&57&50&56&54&55&49&");
+        map.put("useradmin", "101&104&113&109&114&");
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            StringBuilder stringBuilder = new StringBuilder();
+            String[] split = entry.getValue().split("&");
+            for (String s : split) {
+                int offset = 4;
+                if (stringBuilder.toString().startsWith("telecomadmin")) {
+                    offset = 0;
+                }
+                stringBuilder.append((char) (Integer.parseInt(s) - offset));
+            }
+            map.put(entry.getKey(), stringBuilder.toString());
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
+}
+```
+
 
 ### HG2543C1/HG2541C1电信
 
@@ -362,21 +416,21 @@ https://think-me.github.io/post/2023/04/08/18531/index.html
 ```
 arp -a 192.168.1.1
 ```
-
+Fh@6A3FC4
 这时将显示你的光猫MAC。  
 Fh@D9C610
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACC4A9D5E240
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=3A539CB55564
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=68FEDA5F4195
+http://192.168.1.1/telnet?enable=1&key=C4F0EC6A3FC4
 ```
 电信
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=684AAE780DD1
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=3A539CB55564
 ```
 
 ```
@@ -456,9 +510,6 @@ sidbg 1 DB set DevAuthInfo 0 User CMCCAdmin
 
 ```
 sidbg 1 DB set DevAuthInfo 0 Pass admin1234
-```
-
-```
 sidbg 1 DB save
 ```
 
@@ -579,9 +630,6 @@ sidbg 1 DB p DevAuthInfo
 
 ```shell
 sidbg 1 DB set DevAuthInfo 0 Pass admin1234
-```
-
-```shell
 sidbg 1 DB save
 ```
 
@@ -685,7 +733,7 @@ https://www.5v13.com/mesh/26321.html
 #### H2-3灰色页面，H2-3s蓝色页面无法重置，破不了，TEWA 272G
 
 
-### 移动GS3101（GS3202不同）
+### 移动CM112   GS3101（GS3202不同）
 
 **测试：**
 http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg  
@@ -733,7 +781,40 @@ web_passwd="CMCCAdmin****"
 
 &amp;等于&
 
+### 河南联通sk-d740
 
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+开启telnet。
+
+ftp软件登入，useradmin，useradmin，返回上层目录，进入userconfig/cfg/
+下载db_user_cfg.xml，解码即可。
+
+### 山东联通sk-d740
+
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+开启telnet
+默认版本telnet账号root，Pon521
+山东的user，Pon521，记住注册码，重置或切换版本默认再切换回山东，  
+开telnet，账号user，CUAdmin，su密码：CUAdmin  
+注册下发数据，更改超密。
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+
+解密参照下面，xor，routerpass均不能解
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+查看解密后的文件
+```
+vi /tmp/debug-decry-cfg
+```
 
 
 ### 移动G-140-MD
@@ -804,7 +885,7 @@ http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 ```
 sidbg 1 DB p DevAuthInfo
 ```
-
+55jkh@vu@C1
 
 ### 北京移动SK-D746，SK740S，联通UNG310H
 普通账户登录后，输下面，下载romfile.cfg文件，搜索admin  
@@ -861,7 +942,7 @@ gzip -d myhwcfg.xml.gz
 grep WebUserInfoInstance myhwcfg.xml
 ```
 
-telecomadmin18597177
+elecomadmin18597177
 
 ![](https://www.xxshell.com/wp-content/uploads/2021/05/2.jpg?v=1663209753)
 
@@ -923,9 +1004,15 @@ sendcmd 1 DB set TelnetCfg 0 ExitTime 999999
 sendcmd 1 DB set TelnetCfg 0 InitSecLvl 3  
 sendcmd 1 DB set TelnetCfg 0 CloseServerTime 9999999  
 sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1  
+sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin1234
 sendcmd 1 DB save
 ```  
-  
+
+```
+sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin1234
+sendcmd 1 DB save
+```
+
    /etc/init.d/regioncode       查询地区代码  
    upgradetest sdefcof 310     310代表广东，其他地区找对应代码  
 设置国家地区代码：   upgradetest sdefconf [序号]  
@@ -975,7 +1062,10 @@ sendcmd 1 DB reboot
 详情步骤：  
 【1】保证正常访问光猫web  
 
-【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：http://192.168.1.1/hidden_version_switch.html
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：
+```
+http://192.168.1.1/hidden_version_switch.html
+```
 勾选telnet功能，一闪而过不用在意。）  
 
 账户密码都是useradmin/useradmin  
@@ -1184,6 +1274,77 @@ Pass就是超级密码了
 如果是0改成1，如果是1改成0，或者user 改为 root、CMCCAdmin
 6输入user原密码，输入要修改的管理员密码
 
+### 宽带密码md5解密
+电信和移动的光猫（华为制造）一般都使用`sha256(md5(明文密码))`作为加密手段（加密后是64位密文）
+在线网站：
+```
+https://c.runoob.com/compile/9/
+```
+跑pyhton代码，暴力破解
+```python
+import hashlib
+
+def sha256(todo):
+    return hashlib.sha256(str(todo).encode()).hexdigest()
+
+
+def md5(todo):
+    return hashlib.md5(str(todo).encode()).hexdigest()
+
+
+def find_secret(secret, max_len):
+    for i in range(1, max_len):
+        for v in range(0, 10**i):
+            s = sha256(md5(str(v).zfill(i)))
+            if s == secret:
+                print(f'find: {s} = {v}')
+                return v
+
+
+# 8: 这里是最长到8位密码。可以将数字调大，获取更长的密码
+find_secret('8567D4C66584D68D710E2728D22B3EDF0F0434F6C682A3BEAE184F5DC6241AD2', 8)
+    
+```
+
+### 改sn
+
+setmac show  
+查询所有ID和SN  
+修改SN码：setmac 1 2177 xxxxxxxx [SN 为8字符]  
+修改设备标识: setmac 1 512 xxxxxxxxxxxxxxxxx [设备标识位17位字符]  
+修改SN:（也就是loid码光猫的入网sn码） setmac 1 2177 xxxxxxxx [SN为8字符]setmac 1 2178 xxxxxxxxx [SN为9字符]  
+SN号其实有两个，2177是8位，还有个2178是9位，前面有个大写的G，就跟包装盒和设备上面条码印的一样。其实完整的loid（PONLOID[ID: 2180]）光猫的loid是由厂商代码（VENDORID[ID: 2176]4位数）+编码（GPONSN[ID: 2177]8位）组成的；  
+修改MAC地址:  
+    setmac 1 256 00:00:00:00:00:00  
+  
+    setmac 1 257 00:00:00:00:00:00  
+  
+    setmac 1 258 00:00:00:00:00:00  
+  
+    setmac 1 259 00:00:00:00:00:00  
+  
+    setmac 1 260 00:00:00:00:00:00  
+  
+SN和设备标识一定要输入大写字母，mac输入小写字母
+
+## 步骤
+1.  光猫背部user进入，
+
+2.  电脑网口直连光猫网口1，不要经过路由器，同时用手机<流量>热点给电脑供网（手机USB线或热点）
+
+3.  注意要先拔光纤，除网线外，都拔，再拿个针捅reset孔60秒，所有灯闪灭2次再松开，重启，全程拔光纤。
+
+4.  捅后光猫后台输入
+
+192.168.1.1
+
+CMCCAdmin，aDm8H%MdA登录进去说明捅成功了，联系我下一步
+
+192.168.1.1/cu.html
+
+CUAdmin，CUAdmin登录进去说明捅成功了，联系我下一步
+
+5.  光纤等我说插再插
 
 ## 网站
 恩山：https://www.right.com.cn
@@ -1342,7 +1503,7 @@ https://www.right.com.cn/forum/thread-2270800-1-1.html
 ```
 直接访问
 http://192.168.1.1/cgi-bin/upgrade.asp
-http://192.168.1.1/romfile.cfg
+http://192.168.2.1/romfile.cfg
 
 下载romfile
 
