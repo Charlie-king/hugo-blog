@@ -1078,7 +1078,16 @@ http://192.168.1.1/hidden_version_switch.html
 ### 江苏联通HN8145XR超密CUAdmin
 tr069-45
 vlan id：2205
-![](https://s3.bmp.ovh/imgs/2023/08/01/de41a08a87e15728.png)
+
+### 山东联通dt741-csf
+打开，里面有loid
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+切换版本，恢复出厂设置。
+telnet账号root，密码不知。
+
+CUAdmin登录后，删除tr069，新建上网链接，loid输入保存，登录页注册，自动拨上号。
 
 
 ### 郑州联通 dt741-csf  
