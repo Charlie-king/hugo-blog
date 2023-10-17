@@ -268,6 +268,8 @@ http://192.168.1.1:8080/bd/saveconf.asp
 ```
 backup保存配置文件，搜索telecomadmin账号，telnet管理员密码
 
+http://192.168.1.1/bd/vermod.asp 
+
 > 资料
 http://192.168.1.1/bd/modify_hide.asp   临时开telnet  
 http://192.168.1.1/bd/upload_sc.asp      升级固件
@@ -422,7 +424,7 @@ Fh@D9C610
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=3A539CB55564
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACC4A9E92480
 ```
 联通
 ```
@@ -488,7 +490,7 @@ Config\factorydir# show admin_pwd
 这时将显示你的超级密码  
 Success! admin_pwd=CMCCAdminFa5&G3Pk  
 
-### H60G/H61G/H80G
+### H60G/H61G/H80G/T66
 
 移动联通均是，记录vlan id，loid，重置。
 
@@ -503,6 +505,15 @@ admin
 ```
 1234qwer@@
 ```
+
+```
+chzhdpl@246
+```
+su
+```
+aDm8H%MdA
+```
+
 设置修改密码并保存，账号可不动
 ```
 sidbg 1 DB set DevAuthInfo 0 User CMCCAdmin
@@ -557,8 +568,10 @@ http://192.168.1.1/hidden_version_switch.html
 ```
 http://192.168.1.1/hidden_version_switch.gch
 ```
-
-
+sk-d748s
+```
+http://192.168.1.1/cgi-bin/telnet.asp
+```
 2. 电脑启用 telnet  
   
 3. 通过telnet进入光猫  
@@ -629,7 +642,7 @@ sidbg 1 DB p DevAuthInfo
 输入下面的命令更改CMCCAdmin的密码：  
 
 ```shell
-sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB set DevAuthInfo 0 Pass CUAdmin
 sidbg 1 DB save
 ```
 
@@ -655,6 +668,9 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 vi /tmp/debug-decry-cfg
 ```
 
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg | sed -n '/DevAuthInfo/,/\<Tb.>/p' | grep -i "User\|Pass"
+```
 在查看状态下使用vi命令的查找命令进行查找超级管理账号：CMCCAdmin，英文状态下点击【/】后输入CMCCAdmin后，点击回车
 
 > /CMCCAdmin  
@@ -678,6 +694,7 @@ H2-2部分测试失败，河南平顶山测试成功。
 
 ### H2-3/H1s-3
 
+蓝色页面。
 查看设备信息含普通账号密码  
 ```
 http://192.168.1.1/webcmcc/gui_device_info.html?password=!@qw34er&username=root
@@ -730,10 +747,10 @@ send，开启的telnet，意思是将光猫的telnet账号密码分别设置为`
 
 https://www.5v13.com/mesh/26321.html
 
-#### H2-3灰色页面，H2-3s蓝色页面无法重置，破不了，TEWA 272G
+#### H2-3灰色页面，H2-3s蓝色页面在系统里恢复出厂，TEWA 272G
 
 
-### 移动CM112   GS3101（GS3202不同）
+### 移动CM112   GS3101  GS2107（GS3202不同）GS8101用中兴工具
 
 **测试：**
 http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg  
@@ -743,7 +760,7 @@ http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg
 ```
 http://192.168.1.1/cgi-bin/getGateWay.cgi
 ```
-页面返回Yes字样一般即为成功，我这里返回的是：  
+页面返回Yes字样一般即为成功，我这里返回的是：   
 Family GateWay  
 Yes  
 
@@ -761,6 +778,16 @@ admin
 ```
 s2@We3%Dc#
 ```
+四川GS2107的telnet账号：
+```
+CMCCAdmin
+```
+
+```
+s2@We3%Dc#
+```
+
+
 如果登陆后界面一般显示# 就是成功
 
 3. 接着查看密码
@@ -799,7 +826,7 @@ http://192.168.1.1/hidden_version_switch.html
 开启telnet
 默认版本telnet账号root，Pon521
 山东的user，Pon521，记住注册码，重置或切换版本默认再切换回山东，  
-开telnet，账号user，CUAdmin，su密码：CUAdmin  
+开telnet，账号user，CUAdmin，su密码：CUAdmin  ，telnet密码为超密。
 注册下发数据，更改超密。
 
 ```
@@ -816,6 +843,34 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 vi /tmp/debug-decry-cfg
 ```
 
+### 山东联通dt741-csf
+打开，里面有loid
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+切换版本，恢复出厂设置。
+telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
+
+
+### 河南联通 dt741-csf  
+记下LOID还有VID   
+不插光纤按住光猫后边的重置键直到光猫重启，  
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+ 勾选开启telnet    
+telnet登录root user密码+CUAdmin    
+```
+sendcmd 1 DB DevAuthInfo
+sendcmd 1 DB set DevAuthInfo 0 User CUAdmin
+sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin131415
+sendcmd 1 DB save
+```
+
+```
+http://192.168.1.1/cu.html
+```
+账户CUAdmin 密码11223344 设置完插上光纤就行  
 
 ### 移动G-140-MD
 
@@ -896,7 +951,27 @@ http://192.168.1.1/cgi-bin/upgrade.asp
 ```
 http://192.168.1.1/romfile.cfg
 ```
- 
+
+### 贵州SK-D748
+开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
+```
+http://192.168.1.1/cgi-bin/telnet.asp
+```
+打开，下载romfile.cfg
+```
+http://192.168.1.1/cgi-bin/upgrade.asp
+```
+telnet：
+```
+CMCCAdmin
+```
+  
+```
+s2@We3%Dc#
+```
+重新注册后进telnet，找到var/tmp/romfile.cfg
+
+
 
 ### 联通MSG2100E-UPON-4V
 
@@ -1004,9 +1079,13 @@ sendcmd 1 DB set TelnetCfg 0 ExitTime 999999
 sendcmd 1 DB set TelnetCfg 0 InitSecLvl 3  
 sendcmd 1 DB set TelnetCfg 0 CloseServerTime 9999999  
 sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1  
-sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin1234
+sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
 sendcmd 1 DB save
 ```  
+
+sidbg 1 DB set TelnetCfg 0 TSLan_UName root  
+sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
+
 
 ```
 sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin1234
@@ -1051,7 +1130,7 @@ sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
 sendcmd 1 DB save  
 sendcmd 1 DB reboot
 ```
-  
+   sidbg 1 DB delr WANC 0
    删除TR069，禁用RMS服务器使能  
    sendcmd 1 DB p WANC   查询TR069在第几个（0 1 2 3 4等）  
    sendcmd 1 DB delr WANC 0  0代表前面查询TR069在0这一项里面，如果查询是3，那就0改为3  
@@ -1079,36 +1158,7 @@ http://192.168.1.1/hidden_version_switch.html
 tr069-45
 vlan id：2205
 
-### 山东联通dt741-csf
-打开，里面有loid
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-切换版本，恢复出厂设置。
-telnet账号root，密码不知。
 
-CUAdmin登录后，删除tr069，新建上网链接，loid输入保存，登录页注册，自动拨上号。
-
-
-### 郑州联通 dt741-csf  
-记下LOID还有VID   
-不插光纤按住光猫后边的重置键直到光猫重启，  
-```
-http://192.168.1.1/hidden_version_switch.html
-```
- 勾选开启telnet    
-telnet登录root CUAdmin    
-```
-sendcmd 1 DB DevAuthInfo
-sendcmd 1 DB set DevAuthInfo 0 User CUAdmin
-sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin131415
-sendcmd 1 DB save
-```
-
-```
-http://192.168.1.1/cu.html
-```
-账户CUAdmin 密码11223344 设置完插上光纤就行  
 
 ### 河南联通F657GV9改桥接
 
@@ -1315,10 +1365,63 @@ find_secret('8567D4C66584D68D710E2728D22B3EDF0F0434F6C682A3BEAE184F5DC6241AD2', 
     
 ```
 
-### 改sn
+### 改sn，改地区
 
-setmac show  
+中兴光猫：
+查看区域
+```
+cat /etc/init.d/regioncode
+```
+（更改地区数字）
+```
+upgradetest sdefconf 215
+```
+
+```
+ # cat /etc/init.d/regioncode
+300:Jiangsu
+301:Xinjiang
+302:Hainan
+303:Tianjin
+304:Anhui
+305:Shanghai
+306:Chongqing
+307:Beijing
+308:Sichuan
+309:Shandong
+310:Guangdong
+311:Hubei
+312:Fujian
+313:Suzhou
+314:Zhejiang
+315:Shanxi
+316:Hunan
+317:Yunnan
+318:Xizang
+319:Heilongjiang
+320:Guizhou
+321:Shanxi2
+322:Hebei
+323:Ningxia
+324:Guangxi
+325:Jiangxi
+326:Gansu
+327:Qinghai
+328:Xian
+329:Liaoning
+330:Jilin
+331:Neimeng
+332:Henan
+334:Jicai
+```
+
+  
 查询所有ID和SN  
+```
+setmac show
+```
+
+
 修改SN码：setmac 1 2177 xxxxxxxx [SN 为8字符]  
 修改设备标识: setmac 1 512 xxxxxxxxxxxxxxxxx [设备标识位17位字符]  
 修改SN:（也就是loid码光猫的入网sn码） setmac 1 2177 xxxxxxxx [SN为8字符]setmac 1 2178 xxxxxxxxx [SN为9字符]  
@@ -1335,6 +1438,467 @@ SN号其实有两个，2177是8位，还有个2178是9位，前面有个大写�
     setmac 1 260 00:00:00:00:00:00  
   
 SN和设备标识一定要输入大写字母，mac输入小写字母
+
+### 中兴光猫设置telnet命令
+```
+Telnet光猫IP（192.168.1.1）输入用户名（root）和密码（Zte521）即可进入telnet界面，输入一下命令显示所有可以设置的参数：  
+  
+命令：sendcmd 1 DB p all 有些版本不现实，下面我把所有的可设置項列出来了，具体修改命令格式在最下面。  
+  
+0 sendcmd 1 DB p DBBase  
+1 sendcmd 1 DB p WAND  
+  
+2 sendcmd 1 DB p WANCD  
+#wan vlan  
+  
+3 sendcmd 1 DB p WANC  
+#pppoe for wan  
+  
+4 sendcmd 1 DB p WANCServList  
+5 sendcmd 1 DB p WANCIP  
+6 sendcmd 1 DB p WANCIPOpts  
+  
+7 sendcmd 1 DB p WANCPPP  
+#pppoe 信息  
+  
+8 sendcmd 1 DB p IPv6IP  
+  
+9 sendcmd 1 DB p LAND  
+#LAN 口信息  
+  
+10 sendcmd 1 DB p BrGrp  
+#端口桥接情况  
+  
+11 sendcmd 1 DB p BrGrp2ndIP  
+12 sendcmd 1 DB p DHCP6SHostCfg  
+  
+13 sendcmd 1 DB p DHCPSHostCfg  
+#dhcp服务器配置  
+  
+14 sendcmd 1 DB p DHCPSPoll  
+15 sendcmd 1 DB p DHCPSOpts  
+  
+16 sendcmd 1 DB p DHCPSBind  
+#dhcp地址绑定mac  
+  
+17 sendcmd 1 DB p DHCPSHostInfo  
+#dhcp分配情况  
+  
+18 sendcmd 1 DB p DHCPSComm  
+19 sendcmd 1 DB p DHCPCComm  
+20 sendcmd 1 DB p WLANBase  
+  
+21 sendcmd 1 DB p WLANCfg  
+#多SSID信息  
+  
+22 sendcmd 1 DB p WLANWMM  
+23 sendcmd 1 DB p WLANWEP  
+24 sendcmd 1 DB p WLANAD  
+25 sendcmd 1 DB p WLANCountry  
+26 sendcmd 1 DB p WLANWPS  
+27 sendcmd 1 DB p WLANPSK  
+28 sendcmd 1 DB p IGMPProxy  
+  
+29 sendcmd 1 DB p DevInfo  
+#设备信息  
+  
+30 sendcmd 1 DB p UserIF  
+#web登录超时  
+  
+31 sendcmd 1 DB p UserInfo  
+#web用户信息  
+  
+32 sendcmd 1 DB p AccessDev  
+33 sendcmd 1 DB p AclCfg  
+34 sendcmd 1 DB p FWBase  
+35 sendcmd 1 DB p FWLevel  
+36 sendcmd 1 DB p FWALG  
+37 sendcmd 1 DB p FWDMZ  
+38 sendcmd 1 DB p FWIP  
+39 sendcmd 1 DB p FWURL  
+40 sendcmd 1 DB p FWSC  
+41 sendcmd 1 DB p FWPM  
+42 sendcmd 1 DB p FWPT  
+43 sendcmd 1 DB p FWPURL  
+44 sendcmd 1 DB p FWPMAPP  
+45 sendcmd 1 DB p FWPMDEV  
+  
+46 sendcmd 1 DB p SNTP  
+#SNTP设置  
+  
+47 sendcmd 1 DB p QOSBasic  
+48 sendcmd 1 DB p QOSClassification  
+49 sendcmd 1 DB p QOSPolicer  
+50 sendcmd 1 DB p QOSQueue  
+51 sendcmd 1 DB p MAC  
+52 sendcmd 1 DB p L3Forwarding  
+53 sendcmd 1 DB p L3ForwardingRT  
+  
+54 sendcmd 1 DB p MgtServer  
+#cn远程控制选项  
+  
+55 sendcmd 1 DB p ParamAttr  
+56 sendcmd 1 DB p DNSSettings  
+57 sendcmd 1 DB p DNSHostsList  
+58 sendcmd 1 DB p DNSDHCPHostsList  
+59 sendcmd 1 DB p UPnPCfg  
+60 sendcmd 1 DB p UPnPPortMap  
+  
+61 sendcmd 1 DB p DDNSClient  
+62 sendcmd 1 DB p DDNSService  
+63 sendcmd 1 DB p DDNSHostname  
+#自带DDNS  
+  
+64 sendcmd 1 DB p WANDCommCfg  
+65 sendcmd 1 DB p Log  
+  
+66 sendcmd 1 DB p FTPServerCfg  
+67 sendcmd 1 DB p FTPUser  
+#FTP配置  
+  
+68 sendcmd 1 DB p USBStorageParList  
+  
+69 sendcmd 1 DB p TelnetCfg  
+  
+70 sendcmd 1 DB p RouteSYSRT  
+71 sendcmd 1 DB p L2BBridge  
+72 sendcmd 1 DB p L2BFilter  
+73 sendcmd 1 DB p L2BMarking  
+74 sendcmd 1 DB p L2BAvailIF  
+  
+75 sendcmd 1 DB p PortBinding  
+76 sendcmd 1 DB p PortControl  
+#端口配置  
+  
+77 sendcmd 1 DB p Upgrade  
+78 sendcmd 1 DB p MacFilter  
+79 sendcmd 1 DB p RIPConf  
+80 sendcmd 1 DB p RIPIf  
+81 sendcmd 1 DB p UsbBakRst  
+82 sendcmd 1 DB p USBBackup  
+83 sendcmd 1 DB p APPList  
+84 sendcmd 1 DB p PRoute  
+85 sendcmd 1 DB p Tr069Queue  
+86 sendcmd 1 DB p AttrInfo  
+87 sendcmd 1 DB p VoIPPortCfg  
+88 sendcmd 1 DB p VoIPVMediaCfg  
+89 sendcmd 1 DB p VoIPFMediaCfg  
+90 sendcmd 1 DB p VoIPMMediaCfg  
+91 sendcmd 1 DB p VoIPPhyNumCfg  
+92 sendcmd 1 DB p VoIPBearInfo  
+93 sendcmd 1 DB p VoIPSIP  
+94 sendcmd 1 DB p VoIPSLCTIMECfg  
+95 sendcmd 1 DB p VoIPSLCINFCfg  
+96 sendcmd 1 DB p VoIPVoiceProfile  
+97 sendcmd 1 DB p VoIPVPCallTimer  
+98 sendcmd 1 DB p VoIPVPService  
+99 sendcmd 1 DB p VoIPVPCodec  
+100 sendcmd 1 DB p VoIPVPDTMF  
+101 sendcmd 1 DB p VoIPVPLine  
+102 sendcmd 1 DB p VoIPCSLine  
+103 sendcmd 1 DB p VoIPSIPServer  
+104 sendcmd 1 DB p VoIPSIPTimer  
+105 sendcmd 1 DB p VoIPDTMFADVCfg  
+106 sendcmd 1 DB p VoIPFaxModemRptCtrlCfg  
+107 sendcmd 1 DB p VoIPDSPCIDCfg  
+108 sendcmd 1 DB p VoIPBGWCfg  
+109 sendcmd 1 DB p VoIPDSPMISCCfg  
+110 sendcmd 1 DB p VoIPRTPADVCfg  
+111 sendcmd 1 DB p VoIPRTCPADVCfg  
+112 sendcmd 1 DB p VoIPRTPREDCfg  
+113 sendcmd 1 DB p VoIPTONECfg  
+114 sendcmd 1 DB p VoIPTONEEventCfg  
+115 sendcmd 1 DB p VoIPTONEDescrptCfg  
+116 sendcmd 1 DB p VoIPTONEPatternCfg  
+117 sendcmd 1 DB p VoIPT38ADVCfg  
+118 sendcmd 1 DB p VoIPRingerCfg  
+119 sendcmd 1 DB p VoIPRingerEventCfg  
+120 sendcmd 1 DB p VoIPRingerDescrptCfg  
+121 sendcmd 1 DB p VoIPRingerPatternCfg  
+122 sendcmd 1 DB p VoIPVoiceProcCfg  
+123 sendcmd 1 DB p VoIPPortStauts  
+124 sendcmd 1 DB p VoIPSIPEventSubscribe  
+125 sendcmd 1 DB p VoIPSIPLine  
+126 sendcmd 1 DB p VoIPIADDiag  
+127 sendcmd 1 DB p VoIPSRTermination  
+128 sendcmd 1 DB p VoIPSRDigitCollect  
+129 sendcmd 1 DB p VoIPSROfficeGroupPrefix  
+130 sendcmd 1 DB p VoIPSROfficePrefix  
+131 sendcmd 1 DB p VoIPSROfficeDigitMap  
+132 sendcmd 1 DB p VoIPSRRouteDigitMap  
+133 sendcmd 1 DB p VoIPSRBwList  
+134 sendcmd 1 DB p VoIPSRPhyRefListEnable  
+135 sendcmd 1 DB p VoIPLineCodec  
+136 sendcmd 1 DB p VoIPDMTimerCfg  
+137 sendcmd 1 DB p VoIPRTPCfg  
+138 sendcmd 1 DB p VoIPRTCPCfg  
+139 sendcmd 1 DB p VoIPSRTPCfg  
+140 sendcmd 1 DB p VoIPFaxT38Cfg  
+141 sendcmd 1 DB p VoIPFaxVBDCfg  
+142 sendcmd 1 DB p VoIPModemVBDCfg  
+143 sendcmd 1 DB p VoIPSessionCfg  
+144 sendcmd 1 DB p VoIPLastSessionCfg  
+145 sendcmd 1 DB p VoIPLineCfg  
+146 sendcmd 1 DB p VoIPLineHistoryCfg  
+147 sendcmd 1 DB p VoIPLineLastCfg  
+148 sendcmd 1 DB p VoIPHook  
+149 sendcmd 1 DB p VoIPHookVPCfg  
+150 sendcmd 1 DB p VoIPIVRPsd  
+151 sendcmd 1 DB p VoIPvirtual**P  
+152 sendcmd 1 DB p VoIPvirtual**PPrefix  
+153 sendcmd 1 DB p VOIPvirtual**UMBERPROC  
+154 sendcmd 1 DB p VOIPVPSPEEDDIAL  
+155 sendcmd 1 DB p VOIPVPCallFeature  
+156 sendcmd 1 DB p VOIPVPSERVICEKEY  
+157 sendcmd 1 DB p VoIPPoorQualityList  
+158 sendcmd 1 DB p VoipCapabilitiesCodec  
+159 sendcmd 1 DB p VOIPCAP  
+160 sendcmd 1 DB p VOIPPhyInterface  
+161 sendcmd 1 DB p VOIPPhyCallFeature  
+162 sendcmd 1 DB p VOIPSLMTerm  
+163 sendcmd 1 DB p VOIPSLMWAN  
+164 sendcmd 1 DB p VOIPSLMGlobal  
+165 sendcmd 1 DB p VOIPSLMAD  
+166 sendcmd 1 DB p VOIPSLMSeviceKey  
+167 sendcmd 1 DB p VOIPSLMMedia  
+168 sendcmd 1 DB p VOIPSLMFaxMedia  
+169 sendcmd 1 DB p VOIPSLMVOIPCfg  
+170 sendcmd 1 DB p VOIPSrCommonConfigs  
+171 sendcmd 1 DB p VOIPSrTidConfigs  
+172 sendcmd 1 DB p VOIPSrGroupPrefix  
+173 sendcmd 1 DB p VOIPSrOfficeDiMap  
+174 sendcmd 1 DB p VOIPSrRouteDiMap  
+175 sendcmd 1 DB p VOIPSrBwListInf  
+176 sendcmd 1 DB p VOIPDRSLC  
+177 sendcmd 1 DB p VOIPDSPToneRing  
+178 sendcmd 1 DB p VOIPDSPT38Fax  
+179 sendcmd 1 DB p VOIPDSPVoiceGainEc  
+180 sendcmd 1 DB p VOIPDSPVadCng  
+181 sendcmd 1 DB p VOIPDSPDTMF  
+182 sendcmd 1 DB p VOIPDSPTone  
+183 sendcmd 1 DB p VOIPDSPJitterBuffer  
+184 sendcmd 1 DB p VOIPDSPFaxModemTone  
+185 sendcmd 1 DB p VOIPDSPFaxT38More  
+186 sendcmd 1 DB p VOIPDSPCID  
+187 sendcmd 1 DB p VOIPDSPFaxModemCtrl  
+188 sendcmd 1 DB p VOIPDSPFaxVbd  
+189 sendcmd 1 DB p VOIPDSPModemVbd  
+190 sendcmd 1 DB p VOIPDSPMisc  
+191 sendcmd 1 DB p VOIPRcaCommon  
+192 sendcmd 1 DB p VOIPSIPWANLine  
+193 sendcmd 1 DB p VOIPSIPLANLine  
+194 sendcmd 1 DB p VOIPSIPTimerCfg  
+195 sendcmd 1 DB p VOIPSIPServerCfg  
+196 sendcmd 1 DB p VOIPSIPCfg  
+197 sendcmd 1 DB p VOIPSIPExtraCfg  
+198 sendcmd 1 DB p VOIPSIPEventCfg  
+199 sendcmd 1 DB p VOIPSIPSupportedCfg  
+200 sendcmd 1 DB p VOIPCommTotal  
+201 sendcmd 1 DB p VOIPCommTTY  
+202 sendcmd 1 DB p VOIPCommPort  
+203 sendcmd 1 DB p VOIPExt  
+204 sendcmd 1 DB p VOIPCIDCfg  
+205 sendcmd 1 DB p VOIPVoiceRecord  
+206 sendcmd 1 DB p VOIPIVRPassword  
+207 sendcmd 1 DB p VOIPHookCfg  
+  
+208 sendcmd 1 DB p WANDInstInfo  
+209 sendcmd 1 DB p PortPriority  
+#端口优先级  
+  
+210 sendcmd 1 DB p SambaCfg  
+#samba  
+  
+211 sendcmd 1 DB p TimePolicy  
+#定时策略  
+  
+212 sendcmd 1 DB p PrefixCfg  
+213 sendcmd 1 DB p RaCfg  
+  
+214 sendcmd 1 DB p DMSCfg  
+#DMS配置  
+  
+215 sendcmd 1 DB p MldProxyCfg  
+216 sendcmd 1 DB p PingKeep  
+217 sendcmd 1 DB p PingCfg  
+218 sendcmd 1 DB p DHCP6SPool  
+  
+219 sendcmd 1 DB p UserBehaviorCfg  
+#行为管理  
+  
+220 sendcmd 1 DB p UBApps  
+221 sendcmd 1 DB p UBFlow  
+222 sendcmd 1 DB p UBHttpGetDiag  
+  
+# sendcmd 1 DB set UBHttpGetDiag 0 HttpServerURL  
+  
+  
+223 sendcmd 1 DB p UBTcpConnectDiag  
+224 sendcmd 1 DB p UBDnsQueryDiag  
+225 sendcmd 1 DB p NetMonitorDiagnostics  
+226 sendcmd 1 DB p UBBasicInfo  
+227 sendcmd 1 DB p UBClassification  
+  
+228 sendcmd 1 DB p VLANInfo  
+229 sendcmd 1 DB p PONCfgProduct  
+  
+230 sendcmd 1 DB p BoardInfo  
+#主板信息  
+  
+231 sendcmd 1 DB p LANInfo  
+#端口信息  
+  
+232 sendcmd 1 DB p IGMPProduct  
+233 sendcmd 1 DB p MultiGlobalProduct  
+234 sendcmd 1 DB p MultiPortProduct  
+235 sendcmd 1 DB p MultiWancConfProduct  
+  
+236 sendcmd 1 DB p ETHProduct  
+237 sendcmd 1 DB p ETHCONFProduct  
+  
+238 sendcmd 1 DB p QOSCONFProduct  
+239 sendcmd 1 DB p QOSProduct  
+240 sendcmd 1 DB p QueueWeightProduct  
+241 sendcmd 1 DB p TcToCosProduct  
+242 sendcmd 1 DB p SvlanS2DtagProduct  
+243 sendcmd 1 DB p SvlanMemberCfgProduct  
+244 sendcmd 1 DB p RateChgTcProduct  
+245 sendcmd 1 DB p AddTagProduct  
+246 sendcmd 1 DB p RemoveTagProduct  
+247 sendcmd 1 DB p RuleMacProduct  
+248 sendcmd 1 DB p PortRuleMacProduct  
+249 sendcmd 1 DB p TAGRuleMacProduct  
+250 sendcmd 1 DB p UNTAGRuleMacProduct  
+251 sendcmd 1 DB p DscpToTciProduct  
+252 sendcmd 1 DB p PortQosProduct  
+253 sendcmd 1 DB p EthQosACL  
+254 sendcmd 1 DB p PortFilterProduct  
+255 sendcmd 1 DB p SwitchMonitorProduct  
+256 sendcmd 1 DB p PortDHCPServer  
+  
+257 sendcmd 1 DB print WEBCFG  
+#WEB登陆端口  
+  
+258 sendcmd 1 DB p OMCICFG  
+259 sendcmd 1 DB p ARPDETECTConfig  
+260 sendcmd 1 DB p ARPAGEINGTIME  
+261 sendcmd 1 DB p PdtMiddleWare  
+262 sendcmd 1 DB p ALARMCONFIG  
+263 sendcmd 1 DB p ALARMPARM  
+264 sendcmd 1 DB p MONITORCONFIG  
+265 sendcmd 1 DB p MONITORPARM  
+266 sendcmd 1 DB p MonitorCollectorCfg  
+267 sendcmd 1 DB p MonitorCollectorParm  
+  
+268 sendcmd 1 DB p CltLmt  
+#电信限制  
+  
+269 sendcmd 1 DB p PDTCTUSERINFO  
+270 sendcmd 1 DB p WancPortBindingProduct  
+271 sendcmd 1 DB p DhcpcOption125Product  
+272 sendcmd 1 DB p PDTWANCEXT  
+273 sendcmd 1 DB p WANCPONCFGProduct  
+274 sendcmd 1 DB p WancpppProduct  
+275 sendcmd 1 DB p PDTE8COPT60S  
+276 sendcmd 1 DB p PonCommonCfg  
+277 sendcmd 1 DB p LoopBackCheck  
+278 sendcmd 1 DB p LoopBackCheckAlarm  
+279 sendcmd 1 DB p LoopBackCheckPara  
+280 sendcmd 1 DB p LoopBackCheckVlan  
+281 sendcmd 1 DB p LongLuminousDetect  
+282 sendcmd 1 DB p SimCardInfo  
+283 sendcmd 1 DB p HLTInfo  
+284 sendcmd 1 DB p HLTLanStatInfo  
+285 sendcmd 1 DB p HistoryHLTInfo  
+286 sendcmd 1 DB p HistoryHLTLanStatInfo  
+287 sendcmd 1 DB p DhcpV6Opt16S  
+288 sendcmd 1 DB p Dhcp6cOpt17  
+289 sendcmd 1 DB p Lanusb  
+290 sendcmd 1 DB p Tr069InformParaExtend  
+291 sendcmd 1 DB p PONPower  
+292 sendcmd 1 DB p QosCvpA  
+293 sendcmd 1 DB p QOSRule  
+294 sendcmd 1 DB p QOSType  
+295 sendcmd 1 DB p DOWNETHFLOW  
+296 sendcmd 1 DB p DOWNGEMFLOW  
+297 sendcmd 1 DB p DOWNVLANACTION  
+  
+298 sendcmd 1 DB p GPONCFG  
+#GPON注册信息  
+  
+299 sendcmd 1 DB p OMCIFLOW  
+300 sendcmd 1 DB p OUTINPORTUPETHFLOW  
+301 sendcmd 1 DB p PONALARM  
+302 sendcmd 1 DB p RATECTR  
+303 sendcmd 1 DB p TCIPORTUPETHFLOW  
+304 sendcmd 1 DB p TCI2GEMFLOW  
+305 sendcmd 1 DB p TCI2TCI  
+306 sendcmd 1 DB p TCONT  
+307 sendcmd 1 DB p TCONTQUEUE  
+308 sendcmd 1 DB p UPETHFLOW  
+309 sendcmd 1 DB p UPGEMFLOW  
+310 sendcmd 1 DB p UPVLANACTION  
+311 sendcmd 1 DB p VID2DOWNETHFLOW  
+312 sendcmd 1 DB p VIDPORT2UPETHFLOW  
+313 sendcmd 1 DB p DownVidTci2EthflowProduct  
+314 sendcmd 1 DB p UpVidTci2EthflowProduct  
+315 sendcmd 1 DB p DownEthClassMethodProduct  
+316 sendcmd 1 DB p QOSCONFProduct  
+317 sendcmd 1 DB p QOSProduct  
+318 sendcmd 1 DB p ETHFLOWCLASSMETHODProduct  
+319 sendcmd 1 DB p GEMPORT  
+320 sendcmd 1 DB p VLANTOUPGEMPORTProduct  
+321 sendcmd 1 DB p CatvOpticalPara  
+  
+  
+每一条代码中的“p”代表print，显示的意思，改成“set”，加上用“p”打印出来的表格号、变量名等可以直接修改光猫的所有设置参数。  
+  
+例如：sendcmd 1 DB p MgtServer  
+显示如下内容：  
+  
+<Tbl name="MgtServer" RowCount="1">  
+        <Row No="0">  
+                <DM name="URL" val="http://10.0.0.1"/>  
+                <DM name="UserName" val="hgw"/>  
+                <DM name="Password" val="hgw"/>  
+                <DM name="PeriodicInformEnable" val="1"/>  
+                <DM name="PeriodicInformInterval" val="43200"/>  
+                <DM name="PeriodicInformTime" val="0001-01-01T00:00:00Z"/>  
+                <DM name="ParameterKey" val=""/>  
+                <DM name="ConnectionRequestURL" val="58000"/>  
+                <DM name="ConnectionRequestUsername" val="itms"/>  
+                <DM name="ConnectionRequestPassword" val="itms"/>  
+                <DM name="UpgradesManaged" val="0"/>  
+                <DM name="Event" val=""/>  
+                <DM name="DefaultWan" val="IGD.WD1.WCD1.WCIP1"/>  
+                <DM name="SessionRetryTimes" val="10:10:10:30:60:300:600:3600"/>  
+                <DM name="SupportCertAuth" val="0"/>  
+                <DM name="Tr069Enable" val="0"/>  
+                <DM name="MWSURL" val="http://0.0.0.0:9090"/>  
+                <DM name="InfoStat" val="0"/>  
+                <DM name="InfoDescption" val="3"/>  
+                <DM name="AcsStat" val="0"/>  
+                <DM name="AcsDescption" val="0"/>  
+        </Row>  
+</Tbl>  
+  
+其中，行号“0”，变量名“Tr069Enable”，原来的值是1，可以改成0，关闭运营商远程操控你的光猫，命令如下：  
+  
+命令：sendcmd 1 DB set MgtServer 0 Tr069Enable 0  
+  
+解释：sendcmd 1 DB 设置 表格名 行号 变量名    值  
+  
+      sendcmd 1 DB set WLANCfg 1 11iEncryptType 2  
+  
+      sendcmd 1 DB set WLANCfg 1 ESSID IPTV  
+  
+      sendcmd 1 DB set FTPServerCfg 0 FtpEnable 1  
+  
+      sendcmd 1 DB set PortControl 0 PortValue 88  
+  
+      sendcmd 1 DB set UserIF 0 Timeout 300
+```
+
 
 ## 步骤
 1.  光猫背部user进入，
@@ -1354,6 +1918,68 @@ CMCCAdmin，aDm8H%MdA登录进去说明捅成功了，联系我下一步
 CUAdmin，CUAdmin登录进去说明捅成功了，联系我下一步
 
 5.  光纤等我说插再插
+
+## 案例
+ 
+##### 云南曲靖移动ZXHN F673AV9a
+user
+yt626u64
+
+INTERNET_R_VID_41
+OTHER_B_VID_43
+loid
+0874QLFb093edd836
+
+#### 河南濮阳华龙 联通F677V9
+user
+736ys37p
+
+INTERNET_R_VID_22
+loid
+0252768652
+
+039308262916
+123456
+
+解决：用2，1报账号密码不对
+
+#### 河南郑州金水 联通F657V9
+user
+uh7bs3y4
+可以了
+INTERNET_R_VID_22
+2277743815
+
+037102600592
+123456
+
+#### 辽宁沈阳沈河 联通G7615
+
+3_INTERNET_R_VID_17
+loid
+2041627315
+syl_36408873
+123456
+
+|---|---|
+|运营商|中国联通|
+|设备型号|ZXHN G7615|
+|智能系统|C容器|
+|设备标识号|A0092E-01210BGBCF88B10AB70|
+|批次号|07e6P1N804ce|
+|硬件版本号|V1.3|
+|软件版本号|V2.0.5P1T2|
+|区域码信息|区域码配置正常，区域：辽宁|
+
+解决：成功
+
+#### 吉林松原移动GS2105
+loid
+15284401
+INTERNET_R_VID_4031 
+user
+d5jhr
+
 
 ## 网站
 恩山：https://www.right.com.cn
@@ -1548,8 +2174,6 @@ https://bbs.luobotou.org/thread-49853-1-1.html
 移动吉比特H2-3s 光猫超级密码
 https://www.right.com.cn/forum/thread-4051132-1-1.html
 
-
-
 ## 参考
 > https://blog.csdn.net/weixin_39921904/article/details/124545471
 > https://post.smzdm.com/p/apz3p8w0/
@@ -1560,7 +2184,7 @@ http://192.168.1.1/hidden_version_switch.gch
 /backupsettings.conf
 fhconf/backpresettings.conf
 http://192.168.1.1/servmngr.html
-192.168.1.1 输入密码进去看到自动拨号页面  然后在原页面上打开http://192.168.100.1/backupsettings.txt
+192.168.1.1 输入密码进去看到自动拨号页面  然后在原页面上打开http://192.168.1.1/backupsettings.conf
 
 document.getElementById('loginfrm').setAttribute('method','get');  
 document.getElementById('username').value = 'CUAdmin';  
