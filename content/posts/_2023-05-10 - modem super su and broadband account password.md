@@ -85,7 +85,6 @@ http://192.168.1.1/logoffaccount.html
 ```
 
 联通光猫超级管理员访问地址：192.168.1.1/cu.html
-上海联通：用户名与超密同是 CUAdmin(本人测试成功登陆了)
 
 浙江/内蒙/河北/浙江: cuadmin 
 辽宁：lnadmin  lnadmin
@@ -94,7 +93,7 @@ http://192.168.1.1/logoffaccount.html
 重庆：账号cqadmin 密码cqunicom
 北京：123qweasdzxc 
 海南：cu@HNunicom 
-黑龙江：8MCU@HLJ
+黑龙江：hljcuadmin，8MCU@HLJ
 
 ### 广东联通
 广东省联通光猫超级密码汇总，广东联通用户可以自行测试超密。
@@ -271,6 +270,9 @@ backup保存配置文件，搜索telecomadmin账号，telnet管理员密码
 http://192.168.1.1/bd/vermod.asp 
 
 > 资料
+ [http://192.168.1.1/bd/hide.asp](http://192.168.1.1/bd/hide.asp)  
+[http://192.168.1.1/bd/vermod.asp](http://192.168.1.1/bd/vermod.asp)  
+[http://192.168.1.1/bd/saveconf.asp](http://192.168.1.1/bd/saveconf.asp)
 http://192.168.1.1/bd/modify_hide.asp   临时开telnet  
 http://192.168.1.1/bd/upload_sc.asp      升级固件
 http://192.168.1.1/autorun/acccfg.asp  ADSL宽带上网账号密码填写  
@@ -596,6 +598,13 @@ admin
 ```
 chzhdpl@246
 ```
+UNG220Z（甘肃移动）
+```
+CMCCAdmin
+```
+```
+chzhdpl@246
+```
 
 注意：密码默认不显示 不需要重复输入  
 
@@ -642,10 +651,10 @@ sidbg 1 DB p DevAuthInfo
 输入下面的命令更改CMCCAdmin的密码：  
 
 ```shell
-sidbg 1 DB set DevAuthInfo 0 Pass CUAdmin
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
 sidbg 1 DB save
 ```
-
+find / -name 'debug-decry-cfg'
 6. 直接查询方式
 输入这个命令看看在哪个文件夹
 ```
@@ -808,71 +817,7 @@ web_passwd="CMCCAdmin****"
 
 &amp;等于&
 
-### 河南联通sk-d740
-
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-开启telnet。
-
-ftp软件登入，useradmin，useradmin，返回上层目录，进入userconfig/cfg/
-下载db_user_cfg.xml，解码即可。
-
-### 山东联通sk-d740
-
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-开启telnet
-默认版本telnet账号root，Pon521
-山东的user，Pon521，记住注册码，重置或切换版本默认再切换回山东，  
-开telnet，账号user，CUAdmin，su密码：CUAdmin  ，telnet密码为超密。
-注册下发数据，更改超密。
-
-```
-sidbg 1 DB set DevAuthInfo 0 Pass admin1234
-sidbg 1 DB save
-```
-
-解密参照下面，xor，routerpass均不能解
-```
-sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
-```
-查看解密后的文件
-```
-vi /tmp/debug-decry-cfg
-```
-
-### 山东联通dt741-csf
-打开，里面有loid
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-切换版本，恢复出厂设置。
-telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
-
-
-### 河南联通 dt741-csf  
-记下LOID还有VID   
-不插光纤按住光猫后边的重置键直到光猫重启，  
-```
-http://192.168.1.1/hidden_version_switch.html
-```
- 勾选开启telnet    
-telnet登录root user密码+CUAdmin    
-```
-sendcmd 1 DB DevAuthInfo
-sendcmd 1 DB set DevAuthInfo 0 User CUAdmin
-sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin131415
-sendcmd 1 DB save
-```
-
-```
-http://192.168.1.1/cu.html
-```
-账户CUAdmin 密码11223344 设置完插上光纤就行  
-
-### 移动G-140-MD
+### 移动贝尔G-140-MD
 
 Password：*****（移动的光认证密码，对应电信联通的loid）  
 INTERNET_*_VID_**（上网的VLAN ID号）  
@@ -887,7 +832,23 @@ Other_*_VID_*（IPTV参数）
 http://192.168.1.1/dumpdatamodel.cgi
 ```
 
-查找cmccadmin，base64解密
+查找cmccadmin，supassword（telnet的root密码）解密。
+解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
+```
+python nokia-router-cfg-tool.py -d c6hXbAjsbxg0U5JL6wZztQ==
+```
+telnet：
+user或useradmin  
+密码背部   
+su密码  
+G-140-MF
+```
+8tEETadDzUXc
+```
+G-1425-MB
+```
+GFdN2gMzTYC2
+```
 
 **法二：重置**
 开机正常上网状态，直接拔掉光纤！（不这样操作它会自动还原配置）  
@@ -922,6 +883,77 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ```
 
 
+
+### 河南联通sk-d740
+
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+开启telnet。
+
+ftp软件登入，useradmin，useradmin，返回上层目录，进入userconfig/cfg/
+下载db_user_cfg.xml，解码即可。
+
+### 山东联通sk-d740
+
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+开启telnet
+默认版本telnet账号root，Pon521
+山东的user，Pon521，记住注册码，重置或切换版本默认再切换回山东，  
+开telnet，账号user，CUAdmin，su密码：CUAdmin  ，telnet密码为超密。先登录telnet后，在注册下发数据，更改超密，telnet保持一段时间在线。
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+
+```
+sidbg 1 DB set TelnetCfg 0 TS_Enable 1
+sidbg 1 DB set TelnetCfg 0 Lan_Enable 1
+sidbg 1 DB set TelnetUser 0 Password 123Qwe
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+
+解密参照下面，xor，routerpass均不能解
+```
+sendcmd 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+查看解密后的文件
+```
+vi /tmp/debug-decry-cfg
+```
+
+### 山东联通dt741-csf
+打开，里面有loid
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+切换版本，恢复出厂设置。
+telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
+
+
+### 河南联通 dt741-csf  
+记下LOID还有VID   
+不插光纤按住光猫后边的重置键直到光猫重启，  
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+ 勾选开启telnet    
+telnet登录root user密码+CUAdmin    
+```
+sendcmd 1 DB DevAuthInfo
+sendcmd 1 DB set DevAuthInfo 0 User CUAdmin
+sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin131415
+sendcmd 1 DB save
+```
+
+```
+http://192.168.1.1/cu.html
+```
+账户CUAdmin 密码11223344 设置完插上光纤就行  
 
 ### GM630，GM232
 https://www.right.com.cn/forum/thread-4267874-1-1.html
@@ -979,6 +1011,11 @@ s2@We3%Dc#
 CUAdmin   
 CUAdmin   
 
+### 联通KD-YUN-811G
+```
+http://192.168.1.1/backupsettings.conf
+```
+
 ### 河南联通HS8346V5，HS8346R5，上海移动 华为HS8546V5 山东联通HS8346X6
 > https://www.right.com.cn/forum/thread-4092011-1-1.html
 > https://www.xxshell.com/3387.html
@@ -1000,6 +1037,7 @@ CUAdmin
 
 光猫启动后，telnet 192.168.1.1  
 输入用户名:root   密码:adminHW  登录shell。其他可能密码：
+如果不对，捅光猫复位后即可恢复adminHW，loid数据还在。（福建电信hs8145xr）
 - Hw8@CMCC
 - Hw8@cMcc
 - useradmin
@@ -1088,8 +1126,10 @@ sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
 
 
 ```
+sidbg 1 DB set TelnetUser 0 Username 123Qwe
+sidbg 1 DB set TelnetUser 0 Password 123Qwe
 sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin1234
-sendcmd 1 DB save
+sidbg 1 DB save
 ```
 
    /etc/init.d/regioncode       查询地区代码  
@@ -1899,6 +1939,38 @@ Telnet光猫IP（192.168.1.1）输入用户名（root）和密码（Zte521）即
       sendcmd 1 DB set UserIF 0 Timeout 300
 ```
 
+### 贝尔光猫改sn，mac
+```
+ritool set MfrID HWTC #生产厂商代码HWTC代表华为，NBEL代表贝尔，ZTEG代表中兴等等
+
+ritool set Mnemonic HG8010C #设备型号
+
+ritool set YPSerialNum NBELFBC1423D #设备SN码
+
+ritool set G984Serial 0BF58729 #设备SN码后8位
+
+ritool set MACAddress 74:88:2A:0B:F5:87 #MAC地址
+
+ritool set SSID-1Name CMCC-bM4K #2.4G无线名称
+
+ritool set SSID-1Password m9Vx2d76 #2.4G无线密码
+
+ritool set SSID-2Name CMCC-2aGR-5G #5G无线名称
+
+ritool set SSID-2Password 4wi2s2yj #5G无线密码
+
+ritool set UserPassword y6jcr #设备标签纸上的USER登录密码
+
+ritool set HardwareVersion 3FE47339BAAA #硬件版本号
+
+以上就是一些参数设置的参考
+
+设置完成后需要输入以下命令进行恢复出厂一次
+
+cfgcli –r
+
+然后输入reboot让光猫重启，完成后在用浏览器进管理页面就发现相关参数已经按照自己的要求改变了。
+```
 
 ## 步骤
 1.  光猫背部user进入，
@@ -1980,6 +2052,37 @@ INTERNET_R_VID_4031
 user
 d5jhr
 
+#### 河南南阳卧龙 联通G7615
+bkxu4ct7
+INTERNET_R_VID_22
+0179174441
+
+037703024589
+
+#### 山东青岛联通G7615
+
+053203252498
+_INTERNET_R_VID_3425
+2_IPTV_B_VID_1119
+HS33637080
+【telnet开不起】
+
+
+#### 辽宁大连甘联通G7615
+user
+zzsebbx5
+
+INTERNET_R_VID_10
+TR069_R_VID_46
+loid
+2100359060
+V2.0.5P1T3
+
+dl01010839@163
+
+lnadmin
+admin1234
+【成功】
 
 ## 网站
 恩山：https://www.right.com.cn
