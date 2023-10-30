@@ -231,7 +231,7 @@ CUAdmin
 ```
 admin
 ```
-
+TeleCom_23d8d6
 ```
 1234
 ```
@@ -284,7 +284,7 @@ http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi  永久telnet，�
 telnet账号为：telecomadmin密码为:TeleCom_1234
 
 
-### HG6201M
+### 烽火HG6201M
 #### 法1
 1. 开telnet
 ```
@@ -430,7 +430,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACC4A9E92480
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=C4F0EC6A3FC4
+http://192.168.1.1/telnet?enable=1&key=FHTT71F9F3DA
 ```
 电信
 ```
@@ -492,7 +492,7 @@ Config\factorydir# show admin_pwd
 这时将显示你的超级密码  
 Success! admin_pwd=CMCCAdminFa5&G3Pk  
 
-### H60G/H61G/H80G/T66
+### 锐捷H60G/H61G/H80G/T66
 
 移动联通均是，记录vlan id，loid，重置。
 
@@ -796,7 +796,6 @@ CMCCAdmin
 s2@We3%Dc#
 ```
 
-
 如果登陆后界面一般显示# 就是成功
 
 3. 接着查看密码
@@ -817,12 +816,12 @@ web_passwd="CMCCAdmin****"
 
 &amp;等于&
 
-### 移动贝尔G-140-MD
+### 贝尔移动G-140-MD
 
-Password：*****（移动的光认证密码，对应电信联通的loid）  
-INTERNET_*_VID_**（上网的VLAN ID号）  
-VOICE_*_VID_*（语音鉴权配置和密码）  
-Other_*_VID_*（IPTV参数）  
+Password：（移动的光认证密码，对应电信联通的loid）  
+INTERNET__VID_（上网的VLAN ID号）  
+VOICE__VID_（语音鉴权配置和密码）  
+Other__VID_（IPTV参数）  
 （由于楼主没办理iptv和固话，所以我这里是空的，这两个参数请自行百度需要备份的内容）  
 你的宽带账号  
 你的宽带密码
@@ -835,7 +834,7 @@ http://192.168.1.1/dumpdatamodel.cgi
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d c6hXbAjsbxg0U5JL6wZztQ==
+python nokia-router-cfg-tool.py -d bHjJfYjUoXGGOMvIaanu8Q==
 ```
 telnet：
 user或useradmin  
@@ -848,6 +847,33 @@ G-140-MF
 G-1425-MB
 ```
 GFdN2gMzTYC2
+```
+
+```
+ritool set Custom AH  这是切换电信界面  
+ritool set Custom CM  这是切换移动界面 
+cfgcli -r  恢复出厂设置，再reboot重启生效。
+```
+升级固件地址
+```
+http://192.168.1.1/upgrade.cgi
+```
+修改sn，mac
+```
+ritool set YPSerialNum NBELB12A99EF  
+ritool set MACAddress F9:49:E9:9E:9F:A0
+cfgcli -r
+reboot  
+
+修改无线名称SSID  
+ritool set SSID-1Name niyaodemingzi
+cfgcli -r
+reboot
+```
+设备注册提示：1是关闭，0是开启
+```
+cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Status 0  
+cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1  
 ```
 
 **法二：重置**
@@ -883,6 +909,19 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ```
 
 
+
+### 江苏福建创维SK-D848，SK-D742
+
+绿色登录页
+user页面开启telnet
+
+telnet
+账号
+root
+无线wifi密码+超密aDm8H%MdA
+su
+aDm8H%MdA
+或超密
 
 ### 河南联通sk-d740
 
@@ -984,6 +1023,21 @@ http://192.168.1.1/cgi-bin/upgrade.asp
 http://192.168.1.1/romfile.cfg
 ```
 
+### 江苏创维SK-D848，SK742
+
+user页面开启telnet
+
+telnet
+root
+无线wifi密码+超密aDm8H%MdA
+
+开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
+```
+http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
+```
+
+
+
 ### 贵州SK-D748
 开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
 ```
@@ -1002,7 +1056,6 @@ CMCCAdmin
 s2@We3%Dc#
 ```
 重新注册后进telnet，找到var/tmp/romfile.cfg
-
 
 
 ### 联通MSG2100E-UPON-4V
@@ -1055,7 +1108,6 @@ gzip -d myhwcfg.xml.gz
 grep WebUserInfoInstance myhwcfg.xml
 ```
 
-elecomadmin18597177
 
 ![](https://www.xxshell.com/wp-content/uploads/2021/05/2.jpg?v=1663209753)
 
@@ -1086,19 +1138,14 @@ http://192.168.1.1/bridge_route.gch
 
 ```
 
+换猫后注册不上，弹出强制注册的解决方式，超管登录后导出配置文件，修改下面：
+```
+<X_HW_UserInfo UserName="$24Y`P;n_0(49&lt;s-%sZXu1&amp;du3#4IP=&amp;QOJZKLOSiE$" UserId="" Status="0【这里99改为0】" Limit="10" Times="0" Result="1【这里99改为1】" ForceSupport="1【这里99改为1】" X_HW_InformStatus="0" X_HW_AcsCnnctSatus="0"/>
+```
 
 
 
-----------------------------
-inter  88
-069  57
-*a3Cc6Eq5
-NX02360718
-
-k95120100884279
-779200
-
-### 中兴G7615
+### 中兴系列G7615
 中兴G7615注册50%手动配置上网删除Tr069
 https://www.right.com.cn/forum/thread-8279408-1-1.html
 (出处: 恩山无线论坛)
@@ -1170,11 +1217,23 @@ sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
 sendcmd 1 DB save  
 sendcmd 1 DB reboot
 ```
-   sidbg 1 DB delr WANC 0
-   删除TR069，禁用RMS服务器使能  
-   sendcmd 1 DB p WANC   查询TR069在第几个（0 1 2 3 4等）  
-   sendcmd 1 DB delr WANC 0  0代表前面查询TR069在0这一项里面，如果查询是3，那就0改为3  
-   sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0     RMS服务器不启用周期上报
+删除TR069，禁用RMS服务器使能  
+```
+sidbg 1 DB delr WANC 0
+```
+   
+查询TR069在第几个（0 1 2 3 4等）  
+```
+sendcmd 1 DB p WANC 
+```
+0代表前面查询TR069在0这一项里面，如果查询是3，那就0改为3 
+```
+sendcmd 1 DB delr WANC 0
+```
+RMS服务器不启用周期上报
+```
+sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0
+```
 
 
 ### 联通sk-d740-c，SK-D748-C，SK-D742C，SK-D748
@@ -1194,18 +1253,28 @@ http://192.168.1.1/hidden_version_switch.html
 ### 联通华为HN8145XR
 记下loid，重置，登录CUAdmin，断开光猫，管理，配置文件，导出hw_ctree.xml，用华为解密工具解密，编辑，修改CUAdmin
 
-### 江苏联通HN8145XR超密CUAdmin
-tr069-45
-vlan id：2205
-
-
 
 ### 河南联通F657GV9改桥接
 
 改桥接，先记录Loid，直接断光纤，重置，进超管CUAdmin，改好桥接后，注册即可。
 
-
 ### 中兴F650全系使能
+
+
+ 中兴F412/F460/F612/F660等方法：
+1，开个dos窗口一直ping，用如下命令
+    ping 192.168.1.1 -l 128 -t
+
+2，   再开一个dos窗口
+    输入：telnet 192.168.1.1 10128
+
+    账号：root
+    密码：Zte521
+输入 sendcmd 1 DB p CltLmt （注意空格和大小写）解释：查看一下当前的用户数量
+ 
+输入 sendcmd 1 DB set CltLmt 8 Max 9 （注意空格和大小写）解释：修改最大用户数为9，原来是5，可以改成其他数目，建议最大数目不超过255
+输入 sendcmd 1 DB set CltLmt 8 Enable 0  (注意空格和大小写）解释：去掉限制，部分地区可能有这个检查，为安全起见建议大家将这个值改成0
+输入 sendcmd 1 DB save  (注意空格和大小写）解释：修改保存
 
 https://www.jarvisw.com/?p=1460
 
@@ -1414,7 +1483,7 @@ cat /etc/init.d/regioncode
 ```
 （更改地区数字）
 ```
-upgradetest sdefconf 215
+upgradetest sdefconf 325
 ```
 
 ```
@@ -1972,6 +2041,162 @@ cfgcli –r
 然后输入reboot让光猫重启，完成后在用浏览器进管理页面就发现相关参数已经按照自己的要求改变了。
 ```
 
+### GS3101改sn，mac
+
+
+### 烽火改sn，mac
+
+提升权限时会提示输入密码，密码为：Fh@ABCDEF，其中ABCDEF为光猫设备标识后六位，去掉分隔符，全部大写。
+
+load_cli factory                                                       进入工程模式
+set factorymode enable                                          开启写入模式
+set device_oui ABCDEF                                           设置OUI
+set device_sn ABCDEGFHIJKLMNOPQ                      设置sn
+set onu_mac AB:AB:AB:AB:AB:AB                            设置mac
+set factorymode disable                                         退出写入模式
+exit                                                                        退出工程模式。
+reboot                                                                   重启光猫生效。
+
+
+load preconfig Guangdong     改省份（要注意：有些省份文件缺少，可能会出现访问不了。那就要又重新加别的省份了，直接能打开主页，而且跳出注册面。有风险，自己担风险。）如果改自己省用不了。就网上找下与自己省份参数一样的省份重新load preconfig 省份  
+show area_code （此命令为显示当前加载的省份）  
+现已知参数   广东=广西
+```
+0. add internet_bridge <0-4095>  
+1. calibration 2.4G_wifi <OEM_FACTORY>  
+2. calibration 5G_wifi <OEM_FACTORY>  
+3. cd [..|device|service|switch|codec|dsp|protocol|pon|gpon|omci|wlan|tr069|       wan|igmp|gponl3|oam|ntp|mld|factorydir]  
+4. check preconfig exist <province>  
+  
+5. check preconfig valid <PROVINCE_NAME>  
+6. check sdn_iv  
+7. clear  
+8. clear reboot_num  
+9. clr current_ponmode  
+  
+10. exit  
+11. help  
+12. list  
+13. load preconfig <PROVINCE_NAME>  
+14. restoredefault  
+15. set [batterylight|ponlight|loslight|lan1light|lan2light| lan3light|lan4light|voiplight|post1light|post2light|usblight| wifilight|wpslight|internetlight|usb2light|powerlight] [on|off]  
+16. set alllight [on|off]  
+17. set current_ponmode <PONMODE>  
+  
+18. set default_ponmode <PONMODE>  
+  
+19. set device_oui <DEVICEOUI>  
+20. set device_sn <SERIALNUMBER>  
+21. set factorymode [enable|disable]  
+22. set gpon_sn <GPONSN>  
+23. set mac_num <MACNUM>  
+  
+24. set odminfo <ODMINFO>  
+  
+25. set onu_mac <onumac>  
+26. set pcba_sn <PCBASN>  
+27. set pon_prbs [prbs7|prbs15|prbs23|prbs31]  
+28. set rogue [on|off]  
+29. set sdn_iv  
+30. set set_wifi_calibration_2g  
+31. set set_wifi_calibration_5g  
+32. set ssid2g_name <WIFISSID>  
+33. set ssid2g_pwd <WIFISSIDPWD>  
+34. set ssid5g_name <WIFISSID>  
+35. set ssid5g_pwd <WIFISSIDPWD>  
+36. set ssid_name <SSIDINDEX> <WIFISSID>  
+37. set ssid_pwd <SSIDINDEX> <SSIDPASSWORD>  
+38. set test_ssid2g_name <WIFISSID>  
+39. set test_ssid5g_name <WIFISSID>  
+40. set transceiver_serial <transceiver_serial>  
+  
+41. set transceiver_type <transceiver_type>  
+  
+42. set user_pwd <USERPASSWORD>  
+43. set vendor_id <VENDOR_ID>  
+  
+44. set wifi map <org_file> <dest_file>  
+45. set wifi_security open  
+46. set xvr_tx [on|off]  
+47. show  factorymode  
+48. show acsurl  
+  
+49. show admin_name  
+  
+50. show admin_pwd  
+  
+51. show allinfo  
+52. show area_code  
+  
+53. show br0_mac  
+54. show build_num  
+55. show build_time  
+  
+56. show current_ponmode  
+  
+57. show custom  
+  
+58. show default_ponmode  
+  
+59. show device_model  
+60. show device_oui  
+61. show device_sn  
+62. show frameworkinfo_ct  
+63. show ftp_enable  
+  
+64. show gpon_sn  
+65. show gponpassword  
+66. show history  
+67. show internet_mac  
+68. show mac_num  
+  
+69. show odminfo  
+  
+70. show onu_mac  
+71. show optical_param  
+72. show pcba_sn  
+73. show pon_mac  
+74. show pon_prbs  
+75. show reboot_num  
+76. show reg_info  
+77. show ssid2g_name  
+78. show ssid2g_pwd  
+79. show ssid5g_name  
+80. show ssid5g_pwd  
+81. show ssid_name <SSIDINDEX>  
+82. show ssid_number  
+  
+83. show ssid_pwd <SSIDINDEX>  
+84. show telnet_enable  
+  
+85. show test_ssid2g_name  
+86. show test_ssid5g_name  
+87. show tr069_enable  
+  
+88. show tr069_mac  
+89. show transceiver_serial  
+  
+90. show transceiver_type  
+  
+91. show user_pwd  
+92. show vendor_id  
+  
+93. show version  
+94. show voice_protocol  
+95. show voip_mac  
+96. test sd  
+97. test table  
+98. test usb  
+99. upgrade <FILENAME> <IPADDRESS>  
+100. voice_test [on|off]
+```
+
+
+### 换猫
+
+### 山东联通换猫直接注册即可
+### 安徽移动，loid改sn，mac还不行
+
 ## 步骤
 1.  光猫背部user进入，
 
@@ -2059,6 +2284,12 @@ INTERNET_R_VID_22
 
 037703024589
 
+#### 河南南阳 联通G7615
+0151886222
+037703801367
+3319
+
+
 #### 山东青岛联通G7615
 
 053203252498
@@ -2083,6 +2314,11 @@ dl01010839@163
 lnadmin
 admin1234
 【成功】
+
+#### 江苏苏州移动H60G
+_INTERNET_R_VID_38
+5006234219
+15006234219
 
 ## 网站
 恩山：https://www.right.com.cn
