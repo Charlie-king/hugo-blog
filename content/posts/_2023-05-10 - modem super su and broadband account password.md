@@ -36,7 +36,8 @@ seo:
   images: []
 # See details front matter: /theme-documentation-content/#front-matter
 ---
-
+CMCC-gphaaDm8H%MdA
+CMCC-gphaaDm8H%MdAaDm8H%MdA
 <!--more-->
  ## 通用账号密码
 ```账号
@@ -44,7 +45,7 @@ CMCCAdmin
 ```
 
 ```
-aDm8H%MdA
+htmhf67paDm8H%MdA
 ```  
 
 ```
@@ -132,7 +133,6 @@ sendcmd 1 DB p DevAuthInfo
 ```
 即可查看所有的用户名密码，
 但是中兴F607ZA比较奇葩，普通用户和超级管理员登录的页面是不同的，超级管理员的登录页面是：http://192.168.1.1/cu.html
-
 
 
 ## 成功案例
@@ -405,6 +405,16 @@ http://192.168.1.1/logoffaccount.html
 
 开telnet  
 root  hg2x0
+
+### 河南联通HG6201F
+备份配置文件 
+```
+http://192.168.1.1/backupsettings.conf
+```
+还原配置文件
+```
+http://192.168.1.1/updatesettings.html
+```
 
 ### HG6145F/HG6045F3/HG5143F
 移动烽火-吉比特-JBT-HG6145F超密破解-TJ
@@ -830,11 +840,17 @@ Other__VID_（IPTV参数）
 ```
 http://192.168.1.1/dumpdatamodel.cgi
 ```
+telnet密码搜supassword
+```
+<CLIPrompt ml="256" rw="RW" t="string" v="\\\\$"></CLIPrompt>
+ 
+<SuPassword ml="64" rw="RW" t="string" v="FyoWiA9ebVq8Wcr5t1T+Zg==" ealgo="ab"></SuPassword>
+``` 
 
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d bHjJfYjUoXGGOMvIaanu8Q==
+python nokia-router-cfg-tool.py -d FyoWiA9ebVq8Wcr5t1T+Zg==
 ```
 telnet：
 user或useradmin  
@@ -848,6 +864,11 @@ G-1425-MB
 ```
 GFdN2gMzTYC2
 ```
+G-140W-MD
+```
+gp5mSww4zrzh
+```
+
 
 ```
 ritool set Custom AH  这是切换电信界面  
@@ -1037,8 +1058,7 @@ http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_adva
 ```
 
 
-
-### 贵州SK-D748
+### 贵州移动SK-D748
 开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
 ```
 http://192.168.1.1/cgi-bin/telnet.asp
@@ -1057,12 +1077,50 @@ s2@We3%Dc#
 ```
 重新注册后进telnet，找到var/tmp/romfile.cfg
 
+### TEWA 800G 830G
 
-### 联通MSG2100E-UPON-4V
+备份配置文件 
+```
+http://192.168.1.1/backupsettings.conf
+```
+还原配置文件
+```
+http://192.168.1.1/updatesettings.html
+```
+
+
+### 联通sk-d740-c，SK-D748-C，SK-D742C，SK-D748
+详情步骤：  
+【1】保证正常访问光猫web  
+
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+勾选telnet功能，一闪而过不用在意。）  
+
+账户密码都是useradmin/useradmin  
+【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
+【4】ftp链接光猫。这里我使用的是winscp，ftp连接光猫，账户密码都是useradmin/useradmin（看下图），/var/tmp/目录下，找到telnet_su_passwd 文件，打开即可获得。
+
+### 电信瑞斯达康AC-8
+
+此系列的，基本配置，接口，pon，记好loid，和对应各网络连接，有的静态ip，需要记好。
+
+然后拔光纤捅复位，标密进去，系统管理，新建一个超管，密码要足够复杂!QAZ2wsx#EDC，插回光纤，注册即可。
+
+### 联通瑞斯达康MSG2100E-UPON-4V
 
 管理员192.168.1.1/cu.php   
 CUAdmin   
 CUAdmin   
+
+防火墙关掉，开telnet，新建一个管理员账号，用它账号密码进telnet
+
+telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输入bn ct01  回车后输入end 再回车输入reboot 按y确认，切换公版。
+
+
+这货的uboot密码也很奇葩就在uboot下按ctrl+u键提示输入密码:uboot!
 
 ### 联通KD-YUN-811G
 ```
@@ -1236,20 +1294,6 @@ sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0
 ```
 
 
-### 联通sk-d740-c，SK-D748-C，SK-D742C，SK-D748
-详情步骤：  
-【1】保证正常访问光猫web  
-
-【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-勾选telnet功能，一闪而过不用在意。）  
-
-账户密码都是useradmin/useradmin  
-【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
-【4】ftp链接光猫。这里我使用的是winscp，ftp连接光猫，账户密码都是useradmin/useradmin（看下图），/var/tmp/目录下，找到telnet_su_passwd 文件，打开即可获得。
-
 ### 联通华为HN8145XR
 记下loid，重置，登录CUAdmin，断开光猫，管理，配置文件，导出hw_ctree.xml，用华为解密工具解密，编辑，修改CUAdmin
 
@@ -1257,6 +1301,135 @@ http://192.168.1.1/hidden_version_switch.html
 ### 河南联通F657GV9改桥接
 
 改桥接，先记录Loid，直接断光纤，重置，进超管CUAdmin，改好桥接后，注册即可。
+
+
+###  上海电信F450G
+#### V1.0版本
+useradmin登录后，直接在该页面地址（不需删除内容）后添加
+```
+/dumpmdmd.conf
+```
+下载文件，后搜索，password
+字母加数字的部分即是：Ncqrvlcr36
+Password&gt;Ncqrvlcr36&lt;/Password&gt;
+
+#### V2.0.0P1T1sh，T后面是1不是2就可以用下面的方法，2的话已禁用该法！
+据说捅复位，不会清除loid，不过最好在useradmin里记一下。
+不插光纤，捅复位后，默认开telnet。
+root
+Zte521
+
+捅了无效，拔了光纤浏览器输入
+```
+http://192.168.1.1/return2factory.html
+```
+复位后默认开启telnet，
+root
+Zte521
+
+3、以下命令都要在输入后，都要使用以下命令保存配置  
+     sendcmd 1 DB save  
+     sendcmd 1 DB reboot
+
+4、sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1     插上光纤后不自动关闭telnet
+
+5、sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5     最多能够登录5个用户，避免被锁死
+
+6、破解打开网页自动跳转LOID注册页面  
+     sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+     sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
+
+7、破解最大用户数(本例设置为66，当然你可以直接把这个限制关了)  
+     sendcmd 1 DB set CltLmt 8 Max 66    设置66用户     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制最大用户数
+
+8、sendcmd 1 DB p DevAuthInfo     查看telecomadmin帐号的密码
+
+9、重启光猫，进192.168.1.1的页面，点设备注册，输入宽带识别号后点下一步，完成设备注册！！！
+
+10、再次telnet进光猫，禁用电信远程控制（此项必须在以上步骤完成后进行！！！切记！！！否则无法注册LOID成功！）  
+     sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)  
+     sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0  
+     sendcmd 1 DB set MgtServer 0 Tr069Enable 0
+
+11、用telecomadmin的密码进192.168.1.1的页面，把“网络-网络设置”里连接名称带internet字样（下拉可见）的配置删除，再“新建wan连接”，直接把连接模式从“路由”改成“桥接”就点最下面的“添加”，再点“保存”，重启光猫完工！
+
+12、参考帖子：[http://www.chinadsl.net/forum.ph … 666&_dsign=a2aedfd5](https://ayw.ink/?golink=aHR0cDovL3d3dy5jaGluYWRzbC5uZXQvZm9ydW0ucGhwP21vZD12aWV3dGhyZWFkJmFtcDt0aWQ9MTI3NjY2JmFtcDtfZHNpZ249YTJhZWRmZDU=)  
+[http://www.chinadsl.net/thread-127664-1-1.html](https://ayw.ink/?golink=aHR0cDovL3d3dy5jaGluYWRzbC5uZXQvdGhyZWFkLTEyNzY2NC0xLTEuaHRtbA==)  
+所有用得到的telnet命令：  
+A、设置telnet用户名密码、端口和登录等  
+     sendcmd 1 DB set TelnetCfg 0 TS_Enable 1     打开telnet  
+     sendcmd 1 DB set PortControl 3 PortEnable 1   打开23端口  
+     sendcmd 1 DB set PortControl 6 PortEnable 0   关闭58000端口-Tr069服务  
+     sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1    局域网登录允许  
+     sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1     插上光纤后不自动关闭telnet  
+     sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5     最多能够登录5个用户，避免被锁死  
+     破解打开网页自动跳转LOID注册页面（适用于手工配置，无法LOID注册的同学），此项本人没有尝试过，照搬过来供参考。  
+     sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+     sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
+
+     破解最大用户数(本例设置为32，当然你可以直接把这个限制关了)  
+     sendcmd 1 DB set CltLmt 8 Max 32    设置32用户  
+     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制
+
+     查看telecomadmin帐号的密码  
+     sendcmd 1 DB p DevAuthInfo
+
+E、无论进行了任何指令设置，需要使用以下命令保存配置  
+     sendcmd 1 DB save  
+     sendcmd 1 DB reboot
+
+F、折腾TR069：  
+     方案一：把Tr069设置ITMS服务器页面的东西乱改：  
+                  sendcmd 1 DB p MgtServer  
+                  sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)     把ITMS认证地址改掉  
+                  sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0     不启用周期上报  
+                  sendcmd 1 DB set MgtServer 0 Tr069Enable 0     禁用Tr069远程控制  
+                  sendcmd 1 DB set MgtServer 0 UserName *****     这里的*改成随便什么当ITMS认证用户名  
+                  sendcmd 1 DB set MgtServer 0 Password **********     这里的*改成随便什么当ITMS认证密码  
+                  sendcmd 1 DB set MgtServer 0 PeriodicInformInterval 15768000000     把间隔时间弄成500年  
+                  sendcmd 1 DB set MgtServer 0 ConnectionRequestUsername *****     这里的*改成随便什么当反向认证用户名  
+                  sendcmd 1 DB set MgtServer 0 ConnectionRequestPassword **********     这里的*改成随便什么当反向认证密码  
+     方案二：个人感觉这个结合方案一最好：  
+                  sendcmd 1 DB p WANC        查看网络连接设置，确认row 0是修改目标：1_TR069_VOICE_R_VID_46，如果不是row 0而是row 1或row 2，下面的 WANC 0 改成 WANC 1 或者 WANC 2  
+                  sendcmd 1 DB set WANC 0 VLANID 64        修改Tr069连接的VLAN  
+                  sendcmd 1 DB save  
+                  sendcmd 1 DB reboot  
+                  此修改如同修改telenet密码，必须重启光猫才能生效。  
+      方案三：强迫症患者福音，彻底清除：  
+                  光猫默认4条连接数据，TR069就是第一条 也就是 <Row No=”0″>  
+                  直接使用命令 sendcmd 1 DB delr WANC 0  删除WANC 表 Row 0 数据  
+                  delr 参数就是删除表内数据条目的命令。  
+                  登录telcomadmin，查看网络连接情况，TR069已经被删除。  
+  
+G、最后，把一级超级用户telecomadmin和二级普通用户useradmin的密码改掉：  
+     sendcmd 1 DB p DevAuthInfo 查看设备所有用户名和密码  
+     sendcmd 1 DB set DevAuthInfo 0 Pass **********     这里的*改成你自己希望的teleadmin用户的密码，执行完就在网页上试试登录  
+     sendcmd 1 DB set DevAuthInfo 1 Pass *****     这里的*改成你自己希望的useradmin用户的密码，执行完就在网页上试试登录
+
+XXX、路由接4k iptv盒子的设置：  
+       到光猫的设置界面——网络——网络设置——网络连接里的连接名称选Other_B_VID_85  
+       确认：1、勾选了“启用VLAN”  
+                 2、VlanID填85  
+                 3、802.1p选0<—默认好像是5，造成4k的认证异常，看一会儿就报错  
+                 4、LAN端口绑定：只勾选iTV（这个是为了我的标清iptv选的，如果你没有就把勾去掉，这样光猫4个lan口的就都能接路由了）  
+                 5、SSID端口绑定：全部不勾选  
+                 6、到左侧选VLAN绑定，默认应该是有两条规则，网口3和4，用户侧VLAN=85，绑定wan连接名称“Other_B_VID_85”，点击表格最后一行空白行，照着这两条规则，再添加一条网口1的就行了（如果上面第4点没有勾选iTV，那就再加一条iTV的），记得点保存  
+                 7、最后到应用——IGMP设置里确认宽带连接是选了“Other_B_VID_85”，组播VLAN是填了51                 8、保存后重启光猫就完成光猫部分的设置了！  
+                 9、本条只针对刷了**koolshare改版固件的华硕路由！！！进路由开启jffs空间并重启路由，telnet进路由，运行一键脚本后等待路由再次重启之后就行。
+
+                      脚本有两种，一种是4k盒子直接接路由的，另一种是仍然接光猫上的网口的，脚本内容如下：  
+                       第一个脚本：cd /jffs/scripts/ && rm -rf SHiptv.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/SHiptv.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL1NIaXB0di5zaA==) && chmod +x SHiptv.sh && sh SHiptv.sh  
+                       第二个脚本：cd /jffs/scripts/ && rm -rf iptv7x.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/iptv7x.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL2lwdHY3eC5zaA==) && chmod +x iptv7x.sh && sh iptv7x.sh  
+                       关于第二个脚本，特别说明一下：主要目的是为了省一个路由的口，并且万一路由死机，只要盒子和光猫不重启就还能继续看，缺点是认证速度慢，而且需要关闭光猫的DHCP功能，而且我家里还会有认证异常看不了的情况，所以推荐第一个脚本。
+
+
+这些隐藏的页面大多数设备都通用，有兴趣的可以试试，呵呵~<br><br>注意：F450G必须超级用户登录，有些设备普通用户登录也行。 
+导出配置页面：http://192.168.1.1/backupsettings.html 
+导入配置页面：http://192.168.1.1/updatesettings.html
+服务访问控制：[http://192.168.1.1/scsrvcntr.html
+工厂模式页面：http://192.168.1.1/factorymode.html(工厂模式下可修改MAC等参数)  
+版本信息页面：http://192.168.1.1/test_version.html
+显示当前配置：http://192.168.1.1/dumpmdm.cmd
 
 ### 中兴F650全系使能
 
@@ -2319,6 +2492,25 @@ admin1234
 _INTERNET_R_VID_38
 5006234219
 15006234219
+
+#### 山东联通济南 g-140-
+JN56177752
+3610
+053105741967
+
+#### 上海联通 F4610
+上海联通
+NTERNET_R_VID_1600
+000000000000000012923650
+02100722575
+v1.2p1t2
+
+telnet开启，但连不通
+删除tr69，注册40%，手动输账号登录。
+
+#### 河北移动G-140W-MD
+387
+4136083594
 
 ## 网站
 恩山：https://www.right.com.cn
