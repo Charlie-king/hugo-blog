@@ -39,13 +39,13 @@ seo:
 CMCC-gphaaDm8H%MdA
 CMCC-gphaaDm8H%MdAaDm8H%MdA
 <!--more-->
- ## 通用账号密码
+## 通用账号密码
 ```账号
 CMCCAdmin
 ```
 
 ```
-htmhf67paDm8H%MdA
+aDm8H%MdA
 ```  
 
 ```
@@ -159,6 +159,21 @@ get lastgood.xml c:\aa.xml
 
 以上完成之后会在C盘生成一个aa.xml文件。
 搜索此配置文件telecomadmin
+
+### TEWA 708G
+
+192.168.1.1:8080
+useradmin
+
+插入U盘。
+点开设备，F12
+源码：
+
+
+构造命令
+```
+location.assign("/usbbackup.cmd?action=backupeble&set2_sessionKey=set2_sessionKey_304")
+```
 
 ### 友华PT926G/E  PT921G
 #### PT924G联通，提示成功但无法开启telnet。
@@ -1196,11 +1211,256 @@ http://192.168.1.1/bridge_route.gch
 
 ```
 
-换猫后注册不上，弹出强制注册的解决方式，超管登录后导出配置文件，修改下面：
+换猫后注册不上，弹出强制注册的解决方式，超管登录后导出配置文件hw_tree.xml，修改下面：
+
+改rms，扰乱端口和密码，
 ```
-<X_HW_UserInfo UserName="$24Y`P;n_0(49&lt;s-%sZXu1&amp;du3#4IP=&amp;QOJZKLOSiE$" UserId="" Status="0【这里99改为0】" Limit="10" Times="0" Result="1【这里99改为1】" ForceSupport="1【这里99改为1】" X_HW_InformStatus="0" X_HW_AcsCnnctSatus="0"/>
+<X_HW_UserInfo UserName="$24Y`P;n_0(49&lt;s-%sZXu1&amp;du3#4IP=&amp;QOJZKLOSiE$" 【这是loid，在网页上先填写后保存】UserId="" Status="0【这里99改为0】" Limit="10" Times="0" Result="1【这里99改为1】" ForceSupport="1【这里99改为1】" X_HW_InformStatus="0" X_HW_AcsCnnctSatus="0"/>
+```
+禁用tr069 wan使能，WANIPConnectionInstance
+```xml
+<WANIPConnectionInstance InstanceID="1" Enable="1"【这里改为0，关闭使能】 Reset="0" PossibleConnectionTypes="" ConnectionType="IP_Routed" Name="" LastConnectionError="ERROR_NONE" AutoDisconnectTime="0" IdleDisconnectTime="0" WarnDisconnectDelay="0" RSIPAvailable="0" NATEnabled="1" AddressingType="DHCP" DNSEnabled="1" DNSOverrideAllowed="0" DNSServers="" MaxMTUSize="1500" MACAddressOverride="0" ConnectionTrigger="" RouteProtocolRx="" ShapingRate="0" ShapingBurstSize="0" PortMappingNumberOfEntries="0" PortTriggerNumberOfEntries="0" X_HW_SERVICELIST="TR069" X_HW_VLAN="46" X_HW_PRI="0" X_HW_MultiCastVLAN="4294967295" X_HW_VenderClassID="" X_HW_E8C_LanInterface="" X_HW_TR069FLAG="0" X_HW_IPv4Enable="1" X_HW_IPv6Enable="0" X_HW_IPv6MultiCastVLAN="-1" X_HW_MacId="1">
+<X_HW_6RDTunnel Enable="0" RdMode="Dynamic" RdPrefix="" RdPrefixLen="40" RdBRIPv4Address="" RdIPv4MaskLen="10"/>
+</WANIPConnectionInstance>
 ```
 
+
+#### 华为万兆猫HN8145X6使能+补全AllShell+修改SN+E改XG+切换华为界面
+
+第0部分 准备工作  
+1、查询老光猫上的 LOID (电信、联通)、Password(移动)。  
+1.1 用光猫默认账号密码(详见光猫底部铭牌)访问光猫；  
+状态-状态总览：宽带识别码（LOID）:  
+网络-远程管理-宽带识别码（LOID）认证-宽带识别码（LOID）:  
+2、记录老光猫的互联网、IPTV的默认配置数据，截图存档(建议项，一般情况下非必需)；  
+2.1 使用超级管理员账号和密码(建议自行上网搜索获取方法或咨询运维师傅获取)，登陆管理页面；  
+2.2 网络-网络设置；连接名称选中后可切换 TR069(光猫运营商远程控制配置)、INTERNET_R(光猫路由模式配置)、INTERNET_B(光猫桥接模式配置)、OTHER_B(光猫IPTV配置)。分别截图留存；  
+4、电脑安装好 Notepad++ 或 Visual Studio Code 等第三方记事本软件。  
+  
+  
+  
+第一部分 检查光模信号  
+1、光猫连接光纤，LAN1连接电脑，接通光猫电源并按开机键开机；  
+   注：也可以在光猫通电后，电脑连接光猫的 SSID ，默认 SSID 和密码详见光猫底部铭牌。  
+  
+2、使用超级管理员或默认账号和密码登陆；  
+超级管理员账号：telecomadmin  
+超级管理员密码：nE7jA%5m  
+  
+3、状态-状态-状态总览-PON信息。如果“连接状态: ”是未连接，表示当前光猫的工作模式与线路不符，需要更改光猫光模的工作模式，教程后附。  
+   例如 HN8145X6 默认工作在 10G EPON 模式，而线路可能是 GPON 或 XGPON 模式；或者 HN8145X6 已经改成 XGPON 模式，但是线路只支持 GPON 模式；  
+  
+  
+  
+第二部分 使能 Telnet 和补全 AllShell  
+1、光猫拔除光纤，LAN1 连接电脑，接通光猫电源并按开机键开机；  
+   注：也可以在光猫通电后，电脑连接光猫的 SSID ，默认 SSID 和密码详见光猫底部铭牌。  
+  
+2、打开 ONT.exe ，刷入补丁  
+2.1 选中“升级”；  
+2.2 网卡选择当前连接光猫的网卡，IP地址为 192.168.1.x。本文以 192.168.1.2 为例；  
+2.3 ONT版本包，浏览选中文件 echo20_Telnet_Shell.bin；  
+注： echo20_Telnet_Shell.bin 是补全并使能 Telnet、打开 Telnet 所需的端口 23 、补全 AllShell 一体补丁。感谢网友 anjing8800 提供。  
+2.4 点击“启动”，发送进度条绿色光条出现。光猫所有灯全亮、全闪烁数次、全灭，使能Telnet 和 AllShell 补全即完成；  
+注：① 如果光猫指示灯没有上述反应，表示数据发送异常。这时重新按光猫电源开关，重新给猫通电，待光纤指示灯红灯亮起后，一般就会出现光猫所有灯全亮、全闪烁数次、全灭；  
+    ② 如果光猫仍旧没有上述反应，建议更换电脑或连接方式(有线连接改无线连接、无线连接改有线连接)重试；  
+    ③ AllShell 补充完成后，光猫处于全部灯长亮且没有任何反应的状态。需要重按开关键启动光猫。  
+  
+补充说明：使能 Telnet 和补全 AllShell 的教程，可以部分参考以下视频：  
+[https://www.bilibili.com/video/BV1N54y1h7vt/](https://www.bilibili.com/video/BV1N54y1h7vt/)  
+另，视频中的恢复华为界面，除非你是联通或移动用户，又或者遇到非要使用原华为界面的情况，否则千万不要轻易尝试！！！！  
+非要使用华为界面的情况包括：1、光猫 LOID 注册后，部分地区限制了默认配置的删改，主要表现为一旦删改配置并保存/应用后就退出管理界面；2、当地管理界面屏蔽了太多功能导致自定义功能较少。  
+  
+  
+  
+第三部分 设备注册  
+1、返回光猫登陆页面，点击“设备注册”，如果是电信宽带，则将老猫中查询到的逻辑 ID 填入后，点击注册；待 OLT 认证和 ITMS 配置下发完成后，光猫的运营商认证即已完成；  
+注：如果是联通、移动宽带，需要修改光猫的界面，将电信界面切换成华为界面后再进行注册和手动网络连接、IPTV配置等。无损切换华为界面的教程后附；  
+    有些地区运营商除了验证 LOID 和 Password，还会验证光猫的设备标识号、主 LAN 口的 MAC 地址、 SN 码等。  
+    因此，如果 LOID 、Password 填写后无法完成设备注册，则可能需要修改以上内容中的一项或多项。相关教程后附；  
+  
+第四部分 光模工作模式、MAC 地址、设备识别码、SN 码的修改  
+0、确保电脑的 Telnet 功能已开启。详见 Windows操作系统-控制面板-程序和功能-启用或关闭 Windows 功能，勾选 Telnet 客户端；  
+  
+1、光猫连接光纤，LAN1 连接电脑，接通光猫电源并按开机键开机；  
+   注：也可以在光猫通电后，电脑连接光猫的 SSID ，默认 SSID 和密码详见光猫底部铭牌。  
+  
+2、打开 Tftpd32 文件夹中的 tftpd32.exe ；服务器地址选中电脑本机网卡的 IP 地址。如果默认 IP 地址不对，则下拉右侧的下三角选中正确的 IP 地址。IP地址为 192.168.1.x，本文以 192.168.1.2 为例；  
+  
+3、Windows 8 及以上系统，使用 PoweShell 或 CMD (Windows 7及以下系统使用 CMD )按步骤运行以下命令：  
+telnet 192.168.1.1  
+Login:root  
+Password:adminHW  
+su  
+shell  
+cd /mnt/jffs2  
+ls  
+罗列 /mnt/jffs2 路径下各种配置文件；  
+如果提示 COMMEND NOT EXIT，则表示 AllShell 未能补全。请返回上文补全后重试；  
+  
+4 备份原版 hw_boardinfo 和 hw_boardinfo.bak 文件(非常重要)  
+tftp -p -l hw_boardinfo -r hw_boardinfo 192.168.1.2  
+tftp -p -l hw_boardinfo.bak -r hw_boardinfo.bak 192.168.1.2  
+hw_boardinfo 和 hw_boardinfo.bak 会出现在你的 Tftpd32 文件夹中。复制一份到别的路径悉心保存好。  
+  
+5 解密 hw_boardinfo 文件并另存为 hw_boardinfo_bak；解密 hw_boardinfo.bak 文件并另存为 hw_boardinfo.bak_bak  
+decrypt_boardinfo -s /mnt/jffs2/hw_boardinfo -d /mnt/jffs2/hw_boardinfo_bak  
+decrypt_boardinfo -s /mnt/jffs2/hw_boardinfo.bak -d /mnt/jffs2/hw_boardinfo.bak_bak  
+  
+6、将 hw_boardinfo_bak 和 hw_boardinfo.bak_bak 通过 tftpd32.exe 上传到 tftpd32 文件夹根目录  
+tftp -p -l hw_boardinfo_bak -r hw_boardinfo_bak 192.168.1.2  
+tftp -p -l hw_boardinfo.bak_bak -r hw_boardinfo.bak_bak 192.168.1.2  
+hw_boardinfo_bak 和 hw_boardinfo.bak_bak 会出现在你的 Tftpd32 文件夹中。复制一份到别的路径悉心保存好。  
+  
+7、电脑上用 Notepad++ 或 Visual Studio Code 打开修改 hw_boardinfo_bak 文件：  
+7.1 把 10G EPON 改成 XGPON，修改参数  
+obj.id = "0x00000001" ; obj.value = "5";  
+obj.id = "0x0000001d" ; obj.value = "5";  
+obj.id = "0x00000059" ; obj.value = "5";  
+  
+7.1 还原 10G EPON，修改参数  
+obj.id = "0x00000001" ; obj.value = "6";  
+obj.id = "0x0000001d" ; obj.value = "3";  
+obj.id = "0x00000059" ; obj.value = "6";  
+  
+7.2 将光猫主 LAN 口的 MAC 地址改成老光猫的 MAC 地址(部分地区需要，如果设备注册无障碍，则跳过)：  
+注：改完后尝试注册设备成功的话，跳过 设备标识号和 SN 码的修改  
+obj.id = "0x0000000a" ; obj.value = "5C:XX:57:7B:5A:74";  
+obj.id = "0x00000025" ; obj.value = "5C:XX:57:7B:5A:74";  
+  
+7.3 将光猫设备标识号改成老光猫的设备标识号(少数地区需要，以设备标识号 5C9157-43XXXXC91577B5A74 为例，其前 6 位字符串其实是主 LAN 口 MAC 地址的前 6 位，因此需要 MAC 一并修改才能完成全部设备识别码的修改)：  
+注：改完后尝试注册设备成功的话，跳过 SN 码的修改  
+obj.id = "0x00000019" ; obj.value = "43XX05C91577B5A74";  
+  
+7.4、将光猫 SN 码改成老光猫的 SN 码 (极少数地区需要)：  
+obj.id = "0x00000002" ; obj.value = "48XX5443CE88DDA6";  
+  
+8、将电信界面切换至华为界面(无损、可逆)，使联通、移动宽带可以手动配置使用光猫：  
+8.1 切换成华为界面  
+obj.id = "0x0000001a" ; obj.value = "COMMON";  
+obj.id = "0x0000001b" ; obj.value = "COMMON";  
+obj.id = "0x00000031" ; obj.value = "NOCHOOSE";  
+  
+8.2 切换回电信界面  
+obj.id = "0x0000001a" ; obj.value = "E8C";  
+obj.id = "0x0000001b" ; obj.value = "AHCT";  
+obj.id = "0x00000031" ; obj.value = "CHOOSE_XINAN";  
+其中，AHCT 为安徽电信地区代码。其他地区代码请自行搜索。  
+  
+9、修改完成并保存后，用 HW Dollar2.exe 软件打开 hw_boardinfo_bak 文件，选择 “V5” 再点击“计算”，形成加密文档后，保存为 hw_boardinfo 文件；  
+  
+10、使用 tftpd32.exe 将刚才修改后的 hw_boardinfo 文件上传到光猫；  
+tftp -g -l hw_boardinfo -r hw_boardinfo 192.168.1.2  
+  
+11、重启光猫。  
+reboot  
+  
+  
+  
+第六部分 超级管理员密码的读取、修改；添加超级管理员账号  
+1 超级密码的读取(适用于超级管理员账号密码被运营商 TR069 配置远程篡改的情况)  
+1.1 超级管理员账号和密码在 hw_ctree.xml 文件里。将其通过 tftpd32.exe 上传到 Tftpd32 文件夹根目录；  
+tftp -p -l hw_ctree.xml -r hw_ctree.xml 192.168.1.2  
+  
+1.2、用 华为配置加解密工具 1.0 正式版.exe XML 解密 hw_ctree.xml 文件后，用 Notepad++ 或 Visual Studio Code 打开并修改文件；  
+  
+1.3、搜索超级管理员账号关键词 telecomadmin ，定位到 Password 得到一串乱码，这是超级管理员密码的加密形态。例如：  
+UserName="telecomadmin" Password="$2$2DA.CXxv'Im"qVMN",0>)]1T[iyQS66@Q82,eR=$"  
+  
+1.4、将加密字符串完整复制到 华为配置加解密工具 1.0 的 密文解密对话框中，点击 $2 解密，密码就破译出来了。  
+  
+2、超级密码的修改。有时候，Password="" 双引号中的字符串可能经过特殊加密，使之破译出来的密码仍旧是乱码。这时，你可以修改 Password="你的密码" 并保存；  
+  
+3、超级管理员账号的添加。  
+<X_HW_WebUserInfo NumberOfInstances="3"> 此处表示账号数量，与下方账号配置的行数相同。默认是 2，改成 3。  
+<X_HW_WebUserInfoInstance InstanceID="1" ModifyPasswordFlag="0" UserName="useradmin" Password="$2_kDt2%`N30Cp]L/+E__RH%3;,r~<FG{>BnTL(RVF$" UserLevel="1" Enable="1" Alias="cpe-1" PassMode="0"/>  
+<X_HW_WebUserInfoInstance InstanceID="2" ModifyPasswordFlag="0" UserName="telecomadmin" Password="$2$2DA.CXxv'Im"qVMN",0>)]1T[iyQS66@Q82,eR=$" UserLevel="0" Enable="1" Alias="cpe-2" PassMode="0"/>  
+<X_HW_WebUserInfoInstance InstanceID="3" ModifyPasswordFlag="0" UserName="新账号" Password="密码" UserLevel="0" Enable="1" Alias="cpe-3" PassMode="0"/> 新添加行  
+  
+4、华为配置加解密工具 1.0 正式版.exe XML 加密 hw_ctree.xml 后，用 tftpd32.exe 上传到光猫；  
+tftp -g -l hw_ctree.xml -r hw_ctree.xml 192.168.1.2  
+  
+5、重启光猫后，配置生效。  
+reboot  
+  
+  
+  
+第七部分 设备注册卡在 40% ITMS 下发的解决办法  
+如果 MAC 地址、设备标识号、SN 码均修改后仍旧无法通过设备注册，卡在 40% ITMS 下发，修改 hw_ctree.xml 文件  
+定位至  
+<X_HW_UserInfo UserName="LOID 的加密字符串" UserId="" Status="99" Limit="5" Times="0" Result="99" X_HW_InformStatus="0" X_HW_AcsCnnctSatus="0" ForceSupport="1" SameWithPonInfo="1" X_HW_RegisterMode="1" />  
+整行改成  
+<X_HW_UserInfo UserName="" UserId="" Status="0" Limit="10" Times="0" Result="1" X_HW_InformStatus="0" X_HW_AcsCnnctSatus="0" ForceSupport="1" SameWithPonInfo="1" X_HW_RegisterMode="1" />  
+加密 hw_ctree.xml 文件并上传至光猫，重启光猫后生效。  
+  
+  
+第八部分 部分地区 SSID 的前缀 ChinaNet 限制修改的解决办法  
+1、同第六部分修改 hw_ctree.xml 文件，搜索 ChinaNet ，找到 SSID 名称修改后保存，加密文档，上传配置，重启光猫后生效；  
+  
+  
+第九部分 恢复有损转华为界面后，还原为原始的电信定制版界面  
+1 解压 HN8145X6_E8C_jffs2 压缩包  
+  
+  
+2、修改 customizepara.txt 文件  
+2.1 将 customizepara.txt 修改扩展名为 customizepara.xml ，并用 华为配置加解密工具 1.0 XML 解密该文件；  
+2.2 328505C91577B7724 改成你的设备识别码的 - 以后的 17 位字符串；  
+2.3 sq45f 改成你的设备 useradmin 的密码；  
+2.4 ChinaNet-euuK 改成你的设备默认 SSID 名称；  
+2.5 wga99xg9 改成你的设备默认 SSID 的密码；  
+注：以上信息在光猫底部的铭牌上均有记载。  
+2.6 用 华为配置加解密工具 1.0 XML 加密该文件，并修改扩展名为 customizepara.txt；  
+2.7 将文件上传至光猫的 /mnt/jffs2 对应路径。  
+  
+3、将文件上传至光猫的 /mnt/jffs2 对应路径  
+cd /mnt/jffs2  
+tftp -g -l choose_xml.tar.gz -r choose_xml.tar.gz 192.168.1.2  
+tftp -g -l customize.txt -r customize.txt 192.168.1.2  
+tftp -g -l customizepara.txt -r customizepara.txt 192.168.1.2  
+  
+  
+cd /mnt/jffs2/customize  
+tftp -g -l CHOOSE_XINAN.xml -r CHOOSE_XINAN.xml 192.168.1.2  
+tftp -g -l choose_config.xml -r choose_config.xml 192.168.1.2  
+tftp -g -l choose_result.xml -r choose_result.xml 192.168.1.2  
+## 以广东原始配置文件为例  
+tftp -g -l hw_default_gdct.xml -r hw_default_gdct.xml 192.168.1.2  
+tftp -g -l hw_default_gdct.xml.crc -r hw_default_gdct.xml.crc 192.168.1.2  
+tftp -g -l hw_default_gdgct.xml -r hw_default_gdgct.xml 192.168.1.2  
+tftp -g -l hw_default_gdgct.xml.crc -r hw_default_gdgct.xml.crc 192.168.1.2  
+  
+  
+cd /mnt/jffs2/choose  
+tftp -g -l CHOOSE.xml -r CHOOSE.xml 192.168.1.2  
+tftp -g -l choose_config.xml -r choose_config.xml 192.168.1.2  
+tftp -g -l files -r files 192.168.1.2  
+  
+2 上传完成后，按照第四部分 8.2 设置本地电信界面代码；  
+  
+3 重启光猫，超级访问光猫，再恢复出厂设置一次。即可恢复对应地区的完整电信界面。  
+  
+各地区GPON、EPON工作模式下的电信定制界面代码  
+  
+各电信定制界面代码兼容的最低固件版本号  
+  
+各电信定制界面代码对应的配置文件  
+  
+  
+  
+第十部分 其他修改  
+1、华为光猫修改 SSID 地区的方法：hw_ctree.xml 和 hw_default_ctree.xml 中，搜索 RegulatoryDomain，将 CN 改成其他国家或地区代码，例如  
+CN：中国  
+AU：澳大利亚  
+US：美利坚合众国  
+其中，澳大利亚 AU 的理论信号最强。  
+  
+2、为光猫修改 SSID 最大连接设备数目 的方法：hw_ctree.xml 和 hw_default_ctree.xml 中，搜索 X_HW_AssociateNum，将数字改成 64  
+X_HW_AssociateNum="64"  
+  
+3、为光猫修改 连接数 的方法：hw_ctree.xml 和 hw_default_ctree.xml 中，搜索 TotalTerminalNumber，将数字改成 0  
+<X_HW_AccessLimit Mode="GlobalLimit" TotalTerminalNumber="16"/>  
+改成  
+<X_HW_AccessLimit Mode="Off" TotalTerminalNumber="0"/>
 
 
 ### 中兴系列G7615
@@ -2224,8 +2484,9 @@ cfgcli –r
 load_cli factory                                                       进入工程模式
 set factorymode enable                                          开启写入模式
 set device_oui ABCDEF                                           设置OUI
-set device_sn ABCDEGFHIJKLMNOPQ                      设置sn
-set onu_mac AB:AB:AB:AB:AB:AB                            设置mac
+set device_sn CIOT04985D68                      设置sn
+set gpon_sn FHTT04985D68
+set onu_mac C0:98:DA:98:5D:68                            设置mac
 set factorymode disable                                         退出写入模式
 exit                                                                        退出工程模式。
 reboot                                                                   重启光猫生效。
@@ -2367,11 +2628,12 @@ show area_code （此命令为显示当前加载的省份）
 
 ### 换猫
 
-### 山东联通换猫直接注册即可
-### 安徽移动，loid改sn，mac还不行
+#### 山东联通换猫直接用loid注册即可，没有绑定
+#### 安徽移动，loid改sn，mac还不行
+#### 
 
 ## 步骤
-1.  光猫背部user进入，
+1.  光猫背部user进入，状态-网络侧，找到internet_xx那个拍照，认证注册里，loid拍照，
 
 2.  电脑网口直连光猫网口1，不要经过路由器，同时用手机<流量>热点给电脑供网（手机USB线或热点）
 
