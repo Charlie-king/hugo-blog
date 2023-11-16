@@ -72,6 +72,8 @@ nE7jA%5m
 admintelecom
 ``` 
 
+湖南移动：（光猫SN开头第三位开始取3位）+8m%（光猫SN结尾取3位）
+
 HG烽火运维工厂账号: 
 ```
 fiberhomehg2x0
@@ -160,6 +162,13 @@ get lastgood.xml c:\aa.xml
 以上完成之后会在C盘生成一个aa.xml文件。
 搜索此配置文件telecomadmin
 
+### 移动TEWA 272G/270G
+
+需要先知道loid，进超管，才能打开telnet
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+
 ### TEWA 708G
 
 192.168.1.1:8080
@@ -180,7 +189,7 @@ location.assign("/usbbackup.cmd?action=backupeble&set2_sessionKey=set2_sessionKe
 #### pt921g
 直接下载文件
 ```
-http://192.168.1.1/romfile.cfg
+http://192.168.2.1/romfile.cfg
 ```
 
 #### 电信
@@ -282,9 +291,13 @@ http://192.168.1.1:8080/bd/saveconf.asp
 ```
 backup保存配置文件，搜索telecomadmin账号，telnet管理员密码
 
-http://192.168.1.1/bd/vermod.asp 
+资料
+```
+http://192.168.1.1/bd/vermod.asp
+```
+ 
 
-> 资料
+
  [http://192.168.1.1/bd/hide.asp](http://192.168.1.1/bd/hide.asp)  
 [http://192.168.1.1/bd/vermod.asp](http://192.168.1.1/bd/vermod.asp)  
 [http://192.168.1.1/bd/saveconf.asp](http://192.168.1.1/bd/saveconf.asp)
@@ -783,6 +796,27 @@ https://www.5v13.com/mesh/26321.html
 
 #### H2-3灰色页面，H2-3s蓝色页面在系统里恢复出厂，TEWA 272G
 
+### H3-2r ，H3-1r lite，H-PON01
+
+需要超管进，打开
+```
+http://192.168.1.1/bd/hide.asp
+```
+一些隐藏的配置，开telnet
+如果404，直接导出config.xml
+```
+http://192.168.1.1/bd/saveconf.asp
+```
+修改telnet enable为1，所有telnet项改为1，上传上去后，要再重启一下光猫才生效。telnet账户密码CMCCAdmin   
+```
+aDm8H%MdA
+```  
+
+注册后，telnet不会掉线，进config，查看config.xml里的超密。
+
+https://www.right.com.cn/forum/thread-8285997-1-1.html
+
+https://blog.csdn.net/qq_42294237/article/details/132025846
 
 ### 移动CM112   GS3101  GS2107（GS3202不同）GS8101用中兴工具
 
@@ -865,7 +899,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d FyoWiA9ebVq8Wcr5t1T+Zg==
+python nokia-router-cfg-tool.py -d 2REDM1j3WTgHVAzz/N5s+lcYLFEz5YMbki6aGd2uUCM=
 ```
 telnet：
 user或useradmin  
@@ -944,7 +978,12 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Status 0
 cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ```
 
+### 贝尔联通G-140W-UG
 
+user里直接恢复出厂设置
+开启telnet和cgi页
+
+telnet密码是user密码，重新注册后超密不变（辽宁）
 
 ### 江苏福建创维SK-D848，SK-D742
 
@@ -994,7 +1033,10 @@ sidbg 1 DB save
 
 解密参照下面，xor，routerpass均不能解
 ```
-sendcmd 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+ 
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 ```
 查看解密后的文件
 ```
@@ -1225,7 +1267,7 @@ http://192.168.1.1/bridge_route.gch
 ```
 
 
-#### 华为万兆猫HN8145X6使能+补全AllShell+修改SN+E改XG+切换华为界面
+### 华为万兆猫HN8145X6使能+补全AllShell+修改SN+E改XG+切换华为界面
 
 第0部分 准备工作  
 1、查询老光猫上的 LOID (电信、联通)、Password(移动)。  
@@ -1423,7 +1465,7 @@ cd /mnt/jffs2/customize
 tftp -g -l CHOOSE_XINAN.xml -r CHOOSE_XINAN.xml 192.168.1.2  
 tftp -g -l choose_config.xml -r choose_config.xml 192.168.1.2  
 tftp -g -l choose_result.xml -r choose_result.xml 192.168.1.2  
-## 以广东原始配置文件为例  
+-- 以广东原始配置文件为例  
 tftp -g -l hw_default_gdct.xml -r hw_default_gdct.xml 192.168.1.2  
 tftp -g -l hw_default_gdct.xml.crc -r hw_default_gdct.xml.crc 192.168.1.2  
 tftp -g -l hw_default_gdgct.xml -r hw_default_gdgct.xml 192.168.1.2  
@@ -1462,6 +1504,7 @@ X_HW_AssociateNum="64"
 改成  
 <X_HW_AccessLimit Mode="Off" TotalTerminalNumber="0"/>
 
+https://www.chinadsl.net/forum.php?mod=viewthread&tid=170109
 
 ### 中兴系列G7615
 中兴G7615注册50%手动配置上网删除Tr069
@@ -1493,7 +1536,7 @@ sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
 ```
 sidbg 1 DB set TelnetUser 0 Username 123Qwe
 sidbg 1 DB set TelnetUser 0 Password 123Qwe
-sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin1234
+sidbg 1 DB set DevAuthInfo 0 Pass cuadmin1234
 sidbg 1 DB save
 ```
 
@@ -1670,7 +1713,7 @@ XXX、路由接4k iptv盒子的设置：
        到光猫的设置界面——网络——网络设置——网络连接里的连接名称选Other_B_VID_85  
        确认：1、勾选了“启用VLAN”  
                  2、VlanID填85  
-                 3、802.1p选0<—默认好像是5，造成4k的认证异常，看一会儿就报错  
+                 3、802.1p选0 —默认好像是5，造成4k的认证异常，看一会儿就报错  
                  4、LAN端口绑定：只勾选iTV（这个是为了我的标清iptv选的，如果你没有就把勾去掉，这样光猫4个lan口的就都能接路由了）  
                  5、SSID端口绑定：全部不勾选  
                  6、到左侧选VLAN绑定，默认应该是有两条规则，网口3和4，用户侧VLAN=85，绑定wan连接名称“Other_B_VID_85”，点击表格最后一行空白行，照着这两条规则，再添加一条网口1的就行了（如果上面第4点没有勾选iTV，那就再加一条iTV的），记得点保存  
@@ -2391,7 +2434,11 @@ Telnet光猫IP（192.168.1.1）输入用户名（root）和密码（Zte521）即
 319 sendcmd 1 DB p GEMPORT  
 320 sendcmd 1 DB p VLANTOUPGEMPORTProduct  
 321 sendcmd 1 DB p CatvOpticalPara  
-  
+
+关闭强制自动注册页（中兴系）gm232
+sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
+sendcmd 1 DB save
   
 每一条代码中的“p”代表print，显示的意思，改成“set”，加上用“p”打印出来的表格号、变量名等可以直接修改光猫的所有设置参数。  
   
@@ -2625,12 +2672,51 @@ show area_code （此命令为显示当前加载的省份）
 100. voice_test [on|off]
 ```
 
+### h2-2修改sn，mac等教程
+首先感谢论坛的资料，打开[http://192.168.1.1/hidden_version_switch.gch](http://192.168.1.1/hidden_version_switch.gch)，选择“Default Version”并确定，光猫自动重启，（恢复出厂设置）  
+直接打开这个网页[http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch](http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch) 出现 success（成功）的字样（打开telnet）  
+然后telnet 192.168.1.1 用户名我这是  
+
+- 移动光猫账号： CMCCAdmin 密码：aDm8H%MdA
+- 登录以后输入sismac show
+
+- h2-2打开telnet新网址 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+
+    
+
+然后就可以看到sn，mac等数据。  
+下面参考中兴光猫修改命令  
+setmac show  
+setmac 1 256 36:36:36:36:c0:36  
+setmac 1  2182 2150083714AGJC514975  
+setmac 1  768 9C1D36  
+setmac 1  512 428519C1D3636C0AC  
+setmac命令------修改硬件信息  
+-------------------------------------------------------------------------  
+1.查看编码的ID号setmac show  
+2.修改MAC地址:setmac 1 256 00:00:00:00:00:00  
+3.修改SN: setmac 1 2177 xxxxxxxx [SN为8字符]。  
+4.修改设备标识号（后17位）: setmac 1 512 xxxxxxxxxxxxxxxxx [设备标识位17位字符]  
+5.修改设备标识号（前6位）以为666999例，从第1步看id代码为768，修改命令setmac 1 768 666999  
+4.修改MAC地址:setmac 1 256 00:00:00:00:00:00  
+5.以上命令输入 setmac 2 xxx 为查看（此处xxx为编码的ID号如256、512、2177，第1步查看）。  
+注意mac输入小写字母  
+修改完成后success，然后输入reboot重启光猫即可。  
+End!
+
+来源
+https://www.right.com.cn/FORUM/thread-4958877-1-1.html
 
 ### 换猫
 
 #### 山东联通换猫直接用loid注册即可，没有绑定
-#### 安徽移动，loid改sn，mac还不行
-#### 
+#### 安徽移动，loid改sn，mac还不行，拨号上，
+#### 湖南移动认sn，mac，改完拨号屏蔽注册页即可
+```
+sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
+sendcmd 1 DB save
+```
 
 ## 步骤
 1.  光猫背部user进入，状态-网络侧，找到internet_xx那个拍照，认证注册里，loid拍照，
@@ -2640,13 +2726,10 @@ show area_code （此命令为显示当前加载的省份）
 3.  注意要先拔光纤，除网线外，都拔，再拿个针捅reset孔60秒，所有灯闪灭2次再松开，重启，全程拔光纤。
 
 4.  捅后光猫后台输入
-
 192.168.1.1
-
 CMCCAdmin，aDm8H%MdA登录进去说明捅成功了，联系我下一步
 
 192.168.1.1/cu.html
-
 CUAdmin，CUAdmin登录进去说明捅成功了，联系我下一步
 
 5.  光纤等我说插再插
@@ -2773,6 +2856,40 @@ telnet开启，但连不通
 #### 河北移动G-140W-MD
 387
 4136083594
+
+#### 河南商丘联通 F657G
+user
+x72zuu73
+
+22
+
+037008480453
+123456
+
+#### 山东暨南
+3143
+JN81247570
+
+053107485917
+
+#### 福建移动SK742
+5913043048
+400
+start.ghtml
+telnet
+root
+aDm8H%MdA
+
+#### 辽宁联通HN8145xr
+2010
+wf85141136@163
+5141136
+
+loid
+2043846913
+
+
+
 
 ## 网站
 恩山：https://www.right.com.cn
@@ -2920,6 +3037,11 @@ document.getElementById('username').value = 'CUAdmin';
 document.getElementById('password').value = 'CUAdmin';
 document.getElementById('loginfrm').submit();
 ```
+document.getElementById('loginForm').setAttribute('method','post');
+document.getElementById('loginUsername').value = 'lndmin';
+document.getElementById('loginPassword').value = 'lndmin';
+document.getElementById('loginForm').submit();
+
 
 联通宽带光猫获取超级密码教程吉比特无源光纤接入用户端设备（GPON ONU）
 型号：HG6543C
