@@ -1,34 +1,29 @@
 ---
-title: "一只斑马的大学时光"
+title: 一只斑马的大学时光
 subtitle: ""
 date: 2017-05-04T22:34:57+08:00
 lastmod: 2022-08-08T16:41:35+08:00
-
 draft: false
-author: ""
+author: 
 authorLink: ""
 authorEmail: ""
-description: "一辆自行车的大学故事"
-keywords: "自行车"
+description: 一辆自行车的大学故事
+keywords: 自行车
 license: ""
 comment: true
 weight: 0
-
 tags:
-- 随笔
+  - 随笔
 categories:
-- 随笔
-
+  - 随笔
 hiddenFromHomePage: false
 hiddenFromSearch: false
-
 summary: ""
 resources:
-- name: featured-image
-  src: featured-image.jpg
-- name: featured-image-preview
-  src: featured-image-preview.jpg
-
+  - name: featured-image
+    src: featured-image.jpg
+  - name: featured-image-preview
+    src: featured-image-preview.jpg
 toc:
   enable: true
 math:
@@ -36,8 +31,6 @@ math:
 lightgallery: false
 seo:
   images: []
-
-# See details front matter: /theme-documentation-content/#front-matter
 ---
 
 <!--more-->
