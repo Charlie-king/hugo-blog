@@ -1,11 +1,11 @@
 ---
-title: "光猫超密和宽带拨号账号密码查询资料"
+title: "光猫"
 subtitle: ""
 date: 2023-05-10T10:57:27+08:00
 
 lastmod: 2023-08-13T10:57:27+08:00
 draft: flase
-description: "三个运营商的光猫超密和查看宽带账号密码的资料整理"
+description: "光猫"
 keywords: 
 - 宽带账号密码
 - 光猫
@@ -36,8 +36,7 @@ seo:
   images: []
 # See details front matter: /theme-documentation-content/#front-matter
 ---
-CMCC-gphaaDm8H%MdA
-CMCC-gphaaDm8H%MdAaDm8H%MdA
+
 <!--more-->
 ## 通用账号密码
 ```账号
@@ -212,6 +211,20 @@ echo xx xx xx xx xx xx>/proc/nvram/BaseMacAddr
 深圳旁边    0x5100
 澳门    0x5200
 
+获取超密步骤：  
+1. U盘插入光猫，打开光猫登录页面  192.168.1.1:8080  用光猫后面的账号密码登录光猫  
+2. 依次点开 管理→设备管理，在“设备管理”上单击右键选择检查
+3. 点击右侧“Elements” 利用快捷键 Ctrl+F  打开搜索，输入：set3_sessionKey  ，得到途中序号3所指向的数值，并替换下方链接中修改恢复usb那里的token数值
+```
+http://192.168.1.1:8080/usbbackup.cmd?action=backupeble&set3_sessionKey=set3_sessionKey_768
+```
+4. 打开页面，保存到U盘。
+5. U盘插入电脑，U盘里会有一个“e8_Config_Backup”文件夹，打开文件夹，同时打开软件RouterPassView,将文件夹里面的 .cfg 文件拖入软装RouterPassView中，在软件中利用快捷键 Ctrl+F 搜索：telecomadmin，得到telecomadmin后面带8位数字的值就是超级密码，如本教程得到的密码为telecomadmin56719830
+6. 超管登录后，进入以下链接，打开telnet，ftp
+```
+192.168.1.1:8080/enableTelnet.html
+```
+
 ### 移动TEWA 272G/270G
 
 需要先知道loid，进超管，才能打开telnet
@@ -310,10 +323,11 @@ CUAdmin
 ```
 电信
 账号telecomadmin、admin、telecom
+pt926G   admin，TeleCom_1234
 ```
 admin
 ```
-TeleCom_23d8d6
+
 ```
 1234
 ```
@@ -323,7 +337,7 @@ TeleCom_1234
 ```
 su
 ```
-TeleCom_mac后6位小写
+TeleCom_mac  后6位小写
 ```
 
 查看配置文件和超密
@@ -351,6 +365,51 @@ cat /var/romfile.cfg | grep web_passwd -A 5
 http://192.168.1.1:8080/bd/saveconf.asp
 ```
 backup保存配置文件，搜索telecomadmin账号，telnet管理员密码
+
+#### 移动PT939G 3.0（电信界面）
+
+两个版本，博通版和高通版。博通版电信界面，软件版本3.0，原有telnet开启不了。
+恢复出厂设置后，输入
+```
+http://192.168.1.1/dumpmdmd.cmd
+```
+看到telnet关闭，有账号密码。
+
+下载配置
+```
+http://192.168.1.1/backupsettings.html
+```
+
+在82行左右，device位置加入telnet开关
+```
+ <DeviceInfo>  
+<FirstUseDate>2019-01-26T09:53:57+08:00</FirstUseDate> 
+ <VendorConfigFileNumberOfEntries>0</VendorConfigFileNumberOfEntries>
+     <X_CMCC_CustomiseName>SmartGateway</X_CMCC_CustomiseName>  
+     
+  <X_CMCC_ServiceManage>  
+       <TelnetEnable>TRUE</TelnetEnable>  
+  </X_CMCC_ServiceManage>
+
+```
+加入内容为
+```
+  <X_CMCC_ServiceManage>  
+       <TelnetEnable>TRUE</TelnetEnable>  
+  </X_CMCC_ServiceManage>
+```
+
+在上传配置，重启猫
+```
+http://192.168.1.1/updatesettings.html
+```
+
+
+改地区直接用，广东深圳直接注册，不需要观察sn
+```
+http://192.168.1.1/register_prov.html
+```
+
 
 #### 辽宁联通PT927G
 需要先恢复出厂，设置，loid在注册页f12找。
@@ -467,25 +526,6 @@ http://192.168.1.1/bd/mbssid.asp
 http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 ```
 
-
-本教程也适合PT926G，前提在地址中加冒号和8080。如http://192.168.1.1:8080/bd/upload_sc.asp  
-telnet账号为：telecomadmin密码为:TeleCom_1234
-
-
-
-
- [http://192.168.1.1/bd/hide.asp](http://192.168.1.1/bd/hide.asp)  
-[http://192.168.1.1/bd/vermod.asp](http://192.168.2.1/bd/vermod.asp)  
-[http://192.168.1.1/bd/saveconf.asp](http://192.168.1.1/bd/saveconf.asp)
-http://192.168.1.1/bd/modify_hide.asp   临时开telnet  
-http://192.168.1.1/bd/upload_sc.asp      升级固件
-http://192.168.1.1/autorun/acccfg.asp  ADSL宽带上网账号密码填写  
-http://192.168.1.1/cgi-bin/cgic_systeminfo.cgi   显示当前系统信息
-http://192.168.1.1/bd/mbssid.asp         无线配置  
-http://192.168.1.1/bd/vendorversion.asp 软硬件版本型号
-http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi  永久telnet，既使重启也可以telnet  
-本教程也适合PT926G，前提在地址中加冒号和8080。如http://192.168.1.1:8080/bd/upload_sc.asp  
-telnet账号为：telecomadmin密码为:TeleCom_1234
 
 
 ### 烽火HG6201M
@@ -652,16 +692,16 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@055440
+Fh@17EA70
 ```
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=689A21055440
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=FHTT71F9F3DA
+http://192.168.1.1/telnet?enable=1&key=ACC4A917EA70
 ```
 电信
 ```
@@ -711,7 +751,7 @@ Fh@FA5770
 ```
 load_cli factory
 ```
-Config\factorydir#   
+
 ```
 show admin_name
 ```
@@ -1074,9 +1114,23 @@ web_passwd="CMCCAdmin****"
 &amp;等于&
 
 ### 移动SU6100
-锐捷猫
+锐捷猫，江苏
 user进去，开telnet，账号密码同锐捷，su：aDm8H%MdA
 只有user账号，没有超管，界面功能有限。
+
+### 上海移动HG550G企宽
+
+标密aDm8H%MdA
+
+界面同TEWE 272g，蓝色，菜单底部，移动企宽蓝色页面可参考此种模式。有的需要用超管进去。
+配置文件下载
+```
+http://192.168.1.1/bd/hide.asp
+```
+
+![](https://s3.bmp.ovh/imgs/2023/12/02/ff5e99cdc39a2d67.png)
+
+https://blog.csdn.net/qq_42294237/article/details/132025846
 
 ### 贝尔移动G-140-MD
 
@@ -1308,16 +1362,19 @@ http://192.168.1.1/romfile.cfg
 
 ### 江苏创维SK-D848，SK742
 
+江苏企业宽带，一网通注册码a+账号后8位。
+
 user页面开启telnet
 
 telnet
 root
-无线wifi密码+超密aDm8H%MdA
+无线wifi密码+超密aDm8H%MdA，无wifi密码的直接就超密。
 
 开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
 ```
 http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
 ```
+
 
 
 ### 贵州移动SK-D748
@@ -1388,6 +1445,8 @@ telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输�
 这货的uboot密码也很奇葩就在uboot下按ctrl+u键提示输入密码:uboot!
 
 ### 联通KD-YUN-811G
+
+user登录后下载，搜索cuadmin，河南。
 ```
 http://192.168.1.1/backupsettings.conf
 ```
@@ -2901,8 +2960,6 @@ show area_code （此命令为显示当前加载的省份）
 
 - h2-2打开telnet新网址 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 
-    
-
 然后就可以看到sn，mac等数据。  
 下面参考中兴光猫修改命令  
 setmac show  
@@ -2926,6 +2983,12 @@ End!
 来源
 https://www.right.com.cn/FORUM/thread-4958877-1-1.html
 
+###  TEWA 800改sn，mac
+天邑Mac和SN后8位一致，改Mac就是改sn.运用天邑TelnetClient工具，
+用：echo xx xx xx xx xx xx>/proc/nvram/BaseMacAddr  命令即可
+
+
+
 ### 换猫
 
 #### 山东联通换猫直接用loid注册即可，没有绑定
@@ -2936,6 +2999,7 @@ sendcmd 1 DB set PDTCTUSERINFO 0 Status 0
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
 sendcmd 1 DB save
 ```
+#### 广东深圳移动，光猫改广东地区即可注册
 
 ## 步骤
 1.  光猫背部user进入，状态-网络侧，找到internet_xx那个拍照，认证注册里，loid拍照，
@@ -3260,6 +3324,101 @@ CMCCAdmin，aDm8H%MdA
 宽带帐号密码
 user:231010126885
 psw:19960323
+
+#### 辽宁葫芦岛联通F677
+
+loid
+2107016915
+10
+hl21207163
+
+#### 广东东莞移动T50（动态）
+loid
+c436389422
+41
+
+#### 江苏电信PT926G
+loid
+1993C07A37E4B7E4
+11
+
+#### 江西赣州于都移动F613
+password
+l8620705oo
+宽带：
+13803573144
+577328
+
+
+
+#### 江西南昌移动F613V9（首页f12查loid）
+eEb9T%kE
+
+INTERNET_R_VID_47
+OTHER_B_VID_46
+loid：nc37777827
+
+15079020829
+656624
+
+#### 广西移动H61G
+66
+loid
+7486313009
+
+e4qst3ng
+66
+loid
+7486313009
+
+#### 广东中山移动F663
+e116989022
+
+
+#### 湖北联通F657
+user
+2633zs39
+VLAN ID:49
+T009282C0G0110000I
+071800131665
+
+
+#### 江苏SK-D742企宽
+user
+T734nMT?
+
+43
+JTD13515264846
+123123
+loid
+a515264846
+
+#### 福建移动F663
+400
+tr69 401
+3_OTHER_B_VID_431
+loid
+5962836955
+宽带账号：
+18350602860
+
+#### 浙江移动SK-D742
+user
+k5bnugkt
+
+4031
+tztta34005446
+
+#### 湖北恩施移动F657
+6fbuedkx
+49
+tr48
+tv59
+loid
+T007881FNAG0112001K
+宽带
+071803864968
+123456
 
 
 ## 网站
