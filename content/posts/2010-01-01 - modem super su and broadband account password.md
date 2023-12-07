@@ -692,12 +692,12 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@17EA70
+Fh@649940
 ```
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7430AF649940
 ```
 联通
 ```
@@ -1156,7 +1156,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d 2V+W/2pz6yN8LshiI6NfZg==
+python nokia-router-cfg-tool.py -d Lub2hlpwetaDn65GHsP8Uw==
 ```
 telnet：
 user或useradmin  
@@ -1169,6 +1169,7 @@ G-140-MF
 G-1425-MB
 ```
 GFdN2gMzTYC2
+AWYqE5qKJxxV
 ```
 G-140W-MD
 ```
@@ -1857,7 +1858,7 @@ sidbg 1 DB delr WANC 0
    
 查询TR069在第几个（0 1 2 3 4等）  
 ```
-sendcmd 1 DB p WANC 
+sendcmd 1 DB p WANC
 ```
 0代表前面查询TR069在0这一项里面，如果查询是3，那就0改为3 
 ```
@@ -1865,7 +1866,8 @@ sendcmd 1 DB delr WANC 0
 ```
 RMS服务器不启用周期上报
 ```
-sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0
+sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0 
+sendcmd 1 DB set MgtServer 0 Tr069Enable 0
 ```
 
 
@@ -1911,8 +1913,11 @@ Zte521
 5、sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5     最多能够登录5个用户，避免被锁死
 
 6、破解打开网页自动跳转LOID注册页面  
-     sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
-     sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
+```
+sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
+```
+
 
 7、破解最大用户数(本例设置为66，当然你可以直接把这个限制关了)  
      sendcmd 1 DB set CltLmt 8 Max 66    设置66用户     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制最大用户数
@@ -1922,9 +1927,11 @@ Zte521
 9、重启光猫，进192.168.1.1的页面，点设备注册，输入宽带识别号后点下一步，完成设备注册！！！
 
 10、再次telnet进光猫，禁用电信远程控制（此项必须在以上步骤完成后进行！！！切记！！！否则无法注册LOID成功！）  
-     sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)  
-     sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0  
-     sendcmd 1 DB set MgtServer 0 Tr069Enable 0
+```
+sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)  
+sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0  
+sendcmd 1 DB set MgtServer 0 Tr069Enable 0
+```
 
 11、用telecomadmin的密码进192.168.1.1的页面，把“网络-网络设置”里连接名称带internet字样（下拉可见）的配置删除，再“新建wan连接”，直接把连接模式从“路由”改成“桥接”就点最下面的“添加”，再点“保存”，重启光猫完工！
 
@@ -1956,6 +1963,7 @@ E、无论进行了任何指令设置，需要使用以下命令保存配置
 
 F、折腾TR069：  
      方案一：把Tr069设置ITMS服务器页面的东西乱改：  
+```
 
                   sendcmd 1 DB p MgtServer  
                   sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)     把ITMS认证地址改掉  
@@ -1967,14 +1975,18 @@ F、折腾TR069：
                   sendcmd 1 DB set MgtServer 0 ConnectionRequestUsername *****     这里的*改成随便什么当反向认证用户名  
                   sendcmd 1 DB set MgtServer 0 ConnectionRequestPassword ********     这里的改成随便什么当反向认证密码 
 
-
+```
 
                   
      方案二：个人感觉这个结合方案一最好：  
-                  sendcmd 1 DB p WANC        查看网络连接设置，确认row 0是修改目标：1_TR069_VOICE_R_VID_46，如果不是row 0而是row 1或row 2，下面的 WANC 0 改成 WANC 1 或者 WANC 2  
-                  sendcmd 1 DB set WANC 0 VLANID 64        修改Tr069连接的VLAN  
-                  sendcmd 1 DB save  
-                  sendcmd 1 DB reboot  
+```
+sendcmd 1 DB p WANC        
+                  查看网络连接设置，确认row 0是修改目标：1_TR069_VOICE_R_VID_46，如果不是row 0而是row 1或row 2，下面的 WANC 0 改成 WANC 1 或者 WANC 2  
+                  
+sendcmd 1 DB set WANC 0 VLANID 64        修改Tr069连接的VLAN  
+sendcmd 1 DB save  
+sendcmd 1 DB reboot  
+```
                   此修改如同修改telenet密码，必须重启光猫才能生效。  
       方案三：强迫症患者福音，彻底清除：  
                   光猫默认4条连接数据，TR069就是第一条 也就是 <Row No=”0″>  
@@ -1983,10 +1995,11 @@ F、折腾TR069：
                   登录telcomadmin，查看网络连接情况，TR069已经被删除。  
   
 G、最后，把一级超级用户telecomadmin和二级普通用户useradmin的密码改掉：  
+```
      sendcmd 1 DB p DevAuthInfo 查看设备所有用户名和密码  
      sendcmd 1 DB set DevAuthInfo 0 Pass **********     这里的*改成你自己希望的teleadmin用户的密码，执行完就在网页上试试登录  
      sendcmd 1 DB set DevAuthInfo 1 Pass *****     这里的*改成你自己希望的useradmin用户的密码，执行完就在网页上试试登录
-
+```
 XXX、路由接4k iptv盒子的设置：  
        到光猫的设置界面——网络——网络设置——网络连接里的连接名称选Other_B_VID_85  
        确认：1、勾选了“启用VLAN”  
@@ -1999,8 +2012,14 @@ XXX、路由接4k iptv盒子的设置：
                  9、本条只针对刷了**koolshare改版固件的华硕路由！！！进路由开启jffs空间并重启路由，telnet进路由，运行一键脚本后等待路由再次重启之后就行。
 
                       脚本有两种，一种是4k盒子直接接路由的，另一种是仍然接光猫上的网口的，脚本内容如下：  
-                       第一个脚本：cd /jffs/scripts/ && rm -rf SHiptv.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/SHiptv.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL1NIaXB0di5zaA==) && chmod +x SHiptv.sh && sh SHiptv.sh  
-                       第二个脚本：cd /jffs/scripts/ && rm -rf iptv7x.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/iptv7x.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL2lwdHY3eC5zaA==) && chmod +x iptv7x.sh && sh iptv7x.sh  
+                       第一个脚本：
+  ```
+  cd /jffs/scripts/ && rm -rf SHiptv.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/SHiptv.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL1NIaXB0di5zaA==) && chmod +x SHiptv.sh && sh SHiptv.sh  
+  ```
+                       第二个脚本：
+   ```
+cd /jffs/scripts/ && rm -rf iptv7x.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/iptv7x.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL2lwdHY3eC5zaA==) && chmod +x iptv7x.sh && sh iptv7x.sh
+```
                        关于第二个脚本，特别说明一下：主要目的是为了省一个路由的口，并且万一路由死机，只要盒子和光猫不重启就还能继续看，缺点是认证速度慢，而且需要关闭光猫的DHCP功能，而且我家里还会有认证异常看不了的情况，所以推荐第一个脚本。
 
 
@@ -2291,13 +2310,9 @@ setmac show
 SN号其实有两个，2177是8位，还有个2178是9位，前面有个大写的G，就跟包装盒和设备上面条码印的一样。其实完整的loid（PONLOID[ID: 2180]）光猫的loid是由厂商代码（VENDORID[ID: 2176]4位数）+编码（GPONSN[ID: 2177]8位）组成的；  
 修改MAC地址:  
     setmac 1 256 00:00:00:00:00:00  
-  
-    setmac 1 257 00:00:00:00:00:00  
-  
+    setmac 1 257 00:00:00:00:00:00 
     setmac 1 258 00:00:00:00:00:00  
-  
     setmac 1 259 00:00:00:00:00:00  
-  
     setmac 1 260 00:00:00:00:00:00  
   
 SN和设备标识一定要输入大写字母，mac输入小写字母
@@ -3393,6 +3408,21 @@ JTD13515264846
 loid
 a515264846
 
+#### 江苏集客H50G
+user
+v9@pk5yv
+
+49
+tr4015
+a040936917
+超密
+CMCCAdmin
+admin1234
+宽带：
+jtnj25040936917
+123123
+
+
 #### 福建移动F663
 400
 tr69 401
@@ -3419,6 +3449,78 @@ T007881FNAG0112001K
 宽带
 071803864968
 123456
+
+
+#### 四川移动G-1426-MB
+
+loid
+711947399
+101
+15984882527@cmcc
+other102 bridge
+
+#### 上海电信G7615
+loid
+0053333624
+vlanid，0透传
+
+#### 内蒙古移动HS8345
+loid
+q841z59x
+
+41
+tr069-4005
+
+#### 河南平顶山移动F6145
+
+CMCCAdminRp7Mi8N*
+LOID
+6033516719
+4031
+13782408818
+408818
+
+#### 山东联通F477V9
+user
+loid
+H006475878
+3709
+IPTV_B_VID_2811
+053904238618
+238618
+
+#### 江苏移动F613
+user
+hA269%yz
+
+35
+13915697009
+112233
+
+#### 河南联通
+267
+037604691767
+
+
+#### 重庆移动H62G
+loid
+RCZ12C2BA1
+INTERNET_R_VID_1011
+
+
+#### 浙江移动HG6145F
+4031
+CMCCAdminQk#Fg7Us
+
+#### 上海联通TEWA 1208E
+834
+02107724303
+123456
+
+CUAdmin67084507
+
+
+
 
 
 ## 网站
