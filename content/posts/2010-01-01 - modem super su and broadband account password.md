@@ -104,7 +104,7 @@ http://192.168.1.1/logoffaccount.html
 如有不需要路由模式可以将光猫调测为桥接模式，
 方式如下，
 1. 根据光猫背面的账号密码进行调试，
-2. 超管规律，cuadmin+mac前6位小写
+2. 超管规律，cuadmin+mac前6位小写或者标识码头部6位
 3. 使用联通光猫统一账号密码，账号统一CUAdmin，密码
 
 华为光猫联通维护帐号密码：cuadmin00259e
@@ -246,6 +246,13 @@ useradmin
 ```
 location.assign("/usbbackup.cmd?action=backupeble&set2_sessionKey=set2_sessionKey_304")
 ```
+
+### 联通TEWA 1206e
+
+```
+http://192.168.1.1/backupsettings.html
+```
+
 
 ### 友华PT926G/E  PT921G
 
@@ -3519,6 +3526,16 @@ CMCCAdminQk#Fg7Us
 
 CUAdmin67084507
 
+#### 广西移动TEWA 861
+7319263944
+2_VOIP_INTERNET_B_VID_66
+19877379811
+200378
+
+#### 辽宁联通HS8345
+2080338001
+_INTERNET_R_VID_10
+fxl20234827
 
 
 
