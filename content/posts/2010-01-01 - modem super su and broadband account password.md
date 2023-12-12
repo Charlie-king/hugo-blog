@@ -952,7 +952,7 @@ cd /userconfig/cfg
 
 解密配置文件
 ```
-sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml | vi /tmp/debug-decry-cfg
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml | cat /tmp/debug-decry-cfg | grep ‘WANCPPP’ -A 5
 ```
 
 查看解密后的文件
@@ -1068,7 +1068,7 @@ https://blog.csdn.net/qq_42294237/article/details/132025846
 **测试：**
 http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg  
 
-
+ZDdWY@C1
 1. 登陆路由器之后打开这个地址  
 ```
 http://192.168.1.1/cgi-bin/getGateWay.cgi
@@ -1298,8 +1298,9 @@ sidbg 1 DB save
 
 解密参照下面，xor，routerpass均不能解
 ```
+bnyparhbCUAdmin
 ```
- bnyparhbCUAdmin
+ 
 ```
 sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 ```
@@ -1316,6 +1317,13 @@ http://192.168.1.1/hidden_version_switch.html
 切换版本，恢复出厂设置。
 telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
 
+### ### 辽宁联通dt741-csf
+打开，里面有loid
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+切换版本，恢复出厂设置。
+telnet账号root，密码是user密码+超密lnadmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
 
 ### 河南联通 dt741-csf  
 记下LOID还有VID   
@@ -1402,7 +1410,10 @@ CMCCAdmin
 ```
 s2@We3%Dc#
 ```
-重新注册后进telnet，找到var/tmp/romfile.cfg
+重新注册后进telnet，找到var/tmp/romfile.cfg，查看对应行和后面2行
+```
+cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
+```
 
 
 ### TEWA 800G 830G
@@ -3536,6 +3547,67 @@ CUAdmin67084507
 2080338001
 _INTERNET_R_VID_10
 fxl20234827
+
+
+#### 湖北宽带拨号密码888888
+
+#### 辽宁联通F657
+ts645ftz
+10
+2127058192
+fxad01047132
+
+#### 福建联通F657
+140
+5940510509794
+059407012195
+
+#### 辽宁朝阳联通H80
+user
+q6gsk5vv
+
+_INTERNET_R_VID_10
+ly05167783
+2159399296
+
+#### 辽宁联通DT741-csf
+utph9cey
+
+_INTERNET_R_VID_10
+asx2193608
+LOID
+2080159279
+
+####  浙江移动SK-D746（自动注册）
+loid
+t10378444b
+
+
+#### 山东联通DT541
+user
+7gnm6dec
+053903903656
+H006120742
+
+#### 辽宁联通HN8145xr
+2010
+wf85141136@163
+141136
+loid
+2043846913
+
+#### 辽宁葫芦岛联通F657
+2152859374
+10
+hldx3240436
+
+#### 辽宁葫芦岛联通F657
+9x2bu7xt
+2151629347
+10
+hl22371119
+
+
 
 
 
