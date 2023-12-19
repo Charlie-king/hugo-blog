@@ -266,7 +266,7 @@ user登录后，点几次返回，再点管理员登录，直接进入，然后�
 #### pt921g
 直接下载文件
 ```
-http://192.168.2.1/romfile.cfg
+http://192.168.1.1/romfile.cfg
 ```
 
 #### 电信
@@ -704,7 +704,7 @@ Fh@649940
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7430AF649940
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=28F7D623BF90
 ```
 联通
 ```
@@ -1163,7 +1163,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d Lub2hlpwetaDn65GHsP8Uw==
+python nokia-router-cfg-tool.py -d UrqEQu1Z2hrlK3DOkxrtoA==
 ```
 telnet：
 user或useradmin  
@@ -1177,6 +1177,7 @@ G-1425-MB
 ```
 GFdN2gMzTYC2
 AWYqE5qKJxxV
+JVGYsGxK2UaW
 ```
 G-140W-MD
 ```
@@ -1317,7 +1318,7 @@ http://192.168.1.1/hidden_version_switch.html
 切换版本，恢复出厂设置。
 telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
 
-### ### 辽宁联通dt741-csf
+### 辽宁联通dt741-csf
 打开，里面有loid
 ```
 http://192.168.1.1/hidden_version_switch.html
@@ -1363,7 +1364,7 @@ http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 sidbg 1 DB p DevAuthInfo
 ```
 55jkh@vu@C1
-
+e3j9yjfy
 
 ### 北京移动SK-D746，SK740S，联通UNG310H
 普通账户登录后，输下面，下载romfile.cfg文件，搜索admin  
@@ -1866,7 +1867,7 @@ sidbg 1 DB save
 ```
 sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
-sendcmd 1 DB save  
+sendcmd 1 DB save
 sendcmd 1 DB reboot
 ```
 删除TR069，禁用RMS服务器使能  
@@ -1886,8 +1887,12 @@ RMS服务器不启用周期上报
 ```
 sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0 
 sendcmd 1 DB set MgtServer 0 Tr069Enable 0
+
 ```
 
+```
+sendcmd 1 DB set WANC 1 WANCType 0
+```
 
 ### 联通华为HN8145XR
 记下loid，重置，登录CUAdmin，断开光猫，管理，配置文件，导出hw_ctree.xml，用华为解密工具解密，编辑，修改CUAdmin
@@ -3034,6 +3039,16 @@ sendcmd 1 DB save
 ```
 #### 广东深圳移动，光猫改广东地区即可注册
 
+
+### 宽带密码
+#### 北京移动，应该是装机日期，格式：20220202，loid：Bj开头
+#### 辽宁移动，12345678或后8位
+#### 辽宁联通，后6位或8位数字
+#### 湖北、天津、上海联通，123456
+
+
+
+
 ## 步骤
 1.  光猫背部user进入，状态-网络侧，找到internet_xx那个拍照，认证注册里，loid拍照，
 
@@ -3607,7 +3622,97 @@ hldx3240436
 10
 hl22371119
 
+#### 山东联通SK-D742
 
+H006651345
+
+#### 辽宁葫芦岛联通F677
+loid
+2149569286
+10
+hl21195119
+
+#### 山西联通F657（无loid，自动注册）
+a97y6xsf
+2_INTERNET_R_VID_1524
+035701423818
+
+#### 山东联通F677
+user
+36xg9h42
+
+3_INTERNET_R_VID_3225
+053804671202
+TA02444034
+
+#### 江苏移动集客S-GTA86G0A
+a962492269
+
+JTE13962492269
+158158
+INTERNET_R_VID_47
+R069_R_VID_4015
+
+#### 江苏苏州联通PT924G
+loid
+0512050630732056
+051205063073
+063073
+
+
+|1_TR069_R_VID_45|45|IPoE|禁用|已连接|9.39.2.81|255.255.248.0|c0:7c:90:06:ed:b7||
+|2_INTERNET_R_VID_2025|2025|PPPoE|启用|已连接|100.126.62.224|255.255.255.255|c0:7c:90:06:ed:b8|ERROR_ISP_DISCONNECT_IPv4|
+|3_VOICE_R_VID_42|42|IPoE|禁用|未连接|INIT||c0:7c:90:06:ed:b9|ERROR_ISP_DISCONNECT_IPv4|
+4_IPTV_B_VID_43
+
+#### 浙江杭州移动SKD748
+loid
+n3340060mc
+4031
+hzxia68446189
+123456
+
+#### 河南平顶山移动H62
+6033711532
+4031
+18337557339
+
+#### 辽宁葫芦岛联通F657G
+2055257792
+10
+hlw244415
+
+#### 云南联通PT927G（不会自动下发）
+loid和密码
+CU53D01H00190000G09001B
+CUAdmin
+
+1_TR069_R_VID_140	140	IPoE	禁用	已连接	10.135.67.235	255.255.252.0	88:ac:9e:cb:0b:bf
+2_INTERNET_R_VID_21	21	PPPoE	禁用	已连接	10.136.122.172	255.255.255.255	88:ac:9e:cb:0b:c0
+3_VOICE_R_VID_25	25	IPoE	启用	已连接	18.4.70.202	255.255.252.0	88:ac:9e:cb:0b:c1
+
+
+#### 辽宁葫芦岛移动h3-1r lite
+
+jun?t5nf
+HLCM23345316
+
+INTERNET_R_VID_1115
+_TR069_R_VID_4011
+
+15242906021@net
+12345678
+
+#### 山东联通HS8345
+账号053904075705
+宽带密码 030616
+超级密码030616
+
+超级密码呢
+cuadmin030616
+
+3_INTERNET_R_VID_1702
+H006906260
 
 
 
