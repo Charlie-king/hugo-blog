@@ -555,7 +555,7 @@ hg2x0
 root/admin
 ```
 ```
-Fh@AE63D0
+Fh@7E47AC
 ```
 
 3. 输入命令
@@ -570,7 +570,7 @@ cat /flash/cfg/agentconf/factory.conf
 ```
 http://192.168.1.1:8080/cgi-bin/baseinfoSet.cgi
 ```
-
+74&117&119&84&76&78&118&113&54&78&
 直接解密网站：https://www.iwanyx.com/abc/
 在线跑java：https://www.bejson.com/runcode/java/
 ```java
@@ -584,7 +584,7 @@ public class Main {
         Map<String, String> map = new HashMap<>();
         //  获取信息的方式 http://192.168.1.1:8080/cgi-bin/baseinfoSet.cgi
         // fixme,下面两行把从路由器拿到的信息放在这里
-        map.put("telecomadmin", "120&105&112&105&103&115&113&101&104&113&109&114&57&56&57&50&56&54&55&49&");
+        map.put("telecomadmin", "74&117&119&84&76&78&118&113&54&78&");
         map.put("useradmin", "101&104&113&109&114&");
         for (Map.Entry<String, String> entry : map.entrySet()) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -708,7 +708,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=28F7D623BF90
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=ACC4A917EA70
+http://192.168.1.1/telnet?enable=1&key=24B7DAF93E80
 ```
 电信
 ```
@@ -1163,7 +1163,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d UrqEQu1Z2hrlK3DOkxrtoA==
+python nokia-router-cfg-tool.py -d ew+CBO+qCEC1xKq+9qlSzw==
 ```
 telnet：
 user或useradmin  
@@ -3714,6 +3714,20 @@ cuadmin030616
 3_INTERNET_R_VID_1702
 H006906260
 
+
+#### 内蒙古联通G140-W
+user
+h7sgpf4w
+HL00968770007836144
+047000968770
+1_TR069_R_VID_887	已连接	DHCP	启用	887	120.63.124.229
+2_INTERNET_R_VID_47	已连接	PPPoE	启用	47	10.101.216.200
+3_IPTV_R_VID_46	已连接	DHCP	启用	46	172.115.248.53
+
+
+
+
+CUAdmin77876621
 
 
 
