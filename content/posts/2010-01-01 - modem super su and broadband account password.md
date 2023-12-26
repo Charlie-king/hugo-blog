@@ -259,9 +259,12 @@ http://192.168.1.1/backupsettings.html
 PT924G联通，提示成功但无法开启telnet。
 换种方法用资料的部分。
 
-#### PT925G联通
+#### PT952G联通
 
 user登录后，点几次返回，再点管理员登录，直接进入，然后再开telnet。
+
+#### PT924g，927，928
+记录loid，复位登记，
 
 #### pt921g
 直接下载文件
@@ -813,7 +816,7 @@ sidbg 1 DB save
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
 
-### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/GS8108/GM630/H2-2/H2-3e/T51G
+### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/GS8108/GM630/H2-2/H2-3e/T51G/UNG430Z
 获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
 
 
@@ -986,7 +989,7 @@ H2-2部分测试失败，河南平顶山测试成功。
 
 ### H2-3/H1s-3
 
-蓝色页面。
+浅蓝或灰蓝色页面。
 查看设备信息含普通账号密码  
 ```
 http://192.168.1.1/webcmcc/gui_device_info.html?password=!@qw34er&username=root
@@ -1022,7 +1025,11 @@ http://192.168.1.1/webcmcc/telnet.html?password=!@qw34er&username=root
 ```
 
 
+#### H2-3鲜蓝色界面和深蓝
+![](https://s3.bmp.ovh/imgs/2023/12/26/1a21fb632d5f7a0d.png)
+![](https://s3.bmp.ovh/imgs/2023/12/26/c23109aa2bc88f2b.png)
 
+此版本无法复位和重置，用火狐浏览器开启telnet，
 特定版本的火狐浏览器插件，HTTP Header Live。  
 打开`HTTP Header Live`插件，在页面上随便点击一个页面，再次查看`HTTP Header Live`插件，捕捉到了`post`信息，选择一个post。  
 post修改为：
@@ -1033,9 +1040,14 @@ http://192.168.1.1/boaform/set_telenet_enabled.cgi
 ```
 mode_name=set_telenet_enabled&amp;nonedata=0.3535281170047305&amp;user_name=root&amp;user_password=admin&amp;telenet_enabled=1&amp;default_flag=1
 ```
+```
+mode_name=set_telenet_enabled&nonedata=0.3535281170047305&user_name=root&user_password=admin&telenet_enabled=1&default_flag=1
+```
 ![](https://s3.bmp.ovh/imgs/2023/07/31/7d5aa2cbd30a618d.png)
 
-send，开启的telnet，意思是将光猫的telnet账号密码分别设置为`root`与`admin`
+send，然后点击右下角的`send`确认，会返回一个成功的页面`[success]`，代表已经成功打开光猫的`telnet`，语句的意思是将光猫的telnet账号密码分别设置为`root`与`admin`
+查看lastgood.xml，用vi把里面的超密TeleAccountPassword的值替换为UserAccountPassword，保存reboot
+查看config目录的所有文件：命令为： ls -lR /config
 
 https://www.5v13.com/mesh/26321.html
 
@@ -1058,6 +1070,8 @@ aDm8H%MdA
 ```  
 
 注册后，telnet不会掉线，进config，查看config.xml里的超密。
+
+
 
 https://www.right.com.cn/forum/thread-8285997-1-1.html
 
@@ -1395,7 +1409,7 @@ http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_adva
 
 
 ### 贵州移动SK-D748
-开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
+浅蓝色页面，地址带/cgi-bin/，开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
 ```
 http://192.168.1.1/cgi-bin/telnet.asp
 ```
@@ -3041,12 +3055,20 @@ sendcmd 1 DB save
 #### 湖南联通、上海电信没有vlan id
 
 ### 宽带密码
+123456，123123，321321,12345678，后6位，888888，666666
 #### 北京移动，应该是装机日期，格式：20220202，loid：Bj开头
 #### 辽宁移动，12345678或后8位
-#### 辽宁联通，后6位或8位数字
-#### 河南、湖北、天津、上海联通，123456
-#### 四川移动，东莞移动，后6位
-#### 山东联通，后6位
+#### 辽宁联通，后6位或8位数字或123456
+#### 河南联通、湖北联通、天津联通、上海联通，123456
+#### 四川移动（账号不是手机号的话，取手机后6位），广东移动东莞移动，后6位
+#### 山东联通、江苏联通，后6位
+#### 浙江移动，后6位
+
+
+
+
+
+
 
 
 
@@ -3769,6 +3791,40 @@ loid
 0527050192046679
 052705019204
 019204
+
+#### 江苏联通PT924G（超密未加密）
+loid
+0527022442721958
+宽带账号密码：
+052702244272
+244272
+2_INTERNET_R_VID_2045	
+
+#### 浙江移动H3-8S
+4031
+qzqca19003241
+003241
+
+#### 辽宁联通F657V9-C
+tz9u766h
+10
+hl5865988
+2134537574
+
+#### 辽宁移动H3-2r
+HLCM23617905
+INTERNET_R_VID_1070
+
+#### 四川移动UNG430Z
+loid
+711838548
+101
+21711838548
+1356886889
+密码为886889
+
+
+
 
 
 ## 网站
