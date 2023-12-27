@@ -1040,6 +1040,7 @@ http://192.168.1.1/boaform/set_telenet_enabled.cgi
 ```
 mode_name=set_telenet_enabled&amp;nonedata=0.3535281170047305&amp;user_name=root&amp;user_password=admin&amp;telenet_enabled=1&amp;default_flag=1
 ```
+
 ```
 mode_name=set_telenet_enabled&nonedata=0.3535281170047305&user_name=root&user_password=admin&telenet_enabled=1&default_flag=1
 ```
@@ -3823,7 +3824,12 @@ loid
 1356886889
 密码为886889
 
-
+#### 山东联通F477
+INTERNET_R_VID_3594
+TR069_R_VID_50
+IPTV_B_VID_43
+053904084322
+loid：H006352780
 
 
 
