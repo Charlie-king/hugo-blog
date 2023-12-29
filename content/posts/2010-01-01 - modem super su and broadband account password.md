@@ -707,7 +707,7 @@ Fh@649940
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=28F7D623BF90
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACCB367DC770
 ```
 联通
 ```
@@ -1078,6 +1078,48 @@ https://www.right.com.cn/forum/thread-8285997-1-1.html
 
 https://blog.csdn.net/qq_42294237/article/details/132025846
 
+
+### 移动SK-D848，SK742，SK-M724
+
+江苏企业宽带，一网通注册码a+账号后8位。
+
+user页面开启telnet
+
+telnet
+root
+无线wifi密码+超密aDm8H%MdA，无wifi密码的直接就超密。
+
+开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
+```
+http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
+```
+ahynm3mkaDm8H%MdA
+
+
+### 贵州移动SK-D748
+浅蓝色页面，地址带/cgi-bin/，开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
+```
+http://192.168.1.1/cgi-bin/telnet.asp
+```
+打开，下载romfile.cfg
+```
+http://192.168.1.1/cgi-bin/upgrade.asp
+```
+telnet：
+```
+CMCCAdmin
+```
+  
+```
+s2@We3%Dc#
+```
+重新注册后进telnet，找到var/tmp/romfile.cfg，查看对应行和后面2行
+```
+cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
+```
+
+
+
 ### 移动CM112   GS3101  GS2107（GS3202不同）GS8101用中兴工具
 
 **测试：**
@@ -1134,6 +1176,11 @@ web_passwd="CMCCAdmin****"
 其中的username=后面的就是管理员账号，一般为CMCCAdmin，web_passwd=后面的就是密码，这里对应的是CMCCAdmin****，注意不要带引号。
 
 &amp;等于&
+
+#### H10g-32ac企业网关（江苏、内蒙移动）
+sn认证
+捅复位后，重新注册，密码保持不变，删除tr069
+
 
 ### 移动SU6100
 锐捷猫，江苏
@@ -1266,7 +1313,7 @@ user里直接恢复出厂设置
 
 telnet密码是user密码，重新注册后超密不变（辽宁）
 
-### 江苏福建创维SK-D848，SK-D742
+### 江苏福建联通创维SK-D848，SK-D742
 
 绿色登录页
 user页面开启telnet
@@ -1389,46 +1436,6 @@ http://192.168.1.1/cgi-bin/upgrade.asp
 
 ```
 http://192.168.1.1/romfile.cfg
-```
-
-
-### 江苏创维SK-D848，SK742
-
-江苏企业宽带，一网通注册码a+账号后8位。
-
-user页面开启telnet
-
-telnet
-root
-无线wifi密码+超密aDm8H%MdA，无wifi密码的直接就超密。
-
-开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
-```
-http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
-```
-
-
-
-### 贵州移动SK-D748
-浅蓝色页面，地址带/cgi-bin/，开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
-```
-http://192.168.1.1/cgi-bin/telnet.asp
-```
-打开，下载romfile.cfg
-```
-http://192.168.1.1/cgi-bin/upgrade.asp
-```
-telnet：
-```
-CMCCAdmin
-```
-  
-```
-s2@We3%Dc#
-```
-重新注册后进telnet，找到var/tmp/romfile.cfg，查看对应行和后面2行
-```
-cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
 ```
 
 
@@ -3064,6 +3071,9 @@ sendcmd 1 DB save
 #### 四川移动（账号不是手机号的话，取手机后6位），广东移动东莞移动，后6位
 #### 山东联通、江苏联通，后6位
 #### 浙江移动，后6位
+#### 江苏移动，112233，企宽123123
+#### 北京联通mac认证，不需要loid
+
 
 
 
@@ -3831,7 +3841,73 @@ IPTV_B_VID_43
 053904084322
 loid：H006352780
 
+#### 云南h2-3
+0875LYZj7976797hv
+41
+other43
+45
 
+火狐开telnet
+
+#### 东莞移动272
+1312373760
+http://192.168.1.1/ajax_user_register.gch
+打开后前10位是注册码
+c180351642 2010100001IGDSUCCSUCC-1312373760
+41
+18218035164@139.gd
+密码后6位
+
+#### 四川移动HS8545M5
+10
+13438050567a
+050567
+e5e5ec5331cb130d4d5556848cfd95f875439e37b35b52c6ee4b145242815371
+
+#### 内蒙古联通V173
+1_TR069_R_VID_887	887/6	IPv4
+2_INTERNET_B_VID_47	47/0	IPv4/IPv6
+3_INTERNET_B_VID_48	48/0	IPv4/IPv6
+8_TR069_B_VID_887	887/6	IPv4
+loid：WL08132242011039508
+
+#### 江苏移动一网通SK-M724
+79
+VJTwx51039797417005
+http://192.168.1.1/ajax_user_register.gch
+a797417005 201010002INTERNET,iptv0IGDSUCCSUCC-1313478808
+
+#### 浙江移动HS8546
+
+tr4034
+4031
+m2107966st
+hunxa35119162
+
+#### 河南联通HG8321R
+iak6v6u8
+22
+loid
+2649826390
+
+#### 河南联通F677V9
+INTERNET_R_VID_296
+VOICE_R_VID_1370
+039502373222
+loid
+0367395318
+
+#### 山西联通H
+4059
+2
+035201457970
+
+#### 山东联通ISCOM HT821-GP【未破】
+CQ85060222
+3_INTERNET_R_VID_3103
+
+
+--------
 
 ## 网站
 恩山：https://www.right.com.cn
