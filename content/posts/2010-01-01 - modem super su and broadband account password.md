@@ -254,6 +254,12 @@ http://192.168.1.1/backupsettings.html
 ```
 
 
+### 联通TEWA 870G（河南）
+```
+http://192.168.1.1/backupsettings.conf
+```
+
+
 ### 友华PT926G/E  PT921G
 
 PT924G联通，提示成功但无法开启telnet。
@@ -3937,6 +3943,99 @@ ZG606666520X0101006
 4_IPTV_B_VID_3300	3300/5	IPv4
 8_TR069_B_VID_4040	4040/7
 
+#### 四川联通F677
+1_TR069_R_VID_4040
+4_VOICE_R_VID_3500
+6_INTERNET_B_VID_100
+loid
+LE604653901X1509005
+
+#### 河南联通TEWA870
+loid
+0761771917
+037008679382
+
+#### 天津联通华为HG8347R（root密码不是标准）
+1_TR069_R_VID_4000	Disconnected	--	4000/7	AlwaysOn
+2_INTERNET_R_VID_151	Disconnected	--	151/0	AlwaysOn
+3_IPTV_R_VID_2046
+
+02201033534
+033534
+TJHD0006527707
+
+#### 湖北联通F657
+3_IPTV_R_VID_59
+2_INTERNET_B_VID_49
+T000140C0G0601000Z
+  
+#### 新疆联通华为HS8345
+991300337831
+41
+1_TR069_R_VID_800	Disconnected	--	800/7	AlwaysOn
+2_INTERNET_B_VID_41	Disconnected	--	41/0	AlwaysOn
+3_VOICE_R_VID_44	Disconnected	--	44/6	AlwaysOn
+4_IPTV_B_VID_43	Disconnected	--	43/0	AlwaysOn
+
+
+#### 山东联通SK-D849（ftp不行）
+INTERNET_R_VID_294
+039507601645
+0780911645
+
+293
+039507728694
+0780911622
+
+#### 华为
+1_TR069_R_VID_180	Connected	79.81.4.116	180/6	AlwaysOn
+2_INTERNET_R_VID_290
+039507221312
+0780444647
+
+#### 山东联通SK-D740（配置文件无法解密）
+7fne6bth
+291
+039507603307
+0780444791
+
+#### 内蒙移动h2-3（未破）
+k6j7i5hf
+41
+
+#### 山东联通v173
+WF81604687
+053606234493
+1_TR069_R_VID_50	Connected	10.201.196.10	50/6	AlwaysOn
+2_IPTV_B_VID_2340	Connected	--	2340/3	AlwaysOn
+3_INTERNET_R_VID_3142	Connected	112.244.50.33	3142/0	AlwaysOn
+8_TR069_B_VID_50	Connected	--	50/6	Alway
+
+#### 山东联通PT952（telnet su密码是超密，需复位）
+JN75639712
+3_INTERNET_R_VID_3032
+_IPTV_B_VID_580
+
+#### 湖北联通F657
+2_INTERNET_R_VID_49
+072804818487
+T010308ZNAG0508000V
+
+
+#### 新疆移动F7000M
+WL018755206
+2_INTERNET_R_VID_2
+4_VOIP_R_VID_30
+3_OTHER_B_VID_91
+
+
+#### 山东联通F457
+3_INTERNET_R_VID_3284
+2_IPTV_B_VID_43
+rz74374799
+063300768931
+
+
 
 
 
@@ -4144,17 +4243,24 @@ https://www.right.com.cn/forum/thread-4051132-1-1.html
 > https://post.smzdm.com/p/apz3p8w0/
 
 http://192.168.1.1/hidden_version_switch.gch
-/userconfig/cfg/db_user_cfg.xml
-/backpresettings.conf
-/backupsettings.conf
-fhconf/backpresettings.conf
+192.168.1.1/userconfig/cfg/db_user_cfg.xml
+192.168.1.1/backpresettings.conf
+192.168.1.1/backupsettings.conf
+192.168.1.1/fhconf/backpresettings.conf
 http://192.168.1.1/servmngr.html
-192.168.1.1 输入密码进去看到自动拨号页面  然后在原页面上打开http://192.168.1.1/backupsettings.conf
+192.168.1.1 输入密码进去看到自动拨号页面  然后在原页面上打
+```
+192.168.1.1/backupsettings.conf
+```
+192.168.1.1/
 
+#### 北京联通绕过超管TEWA，注意修改id名
+```
 document.getElementById('loginfrm').setAttribute('method','get');  
 document.getElementById('username').value = 'CUAdmin';  
 document.getElementById('password').value = 'CUAdmin';  
 document.getElementById('loginfrm').submit();
+```
 
 
 https://www.right.com.cn/FORUM/thread-8253868-1-1.html
@@ -4163,7 +4269,11 @@ https://www.right.com.cn/FORUM/thread-8253868-1-1.html
 【1】保证正常访问光猫web  
   
   
-【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：http://192.168.1.1/hidden_version_switch.html，勾选telnet功能，一闪而过不用在意。）  
+【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：
+```
+192.168.1.1/hidden_version_switch.html
+```
+勾选telnet功能，一闪而过不用在意。）  
   
   
 【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
