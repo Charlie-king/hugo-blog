@@ -708,7 +708,7 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@649940
+Fh@E131A0
 ```
 浏览器中录入  
 移动
@@ -717,7 +717,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACCB367DC770
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=24B7DAF93E80
+http://192.168.1.1/telnet?enable=1&key=3086F1E131A0
 ```
 电信
 ```
@@ -4038,8 +4038,40 @@ WL018755206
 rz74374799
 063300768931
 
+#### 辽宁PT928G
+user
+94699466
 
+2_INTERNET_R_VID_1463
+1_TR069_R_VID_46
+fs_gp02404078514
+loid
+2159408561
 
+#### 山西移动F613（sn注册，插光纤直接注册）
+INTERNET_R_VID_41
+1_TR069_R_VID_46
+
+#### 浙江联通F657
+2_INTERNET_R_VID_12
+057400534088
+loid
+GNB029ZX2140H24018875800
+
+#### 辽宁移动T66（loid认证，不需要密码）
+loid：
+HLCM23043201  
+ 2_INTERNET_R_VID_1073
+ 1_TR069_R_VID_4011        
+
+#### 辽宁联通TEWA 830C
+user
+fgk6k442
+10
+2138218246
+fsgp_04102193
+
+#### 
 
 
 
