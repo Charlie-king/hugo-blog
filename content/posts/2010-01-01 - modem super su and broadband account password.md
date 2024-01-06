@@ -822,7 +822,7 @@ sidbg 1 DB save
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
 
-### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/GS8108/GM630/H2-2/H2-3e/T51G/UNG430Z
+### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/GS8108/GM630/H2-2/H2-3e/T51G/UNG430Z/UNG300Z/UNG301Z
 获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
 
 
@@ -1183,15 +1183,17 @@ web_passwd="CMCCAdmin****"
 
 &amp;等于&
 
-#### H10g-32ac企业网关（江苏、内蒙移动）
+### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94
 sn认证
 捅复位后，重新注册，密码保持不变，删除tr069
+S-Box8L94，F12查看loid，需在网页里重置，复位键没用。
 
 
 ### 移动SU6100
 锐捷猫，江苏
 user进去，开telnet，账号密码同锐捷，su：aDm8H%MdA
 只有user账号，没有超管，界面功能有限。
+
 
 ### 上海移动HG550G企宽
 
@@ -4071,7 +4073,70 @@ fgk6k442
 2138218246
 fsgp_04102193
 
-#### 
+#### 湖北联通F677V2（捅复位无反应）
+ZQ33987589
+053101600037
+3_INTERNET_R_VID_3258
+1_TR069_R_VID_50
+2_IPTV_B_VID_510
+
+####  浙江移动T65（插光纤自动注册）
+loid
+t0180107q1
+ zsdhg05806660
+ 806660
+2_INTERNET_R_VID_4031
+1_TR069_R_VID_4034
+4_IPTV_R_VID_4033
+
+#### 山西联通HG5585F（自动注册）
+2
+035401188495
+
+#### 辽宁联通F657
+1_TR069_R_VID_46
+2_INTERNET_B_VID_8
+loid：2154569732
+
+#### 山东联通sk-d740
+3_INTERNET_R_VID_2885
+2_IPTV_B_VID_731
+054302016339
+
+#### 山东联通sk-d740
+3_INTERNET_R_VID_2895
+1_TR069_R_VID_50
+2_IPTV_B_VID_43
+054302004257
+BZ95818128
+
+#### 山东联通sk-d740
+2_IPTV_B_VID_43
+3_INTERNET_R_VID_2889
+BZ98180949
+054302006595
+
+
+#### 江苏移动S-Box8L94（网页重置）
+a452933005
+VJTwx51034452933
+789789
+设备接入类型：Gpon
+设备型号：S-Box8L94
+设备标识号：204B22SUNN22888652
+厂家信息：SUNNIWELL
+硬件版本：V1.0
+软件版本：V1.0.1.5
+设备MAC：204b22888652
+设备SN：SUNN22888652
+1_TR069_R_VID_4015	nas0_0	DHCP	0	6	关闭	up	10.43.114.69
+2_INTERNET_R_VID_35	ppp0	PPPoE	0	0	启用	up	100.88.16.168
+3_OTHER_R_VID_2030	nas0_2	DHCP	0	4	启用	connecting	
+4_VOIP_R_VID_3951	nas0_3	DHCP	0	5	关闭	up	10.189.75.140
+5_OTHER_R_VID_2030	ppp1	PPPoE	0	0	关闭	up	10.30.202.170
+
+
+
 
 
 
