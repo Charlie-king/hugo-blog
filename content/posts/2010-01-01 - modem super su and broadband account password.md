@@ -1032,6 +1032,47 @@ http://192.168.1.1/webcmcc/telnet.html?password=!@qw34er&username=root
 
 
 #### H2-3鲜蓝色界面和深蓝
+user登录后，直接console输入
+H2-3（2020-07）跟 H1s-3 $.PATH='/aoaform/'   H2-3  $.PATH='/'
+```
+TMP_PATH=$.PATH
+$.PATH='/'
+obj={}
+obj.telenet_enabled = '1';
+obj.user_name='root'
+obj.user_password='admin'
+        setAppDataurl('save','set_telenet_enabled',obj,function(data){      
+                init_telnet_set();
+        });
+$.PATH=TMP_PATH
+```
+H2-3 因版本不同 开启也不一样 差别与 PATH
+```
+TMP_PATH=$.PATH
+$.PATH='/boaform/'
+obj={}
+obj.telenet_enabled = '1';
+obj.user_name='root'
+obj.user_password='admin'
+        setAppDataurl('save','set_telenet_enabled',obj,function(data){      
+                init_telnet_set();
+        });
+$.PATH=TMP_PATH
+```
+H1s-3
+```
+TMP_PATH=$.PATH
+$.PATH='/aoaform/'
+obj={}
+obj.telenet_enabled = '1';
+obj.user_name='root'
+obj.user_password='admin'
+        setAppDataurl('save','set_telenet_enabled',obj,function(data){      
+                init_telnet_set();
+        });
+$.PATH=TMP_PATH
+```
+
 ![](https://s3.bmp.ovh/imgs/2023/12/26/1a21fb632d5f7a0d.png)
 ![](https://s3.bmp.ovh/imgs/2023/12/26/c23109aa2bc88f2b.png)
 
@@ -1044,7 +1085,7 @@ http://192.168.1.1/boaform/set_telenet_enabled.cgi
 ```
 
 ```
-mode_name=set_telenet_enabled&amp;nonedata=0.3535281170047305&amp;user_name=root&amp;user_password=admin&amp;telenet_enabled=1&amp;default_flag=1
+mode_name=set_telenet_enablednonedata=0.3535281170047305&user_name=root&user_password=admin&telenet_enabled=1&default_flag=1
 ```
 
 ```
@@ -1124,6 +1165,18 @@ s2@We3%Dc#
 cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
 ```
 
+### 江苏创维SK-D848，SK742
+
+user页面开启telnet
+
+telnet
+root
+无线wifi密码+超密aDm8H%MdA
+
+开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
+```
+http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
+```
 
 
 ### 移动CM112   GS3101  GS2107（GS3202不同）GS8101用中兴工具
@@ -4179,6 +4232,26 @@ AQ71RUPK5J-2010100001IGDSUCCSUCC
 
 
 
+#### 天津联通HS8345（重置）
+02205595126
+595126
+TJDL0007532940
+1_TR069_R_VID_4000	Connected	10.190.36.41	4000/7	AlwaysOn
+2_INTERNET_R_VID_18	Connected	111.162.120.170	18/0	AlwaysOn
+3_IPTV_R_VID_2504	Connected	10.15.5.192	2504/3
+
+
+#### 贵州h2-3（403）
+8RZa853884
+1_TR069_R_VID_3950	开启	已连接	dhcp	100.90.63.31	255.255.128.0	100.90.0.1	10.198.2.166	
+2_OTHER_B_VID_3850	开启	已连接						
+3_VOIP_R_VID_3750	开启	未连接	dhcp					
+4_INTERNET_R_VID_41	开启	已连接	pppoe	10.81.55.191	255.255.255.255	10.81.0.1	211.139.5.30	211.139.5.2
+
+#### 山西联通SK-D748-C
+267
+035902250102
+123456
 
 
 
