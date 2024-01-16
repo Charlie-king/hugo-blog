@@ -410,9 +410,9 @@ http://192.168.1.1/backupsettings.html
 ```
 加入内容为
 ```
-  <X_CMCC_ServiceManage>  
-       <TelnetEnable>TRUE</TelnetEnable>  
-  </X_CMCC_ServiceManage>
+<X_CMCC_ServiceManage> 
+ <TelnetEnable>TRUE</TelnetEnable>  
+</X_CMCC_ServiceManage>
 ```
 
 在上传配置，重启猫
@@ -440,6 +440,19 @@ http://192.168.1.1/bd/vermod.asp
 需要先删除tr069，在配置文件里开启可编辑tr069，或者，在命令行改tr069代码。先修改找注册状态，下发数据状态为成功。再填好拨号账号密码，注册loid，30%即可拨上号。
 ```
 http://192.168.1.1/bd/vermod.asp
+```
+
+联通：
+```
+yhtcAdmin
+```
+
+```
+Cuc@YHfw
+```
+su
+```
+CUAdmin
 ```
 
 ##### 友华光猫命令行里修改tr069为可编辑
@@ -708,16 +721,16 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@E131A0
+Fh@1BC920
 ```
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACCB367DC770
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=90837E2708A0
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=3086F1E131A0
+http://192.168.1.1/telnet?enable=1&key=90837E2708A0
 ```
 电信
 ```
@@ -729,7 +742,7 @@ root  或者  admin
 ```
 
 ```
-Fh@2C33AC
+Fh@2708A0
 ```
 
 ```
@@ -749,7 +762,7 @@ nE7jA%5m
 ```
 TeleCom_1234
 ```
-
+CUAdmin
 ```
 hg2x0
 ```
@@ -946,7 +959,7 @@ sidbg 1 DB p DevAuthInfo
 sidbg 1 DB set DevAuthInfo 0 Pass admin1234
 sidbg 1 DB save
 ```
-find / -name 'debug-decry-cfg'
+find / -name 'backupsettings.conf'
 6. 直接查询方式
 输入这个命令看看在哪个文件夹
 ```
@@ -1029,6 +1042,27 @@ http://192.168.1.1/webcmcc/modeset.html?password=!@qw34er&username=root
 ```
 http://192.168.1.1/webcmcc/telnet.html?password=!@qw34er&username=root
 ```
+
+2.使用Telnet 连接光猫，账户和密码均为刚设置的(root账户,否则编辑文件显示只读文件)
+
+输入以下命令
+Telnet 192.168.1.1
+输入Telnet账户密码登陆，登陆成功后
+输入cd  /config/work
+输入
+```
+grep aucTelnetPassword lastgood.xml  /config/work
+```
+然后复制粘贴保存一下aucTelnetPassword值
+输入vim lastgood.xml
+找到aucTeleAccountPassword(Win可以用PgUp,PgDn翻页)
+找到后吧找到aucTeleAccountPassword的Value值(英文输入状态按i进入编辑)将值替换成aucTelnetPassword的值
+(由于Value值太长显示不出全部,所以先把aucTeleAccountPassword的Value里面的内容删了然后复制aucTelnetPassword值,在cmd命令里右键一下张贴进去)
+然后按Esc在按:wq回车
+:wq退出后输入reboot重启一下,然后你就可以使用之前设置的TELNET密码访问了
+
+
+
 
 
 #### H2-3鲜蓝色界面和深蓝
@@ -1163,6 +1197,10 @@ s2@We3%Dc#
 重新注册后进telnet，找到var/tmp/romfile.cfg，查看对应行和后面2行
 ```
 cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
+```
+或者
+```
+cat tmp/ctromfile.cfg | grep 'CMCCAdmin' -A 2
 ```
 
 ### 江苏创维SK-D848，SK742
@@ -1586,7 +1624,7 @@ http://192.168.1.1/backupsettings.conf
 ```
 su
 shell
-cp  /mnt/jffs2/hw_ctree.xml /mnt/jffs2/myhwcfg.xml.gz
+cp /mnt/jffs2/hw_ctree.xml /mnt/jffs2/myhwcfg.xml.gz
 cd /mnt/jffs2/
 aescrypt2 1 myhwcfg.xml.gz tem
 gzip -d myhwcfg.xml.gz
@@ -3122,18 +3160,24 @@ sendcmd 1 DB save
 ```
 #### 广东深圳移动，光猫改广东地区即可注册
 #### 湖南联通、上海电信没有vlan id
+#### 北京联通mac认证，不需要loid
+#### 河北联通mac认证，华为不需要loid
+#### 山西移动，联通mac认证
+
 
 ### 宽带密码
 123456，123123，321321,12345678，后6位，888888，666666
 #### 北京移动，应该是装机日期，格式：20220202，loid：Bj开头
 #### 辽宁移动，12345678或后8位
+#### 黑龙江移动，后6位
 #### 辽宁联通，后6位或8位数字或123456
 #### 河南联通、湖北联通、天津联通、上海联通，123456
 #### 四川移动（账号不是手机号的话，取手机后6位），广东移动东莞移动，后6位
 #### 山东联通、江苏联通，后6位
 #### 浙江移动，后6位
 #### 江苏移动，112233，企宽123123
-#### 北京联通mac认证，不需要loid
+
+#### 海南移动手机号，密码kd123456
 
 
 
@@ -4253,6 +4297,131 @@ TJDL0007532940
 035902250102
 123456
 
+#### 江苏联通HG6142A
+2005
+iptv43
+loid
+0523050041613398
+CUAdminJnJkdqCy
+
+#### 山西联通HG6142A
+2
+035401186531
+1234567890
+
+#### 辽宁联通G7615
+2076426797
+2_INTERNET_R_VID_10
+dl21023265@163
+
+#### 沈阳移动GM630【重置】
+
+user
+^69X3t9^@C1
+id
+1514
+loid
+SYCM12474314
+完成，重置多次
+
+#### 山东联通华为
+p7946yx8
+display current-configuration
+3320
+iptv1221
+tr069-50
+
+loid
+ZBLZ05310533025306680113
+
+#### 安徽移动GM630【重置telnet密码不对】
+user
+pAGF9
+
+41
+开启telnet后，root密码非pAGF9@C1
+直接改桥接地址（电信页面）
+[http://192.168.1.1/bridge_route.gch](http://192.168.1.1/bridge_route.gch)
+
+#### 广州增城联通HG261G
+tr069-46
+41
+iptv45
+loid
+2041616537
+宽带
+GZ1234734694@16900.gd
+
+#### 辽宁联通
+
+loid
+2022649054
+2_INTERNET_B_VID_2645
+无法重置为标密
+
+#### 浙江移动TEWE 272（复位闪灭4次才生效）
+t5488343sn2010100001IGDSUCCSUCC2499064
+4031
+user
+D4DJu9dR
+
+#### 山西移动GM620
+41
+15035144254
+
+#### 浙江杭州移动F663
+2_INTERNET_R_VID_4031
+1_TR069_R_VID_4034
+3_VOIP_R_VID_4035
+loid
+n75265259d
+
+
+#### 辽宁移动HG6145
+HLCM24504771
+tr069-4011
+1128
+18009885551@net
+12345678
+
+#### 辽宁移动HG6145
+HLCM24504771
+tr069-4011
+1128
+18009885551@net
+12345678
+
+
+#### 山西联通pt929
+xfe2r5zh
+2
+035501503538
+__ENC__2218E30901D0B216E6C6F44875352373
+
+
+#### 山东联通HG521
+063202412542
+ZZ72060392
+
+1_TR069_R_VID_50	已连接	11.214.119.16	255.255.240.0
+2_IPTV_B_VID_2172	已连接	-	-
+3_INTERNET_R_VID_4002	已连接
+
+
+#### 河南华为HS8346
+039202416078
+cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac
+0851672725
+1_TR069_R_VID_180 Connected 81.131.65.19 180/6 AlwaysOn 
+4_IPTV_R_VID_20 Connected 10.70.234.223 20/0 AlwaysOn 
+5_INTERNET_R_VID_1236 Connected 42.230.27.127 1236/0 AlwaysOn 
+039202416078IPTV@iptv.ha
+cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac
+
+
+
+
+
 
 
 --------
@@ -4393,8 +4562,8 @@ https://www.right.com.cn/forum/thread-4005957-1-1.html
 
 联通光猫超级密码(无需繁琐获取)适用大部分地区(手机/P
 https://www.bilibili.com/read/cv14851248/
-```
 北京地区：联通光猫TEWA-800E超级管理员(亲测有效)
+```
 document.getElementById('loginfrm').setAttribute('method','get');
 document.getElementById('username').value = 'CUAdmin';
 document.getElementById('password').value = 'CUAdmin';
@@ -4529,3 +4698,41 @@ https://www.right.com.cn/FORUM/thread-8253868-1-1.html
 
 - 一样进到可以查看拨号账号密码页，edge或chrome按F12，调出开发者工具，点击element（元素），鼠标点击网页密码那列，在元素中将type="password"改为type="text"，在网页中就看到**密码那里变成了明文显示**，这串字符再用[base64解码](https://base64.us/)一下就是宽带密码了。
 ![](https://s3.bmp.ovh/imgs/2023/05/10/d6c53e43741b3cb4.jpg)
+
+
+
+
+
+
+联通：
+```
+yhtcAdmin
+```
+
+```
+Cuc@YHfw
+```
+su
+```
+CUAdmin
+```
+
+```
+cp /home/httpd/web/net_eth_links.asp /var/
+```
+
+2. 输入编辑这个文件。`vi` 是著名的非常难用的编辑器，因此我们一步步来：
+```
+vi /var/net_eth_links.asp
+```
+
+    1. 输入，然后回车，
+```
+/is_configurable
+```
+
+
+3. 输入 ，回车运行。
+```
+mount --bind /var/net_eth_links.asp /home/httpd/web/net_eth_links.asp
+```
