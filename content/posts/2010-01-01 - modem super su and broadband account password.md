@@ -1324,7 +1324,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d ew+CBO+qCEC1xKq+9qlSzw==
+python nokia-router-cfg-tool.py -d ZNUnS8fuIu5IX7guihqpzA==
 ```
 telnet：
 user或useradmin  
@@ -1486,6 +1486,15 @@ http://192.168.1.1/hidden_version_switch.html
 ```
 切换版本，恢复出厂设置。
 telnet账号root，密码是user密码+超密lnadmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
+
+### 天津联通DT541 
+打开，里面有loid
+```
+http://192.168.18.1/hidden_version_switch.html
+```
+切换版本，恢复出厂设置。
+telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
+
 
 ### 河南联通 dt741-csf  
 记下LOID还有VID   
@@ -4418,9 +4427,225 @@ cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac
 039202416078IPTV@iptv.ha
 cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac
 
+#### 山东济宁微山联通TEWA 800
+
+JI20092040826538
+053703025910
+
+1_TR069_R_VID_50|启用|已连接|DHCP|11.39.136.59|255.255.0.0|11.39.0.1|60.217.44.33
+IPTV_B_VID_43|启用|已连接
+3_INTERNET_R_VID_3217|
+
+#### 河北联通G-140-W
+031503297559@adsl
+1_TR069_R_VID_3998	已连接	DHCP	启用	3998	25.86.39.216
+2_INTERNET_R_VID_2695	已连接	PPPoE	启用	2695	60.3.73.196
+
+#### 天津联通DT541
+TJTG0006561924
+02201064602
+2_INTERNET_R_VID_44
+DHCP
+连接名称	3_IPTV_R_VID_2010
+NAT	启用
+IP	10.86.45.107/255.255.128.0
+DNS1	202.99.96.68
+DNS2	202.99.104.68``
+DNS3	0.0.0.0
+WAN MAC	28:c0:1b:d5:95:47
+网关	10.86.0.1
+
+#### 河南联通F677
+1167
+037008971154
+123456
+loid：0778468411
+
+#### 陕西移动sk-d747
+18406510664001
+41
+
+#### 山西移动
+15035544830002
+41
+
+#### 浙江移动TEWA 272
+t5488343sn2010100001IGDSUCCSUCC2499064
+
+#### 广东移动GM219s
+41
+13715550996@139.gd
+137996
+e1555099632020100001IGDSUCCSUCC
+
+#### 江苏移动sk742
+66
+JTF19895463782
+a895463782
+68
+JTF18a795737390
+
+#### 河北联通
+1_TR069_R_VID_3998	Connected	27.31.19.163	3998/7	AlwaysOn
+2_IPTV_B_VID_9	Connected	--	9/4	AlwaysOn
+3_INTERNET_R_VID_7	Connected	172.17.217.96	7/0	AlwaysOn
+031702338286@adsl
+000000
+e6439a6595c5c94f775c64a408fad73164ed674291261e202d1c714a1eb87332
+
+#### 广东移动F663
+v205771222
+5_INTERNET_R_VID_41
+1_TR069_R_VID_46
+4_OTHER_B_VID_50
+
+#### 辽宁联通HS8346
+loid
+2095016857
+448
+jz041622620593
+
+#### 广东惠州移动SKd746
+j695832462
+2_INTERNET_R_VID_41	已连接 	172.28.248.80 	255.255.255.255 
+3_OTHER_B_VID_48	已连接 	- 	- 
+4_OTHER_B_VID_50	已连接 	
+
+#### 黑龙江移动sk-D768
+ji6hdc217a
+
+#### 辽宁联通v173
+1_TR069_R_VID_46	Connected	102.67.51.44	46/7	AlwaysOn
+2_INTERNET_R_VID_10	Connected	113.235.217.28	10/0	AlwaysOn
+3_VOICE_R_VID_20	Connected	19.180.215.66	20/0	AlwaysOn
+8_TR069_B_VID_46
+2116087462
+dlx2663951@163
+
+#### 内蒙古联通v173
+WL03135414011052754
+047403135414
+1_TR069_R_VID_887	Connected	104.235.123.173	887/6	AlwaysOn
+2_INTERNET_R_VID_47	Connected	10.43.84.80	47/0	AlwaysOn
+3_INTERNET_B_VID_48	Connected	--	48/0	AlwaysOn
+8_TR069_B_VID_887	Connected	
+
+#### 河南联通hs8346v5
+user
+u4jegf4x
+1_TR069_R_VID_180	Connected	65.78.86.109	180/6	AlwaysOn
+2_IPTV_R_VID_23	Connected	10.20.96.249	23/0	AlwaysOn
+3_INTERNET_R_VID_22	Connected	61.52.139.59	
+loid:
+1356188548
+037105518994
+
+#### 河南联通HG5585F
+NTERNET_R_VID_335
+037103618687
+loid
+2981294861
+
+#### 河南联通F677
+1167
+037008971154
+123456
+loid：0778468411
+
+#### 山东联通skd740
+BZ09305237
+3_INTERNET_R_VID_3868
+054302010782
+
+#### 山东联通skd740
+1_TR069_R_VID_50
+2_IPTV_B_VID_43
+3_INTERNET_R_VID_3869
+BZ56206567
+054302008310
+
+
+#### 河北联通贝尔140
+p0rF0ViYr6D4+IuGlo7uFA==
+p0rF0ViYr6D4+IuGlo7uFA==
+ZNUnS8fuIu5IX7guihqpzA==
+C51j2ar3YnFzGcF8lycAiw
+FtRyCgnkPZlH9C78AIAhaQ
+
+#### 辽宁联通F677
+2_INTERNET_R_VID_10
+3_OTHER_B_VID_40
+2165528524
+fxx3334137
+
+#### 北京移动skd747
+10
+231010823383
+192.168.1.1/ajax_user_register.gch
+BJ17ve10ub2010100000IGDSUCCSUCC-1287280736
+
+#### 山东联通HS8346X6
+loid
+JI22100293594652
+053702038030
+|1_TR069_R_VID_50|Connected|11.39.2.238|50/6|AlwaysOn|
+|2_IPTV_B_VID_2116|Connected|--|2116/3|AlwaysOn|
+|3_INTERNET_R_VID_3212|
+
+#### 北京移动Skd747
+BJ11fbgor02010100000IGDSUCCSUCC
+
+#### 山西HN8145XR
+035109224268
+1_TR069_R_VID_4059	Connected	100.84.85.184	4059/7	AlwaysOn
+2_INTERNET_R_VID_2	Connected	183.191.173.200	2/0	AlwaysOn
+3_TR069_B_VID_4059
+
+#### 广东惠州移动sk748
+j006737352
+2_INTERNET_R_VID_41 已连接  172.21.27.151  255.255.255.255  
+3_OTHER_B_VID_48 已连接  -  -  
+4_OTHER_B_VID_50 
+
+#### 黑龙江移动
+user TSC4%#sX
+
+2_INTERNET_R_VID_57
+5240321213
+
+15240321213
+
+广东移动
+19806408897@139.gd
+408897
 
 
 
+#### 山东联通hs8145
+ly20026112
+
+1_TR069_R_VID_50	50/6	IPv4
+2_IPTV_B_VID_2581	2581/3	IPv4
+3_INTERNET_R_VID_3107	3107/0	IPv4/IPv6
+8_TR069_B_VID_50
+
+053501049964
+宽带密码 007008
+
+8673ONkHwQ7f9d5xBz5T
+
+MTU 1492
+VLAN ID设置：140
+公共组播VLAN设置：-1
+LAN 端口绑定：LAN1
+059106158238 158238
+
+loid 5910320609729 ztepon  
+5910320600335
+
+#### 江苏一网通
+43
+JTL15722844204
 
 
 
