@@ -93,7 +93,7 @@ http://192.168.1.1/logoffaccount.html
 辽宁：lnadmin  lnadmin
 青海：qhuniadmin 
 湖南：CUAdmin#HGU 
-重庆：账号cqadmin 密码cqunicom
+重庆：账号cqadmin 密码cqsxunicom
 北京：123qweasdzxc 
 海南：cu@HNunicom 
 黑龙江：hljcuadmin，8MCU@HLJ
@@ -721,16 +721,16 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@1BC920
+Fh@B4CEAC
 ```
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=90837E2708A0
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=0C6ABCB4CEAC
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=90837E2708A0
+http://192.168.1.1/telnet?enable=1&key=0C6ABCB4CEAC
 ```
 电信
 ```
@@ -742,7 +742,7 @@ root  或者  admin
 ```
 
 ```
-Fh@2708A0
+Fh@C055D0
 ```
 
 ```
@@ -1064,7 +1064,6 @@ grep aucTelnetPassword lastgood.xml  /config/work
 
 
 
-
 #### H2-3鲜蓝色界面和深蓝
 user登录后，直接console输入
 H2-3（2020-07）跟 H1s-3 $.PATH='/aoaform/'   H2-3  $.PATH='/'
@@ -1205,6 +1204,10 @@ cat tmp/ctromfile.cfg | grep 'CMCCAdmin' -A 2
 
 ### 江苏创维SK-D848，SK742
 
+查password
+```
+192.168.1.1/ajax_user_register.gch
+```
 user页面开启telnet
 
 telnet
@@ -1425,6 +1428,19 @@ su
 aDm8H%MdA
 或超密
 
+### 河南移动驻马店dt720-csf
+192.168.1.1/ajax_user_register.gch
+6016356310201030000IGDSUCCSUCC-1312374208
+4031
+17657919835
+绿色登录页
+user页面开启telnet
+
+telnet
+账号
+root
+aDm8H%MdA
+
 ### 河南联通sk-d740
 
 ```
@@ -1487,7 +1503,7 @@ http://192.168.1.1/hidden_version_switch.html
 切换版本，恢复出厂设置。
 telnet账号root，密码是user密码+超密lnadmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
 
-### 天津联通DT541 
+### 天津山东联通DT541、DT541-csf 
 打开，里面有loid
 ```
 http://192.168.18.1/hidden_version_switch.html
@@ -1926,6 +1942,28 @@ https://www.chinadsl.net/forum.php?mod=viewthread&tid=170109
 
 ```
 
+### 23端口被关闭 中兴F412/F460/F612/F660等方法：  
+中兴下面是解决23端口被关闭的方法。
+1，开个dos窗口一直ping，用如下命令  
+```
+ping 192.168.1.1 -l 128 -t
+```  
+
+2，   再开一个dos窗口  
+    输入：
+```
+telnet 192.168.1.1 10128  
+```
+  
+    账号：root  
+    密码：Zte521  
+
+3，输入  
+```
+sendcmd 1 DB p DevAuthInfo
+```
+  获取管理员密码 用于网页登录
+
 
 ### 中兴系列G7615
 中兴G7615注册50%手动配置上网删除Tr069
@@ -1951,8 +1989,10 @@ sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
 sendcmd 1 DB save
 ```  
 
+```
 sidbg 1 DB set TelnetCfg 0 TSLan_UName root  
 sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
+```
 
 
 ```
@@ -1971,6 +2011,7 @@ sidbg 1 DB save
    setmac show          查看MAC情况，里面显示16进制  
    setmac 3 2180        清除原注册信息2180项  
    setmac 3 2181        清除原注册信息2181项  
+   
   
   
   
@@ -2002,9 +2043,13 @@ sendcmd 1 DB reboot
 ```
 删除TR069，禁用RMS服务器使能  
 ```
+sendcmd 1 DB delr WANC 0
+```
+
+```
 sidbg 1 DB delr WANC 0
 ```
-   
+
 查询TR069在第几个（0 1 2 3 4等）  
 ```
 sendcmd 1 DB p WANC
@@ -3185,7 +3230,7 @@ sendcmd 1 DB save
 #### 山东联通、江苏联通，后6位
 #### 浙江移动，后6位
 #### 江苏移动，112233，企宽123123
-
+#### 山西太原联通 1234567890
 #### 海南移动手机号，密码kd123456
 
 
@@ -3963,7 +4008,7 @@ other43
 
 火狐开telnet
 
-#### 东莞移动272
+#### 东莞移动TEWA 272
 1312373760
 http://192.168.1.1/ajax_user_register.gch
 打开后前10位是注册码
@@ -3971,6 +4016,14 @@ c180351642 2010100001IGDSUCCSUCC-1312373760
 41
 18218035164@139.gd
 密码后6位
+
+深圳移动TEWA 270
+user
+2U~H~hyy
+b0042812622010100001IGDSUCCSUCC
+41
+13600428126@139.gd
+
 
 #### 四川移动HS8545M5
 10
@@ -4647,6 +4700,213 @@ loid 5910320609729 ztepon
 43
 JTL15722844204
 
+#### 山东联通DT541-csf
+JI21032538254677
+
+
+#### 山西太原联通G7610
+2
+035102488768
+1234567890
+
+#### 江苏集客
+a795558988
+31
+JTG18795558988
+
+#### 内蒙古联通B866-S1-4E1P3W1
+HH08977033011112176
+1_TR069_R_VID_887	Connected	101.52.77.37	887/6	AlwaysOn
+2_INTERNET_R_VID_47
+
+#### 河南联通741-csf
+180-tr069
+275
+037104676475
+
+loid
+5245860434
+user
+b767gn3p
+
+#### 河南联通F7610U【】
+user
+efayt3t2
+0781621444
+039507828711
+123456
+2_INTERNET_R_VID_295
+
+#### 河南联通F7610U【注册40 删tr069】
+0781621480
+039507156379
+2_INTERNET_R_VID_296
+1_TR069_R_VID_180
+
+#### 河南移动驻马店dt720-csf
+192.168.1.1/ajax_user_register.gch
+6016356310201030000IGDSUCCSUCC-1312374208
+4031
+17657919835
+
+#### 山西联通TEWA 1208G
+2
+035102494865
+
+#### 辽宁联通F677
+2166329600
+10
+3_OTHER_B_VID_40
+fxx3343918
+
+#### 吉林联通PT928【】
+user
+m2e6uy2s
+43101HW529884575
+
+043102663700
+
+1_TR069_R_VID_41	41	IPoE	禁用	up	172.33.215.254	255.255.224.0	c0:7c:90:66:7a:07	ERROR_NONE
+2_INTERNET_R_VID_44	44	PPPoE	启用	up	119.53.59.253	255.255.255.255	c0:7c:90:66:7a:08	
+3_IPTV_B_VID_45	45	br1483	启用	up			
+
+
+#### 山东联通sk-d540
+H007141447 
+user 
+kmk5cd6g
+
+1195
+tr069-43
+053904625339
+
+#### 广东茂名移动h3-2r
+n788638262
+2_INTERNET_R_VID_41	已连接	172.22.160.64	255.255.255.255
+3_OTHER_B_VID_48	已连接	
+4_OTHER_B_VID_50
+
+#### 广东茂名移动GM220s
+9Umus9a$
+15768226708
+n682267082
+
+北京移动sk-d747
+BJ11fbgor02010100000IGDSUCCSUCC
+
+山西HN8145XR
+035109224268
+1_TR069_R_VID_4059	Connected	100.84.85.184	4059/7	AlwaysOn
+2_INTERNET_R_VID_2	Connected	183.191.173.200	2/0	AlwaysOn
+3_TR069_B_VID_4059
+
+广东惠州移动sk748
+j006737352
+2_INTERNET_R_VID_41 已连接  172.21.27.151  255.255.255.255  
+3_OTHER_B_VID_48 已连接  -  -  
+4_OTHER_B_VID_50 
+
+山东联通G7615
+3791
+50
+1_TR069_R_VID_50
+2_IPTV_B_VID_1367
+053302769217
+ZBJQ05100533027692173530
+
+广东惠州746
+13928389071@139.gd
+j2838907122010100000IGDSUCCSUCC
+
+
+内蒙古联通F697
+2_INTERNET_R_VID_47
+1_TR069_R_VID_887
+4_INTERNET_B_VID_48
+5_IPTV_B_VID_46
+047203360954
+BT03360954011114322
+BT03360954011114322
+TeleCom_586986
+
+山西联通7610
+2
+2
+035102488768
+
+甘肃移动h10-1g
+CMDC9E00BC7D
+A19TJSE6ES
+2_INTERNET_R_VID_56	ppp0	PPPoE	56	0
+1_TR069_R_VID_57	nbif0	DHCP	57	7
+4_VOIP_R_VID_58	nbif3	DHCP	58	6
+3_IPTV_B_VID_51	nbif2	桥接	51
+
+
+惠州移动gm232
+Password
+nj24t7mk
+41
+13532121638@139.gd
+
+
+北京移动skd748
+pap2m6u5
+10
+068880191833
+
+
+广东湛江移动TEWA 272
+k2820375822010100001IGDSUCCSUCC2898736
+13828203758@139.gd
+41
+
+山西联通741
+de9pamk5CUAdmin
+_TR069_R_VID_4059
+2
+035701153595
+
+
+tftp -p -l hw_ctree.xml -r hw_ctree.xml 192.168.1.5
+tftp -g -l hw_ctree.xml -r hw_ctree.xml 192.168.1.5 
+
+
+江苏移动GM220s
+3_OTHER_R_VID_2030
+40
+13952168548
+643829
+
+广东肇庆移动TEWA 272
+u2722297222010100001IGDSUCCSUCC2604944
+33
+13727222972@139.gd
+
+
+#### 江苏集客H60
+a426095094
+INTERNET_R_VID_68
+OTHER_R_VID_2030
+
+#### 内蒙古联通F677
+HH04547506006245629
+47
+047104547506
+113023
+1_TR069_R_VID_887
+3_IPTV_R_VID_46
+
+#### 吉林联通PT928
+user
+m2e6uy2s
+43101HW529884575
+
+043102663700
+
+1_TR069_R_VID_41	41	IPoE	禁用	up	172.33.215.254	255.255.224.0	c0:7c:90:66:7a:07	ERROR_NONE
+2_INTERNET_R_VID_44	44	PPPoE	启用	up	119.53.59.253	255.255.255.255	c0:7c:90:66:7a:08	
+3_IPTV_B_VID_45	45	br1483	启用	up		
 
 
 --------
@@ -4725,7 +4985,6 @@ VLAN模式选择改写tag，VLAN ID填写刚才记下的VLAN
 ## 联通
 
 192.168.2.1/hidden_version_switch.html
-
 lnadmin
 
 广东部分地区联通超密，账号：CUAdmin
@@ -4825,9 +5084,6 @@ web_passwd="您的超级密码"
 移动H2-3s破解Telnet
 https://bbs.luobotou.org/thread-49853-1-1.html
 
-本帖最后由 PencilNavigator 于 2022-4-5 01:55 编辑_  
-  
-继我GM232开启telnet成功但没有获取密码后（更新：已破解密码：
 
 我又一光猫破解telnet，没错，那就是H2-3s  
 方法很简单，使用CMCCAdmin（密码aDm8H%MdA）登录192.168.1.1，然后打开这个链接：http://192.168.1.1/bd/vermod.asp    
