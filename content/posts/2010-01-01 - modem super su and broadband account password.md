@@ -1215,7 +1215,7 @@ user页面开启telnet
 
 telnet
 root
-无线wifi密码+超密aDm8H%MdA
+无线wifi密码+超密ykh36cfgaDm8H%MdA
 
 开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
 ```
@@ -1330,7 +1330,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d ZNUnS8fuIu5IX7guihqpzA==
+python nokia-router-cfg-tool.py -d zYStsaMeuhGk2nUTI+vi/Q==
 ```
 telnet：
 user或useradmin  
@@ -1363,8 +1363,8 @@ http://192.168.1.1/upgrade.cgi
 ```
 修改sn，mac
 ```
-ritool set YPSerialNum NBELB12A99EF  
-ritool set MACAddress F9:49:E9:9E:9F:A0
+ritool set YPSerialNum HWTCBA89D089  
+ritool set MACAddress HW:TC:BA:89:D0:89
 cfgcli -r
 reboot  
 
@@ -1447,7 +1447,7 @@ aDm8H%MdA
 ### 河南联通sk-d740
 
 ```
-http://192.168.2.1/hidden_version_switch.html
+http://192.168.1.1/hidden_version_switch.html
 ```
 开启telnet。
 
@@ -1535,7 +1535,7 @@ http://192.168.1.1/cu.html
 ```
 账户CUAdmin 密码11223344 设置完插上光纤就行  
 
-### GM630，GM232
+### GM630，GM232，GM219S
 https://www.right.com.cn/forum/thread-4267874-1-1.html
 请全部理解且做好足够心理准备再继续进行。重置光猫之后不能上网，如果你自己设置不成功，就得打电话叫装维上门修复。  
 1、捅复位键，45～60秒。很关键，捅后，要断电重启。 
@@ -1553,7 +1553,10 @@ http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 sidbg 1 DB p DevAuthInfo
 ```
 55jkh@vu@C1
-e3j9yjfy
+
+GM219S，telnet为
+用户名 root，密码 Pon521
+
 
 ### 北京移动SK-D746，SK740S，联通UNG310H
 普通账户登录后，输下面，下载romfile.cfg文件，搜索admin  
@@ -2988,9 +2991,9 @@ ritool set MfrID HWTC #生产厂商代码HWTC代表华为，NBEL代表贝尔，Z
 
 ritool set Mnemonic HG8010C #设备型号
 
-ritool set YPSerialNum NBELFBC1423D #设备SN码
+ritool set YPSerialNum HWTCBA89D089 #设备SN码
 
-ritool set G984Serial 0BF58729 #设备SN码后8位
+ritool set G984Serial BA89D089 #设备SN码后8位
 
 ritool set MACAddress 74:88:2A:0B:F5:87 #MAC地址
 
@@ -3234,7 +3237,7 @@ sendcmd 1 DB save
 #### 四川移动（账号不是手机号的话，取手机后6位），广东移动东莞移动，后6位
 #### 山东联通、江苏联通，后6位
 #### 浙江移动，后6位
-#### 江苏移动，112233，企宽123123
+#### 江苏移动，112233，企宽123123（手动设置）
 #### 山西太原联通 1234567890
 #### 海南移动手机号，密码kd123456
 
@@ -3250,22 +3253,22 @@ sendcmd 1 DB save
 广州移动  
 深圳移动 b
 揭阳移动 m
-汕头移动  
+汕头移动  f
 潮州移动  
-佛山移动  
+佛山移动  d
 肇庆移动  u
 湛江移动  k
 茂名移动  n
 惠州移动  j
-珠海移动
-韶关移动 
+珠海移动  h
+韶关移动  p
 河源移动
 梅州移动
-江门移动 
+江门移动  g
 阳江移动
-清远移动
+清远移动 v
 云浮移动
-汕尾移动
+汕尾移动 s
 
 #### 湖南联通
 loid和账号一样
@@ -5376,7 +5379,7 @@ i9520543ge
 15970276568
 
 -----------------------=---
-F657
+#### F657
 0749399949
 266	
 039507862665
@@ -5384,18 +5387,10 @@ F657
 
 模式	DHCP
 连接名称	2_IPTV_R_VID_20
-NAT	启用
-IP	10.51.162.186/255.255.254.0
-DNS1	10.253.224.68
-DNS2	10.253.227.68
-DNS3	0.0.0.0
-WAN MAC	34:78:39:a3:5b:d9
-网关	10.51.162.1
-连接状态	连接
-剩余租期	8221秒
 
 
-甘肃移动GM630
+
+#### 甘肃移动GM630
 ALHY1BQ316
 n4gj6YUw@C1
 3115192011406
@@ -5406,7 +5401,7 @@ n4gj6YUw@C1
 2001
 
 
-广东珠海移动
+#### 广东珠海移动
 h269276885
 18926927688@139.gd
 模式	PPPoE
@@ -5414,26 +5409,26 @@ h269276885
 连接名称	3_OTHER_B_VID_48
 连接名称	4_OTHER_B_VID_50
 
-内蒙古v173
+#### 内蒙古v173
 1_TR069_R_VID_887	Connected	109.197.188.46	887/6	AlwaysOn
 2_INTERNET_R_VID_47	Connected	10.90.106.211	47/0	AlwaysOn
 8_TR069_B_VID_887
 XL08419322009847582
 047908419322
 
-湖北移动zn173
+#### 湖北移动zn173
 7132015148
 13995927522
 888888
 
-山东联通457
+#### 山东联通F457
 43iptv
 3620
 053805866870
 TA03566181
 
 
-山东华为
+#### 山东华为
 JI22012466699972
 
 053703460319
@@ -5445,17 +5440,17 @@ JI22012466699972
 shanxi liantong   7610
 035400646930
 
-广东汕头移动H2-3s
+#### 广东汕头移动H2-3s
 f705193532
 INTERNET_R_VID_41	
 
-黑龙江移动F6610
+#### 黑龙江移动F6610
 41
 37
 
 a5fu1h2e98
 
-四川联通dt741
+#### 四川联通dt741
 NC605973665X0116003
 103
 081702258412
@@ -5463,16 +5458,167 @@ NC605973665X0116003
 3300-iptvbrid
 
 
-辽宁联通F677
+#### 辽宁联通F677
 2123628354
 syl_13238823979@rhrzk
 2
 
+#### 广东汕尾移动H2-3
+2xq9bs7#
+loid
+s529988063
+
+#### 新疆电信TEWA 1006G【可改桥接】
+099681457600
+9960562301C
+
+#### 内蒙古联通znhg605
+WH03040005010567982
+1_TR069_R_VID_887	已连接	103.7.137.13	255.255.224.0
+2_INTERNET_R_VID_47	已连接	10.31.27.7	255.255.255.255
+3_IPTV_B_VID_46
+
+#### 山东联通sk740
+JN28845100
+053107717019
+3221
+
+iptv43
+
+n3fpu9dh
+CUAdmin
+
+#### 福建联通
+
+5950610188418
+140
+059507571577
+
+
+#### 辽宁联通dt741
+
+2112717806 
+user 
+u5bpherplnadmin
 
 
 
+#### 广州移动272
+13802731648@139.gd
+41
 
 
+#### 山东联通sk740
+JN28845100
+
+053107717019
+3221
+
+iptv43
+
+n3fpu9dh
+CUAdmin
+
+#### 山东联通f657
+LC05529090
+063508715194
+3622
+
+#### 内蒙古联通V173
+HH08961711011174671
+47
+
+
+#### 福建联通TEWA 1206
+140
+059505066062
+5950510761875
+
+
+#### 河北移动GM219S
+3139171965
+537
+13613227653
+
+
+#### 江西移动贝尔GW-140-G
+l0117231ca
+47
+
+#### 惠州移动
+j
+j995100232
+SCTY15AE24DD
+
+#### 山东联通F607z
+0554723578
+037306532412
+22
+
+
+#### 新疆移动TEWA 272
+KS0437169982010100002IGDSUCCSUCC2504736
+
+
+#### 佛山移动t66
+d285588565
+
+#### 汕头移动272
+f1727805922010100001IGDSUCCSUCC2521376
+15017278059@139.gd
+41
+
+#### 内蒙古联通skd745
+tr069-887
+3_IPTV_B_VID_46
+HH08987132011085801
+HH08987132011085801
+047108987132
+47
+npuguk2c
+
+#### 天津联通F30
+TJBC0007573036
+2_INTERNET_R_VID_134
+02205595004
+
+#### 福建移动F663
+5913895360
+
+#### 韶关移动F663
+p197379542
+
+#### 江苏移动一网通M724
+37
+jtczjssd661607
+assd661607
+ykh36cfgadmin1234
+
+#### 深圳移动skd742
+b2853266a22020100000IGDSUCCSUCC2702576
+41
+13922853266a@139.gd
+
+
+#### 广东汕尾移动H2-3
+2xq9bs7#
+
+s529988063
+
+
+#### 安徽联通H8145
+5580362054
+1136
+055809556636
+
+282-iptv
+优先级4桥接
+iptv组播281
+
+####  深圳移动skd841
+b895726642
+41
+15889572664@139.gd
 
 
 
@@ -5553,7 +5699,7 @@ VLAN模式选择改写tag，VLAN ID填写刚才记下的VLAN
 
 192.168.2.1/hidden_version_switch.html
 lnadmin
-
+d
 广东部分地区联通超密，账号：CUAdmin
 密码：cuadmin加上光猫背面MAC前6位小写
 cuadmin28563AFA4BA0
