@@ -272,6 +272,22 @@ PT924G联通，提示成功但无法开启telnet。
 
 user登录后，点几次返回，再点管理员登录，直接进入，然后再开telnet。
 
+#### 电信友华PT928E-NP
+
+浏览器打开192.168.1.1:8080，输入光猫的用户名和密码登录  
+  
+登录后打开
+```
+192.168.1.1:8080/backupsettings.conf
+```
+下载光猫备份配置文件  
+用记事本或其他文本编辑器打开下载的文件，搜索
+```
+<X_CT-COM_TeleComAccount>
+```
+这一行下面的一行就是超级密码
+
+
 #### PT924g，927，928
 记录loid，复位登记，
 
@@ -357,6 +373,10 @@ TeleCom_1234
 su
 ```
 TeleCom_mac  后6位小写
+```
+
+```
+TeleCom_7ceee4
 ```
 
 查看配置文件和超密
@@ -724,16 +744,16 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@B4CEAC
+Fh@C89614
 ```
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=0C6ABCB4CEAC
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CFCFD244480
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=0C6ABCB4CEAC
+http://192.168.1.1/telnet?enable=1&key=68DECE150EA0
 ```
 电信
 ```
@@ -745,7 +765,7 @@ root  或者  admin
 ```
 
 ```
-Fh@C055D0
+Fh@244480
 ```
 
 ```
@@ -975,9 +995,13 @@ find / -name 'db_backup_cfg.xml'
 cd /userconfig/cfg
 ```
 
+```
+aDm8H%MdA
+```  
+
 解密配置文件
 ```
-sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml | cat /tmp/debug-decry-cfg | grep ‘WANCPPP’ -A 5
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 ```
 
 查看解密后的文件
@@ -1223,6 +1247,17 @@ http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_adva
 ```
 
 
+#### 安徽移动skd745S（绿色界面）
+江苏的方法不行
+超管进去，安全，访问添加一个telent，然后即可，root
+root
+无线wifi密码+超密ykh36cfgaDm8H%MdA
+
+34551308254460000000
+41
+76482230
+
+
 ### 移动CM112   GS3101  GS2107（GS3202不同）GS8101用中兴工具
 
 **测试：**
@@ -1330,7 +1365,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d zYStsaMeuhGk2nUTI+vi/Q==
+python nokia-router-cfg-tool.py -d SIGqoyRaxPqv7olAKjO8sQ==
 ```
 telnet：
 user或useradmin  
@@ -1432,7 +1467,7 @@ aDm8H%MdA
 或超密
 
 ### 河南移动驻马店dt720-csf
-192.168.1.1/ajax_user_registe
+192.168.1.1/ajax_user_registe.gch
 6016356310201030000IGDSUCCSUCC-1312374208
 4031
 17657919835
@@ -1443,6 +1478,9 @@ telnet
 账号
 root
 aDm8H%MdA
+
+### 联通创维SKd745
+恢复出厂，设置，
 
 ### 河南联通sk-d740
 
@@ -3274,7 +3312,7 @@ sendcmd 1 DB save
 loid和账号一样
 073800292846
 
-#### 河北联通，山西联通无loid，mac自动认证
+#### 河北联通，山西联通，贵州联通无loid，mac自动认证
 
 
 
@@ -3911,8 +3949,10 @@ INTERNET_R_VID_47
 R069_R_VID_4015
 
 #### 江苏苏州联通PT924G
+
 loid
 0512050630732056
+2025
 051205063073
 063073
 
@@ -4809,7 +4849,7 @@ efayt3t2
 2_INTERNET_R_VID_296
 1_TR069_R_VID_180
 
-#### 河南移动驻马店dt720-csf
+#### 河南移动驻马店dt720-csf，陕西移动dt720【无pass】
 192.168.1.1/ajax_user_register.gch
 6016356310201030000IGDSUCCSUCC-1312374208
 4031
@@ -5619,6 +5659,283 @@ iptv组播281
 b895726642
 41
 15889572664@139.gd
+
+
+#### 福建联通PT928G
+jxbwsqq
+5950510034440
+
+140
+059505086750
+086750
+
+#### 山东联通
+BZ56954641
+3142
+054301625452
+
+
+#### 福建联通HS8345
+5920110043088
+140
+iptv136
+4000
+
+
+#### 河南联通F677
+0633273753
+3636
+037707265793
+
+山东烟台联通PT952
+zf99949056
+3566	
+
+
+黑龙江移动sk742
+actm35p1k6
+41
+yd15244615358
+
+
+山东联通V170
+H503385380
+iptv43
+组播80
+优先级3
+2567
+063102869982
+
+
+
+#### 山东联通sk740
+HS42271425
+3280
+u6np3em6
+
+
+#### 内蒙古联通
+47
+HH08773344011193047
+
+
+浙江电信
+ha4D48Y7b6
+5755SN209566519
+41
+46tr
+057584414056
+
+山东联通F677
+zf85657994
+
+053501898995
+3578
+2_IPTV_B_VID_2522
+
+内蒙古联通
+4857544366EC8BAD (HWTC66EC8BAD)
+loid 
+HH08773344011193047 注册id
+047108773344宽带号
+210617 密码
+
+
+4857544366F053AD (HWTC66F053AD)
+HH08775109011193068 注册id
+047108775109 宽带号
+210617 密码
+
+HH05407437010858329 注册id
+047105407437 宽带号
+104622 密码
+
+
+辽宁联通741
+2159298587 
+bp7bdpcclnadmin 
+
+山东联通sk740
+HS42271425
+3280
+u6np3em6
+
+#### 山东联通PT927G
+ZQ71615880
+053105905108
+
+1_TR069_R_VID_50	50	IPoE	禁用	已连接	10.76.120.91	255.255.240.0	88:ac:9e:5f:7d:05
+2_IPTV_B_VID_564	564	br1483	禁用	已连接			88:ac:9e:5f:7d:06
+3_INTERNET_R_VID_3030	3030	PPPoE	禁用	已连接	10.181.222.189	255.255.255.255	88:ac:9e:5f:7d:07
+4_INTERNET_B_VID_3030	3030	br1483	禁用	已连接
+
+
+
+#### 山西联通TEWA 1206G
+2170
+035102229757
+1234567890
+
+#### 吉林移动F653
+LOID 15598130
+
+Password 15598130
+
+SN ZTEGD05F892C
+
+2_INTERNET_R_VID_4031
+
+VLAN 4031
+
+用户名 10512134667
+
+密码 112233
+
+#### 江西移动GM220-s
+47
+CIOT08E6A4E8
+k1355773lf
+XfvNe!Xf
+15979997238
+809510
+CMCCAdmin06@R^NwM
+
+
+#### 辽宁联通B665
+46
+10
+40other
+
+2080159279
+
+
+1_TR069_R_VID_46	Connected	103.11.38.186	46/0	AlwaysOn
+2_INTERNET_R_VID_10	Connected	116.138.116.218	10/0	AlwaysOn
+3_OTHER_B_VID_40	Connected	--	40/0	
+
+
+
+#### 贵州联通V173
+
+085105609523
+1_TR069_R_VID_46	Connected	10.170.161.127	46/7	AlwaysOn
+2_INTERNET_R_VID_41	Connected	10.51.123.160	41/0	AlwaysOn
+3_IPTV_B_VID_43	Connected	--	43/4	AlwaysOn   组播3701
+8_TR069_B_VID_46
+
+
+#### 河南联动DT741-csg
+
+040159353737
+273
+037502030624
+123456
+55tm92ufCUAdmin
+
+内蒙古联通v173
+ER04239212010255997
+47
+047704239212
+
+46
+组播3800
+Sx32K*j7ya
+sismac 1 512 CIOT24C127C8
+39
+15961201320
+102030
+
+sidbg 1 DB set PDTCTUSERINFO 0 Status 0  
+sidbg 1 DB set PDTCTUSERINFO 0 Result 1  
+sidbg 1 DB save
+
+甘肃移动H3-2s
+F4BFBB-CMDCA47FA388
+ADRIY1PB10
+56
+5000376164179
+401171
+tr069 57
+
+苏州电信
+D8F50704B4C8
+
+江苏一网通H2-3e
+38
+JTB15852574316
+a852574316
+
+山东联通F457
+TA03566181
+3620 
+_IPTV_B_VID_43 
+053805866870
+
+
+江苏F631
+a043742859
+2_INTERNET_R_VID_38
+WJTnj25034043742859
+
+山西联通
+384
+035902245099
+
+广东联通F677
+2040811941
+41
+GZFTH9368768882704384@16900.gd
+123456
+46-tr069
+
+IPTV_B_VID_45
+
+上海移动
+51383733
+
+江西移动GM220-s
+47
+CIOT08E6A4E8
+k1355773lf
+XfvNe!Xf@C1
+15979997238
+
+
+
+辽宁联通B665
+46
+10
+40other
+
+2080159279
+
+
+1_TR069_R_VID_46	Connected	103.11.38.186	46/0	AlwaysOn
+2_INTERNET_R_VID_10	Connected	116.138.116.218	10/0	AlwaysOn
+3_OTHER_B_VID_40	Connected	--	40/0	
+
+
+
+贵州联通V173
+
+085105609523
+1_TR069_R_VID_46	Connected	10.170.161.127	46/7	AlwaysOn
+2_INTERNET_R_VID_41	Connected	10.51.123.160	41/0	AlwaysOn
+3_IPTV_B_VID_43	Connected	--	43/4	AlwaysOn   组播3701
+8_TR069_B_VID_46	
+
+
+河北移动F
+6030413389
+
+
+广东联通
+2041216235
+GZFTH3244914212192256@16900.gd
+
+上海电信F450G
+0075586819
+
 
 
 
