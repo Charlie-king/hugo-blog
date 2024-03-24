@@ -651,7 +651,7 @@ public class Main {
 ### HG6201T电信
 开telnet
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=1852822C33AC
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=14E982126D00
 ```
 telnet账户密码root，
 ```
@@ -749,7 +749,7 @@ Fh@C89614
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CFCFD244480
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=14EAB2126D00
 ```
 联通
 ```
@@ -765,7 +765,7 @@ root  或者  admin
 ```
 
 ```
-Fh@244480
+Fh@126D00
 ```
 
 ```
@@ -846,11 +846,11 @@ aDm8H%MdA
 
 设置修改密码并保存，账号可不动
 ```
-sidbg 1 DB set DevAuthInfo 0 User CMCCAdmin
+sidbg 1 DB set DevAuthInfo 0 User C
 ```
 
 ```
-sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB set DevAuthInfo 1 Level 1
 sidbg 1 DB save
 ```
 
@@ -1619,6 +1619,24 @@ http://192.168.1.1/updatesettings.html
 ```
 
 
+### 电信TEWA 1102E
+用魔尊的计算su开启telnet
+登录后su进去
+再输入exit退出Busybox，命令提示符变成>，
+telecomadmin get
+CUAdmin get
+
+### 电信ZN600
+https://www.right.com.cn/forum/thread-4146855-1-1.html
+
+ZN601
+先通过192.168.1.1:8080登录后台
+然后把 content 改成 telnet 再回车
+用户名 admin  
+密码 1234
+有的光猫的telnet账户名不是admin而是useradmin密码同1234  
+
+
 ### 联通sk-d740-c，SK-D748-C，SK-D742C，SK-D748
 详情步骤：  
 【1】保证正常访问光猫web  
@@ -1871,11 +1889,11 @@ obj.id = "0x00000031" ; obj.value = "CHOOSE_XINAN";
   
 10、使用 tftpd32.exe 将刚才修改后的 hw_boardinfo 文件上传到光猫；  
 tftp -g -l hw_boardinfo -r hw_boardinfo 192.168.1.2  
-  
+cd /mnt/jffs2   
 11、重启光猫。  
 reboot  
   
-  
+tftp -g -l hw_ctree.xml -r hw_ctree.xml 192.168.1.2
   
 第六部分 超级管理员密码的读取、修改；添加超级管理员账号  
 1 超级密码的读取(适用于超级管理员账号密码被运营商 TR069 配置远程篡改的情况)  
@@ -5935,6 +5953,135 @@ GZFTH3244914212192256@16900.gd
 
 上海电信F450G
 0075586819
+
+上海移动HX3-5
+82622118
+tr110
+voip1102
+other1103
+1101
+15921568390
+
+山东联通F437
+HZ08161510
+tr50
+3227
+053003520212
+IPTV_B_VID_43
+
+山西联通
+405-tr069
+
+1111
+035501172203
+1234567890
+
+
+68DECE3608D0
+1139
+035501590618
+
+68DECE357B20
+1123
+035501582807
+
+fwmnyggw
+3086F18BB2D0
+1072	
+035501603771
+
+hhf53bwq
+3086F18BCFB01148	
+1148	
+035501582798
+-------------
+rvsg5p2a
+3086F18BB290
+2_INTERNET_R_VID_1112
+035501578932
+
+nk9fapyr
+68DECE361070
+1076
+035501602469
+
+cuj3p3vj
+1137
+035501582179
+
+ts92566u
+68DECE35C4F0
+035501178684
+1022
+
+zqgrtqun
+68DECE35B550
+1024
+035501591180
+
+惠州移动ZN M160
+j3352640242010100000IGDSUCCSUCC
+41
+13433526402@139.gd
+
+
+天津联通hx8145
+TJHP0000983486
+396
+
+1_TR069_R_VID_4000	4000/7	IPv4
+2_VOICE_R_VID_3312	3312/5	IPv4
+3_INTERNET_R_VID_396	396/0	IPv4/IPv6
+4_IPTV_R_VID_2165	2165/3	IPv4
+8_TR069_B_VID_4000	4000/7
+
+吉林h2-3s
+691403
+1_TR069_R_VID_192	已连接	10.0.87.231	255.255.128.0
+2_INTERNET_R_VID_4031	已连接	100.127.150.127	255.255.255.255
+3_OTHER_B_VID_4033	连接中	-	-
+4_VOIP_R_VID_4032
+
+
+山东联通V173
+JI21061959145659
+3301
+053703209844
+1_TR069_R_VID_50	50/6	IPv4
+2_IPTV_B_VID_2066	2066/3	IPv4
+3_INTERNET_R_VID_3301	3301/0	IPv4/IPv6
+8_TR069_B_VID_50	50/6	IPv4
+
+
+山东联通F477
+TA03566181
+3620
+053805866870
+50 tr
+43
+
+四川联通SG617
+
+LS604360680X0402006
+ztepon
+
+106
+083401715936
+
+iptv3300  brid，ip 组播4075
+voice3500
+tr6060
+LS604360680X0402006
+
+
+#### 河南电信TEWA 1102E【su工具计算正确】
+3711XE102388194
+
+46tr069
+41
+637141279986
+telecomadmin20867957
+
 
 
 
