@@ -93,10 +93,7 @@ http://192.168.1.1/logoffaccount.html
 辽宁：lnadmin  lnadmin
 青海：qhuniadmin 
 湖南：CUAdmin#HGU 
-重庆：账号cqadmin 密码
-
-
-
+重庆：账号cqadmin 密码cqunicom
 北京：123qweasdzxc 
 海南：cu@HNunicom 
 黑龙江：hljcuadmin，8MCU@HLJ
@@ -388,6 +385,23 @@ cat /var/config/lastgood.xml | grep SUSER_PASSWORD
 ```
 cat /var/ppp/ppp.conf
 ```
+电信PT928E
+```
+192.168.1.1:8080
+```
+浏览器打开，输入光猫的用户名和密码登录  
+  
+登录后打开
+```
+192.168.1.1:8080/backupsettings.conf
+```
+
+下载光猫备份配置文件  
+用记事本或其他文本编辑器打开下载的文件，搜索
+```
+<X_CT-COM_TeleComAccount>
+```
+
 
 移动PT939G看超密，里面一般第一个
 grep 关键字 -A 5  含后5行
@@ -599,9 +613,19 @@ hg2x0
 ```
 root/admin
 ```
+
 ```
 Fh@7E47AC
 ```
+账号
+```
+telnetadmin
+```
+FH-nE7jA%5m
+```
+FH-nE7jA%5m + mac后6位大写
+```
+
 
 3. 输入命令
 ```
@@ -655,7 +679,7 @@ http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=14E982126D00
 ```
 telnet账户密码root，
 ```
-Fh@xxxxx
+Fh@CF1E76
 ```
 
 输入命令，第二行就是超密
@@ -674,8 +698,8 @@ telnet密码：（每个光猫不一样）
 ```
 cat /flash/cfg/agentconf/factory.conf
 ```
-
-
+jqkcrba7jqkcrba7
+takfpucybijxg
 
 ### HG2201U/
 
@@ -741,15 +765,15 @@ https://think-me.github.io/post/2023/04/08/18531/index.html
 ```
 arp -a 192.168.1.1
 ```
-
+takfpucy
 这时将显示你的光猫MAC。  
 ```
-Fh@C89614
+Fh@8FD3E0
 ```
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=14EAB2126D00
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=98EDCA8FD3E0
 ```
 联通
 ```
@@ -757,22 +781,22 @@ http://192.168.1.1/telnet?enable=1&key=68DECE150EA0
 ```
 电信
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=1852822C33AC
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=88238C9C1840
 ```
 
 ```
 root  或者  admin
 ```
-
+Fh@2FCB00
 ```
-Fh@126D00
+Fh@9C1840
 ```
-
+FH-nE7jA%5m9C1840
 ```
 hg2x0
 ```
 
-
+FH-nE7jA%5mE02CE0
 电信telnet账号可能root，admin
 ```
 telecom
@@ -781,7 +805,7 @@ telecom
 ```
 nE7jA%5m
 ```
-
+telecomadmin77910910
 ```
 TeleCom_1234
 ```
@@ -853,7 +877,7 @@ sidbg 1 DB set DevAuthInfo 0 User C
 sidbg 1 DB set DevAuthInfo 1 Level 1
 sidbg 1 DB save
 ```
-
+C9iid%SC
 
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
@@ -866,7 +890,7 @@ https://www.right.com.cn/forum/thread-2270800-1-1.html
 ```
 http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
 ```
-
+5jifg@f4@C1
 ```
 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 ```
@@ -1002,6 +1026,10 @@ aDm8H%MdA
 解密配置文件
 ```
 sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+
+```
+sendcmd 1 DB decry userconfig/cfg/db_user_cfg.xml
 ```
 
 查看解密后的文件
@@ -1365,7 +1393,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d SIGqoyRaxPqv7olAKjO8sQ==
+python nokia-router-cfg-tool.py -d zO++E1VQGES3D4BCtfu5oA==
 ```
 telnet：
 user或useradmin  
@@ -1552,12 +1580,24 @@ http://192.168.18.1/hidden_version_switch.html
 切换版本，恢复出厂设置。
 telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
 
+### 安徽电信创维DT720-cs【注册下发】
+开telnet
+```
+http://192.168.1.1:8080/hidden_version_switch.html
+```
+
+telnet账密都是telnetadmin
+```
+telnetadmin
+```
+其他用sidbg命令，su密码不是默认超密
+
 
 ### 河南联通 dt741-csf  
 记下LOID还有VID   
 不插光纤按住光猫后边的重置键直到光猫重启，  
 ```
-http://192.168.18.1/hidden_version_switch.html
+http://192.168.1.1/hidden_version_switch.html
 ```
  勾选开启telnet    
 telnet登录root user密码+CUAdmin    
@@ -2004,7 +2044,7 @@ https://www.chinadsl.net/forum.php?mod=viewthread&tid=170109
 
 ```
 
-### 中兴F412/F460/F612/F660等23端口被关闭处理方法：  
+### 中兴F412/F460/F612/F660/F623等23端口被关闭处理方法：  
 中兴下面是解决23端口被关闭的方法。
 1，开个dos窗口一直ping，用如下命令  
 ```
@@ -2149,7 +2189,7 @@ useradmin登录后，直接在该页面地址（不需删除内容）后添加
 下载文件，后搜索，password
 字母加数字的部分即是：Ncqrvlcr36
 Password&gt;Ncqrvlcr36&lt;/Password&gt;
-
+#J@b8S?%&lt
 #### V2.0.0P1T1sh，T后面是1不是2就可以用下面的方法，2的话已禁用该法！
 据说捅复位，不会清除loid，不过最好在useradmin里记一下。
 不插光纤，捅复位后，默认开telnet。
@@ -2562,7 +2602,10 @@ upgradetest sdefconf 309
 ```
 setmac show
 ```
-
+sismac 1 2177 ZTEGCAC4A65C
+sismac 1 512 80B07B-ZTEGCAC4A65C
+sismac 1 256 80:B0:7B:AE:87:01
+sismac 1 258 80:B0:7B:AE:87:00
 
 修改SN码：setmac 1 2177 xxxxxxxx [SN 为8字符]  
 修改设备标识: setmac 1 512 xxxxxxxxxxxxxxxxx [设备标识位17位字符]  
@@ -2992,6 +3035,10 @@ Telnet光猫IP（192.168.1.1）输入用户名（root）和密码（Zte521）即
 sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
 sendcmd 1 DB save
+
+sidbg 1 DB set PDTCTUSERINFO 0 Status 0  
+sidbg 1 DB set PDTCTUSERINFO 0 Result 1  
+sidbg 1 DB save
   
 每一条代码中的“p”代表print，显示的意思，改成“set”，加上用“p”打印出来的表格号、变量名等可以直接修改光猫的所有设置参数。  
   
@@ -3280,6 +3327,7 @@ sendcmd 1 DB save
 #### 河北联通mac认证，不需要loid，不会自动下发
 #### 山西移动，联通mac认证
 #### 天津电信，直接loid注册
+#### 云南联通，注册不会下发上网账号密码
 
 
 
@@ -3334,9 +3382,16 @@ loid和账号一样
 
 
 
+3_IPTV_B_VID_30
 
+联通：
+1.  电脑网口直连光猫网口1，不要经过路由器，同时用手机<流量>热点给电脑供网（手机USB线或热点）
 
+2.  注意要先拔光纤（猫底下方形的那个），拿个针捅reset复位孔持续捅40秒左右，一般看到所有灯闪灭2次再松开就差不多了，如果一直没闪烁就每40秒松开一下，再捅40秒，重复4次；最后拔电重启猫，全程拔光纤，等我说插再插。
 
+3.  捅后光猫后台输入
+192.168.1.1/cu.html
+CUAdmin，CUAdmin登录进去说明捅成功了，联系我下一步
 
 
 ## 步骤
@@ -6082,9 +6137,88 @@ LS604360680X0402006
 637141279986
 telecomadmin20867957
 
+#### 天津联通dt541
+397
+02201822871
+123456
+TJBC0000828457
+
+模式	Static
+连接名称	5_VOICE_R_VID_3574
+NAT	启用
+IP	172.18.238.74/255.255.255.0
+DNS1	10.30.1.10
+DNS2	0.0.0.0
+DNS3	0.0.0.0
+WAN MAC	30:91:76:8f:0a:2c
+网关	172.18.238.1
+连接状态	连接
+模式	DHCP
+连接名称	4_IPTV_R_VID_2551
+NAT	启用
+IP	10.40.66.58/255.255.224.0
+DNS1	202.99.96.68
+DNS2	202.99.104.68
+DNS3	0.0.0.0
+WAN MAC	30:91:76:8f:0a:2e
+网关	10.40.64.1
+连接状态	连接
+剩余租期	39263秒
+
+湖南联通F657
+
+074600083887
+168168
+iptv
+
+苏州联通PT925【注册不会下发，40%】
+0512051087689974
+2077
+051205108768
+
+#### 广州联通F607z
+
+  2041874728
+  3_IPTV_B_VID_45
+  41
+  GZFTH9603361964318720@16900.gd
+  12345
+  
+#### 山东联通F457
+ LC39685072
+ 3659
+ lc90091329
+
+#### 安徽电信DT720-cs
+loid：340563TI77923
+41
+【开telent】
+
+#### 河南联通F7610
+0782470921
+2_INTERNET_R_VID_277
+039507667622
+
+#### 河南联通sk840
+0781665630
+275
+039507150502
+
+#### 河南联通F7610
+0782463356
+276
+039507665026
+
+#### 河南联通sk840
+0781665572 
+274
+039507716773
 
 
-
+#### 贵州换猫
+68AE04-ZNXT0412CB48 
+INTERNET_R_VID_41 
+17885513854
 
 --------
 
