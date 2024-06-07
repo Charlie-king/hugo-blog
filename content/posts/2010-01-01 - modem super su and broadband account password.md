@@ -36,7 +36,7 @@ seo:
   images: []
 # See details front matter: /theme-documentation-content/#front-matter
 ---
-
+DC18m%619
 <!--more-->
 ## 通用账号密码
 ```账号
@@ -373,7 +373,7 @@ TeleCom_mac  后6位小写
 ```
 
 ```
-TeleCom_7ceee4
+TeleCom_c76360
 ```
 
 查看配置文件和超密
@@ -768,7 +768,7 @@ arp -a 192.168.1.1
 takfpucy
 这时将显示你的光猫MAC。  
 ```
-Fh@8FD3E0
+Fh@0DC110
 ```
 浏览器中录入  
 移动
@@ -777,7 +777,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=98EDCA8FD3E0
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=68DECE150EA0
+http://192.168.1.1/telnet?enable=1&key=487D2E43E798
 ```
 电信
 ```
@@ -789,13 +789,13 @@ root  或者  admin
 ```
 Fh@2FCB00
 ```
-Fh@9C1840
+Fh@0CA700
 ```
 FH-nE7jA%5m9C1840
 ```
 hg2x0
 ```
-
+7qGmg9xBmw39
 FH-nE7jA%5mE02CE0
 电信telnet账号可能root，admin
 ```
@@ -821,7 +821,7 @@ hg2x0
 链接成功后输入账号：admin 在北京天津这边用这个admin，其他地方如果不管用就试试  root  
 录入密码为  Fh@644D90+你上面获得的MAC的后六位大写。  
 ```
-Fh@FA5770
+Fh@5675E0
 ```
 命令行输入：
 ```
@@ -1231,12 +1231,12 @@ http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_adva
 ahynm3mkaDm8H%MdA
 
 
-### 贵州移动SK-D748
+### 贵州移动SK-D748/江苏移动ZN800
 浅蓝色页面，地址带/cgi-bin/，开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
 ```
 http://192.168.1.1/cgi-bin/telnet.asp
 ```
-打开，下载romfile.cfg
+打开，下载**romfile.cfg**，里面可以查telnet
 ```
 http://192.168.1.1/cgi-bin/upgrade.asp
 ```
@@ -1248,6 +1248,13 @@ CMCCAdmin
 ```
 s2@We3%Dc#
 ```
+
+```
+admin
+```
+```
+aDm8H%MdA
+```
 重新注册后进telnet，找到var/tmp/romfile.cfg，查看对应行和后面2行
 ```
 cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
@@ -1255,6 +1262,10 @@ cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
 或者
 ```
 cat tmp/ctromfile.cfg | grep 'CMCCAdmin' -A 2
+```
+或者
+```
+cat var/romfile.cfg | grep 'CMCCAdmin' -A 2
 ```
 
 ### 江苏创维SK-D848，SK742
@@ -1343,11 +1354,40 @@ web_passwd="CMCCAdmin****"
 
 &amp;等于&
 
-### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94
+### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开！
 sn认证
 捅复位后，重新注册，密码保持不变，删除tr069
 S-Box8L94，F12查看loid，需在网页里重置，复位键没用。
 
+贵州企业宽带H10g-32ac不会自动下发数据，telnet默认开的
+telnet 192.168.1.1
+用户名admin密码
+```
+chzhdpl@246
+```
+
+```
+sidbg 1 DB printall 1
+```
+
+```
+sidbg 1 DB p DevAuthinfo
+```
+su
+```
+aDm8H%MdA
+```
+
+解密配置文件
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+
+查看解密后的文件
+```
+vi /tmp/debug-decry-cfg
+```
+按n跳转下一个匹配的内容
 
 ### 移动SU6100
 锐捷猫，江苏
@@ -1507,8 +1547,12 @@ telnet
 root
 aDm8H%MdA
 
-### 联通创维SKd745
-恢复出厂，设置，
+### 内蒙古联通创维SKd745【无telnet按扭】
+
+恢复出厂，设置里，开启ftp，useradmin，useradmin
+注册，从ftp进去，下载配置文件解密。
+
+
 
 ### 河南联通sk-d740
 
@@ -2602,9 +2646,9 @@ upgradetest sdefconf 309
 ```
 setmac show
 ```
-sismac 1 2177 ZTEGCAC4A65C
+sismac 1 2177 ZTEGCA777B58
 sismac 1 512 80B07B-ZTEGCAC4A65C
-sismac 1 256 80:B0:7B:AE:87:01
+sismac 1 256 F4:B5:AA:19:D2:A8
 sismac 1 258 80:B0:7B:AE:87:00
 
 修改SN码：setmac 1 2177 xxxxxxxx [SN 为8字符]  
@@ -3032,8 +3076,8 @@ Telnet光猫IP（192.168.1.1）输入用户名（root）和密码（Zte521）即
 321 sendcmd 1 DB p CatvOpticalPara  
 
 关闭强制自动注册页（中兴系）gm232
-sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
-sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
+sendcmd 1 DB set PDTCTUSERINFO 0 Status 0
+sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
 sendcmd 1 DB save
 
 sidbg 1 DB set PDTCTUSERINFO 0 Status 0  
@@ -3309,6 +3353,13 @@ https://www.right.com.cn/FORUM/thread-4958877-1-1.html
 天邑Mac和SN后8位一致，改Mac就是改sn.运用天邑TelnetClient工具，
 用：echo xx xx xx xx xx xx>/proc/nvram/BaseMacAddr  命令即可
 
+### 中兴光猫查看宽带密码
+开telnet后，执行命令，拷贝到mnt目录，然后去管理员后台开ftp，useradmin，useradmin，下载配置文件，再解密
+```
+cp /userconfig/cfg/db_user_cfg.xml /mnt/
+cd /mnt/
+chmod 777 db_user_cfg.xml
+```
 
 
 ### 换猫
@@ -6219,6 +6270,44 @@ loid：340563TI77923
 68AE04-ZNXT0412CB48 
 INTERNET_R_VID_41 
 17885513854
+
+#### 云南移动H3-2s
+41
+w18469134967
+宽带密码100861
+
+#### 河南联通友华PT
+0783331981
+280
+039507781539
+
+
+0782470889
+278
+039507228820
+
+0778165637
+273
+039507665736
+
+
+0783323349
+279
+039507758316
+
+内蒙古sk d745
+BT03634481010773880
+47
+047203634481
+
+#### 山东烟台联通HN8145XR
+zf96628587
+tr 50
+iptv 2648  优先级3，组播80，桥接
+3010
+053502196602
+
+
 
 --------
 
