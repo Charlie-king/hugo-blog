@@ -89,7 +89,7 @@ http://192.168.1.1/logoffaccount.html
 
 联通光猫超级管理员访问地址：192.168.1.1/cu.html
 
-浙江/内蒙/河北/浙江: cuadmin 
+浙江/内蒙/河北/浙江: cuadmin，cuadmin
 辽宁：lnadmin  lnadmin
 青海：qhuniadmin 
 湖南：CUAdmin#HGU 
@@ -102,7 +102,7 @@ http://192.168.1.1/logoffaccount.html
 广东省联通光猫超级密码汇总，广东联通用户可以自行测试超密。
 全省智能网关（HGU）光猫自动开通实行路由模式，自动开通后无需拨号直接插网线使用，
 如有不需要路由模式可以将光猫调测为桥接模式，
-方式如下，
+方式如下， ^c1096e
 1. 根据光猫背面的账号密码进行调试，
 2. 超管规律，cuadmin+mac前6位小写或者标识码头部6位
 3. 使用联通光猫统一账号密码，账号统一CUAdmin，密码
@@ -134,7 +134,6 @@ Telnet连接光猫，用户名root，密码Zte521，输入命令
 sendcmd 1 DB p DevAuthInfo
 ```
 即可查看所有的用户名密码，
-但是中兴F607ZA比较奇葩，普通用户和超级管理员登录的页面是不同的，超级管理员的登录页面是：http://192.168.1.1/cu.html
 
 
 ## 成功案例
@@ -373,7 +372,7 @@ TeleCom_mac  后6位小写
 ```
 
 ```
-TeleCom_c76360
+TeleCom_d26bd2
 ```
 
 查看配置文件和超密
@@ -1106,7 +1105,7 @@ Telnet 192.168.1.1
 输入cd  /config/work
 输入
 ```
-grep aucTelnetPassword lastgood.xml  /config/work
+grep aucTelnetPassword lastgood.xml  /config/work
 ```
 然后复制粘贴保存一下aucTelnetPassword值
 输入vim lastgood.xml
@@ -2249,25 +2248,44 @@ root
 Zte521
 
 3、以下命令都要在输入后，都要使用以下命令保存配置  
-     sendcmd 1 DB save  
-     sendcmd 1 DB reboot
+```
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
 
-4、sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1     插上光纤后不自动关闭telnet
-
-5、sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5     最多能够登录5个用户，避免被锁死
+4、    插上光纤后不自动关闭telnet
+```
+sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
+5、     最多能够登录5个用户，避免被锁死
+```
+sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
 
 6、破解打开网页自动跳转LOID注册页面  
 ```
 sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
 ```
 
 
 7、破解最大用户数(本例设置为66，当然你可以直接把这个限制关了)  
-     sendcmd 1 DB set CltLmt 8 Max 66    设置66用户     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制最大用户数
-
-8、sendcmd 1 DB p DevAuthInfo     查看telecomadmin帐号的密码
-
+        设置66用户     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制最大用户数
+```
+sendcmd 1 DB set CltLmt 8 Max 66
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
+8、  查看telecomadmin帐号的密码
+```
+sendcmd 1 DB p DevAuthInfo
+```
 9、重启光猫，进192.168.1.1的页面，点设备注册，输入宽带识别号后点下一步，完成设备注册！！！
 
 10、再次telnet进光猫，禁用电信远程控制（此项必须在以上步骤完成后进行！！！切记！！！否则无法注册LOID成功！）  
@@ -3361,7 +3379,40 @@ cd /mnt/
 chmod 777 db_user_cfg.xml
 ```
 
+## 关闭防火墙
 
+telnet命令:  关闭防火墙 
+```
+sidbg 1 DB set FWLevel 0 Level 0
+sidbg 1 DB save
+```
+
+```
+sendcmd 1 DB set FWLevel 0 Level 0
+sendcmd 1 DB save
+```
+
+
+关闭防火墙并发连接数最大限制 
+```
+sidbg 1 DB set FWBase 0 FwConnMaxEnable 0
+sidbg 1 DB save 
+```
+
+```
+sendcmd 1 DB set FWBase 0 FwConnMaxEnable 0
+sendcmd 1 DB save 
+```
+更改最大并发连接数 (按需修改，最后数字我改的是65535,原来16000+也够用)
+```
+sidbg 1 DB set FWBase 0 ConntrackMax 65535
+sidbg 1 DB save
+```
+
+```
+sendcmd 1 DB set FWBase 0 ConntrackMax 65535
+sendcmd 1 DB save
+```
 ### 换猫
 
 #### 山东联通换猫直接用loid注册即可，没有绑定
@@ -3405,7 +3456,7 @@ sendcmd 1 DB save
 广东，每个城市1个字母+账号后8位+2（移机过就是3，4，5，6累加），15768226708，e682267082
 中山移动 e
 东莞移动 c
-广州移动  
+广州移动 a
 深圳移动 b
 揭阳移动 m
 汕头移动  f
@@ -3417,7 +3468,7 @@ sendcmd 1 DB save
 惠州移动  j
 珠海移动  h
 韶关移动  p
-河源移动
+河源移动 q
 梅州移动
 江门移动  g
 阳江移动
