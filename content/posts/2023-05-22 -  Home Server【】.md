@@ -61,19 +61,16 @@ Nginx Proxy Manager (NPM) 默认监听80和443端口，但如果你想修改为�
     
     Copy
     
-    ````
+    ```
     docker-compose down
     ```
-    
     或者
-    
-    ````
-    
+
+```
     docker stop <container_id>
-    
-    Copy
-    
-2.  打开`docker-compose.yml`文件（如果你使用Docker Compose），或者查找启动Docker容器的命令行参数。你需要找到映射到Nginx Proxy Manager容器内的端口。
+```
+
+1.  打开`docker-compose.yml`文件（如果你使用Docker Compose），或者查找启动Docker容器的命令行参数。你需要找到映射到Nginx Proxy Manager容器内的端口。
     
     对于`docker-compose.yml`文件，它可能是这样的：
     

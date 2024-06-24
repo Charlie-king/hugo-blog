@@ -355,6 +355,7 @@ CUAdmin
 电信
 账号telecomadmin、admin、telecom
 pt926G   admin，TeleCom_1234
+pt926E    admin  user的密码被改过，就是改后的密码，
 ```
 admin
 ```
@@ -372,7 +373,7 @@ TeleCom_mac  后6位小写
 ```
 
 ```
-TeleCom_d26bd2
+TeleCom_0c2c36
 ```
 
 查看配置文件和超密
@@ -740,6 +741,16 @@ http://192.168.1.1/logoffaccount.html
 开telnet  
 root  hg2x0
 
+### 联通HG221G
+telnet
+admin
+admin
+进入后
+```
+> get telnetpwd   注册，输入命令获取超密
+```
+
+
 ### 河南联通HG6201F
 备份配置文件 
 ```
@@ -767,7 +778,7 @@ arp -a 192.168.1.1
 takfpucy
 这时将显示你的光猫MAC。  
 ```
-Fh@0DC110
+Fh@E96C2C
 ```
 浏览器中录入  
 移动
@@ -776,7 +787,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=98EDCA8FD3E0
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=487D2E43E798
+http://192.168.1.1/telnet?enable=1&key=7CFCFD921CF0
 ```
 电信
 ```
@@ -788,7 +799,7 @@ root  或者  admin
 ```
 Fh@2FCB00
 ```
-Fh@0CA700
+Fh@E96C2C
 ```
 FH-nE7jA%5m9C1840
 ```
@@ -812,7 +823,7 @@ CUAdmin
 ```
 hg2x0
 ```
-
+lnadmin72191117
 输su再输Fh@
 
 第二部 获得超密  
@@ -1361,6 +1372,14 @@ S-Box8L94，F12查看loid，需在网页里重置，复位键没用。
 贵州企业宽带H10g-32ac不会自动下发数据，telnet默认开的
 telnet 192.168.1.1
 用户名admin密码
+
+H51e   用上面
+telnet：CMCCAdmin，密码
+```
+UM@Pon521
+```
+
+
 ```
 chzhdpl@246
 ```
@@ -1432,7 +1451,7 @@ telnet密码搜supassword
 查找cmccadmin，supassword（telnet的root密码）解密。
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d zO++E1VQGES3D4BCtfu5oA==
+python nokia-router-cfg-tool.py -d JOJRRY9meEECkC1KP/Qsjg==
 ```
 telnet：
 user或useradmin  
@@ -3469,7 +3488,7 @@ sendcmd 1 DB save
 珠海移动  h
 韶关移动  p
 河源移动 q
-梅州移动
+梅州移动 r
 江门移动  g
 阳江移动
 清远移动 v
@@ -6357,6 +6376,114 @@ tr 50
 iptv 2648  优先级3，组播80，桥接
 3010
 053502196602
+
+
+#### 内蒙古联通F677
+BT03255407006021508
+047203255407
+47
+
+#### 河南联通F7610
+0982210348
+22
+039402711757
+
+山东联通V173
+JN70235132
+_VID_3611
+053101717460
+iptv43 3  80
+
+辽宁dt741
+2112827487
+10
+fxl01024652
+PMsqPtst4J
+河南
+0169621828
+22
+039404269371
+lnadmin71189191
+
+山东G7615
+DZ86582935
+3118
+053402660140
+FE9192EECABB
+
+山西华为h
+2
+035901198675
+iptv 4057、组播4060
+
+山西联通F677
+2
+jst355093375
+ZTEGCCBB26DB
+
+
+黑龙江联通dt741
+451000036294023
+451000036294023 
+2528
+chmnthft8MCU@HLJ
+
+内蒙古联通7615
+TL03319022011465659
+47
+047503319022
+
+辽宁联通F657
+2096638985
+2007
+dl24844071@163
+434D 8566 7F39 F
+CMCCAdmin6k874Q52
+
+山西联通华为
+ghn686ya
+2
+035702879388
+
+上海联通华为
+000000000000000013221053
+2_INTERNET_R_VID_979
+02100355749
+
+河南联通
+2979672803
+1065
+037106987639
+2_IPTV_R_VID_99
+
+福建联通TEWA 1206
+140
+059108093354
+MTIzNDU2=2
+
+辽宁联通
+2153281379
+36
+syl_00414627
+ZTEGD3F8C61B
+
+江西联通
+ZTEGD259961E
+3_IPTV_B_VID_20
+10
+079700812519
+
+安徽联通H80
+5510585456
+1626
+055109009567
+282  组播281
+
+内蒙古联通贝尔140
+BT03317001011347707
+47
+047203317001
+iptv46
 
 
 
