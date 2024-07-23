@@ -626,6 +626,9 @@ FH-nE7jA%5m
 FH-nE7jA%5m + mac后6位大写
 ```
 
+```
+FH-nE7jA%5m9EE9C4
+```
 
 3. 输入命令
 ```
@@ -675,11 +678,11 @@ public class Main {
 ### HG6201T电信
 开telnet
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=14E982126D00
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACCB366753C0
 ```
 telnet账户密码root，
 ```
-Fh@CF1E76
+Fh@9EE9C4
 ```
 
 输入命令，第二行就是超密
@@ -701,6 +704,7 @@ cat /flash/cfg/agentconf/factory.conf
 jqkcrba7jqkcrba7
 takfpucybijxg
 
+s3pudcwa5tcd3
 ### HG2201U/
 
 user登录后打开
@@ -783,7 +787,7 @@ Fh@E96C2C
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=98EDCA8FD3E0
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=90837E9DECB0
 ```
 联通
 ```
@@ -791,7 +795,7 @@ http://192.168.1.1/telnet?enable=1&key=7CFCFD921CF0
 ```
 电信
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=88238C9C1840
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=98EDCA9EE9C4
 ```
 
 ```
@@ -799,14 +803,14 @@ root  或者  admin
 ```
 Fh@2FCB00
 ```
-Fh@E96C2C
+Fh@9EE9C4
 ```
-FH-nE7jA%5m9C1840
+FH-nE7jA%5m9EE9C4
 ```
 hg2x0
 ```
 7qGmg9xBmw39
-FH-nE7jA%5mE02CE0
+FH-nE7jA%5m9EE9C4
 电信telnet账号可能root，admin
 ```
 telecom
@@ -826,12 +830,13 @@ hg2x0
 lnadmin72191117
 输su再输Fh@
 
+TeleCom_1234
 第二部 获得超密  
 打开CMD命令窗口录入：telnet 192.168.1.1  
 链接成功后输入账号：admin 在北京天津这边用这个admin，其他地方如果不管用就试试  root  
 录入密码为  Fh@644D90+你上面获得的MAC的后六位大写。  
 ```
-Fh@5675E0
+Fh@EE9C4
 ```
 命令行输入：
 ```
@@ -853,6 +858,24 @@ Success! admin_name=CMCCAdmin
 Config\factorydir# show admin_pwd   
 这时将显示你的超级密码  
 Success! admin_pwd=CMCCAdminFa5&G3Pk  
+
+### 广东HG6145A2
+
+然后发现了[这个帖子](https://www.right.com.cn/FORUM/thread-8283798-1-1.html)  
+用cfg_cmd get来读，加密的也能读到，直接cfg_cmd get试了一下，有这个命令，能用，然后就是找密码在哪里了  
+直接进fhdata，cat usrconfig_conf一大堆东西，看得眼花  
+把内容粘贴到记事本ctrl+f，搜password，发现好几个，config interface 'InternetGatewayDevice__DeviceInfo__X_CMCC_TeleComAccount__'这个看起来最像，先验证一下，cfg_cmd get InternetGatewayDevice.DeviceInfo.X_CMCC_TeleComAccount.Username  
+提示get success!value=CMCCAdmin  
+那就是你了，然后
+
+开telnet后，查超密命令
+```
+cfg_cmd get InternetGatewayDevice.DeviceInfo.X_CMCC_TeleComAccount.Password
+```
+
+，get success!value=xxxx
+
+
 
 ### 锐捷H60G/H61G/H80G/T66
 
@@ -3442,7 +3465,8 @@ sendcmd 1 DB set PDTCTUSERINFO 0 Status 0
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
 sendcmd 1 DB save
 ```
-#### 广东深圳移动，光猫改广东地区即可注册
+#### 广东移动、广东电信，光猫改广东地区即可注册
+#### 广西电信，光猫改广西地区即可注册
 #### 湖南联通、上海电信没有vlan id
 #### 北京联通mac认证，不需要loid
 #### 河北联通mac认证，不需要loid，不会自动下发
@@ -6485,6 +6509,44 @@ BT03317001011347707
 047203317001
 iptv46
 
+山东联通F657
+HZ02203425
+iptv1084
+3400
+053002843906
+
+河南联通联通F7610
+0783331981
+280
+039507781539
+
+
+0782470889
+278
+039507228820
+
+0778165637
+273
+039507665736
+
+
+0783323349
+279
+039507758316
+
+山东潍坊联通G7615V2
+WF35659037
+3611
+053606648643
+iptv43 bridge
+
+#### 山东联通g7615V2
+ZBND05920533028755805848
+3017
+053302875580
+3999
+
+iptv1275
 
 
 --------
