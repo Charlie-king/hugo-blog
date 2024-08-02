@@ -135,6 +135,58 @@ sendcmd 1 DB p DevAuthInfo
 ```
 即可查看所有的用户名密码，
 
+### 中兴1.6
+
+网卡地址
+```
+000729553557
+```
+
+联通
+新版固件要改网卡
+```
+./6 -i 192.168.1.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
+```
+
+
+电信
+```
+./6 -i 192.168.1.1 --new --telnet
+```
+
+```
+ZteONU 0.0.6 (github.com/thank243/zteOnu) 
+-----------------------------------
+step [0] reset factory: ok
+step [1] request factory mode: ok
+step [2] send sq: Your request has bad syntax or is inherently impossible to satisfy. Attempt retrying..(1/10)
+-----------------------------------
+step [0] reset factory: ok
+step [1] request factory mode: ok
+step [2] send sq: ok
+step [3] check login auth: ok
+step [4] enter factory mode: ok
+-----------------------------------
+user: hkjWI6P8
+pass: 80a77zy6
+
+
+ZteONU 0.0.6 (github.com/thank243/zteOnu) 
+-----------------------------------
+step [0] reset factory: ok
+step [1] request factory mode: ok
+step [2] send sq: Your request has bad syntax or is inherently impossible to satisfy. Attempt retrying..(1/10)
+-----------------------------------
+step [0] reset factory: ok
+step [1] request factory mode: ok
+step [2] send sq: ok
+step [3] check login auth: ok
+step [4] enter factory mode: ok
+-----------------------------------
+user: root
+pass: Zte521
+```
+
 
 ## 成功案例
 
@@ -1149,6 +1201,10 @@ grep aucTelnetPassword lastgood.xml  /config/work
 然后按Esc在按:wq回车
 :wq退出后输入reboot重启一下,然后你就可以使用之前设置的TELNET密码访问了
 
+telnet密码
+```
+a2#We4%Dc2
+```
 
 
 
@@ -1252,7 +1308,7 @@ https://blog.csdn.net/qq_42294237/article/details/132025846
 江苏企业宽带，一网通注册码a+账号后8位。
 
 user页面开启telnet
-
+4u2f42fpaDm8H%MdA
 telnet
 root
 无线wifi密码+超密aDm8H%MdA，无wifi密码的直接就超密。
@@ -1319,7 +1375,7 @@ http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_adva
 ```
 
 
-#### 安徽移动skd745S（绿色界面）
+### 安徽移动skd745S（绿色界面）
 江苏的方法不行
 超管进去，安全，访问添加一个telent，然后即可，root
 root
@@ -1328,7 +1384,11 @@ root
 34551308254460000000
 41
 76482230
-
+### 江苏SK-M424-ZQ融合企业网关
+sn自动认证，user进去后台复位，
+超管进去，安全，访问添加一个telent，然后即可，root
+root
+无线wifi密码+超密ykh36cfgaDm8H%MdA
 
 ### 移动CM112   GS3101  GS2107（GS3202不同）GS8101用中兴工具
 
@@ -2218,10 +2278,22 @@ sidbg 1 DB save
    setmac 1 261 85:93:b2:ca:ea:3e  
    setmac 1 262 85:93:b2:ca:ea:3f  
    setmac 1 263 85:93:b2:ca:ea:40  
-  
-  
-   注册50%不能上网，telnet改注册为成功状态  
-  
+   
+```
+ebtfee4gaDm8H%MdA
+```
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save   
+```
+
+```
+sidbg 1 DB delr WANC 0
+```
+
+   注册50%不能上网，telnet改注册为成功
+   
 ```
 sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
@@ -3523,7 +3595,7 @@ sendcmd 1 DB save
 loid和账号一样
 073800292846
 
-#### 河北联通，山西联通，贵州联通无loid，mac自动认证
+#### 河北联通，山西联通，贵州联通，江西联通无loid，mac自动认证
 
 
 
@@ -6547,6 +6619,148 @@ ZBND05920533028755805848
 3999
 
 iptv1275
+
+福建联通F477
+5960920042762
+3372
+059607506434
+
+
+安徽联通
+5580433371
+1194
+055809272611
+
+
+福建联通HS8345
+5910320166093
+2_INTERNET_R_VID_2316
+059107818601
+123456
+
+
+山东烟台联通
+mp93613790
+3602
+053504345154
+2_IPTV_B_VID_43
+
+
+安徽电信TEWA 707G
+340552PR64983
+41
+
+
+上海联通
+000000000000000013539837
+853
+
+山东联通
+H005614414
+181
+lyys000033774
+
+上海联通F4610
+000000000000000012892552
+829
+02100576780
+
+
+浙江台州移动
+m7349054r1
+4031
+tzlqb86068298
+
+#### 安徽联通F677
+5580433371
+1194
+055809272611
+
+模式	DHCP
+连接名称	4_VOICE_R_VID_47
+NAT	关闭
+IP	10.160.151.229/255.255.252.0
+DNS1	255.255.255.255
+DNS2	255.255.255.255
+DNS3	0.0.0.0
+WAN MAC	94:28:6f:89:ca:69
+网关	10.160.148.1
+连接状态	连接
+最近一次失败原因	未知原因
+剩余租期	3687秒
+模式	Bridge
+连接名称	2_IPTV_B_VID_282
+
+四川移动UNG301Z
+719865169
+tr104
+101
+15708394523
+934510
+
+辽宁联通G7615
+2143099748
+1205
+tslan_08110669
+
+上海联通PT1250
+000000000000000013511880
+2_INTERNET_R_VID_811
+02101170665
+tr28
+
+
+江西联通F677V2
+tr30
+10
+079606091554
+
+江西联通F657
+宽带账号：079502221607
+密码：123456 
+10
+4CAC0A-01FFFFFFFF011FFF23
+ZTEGD67F9E4EAA
+CUAdminD67F9E4E
+
+河南联通HS8145XR
+5766388131
+22
+037102221469
+
+1_TR069_R_VID_180	Connected	65.97.146.214	180/6	AlwaysOn
+2_INTERNET_R_VID_22	Connected	125.46.238.45	22/0	AlwaysOn
+3_IPTV_R_VID_23	Connected	10.6.244.62	23/0	AlwaysOn
+8_TR069_B_VID_180	Con
+
+
+037102221469IPTV@iptv.ha
+组播96
+
+江苏sk-m424
+SKYWA8E761DD
+3_OTHER_R_VID_2030	0	0	0	0
+1_TR069_R_VID_4015	194719	2845	180540	2858
+4_VOIP_R_VID_3951	0	0	0	0
+5_OTHER_R_VID_1031	0	0	822690	1385
+6_INTERNET_B_VID_
+
+
+1	1601	VJTwx51041445817aaaj	789789
+2	1602	VJTwx51041445817aaai	789789
+3	1603	VJTwx51041445817aaah	789789
+4	1604	VJTwx51041445817aaag	789789
+5	1605	VJTwx51041445817aaaf	789789
+6	1606	VJTwx51041445817aaae	789789
+7	1607	VJTwx51041445817aaad	789789
+8	1608	VJTwx51041445817aaac	789789
+9	1609	VJTwx51041445817aaab	789789
+10	1610	VJTwx51041445817aaaa	789789
+
+辽宁联通
+2181939266
+10
+fxl09938613
 
 
 --------
