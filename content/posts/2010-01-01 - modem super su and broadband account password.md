@@ -1278,6 +1278,23 @@ https://www.5v13.com/mesh/26321.html
 
 #### H2-3灰色页面，H2-3s蓝色页面在系统里恢复出厂，TEWA 272G
 
+### 内蒙H2-2鲜蓝色，注册会重启关闭telnet
+user进去隐藏恢复出厂设置，用下面开telnet
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+
+```
+CMCCAdmin
+```
+
+```
+aDm8H%MdA
+```
+重新注册会重启猫，需要快速提交命令修改
+
+
+
 ### H3-2r ，H3-1r lite，H-PON01
 
 需要超管进，打开
@@ -1303,7 +1320,7 @@ https://www.right.com.cn/forum/thread-8285997-1-1.html
 https://blog.csdn.net/qq_42294237/article/details/132025846
 
 
-****### 移动SK-D848，SK742，SK-M724
+### 移动SK-D848，SK742，SK-M724
 
 江苏企业宽带，一网通注册码a+账号后8位。
 
@@ -6762,6 +6779,103 @@ SKYWA8E761DD
 10
 fxl09938613
 
+#### 甘肃联通HS8346V5
+83387580174
+000000
+1_TR069_R_VID_4046	4046/6	IPv4
+2_INTERNET_R_VID_4041	4041/0	IPv4/IPv6
+3_VOICE_R_VID_4045	4045/5	IPv4
+4_IPTV_B_VID_4043	4043/4	IPv4
+宽带
+093310011720
+
+CUAdmin%**K?mf8
+
+上海电信AC-8
+1_Internet_R_
+ IPv4
+ 路由模式
+ 虚拟拨号(PPPOE)
+ 180.171.190.216 
+ 116.228.111.118, 180.168.255.18 
+连接
+修改
+ 2_Management_Voice_R_46
+ IPv4
+ 路由模式
+ DHCP获取IP地址
+ 29.2.124.227 
+ 15.192.252.188, 15.192.251.188 
+连接
+
+loid：0075718785
+mac：98-00-74-2b-40-7a
+宽带账号：ad85079218
+
+内蒙联通G7615
+TL03218190009402014
+47
+047503218190
+
+陕西西安移动H3-8s
+XA04460141
+100
+13572010428
+
+山东联通F457
+H503530269
+2027
+wh4406657
+
+河南濮阳联通dt-741csf
+loid：1185429673
+loid密码216811（实际不用）
+1334
+039303929170
+123456
+
+山东联通F457
+H007710108
+3517
+053905508177
+
+2_IPTV_B_VID_43  bridge
+
+内蒙古移动GM620
+who9q1xz
+13848854442
+41
+
+h9ux74JW@C1
+
+内蒙古联通F677
+CF08693935008645478
+47
+047608693935
+
+内蒙古移动H2-2，注册会重启
+x31thq6b
+41
+
+山东联通
+TA01105135
+4_INTERNET_R_VID_3672
+053805168126
+
+5_INTERNET_B_VID_3671
+
+IPv4信息
+WAN名称	状态	IP地址	VLAN/优先级	连接
+1_TR069_R_VID_50	Connected	11.150.108.253	50/6	AlwaysOn
+2_IPTV_B_VID_43	Connected	--	43/4	AlwaysOn
+3_VOICE_R_VID_1120	Connected	11.28.64.103	1120/0
+
+
+山东联通
+JN65052174
+
+3026
+053102119867
 
 --------
 
@@ -6796,6 +6910,7 @@ telecomadmin admintelecom
 1. 电信超级密码 telecomadmin nE7jA%5m
 2. 移动超级密码 CMCCAdmin aDm8H%MdA
 3. 联通超级密码 CUAdmin CUAdmin
+
 
 
 账户
