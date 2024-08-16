@@ -51,7 +51,7 @@ DCB8m%B0B
 ```
 admin
 ```
-
+3cnfp9u6CUAdmin
 ```
 Cmcc10086#
 ```
@@ -1463,6 +1463,14 @@ web_passwd="CMCCAdmin****"
 其中的username=后面的就是管理员账号，一般为CMCCAdmin，web_passwd=后面的就是密码，这里对应的是CMCCAdmin****，注意不要带引号。
 
 &amp;等于&
+
+### 内蒙古移动ZN-M142G，M180（先绿色）
+user登录，直接打开telnet
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+默认的账户密码登录
+
 
 ### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开！
 sn认证
@@ -6876,6 +6884,22 @@ JN65052174
 
 3026
 053102119867
+
+内蒙古移动ZN-M142G
+ozfh4y2m
+41
+157547503020001
+750302
+
+山东济南联通DT741
+JN12222932 
+3_INTERNET_R_VID_3309
+053105497093
+3cnfp9u6
+
+
+
+
 
 --------
 
