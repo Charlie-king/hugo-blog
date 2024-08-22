@@ -1188,10 +1188,20 @@ http://192.168.1.1/webcmcc/telnet.html?password=!@qw34er&username=root
 输入以下命令
 Telnet 192.168.1.1
 输入Telnet账户密码登陆，登陆成功后
-输入cd  /config/work
-输入
+
+输入进入config路径
 ```
-grep aucTelnetPassword lastgood.xml  /config/work
+cd /config/worka
+```
+
+输入
+先复制user密码
+```
+grep aucUserAccountPassword lastgood.xml /config/worka
+```
+
+```
+grep aucTelnetPassword lastgood.xml /config/worka
 ```
 然后复制粘贴保存一下aucTelnetPassword值
 输入vim lastgood.xml
@@ -1249,6 +1259,13 @@ obj.user_password='admin'
         });
 $.PATH=TMP_PATH
 ```
+
+切换到配置文件目录
+```
+cd /config/worka
+```
+
+
 
 ![](https://s3.bmp.ovh/imgs/2023/12/26/1a21fb632d5f7a0d.png)
 ![](https://s3.bmp.ovh/imgs/2023/12/26/c23109aa2bc88f2b.png)
@@ -1335,6 +1352,12 @@ root
 http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
 ```
 ahynm3mkaDm8H%MdA
+
+### 浙江SK-D840
+绿色和蓝色页面，复位后，超管菜单，安全，添加telnet，插光纤会重启，注册会重启。
+telnet
+root
+aDm8H%MdA
 
 
 ### 贵州移动SK-D748/江苏移动ZN800
@@ -1750,7 +1773,7 @@ http://192.168.18.1/hidden_version_switch.html
 切换版本，恢复出厂设置。
 telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
 
-### 安徽电信创维DT720-cs【注册下发】
+### 安徽山西电信创维DT720-cs【注册下发】
 开telnet
 ```
 http://192.168.1.1:8080/hidden_version_switch.html
@@ -2803,9 +2826,9 @@ upgradetest sdefconf 309
 ```
 setmac show
 ```
-sismac 1 2177 ZTEGCA777B58
+sismac 1 2177 HWTC67A1A3AF
 sismac 1 512 80B07B-ZTEGCAC4A65C
-sismac 1 256 F4:B5:AA:19:D2:A8
+sismac 1 256 F4:E4:51:4D:EE:AE
 sismac 1 258 80:B0:7B:AE:87:00
 
 修改SN码：setmac 1 2177 xxxxxxxx [SN 为8字符]  
@@ -6897,6 +6920,16 @@ JN12222932
 053105497093
 3cnfp9u6
 
+河南联通sk-D849
+4784819014
+1234qweR
+22
+037103891733
+
+山东联通DT741
+ly09695757
+3305
+053502887661
 
 
 
