@@ -36,7 +36,7 @@ seo:
   images: []
 # See details front matter: /theme-documentation-content/#front-matter
 ---
-DC18m%619
+
 <!--more-->
 ## 通用账号密码
 ```账号
@@ -523,6 +523,33 @@ http://192.168.1.1/register_prov.html
 http://192.168.1.1/bd/vermod.asp
 ```
 
+#### 电信PT925G
+光猫普通账号密码。浏览器输入网关地址登录。之后修改地址
+```
+192.168.1.1/cgi-bin/luci/admin/storage/settings
+
+```
+
+在光猫插入 U 盘后， 通过 Chrome 浏览器开发者调试工具种（F12），点击控制台选项（Console），输入：
+```
+get_path_files("/mnt/usb1_2/../../")
+```
+
+然后进入以下文件路径，将其复制到 U 盘中。
+
+var/config/lastgood.xml
+
+通过光猫网络可以直接在电脑访问 U 盘，打开查询超级密码关键字
+```
+SUSER_PASSWORD
+```
+
+宽带密码：
+```
+\var\config\ppp\ppp.conf
+```
+
+
 #### 福建联通PT928E
 页面记逻辑id，恢复出厂设置，进配置页开启telnet，su密码为超密，注册会自动重启猫，配置文件里SUSER_PASSWORD加密。
 
@@ -545,6 +572,14 @@ CUAdmin
 ```
 
 ##### 友华光猫命令行里修改tr069为可编辑
+
+直接复位后，超管登录进去，打开以下链接，
+```
+http://192.168.1.1/bd/vermod.asp
+```
+修改 锁定远程控制的参数即可。
+
+以下步骤多余。
 1. 输入 ，回车运行。
 ```
 cp /home/httpd/web/net_eth_links.asp /var/
@@ -805,6 +840,18 @@ admin
 ```
 > get telnetpwd   注册，输入命令获取超密
 ```
+
+### 电信烽火HG6543c1
+```
+192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
+```
+
+telnet用户名 ：root  
+telnet密码：默认无线网络密钥+默认终端配置密码 的组合
+```
+cat /flash/cfg/agentconf/factory.conf
+```
+要用pt才能上翻页
 
 
 ### 河南联通HG6201F
@@ -1198,6 +1245,10 @@ cd /config/worka
 先复制user密码
 ```
 grep aucUserAccountPassword lastgood.xml /config/worka
+```
+
+```
+grep aucTeleAccountPassword lastgood.xml /config/worka
 ```
 
 ```
@@ -2282,7 +2333,12 @@ sendcmd 1 DB set TelnetCfg 0 CloseServerTime 9999999
 sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1  
 sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
 sendcmd 1 DB save
-```  
+```
+
+```
+sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
+sendcmd 1 DB save
+```
 
 ```
 sidbg 1 DB set TelnetCfg 0 TSLan_UName root  
@@ -2298,7 +2354,7 @@ sidbg 1 DB save
 ```
 
    /etc/init.d/regioncode       查询地区代码  
-   upgradetest sdefcof 310     310代表广东，其他地区找对应代码  
+   upgradetest sdefconf 310     310代表广东，其他地区找对应代码  
 设置国家地区代码：   upgradetest sdefconf [序号]  
 查询国家地区代码：   upgradetest gdefconf
 如果upgradetest命令不成功，请修改为siupgrade
@@ -6931,8 +6987,16 @@ ly09695757
 3305
 053502887661
 
+山东联通G7615
+3327
+iptv2632
+053402695423
+DZ75119971
 
-
+河南联通F457
+0685808667
+3240
+037405676179
 
 --------
 
