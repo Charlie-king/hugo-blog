@@ -42,7 +42,7 @@ seo:
 ```账号
 CMCCAdmin
 ```
-1234qwer!@#$
+
 ```
 aDm8H%MdA
 ```  
@@ -1002,14 +1002,14 @@ aDm8H%MdA
 
 设置修改密码并保存，账号可不动
 ```
-sidbg 1 DB set DevAuthInfo 0 User C
+sidbg 1 DB set DevAuthInfo 0 User CMCCAdmin
 ```
 
 ```
 sidbg 1 DB set DevAuthInfo 1 Level 1
 sidbg 1 DB save
 ```
-C9iid%SC
+
 
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
@@ -1836,6 +1836,26 @@ telnetadmin
 ```
 其他用sidbg命令，su密码不是默认超密
 
+### 内蒙古电信DT741（政企悦me）
+
+|运营商|中国电信|
+|设备型号|DT741-zhengqi|
+|设备标识号|34AA31-4E61534AA310C8AC0|
+|硬件版本号|V1.0|
+|软件版本号|V1.0.1|
+
+useradmin登录，输入下面开启telnet
+```
+http://192.168.1.1/usr=telecomadmin&psw=nE7jA%5m&cmd=1&telnet.gch
+```
+telnet账密都是telnetadmin，su也是一样
+```
+telnetadmin
+```
+命令需要su
+
+ftp账户密码就是普通管理员账密
+
 
 ### 河南联通 dt741-csf  
 记下LOID还有VID   
@@ -2308,7 +2328,7 @@ telnet 192.168.1.1 10128
 ```
 sendcmd 1 DB p DevAuthInfo
 ```
-  获取管理员密码 用于网页登录
+ 获取管理员密码 用于网页登录
 
 
 ### 中兴系列G7615
@@ -6997,6 +7017,44 @@ DZ75119971
 0685808667
 3240
 037405676179
+
+山东联通DT741
+TA03648675
+3548
+053804697970
+
+内蒙谷电信DT741
+4751LO04915317
+41
+047566710826
+861770
+
+内蒙联通F607z
+TL08686442004798600
+47
+047508686442
+
+广东联通
+7575390552
+41
+FSFTH823275261206528@16900.gd
+
+河南联通
+0680012471
+783
+037403218793
+
+天津联通
+TJHQ0005460321
+709
+02209665655
+
+1_TR069_R_VID_4000	4000/7	IPv4
+2_VOICE_R_VID_3310	3310/5	IPv4
+3_INTERNET_R_VID_709	709/0	IPv4/IPv6
+4_IPTV_R_VID_2326	2326/3	IPv4
+
+
 
 --------
 
