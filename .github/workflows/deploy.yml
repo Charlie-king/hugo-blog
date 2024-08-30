@@ -28,7 +28,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: lastest
+          hugo-version: latest
           extended: true
       - name: Build Hugo static files
         run: hugo --logLevel info --gc --minify
