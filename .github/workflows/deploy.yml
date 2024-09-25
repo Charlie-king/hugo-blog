@@ -12,7 +12,7 @@ jobs:
 
 
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
@@ -33,7 +33,7 @@ jobs:
       - name: Build Hugo static files
         run: hugo --logLevel info --gc --minify
       - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           external_repository: Charlie-king/Charlie-king.github.io
