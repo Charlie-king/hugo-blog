@@ -46,8 +46,7 @@ CMCCAdmin
 ```
 aDm8H%MdA
 ```  
-湖南移动超级账号 CMCCAdmin 超级密码:（光猫SN开头第三位开始取3位）+8m%（光猫SN结尾取3位）;
-DCB8m%B0B
+
 ```
 admin
 ```
@@ -72,7 +71,9 @@ nE7jA%5m
 admintelecom
 ``` 
 
-湖南移动：（光猫SN开头第三位开始取3位）+8m%（光猫SN结尾取3位）
+湖南移动：（光猫SN开头第三位开始取3位）+ 8m% +（光猫SN结尾取3位）
+江西联通：CUAdmin + SN后8位大写
+北京电信：bj + mac后6位大写
 
 HG烽火运维工厂账号: 
 ```
@@ -98,11 +99,11 @@ http://192.168.1.1/logoffaccount.html
 海南：cu@HNunicom 
 黑龙江：hljcuadmin，8MCU@HLJ
 
-### 广东联通
+#### 广东联通
 广东省联通光猫超级密码汇总，广东联通用户可以自行测试超密。
 全省智能网关（HGU）光猫自动开通实行路由模式，自动开通后无需拨号直接插网线使用，
 如有不需要路由模式可以将光猫调测为桥接模式，
-方式如下， ^c1096e
+方式如下，
 1. 根据光猫背面的账号密码进行调试，
 2. 超管规律，cuadmin+mac前6位小写或者标识码头部6位
 3. 使用联通光猫统一账号密码，账号统一CUAdmin，密码
@@ -170,7 +171,6 @@ step [4] enter factory mode: ok
 user: hkjWI6P8
 pass: 80a77zy6
 
-
 ZteONU 0.0.6 (github.com/thank243/zteOnu) 
 -----------------------------------
 step [0] reset factory: ok
@@ -190,8 +190,14 @@ pass: Zte521
 
 ## 成功案例
 
-### 小翼管家8.15
+### 电信小翼管家8.15
 
+老接口，已失效：
+```
+
+```
+
+#### 超密查询
 抓包后搜索
 ```
 GetPropertyValues
@@ -234,9 +240,39 @@ com.ctc.igd1.HTTPServer
 }
 ```
 
+#### 远程绑定
 
-### 天邑TEWA 700G
-#### 电信
+ios版小翼管家，对无wifi的猫，直接二维码能绑定光猫，无需联猫网络。带wifi的也能发起请求，改写一下请求接口名称即可。
+
+用proxy pin，直接配置请求自动重写。
+
+第一条请求重写：绑定光猫
+
+规则如下：
+URL
+```
+https://gwsmarthome.189cube.com:9443/device/sc/gw_scan_bind
+```
+行为，重定向
+```
+https://gwsmarthome.189cube.com:9443/device/sc/gw_bind
+```
+
+
+第二条请求重写：查询超密
+
+URL
+```
+https://nos*.189cube.com/device/api
+```
+行为，替换请求：
+```
+{"Params":[{"InterfaceName":"com.ctc.igd1.HTTPServer","ObjectPath":"/com/ctc/igd1/Network/HTTPServer","Properties":[]}],"RPCMethod":"GetPropertyValues","ServiceName":"com.ctc.igd1"}
+```
+
+
+### 天邑TEWA
+#### 电信700G
 法1：192.168.1.1  普通管理员进入，关闭电脑防火墙。  
 在“Windows PowerShell（管理员）”中按顺序输入命令
 
@@ -258,8 +294,9 @@ get lastgood.xml c:\aa.xml
 以上完成之后会在C盘生成一个aa.xml文件。
 搜索此配置文件telecomadmin
 
-### TEWA 1006E
+#### 电信TEWA 1006E
 TEWA 1006E
+telnet
 su:RwkkmxAw
 TEWA 766G
 su:bWVXTFDx
@@ -321,14 +358,8 @@ http://192.168.1.1:8080/usbbackup.cmd?action=backupeble&set3_sessionKey=set3_ses
 192.168.1.1:8080/enableTelnet.html
 ```
 
-### 移动TEWA 272G/270G
 
-需要先知道loid，进超管，才能打开telnet
-```
-http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
-```
-
-### TEWA 708G
+#### 电信TEWA 708G
 
 192.168.1.1:8080
 useradmin
@@ -337,81 +368,82 @@ useradmin
 点开设备，F12
 源码：
 
-
 构造命令
 ```
 location.assign("/usbbackup.cmd?action=backupeble&set2_sessionKey=set2_sessionKey_304")
 ```
 
-### 联通TEWA 1206e
+#### 电信TEWA 1102E
+用魔尊的计算su开启telnet
+登录后su进去
+再输入exit退出Busybox，命令提示符变成>，
+telecomadmin get
+CUAdmin get
+输入get查看提示，有的get telepwd
 
+
+#### 联通TEWA 800/830/1206e（河南）/870G（江苏）
+
+后缀不同
+1206e
 ```
 http://192.168.1.1/backupsettings.html
 ```
-
-
-### 联通TEWA 870G（河南）
+870G
 ```
 http://192.168.1.1/backupsettings.conf
 ```
 
-
-### 友华PT926G/E  PT921G
-
-PT924G联通，提示成功但无法开启telnet。
-换种方法用资料的部分。
-
-#### PT952G联通
-
-user登录后，点几次返回，再点管理员登录，直接进入，然后再开telnet。
-
-#### 电信友华PT928E-NP
-
-浏览器打开192.168.1.1:8080，输入光猫的用户名和密码登录  
-  
-登录后打开
+还原上传配置文件
 ```
-192.168.1.1:8080/backupsettings.conf
-```
-下载光猫备份配置文件  
-用记事本或其他文本编辑器打开下载的文件，搜索
-```
-<X_CT-COM_TeleComAccount>
-```
-这一行下面的一行就是超级密码
-
-
-#### PT924g，927，928
-记录loid，复位登记，
-
-#### pt921g
-直接下载文件
-```
-http://192.168.1.1/romfile.cfg
+http://192.168.1.1/updatesettings.html
 ```
 
-#### 电信
-法1：ftp  
-普通管理员登录，打开powershell
-输入 ftp 192.168.1.1
 
-useradmin
-输入密码（光猫后面贴出的登录密码）
+#### 联通TEWA 800E（北京地区绕过）
 
-输入 cd ..
-
-输入 cd var
-
-输入 cd config
-``
-输入 
+北京地区：联通光猫TEWA-800E超级管理员（亲测有效），TEWA系列都可以，注意根据实际页面修改id值
 ```
-get lastgood.xml c:\aa.xml
+document.getElementById('loginfrm').setAttribute('method','get');
+document.getElementById('username').value = 'CUAdmin';
+document.getElementById('password').value = 'CUAdmin';
+document.getElementById('loginfrm').submit();
 ```
 
-#### 移动联通电信
-法2：telnet 三网
-普通管理员登录，网页开启telnet，三网适用。
+```
+document.getElementById('loginForm').setAttribute('method','post');
+document.getElementById('loginUsername').value = 'lndmin';
+document.getElementById('loginPassword').value = 'lndmin';
+document.getElementById('loginForm').submit();
+```
+
+
+
+#### 移动TEWA 272G/270G
+
+需要先知道loid，进超管，才能打开telnet
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+并非所有版本都可以用这个方法
+
+#### 移动TEWA-86X，TEWA-7100A系列（江苏）
+油猴脚本，直接登录user即可，直接超管
+
+1. 在登录页面，按F12键打开浏览器控制台，选择源码；
+2. 选中控制台，按 ctrl+f 搜索字段 "isAdmin"，双击搜索结果跳转到指定代码；
+3. 单击 "isAdmin" 所在行前面的行号，打上断点，然后用user账号登录光猫；
+4. 登录后页面会暂停，并且代码停止到刚才断点处；
+5. 在 "isAdmin" 行下方增加一行语句 "return;", 按 ctrl+s 保存修改后，按 F8 继续运行即可；
+6. 网页会定期刷新去判断权限，当页面自动暂停时重复上面 4、5 步骤操作即可。
+
+
+### 友华PT
+
+#### 移动联通电信telnet
+
+telnet 三网
+普通管理员登录，网页开启telnet，移动联通，有的联通无效。
 ```
 http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 ```
@@ -419,7 +451,9 @@ http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 ```
 http://192.168.1.1:8080/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 ```
+
 telnet用户名密码：普通账号命令残缺，输入目录后双击tap能补全显示目录
+
 移动：
 ```
 yhtcAdmin
@@ -437,6 +471,7 @@ su
 ```
 aDm8H%MdA
 ```
+
 联通：
 ```
 yhtcAdmin
@@ -445,10 +480,11 @@ yhtcAdmin
 ```
 Cuc@YHfw
 ```
-su
+su，超密
 ```
 CUAdmin
 ```
+
 电信
 账号telecomadmin、admin、telecom
 pt926G   admin，TeleCom_1234
@@ -464,7 +500,7 @@ admin
 ```
 TeleCom_1234
 ```
-su
+su，mac是后6位小写
 ```
 TeleCom_mac  后6位小写
 ```
@@ -478,11 +514,80 @@ TeleCom_92199c
 cat /var/config/lastgood.xml | grep SUSER_PASSWORD
 ```
 
-- 友华光猫的lastgood.xml  里的拨号密码是初始的，实时的在var/ppp/ppp.conf
+友华光猫的 lastgood.xml 里的拨号密码是初始的，也可能是base64加密过的，实时的在var/ppp/ppp.conf
 ```
 cat /var/ppp/ppp.conf
 ```
-电信PT928E
+
+电信打开备份页：  
+前提要从入口http://192.168.1.1:8080 超管登录，或者user
+```
+http://192.168.1.1:8080/bd/saveconf.asp
+```
+backup保存配置文件，搜索telecomadmin账号，telnet管理员密码
+
+
+##### 电信一个方法：ftp下载  
+普通管理员登录，打开powershell
+输入 ftp 192.168.1.1
+
+useradmin
+输入密码（光猫后面贴出的user登录密码）
+
+输入 cd ..
+
+输入 cd var
+
+输入 cd config
+``
+输入下载到本地 
+```
+get lastgood.xml c:\aa.xml
+```
+
+
+#### 电信PT928E-NP|R3/PT104E/PT1570-h10（通用）
+
+##### 方法1：控制台
+
+要从8080登入，橙色页面，useradmin登录后
+F12 打开，点控制台console，输入一下
+```
+options[10]
+```
+即可获取
+
+
+或者粘贴以下：
+```
+console.log(`超级管理员 账号为：${options[MENU_OPTION_SYSUSER]}, 密码为：${options[MENU_OPTION_SYSPWD]}`);
+```
+
+若无法复制粘贴则手动依次输入下面简短代码然后回车也是一样的，第一条为超管账号，第二条为超管密码，可能有base64编码
+
+```
+options[MENU_OPTION_SYSUSER]options[MENU_OPTION_SYSPWD]
+```
+
+
+##### 方法2：下载配置文件
+浏览器打开192.168.1.1:8080，输入光猫的用户名和密码登录  
+  
+登录后打开
+```
+192.168.1.1:8080/backupsettings.conf
+```
+下载光猫备份配置文件  
+用记事本或其他文本编辑器打开下载的文件，搜索
+```
+<X_CT-COM_TeleComAccount>
+```
+这一行下面的一行就是超级密码
+
+
+#### 电信PT928E
+
+一种方法
 ```
 192.168.1.1:8080
 ```
@@ -500,15 +605,10 @@ cat /var/ppp/ppp.conf
 ```
 
 
-移动PT939G看超密，里面一般第一个
-grep 关键字 -A 5  含后5行
-grep 关键字 -B 5  含前5行
+#### 电信PT923G
 
-```
-cat /var/romfile.cfg | grep web_passwd -A 5
-```
-
-电信PT923G看超密，里面一般第一个
+telnet
+看超密，里面一般第一个
 开telnet  admin，1234
 grep 关键字 -A 5  含后5行
 grep 关键字 -B 5  含前5行
@@ -518,15 +618,49 @@ cat /var/romfile.cfg | grep web_passwd -A 5
 ```
 
 
+#### 电信PT925G
 
-电信打开备份页：  
-前提要从入口http://192.168.1.1:8080 超管登录，或者user
+光猫普通账号密码。浏览器输入网关地址登录。之后修改地址
 ```
-http://192.168.1.1:8080/bd/saveconf.asp
-```
-backup保存配置文件，搜索telecomadmin账号，telnet管理员密码
+192.168.1.1/cgi-bin/luci/admin/storage/settings
 
-#### 移动PT939G 3.0（电信界面）
+```
+
+在光猫插入 U 盘后， 通过 Chrome 浏览器开发者调试工具种（F12），点击控制台选项（Console），输入：
+```
+get_path_files("/mnt/usb1_2/../../")
+```
+
+然后进入以下文件路径，将其复制到 U 盘中。
+
+var/config/lastgood.xml
+
+通过光猫网络可以直接在电脑访问 U 盘，打开查询超级密码关键字
+```
+SUSER_PASSWORD
+```
+
+宽带密码：
+```
+\var\config\ppp\ppp.conf
+```
+
+
+
+
+#### 移动PT939G/PT104E
+
+telnet
+看超密，里面一般第一个
+grep 关键字 -A 5  含后5行
+grep 关键字 -B 5  含前5行
+
+telnet登录
+```
+cat /var/romfile.cfg | grep web_passwd -A 5
+```
+
+#### 移动PT939G 3.0（电信橙色界面）
 
 两个版本，博通版和高通版。博通版电信界面，软件版本3.0，原有telnet开启不了。
 恢复出厂设置后，输入
@@ -565,81 +699,44 @@ http://192.168.1.1/updatesettings.html
 ```
 
 
-改地区直接用，广东深圳直接注册，不需要观察sn
+改地区直接用，广东深圳直接注册，不需要改sn
 ```
 http://192.168.1.1/register_prov.html
 ```
 
 
-#### 辽宁联通PT927G
-需要先恢复出厂，设置，loid在注册页f12找。
-然后打开这个开telnet
+#### 联通友华PT（通用）
+
+##### 方法1：直接改user
+user登录上去，找到账户修改，看user有个三角形符号都可以改，F12，选中元素user，把 =0，改为1，
+修改密码即直接改到超管密码。
+
+##### 方法2：出厂，改配置页
+
+需要先恢复出厂，loid在注册页f12找。
+
+需登录超管后，打开这个开telnet
 ```
 http://192.168.1.1/bd/vermod.asp
 ```
 
-#### 电信PT925G
-光猫普通账号密码。浏览器输入网关地址登录。之后修改地址
-```
-192.168.1.1/cgi-bin/luci/admin/storage/settings
+注册改为0，下发不动99，再输入loid注册，超管不会被退出。有宽带账号密码可以直接配置。
 
-```
+打开back下载文件config.xml，查找超密，宽带密码
 
-在光猫插入 U 盘后， 通过 Chrome 浏览器开发者调试工具种（F12），点击控制台选项（Console），输入：
-```
-get_path_files("/mnt/usb1_2/../../")
-```
-
-然后进入以下文件路径，将其复制到 U 盘中。
-
-var/config/lastgood.xml
-
-通过光猫网络可以直接在电脑访问 U 盘，打开查询超级密码关键字
-```
-SUSER_PASSWORD
-```
-
-宽带密码：
-```
-\var\config\ppp\ppp.conf
-```
-### 电信PT928-R3（河南）
-> https://zichen.zone/archives/pt928r3.html
-
-8080，useradmin登录后
-打开控制台，输入一下
-```
-options[10]
-```
-即可获取
-
-### 电信PT104E，PT1570-h10（河北）系列
-
-> https://blog.wuw.moe/archives/1.html
-
-法1：http://192.168.1.1:8080/
-背部登录，直接打开下载
-```
-192.168.1.1:8080/backupsettings.conf
-```
-
-法2：
-前往http://192.168.1.1:8080/login.html登入光猫背面的账号
-登录后首页，按下**F12键**然后选择上方的**控制台**  console
-然后输入以下代码按下回车键即可获取到超级管理员账号及密码
-
-```
-console.log(`超级管理员 账号为：${options[MENU_OPTION_SYSUSER]}, 密码为：${options[MENU_OPTION_SYSPWD]}`);
-```
-
-若无法复制粘贴则手动依次输入下面简短代码然后回车也是一样的，第一条为超管账号，第二条为超管密码，可能有base64编码
-
-```
-options[MENU_OPTION_SYSUSER]options[MENU_OPTION_SYSPWD]
+```jsx
+http://192.168.1.1/bd/saveconf.asp
 ```
 
 
-#### 福建联通PT928E
+
+#### 联通PT952G
+
+user登录后，点几次返回，再点管理员登录，直接进入，然后再开telnet。
+
+
+
+#### 联通PT928E
 页面记逻辑id，恢复出厂设置，进配置页开启telnet，su密码为超密，注册会自动重启猫，配置文件里SUSER_PASSWORD加密。
 
 需要先删除tr069，在配置文件里开启可编辑tr069，或者，在命令行改tr069代码。先修改找注册状态，下发数据状态为成功。再填好拨号账号密码，注册loid，30%即可拨上号。
@@ -660,34 +757,133 @@ su
 CUAdmin
 ```
 
-##### 友华光猫命令行里修改tr069为可编辑
+#### 联通兆能ZNHG605（友华界面，内蒙）
 
+界面友华，采用他的方案
+
+记录三要素，看不到宽带账号，复位后，
+
+```jsx
+http://192.168.1.1/bd/vermod.asp
+```
+
+注册改为0，下发不动99，再输入loid注册，超管不会被退出。
+
+打开back下载文件config.xml，查找超密，宽带密码
+
+```jsx
+http://192.168.1.1/bd/saveconf.asp
+```
+
+telnet账号密码
+
+```jsx
+e8telnet
+```
+
+#### 联通PT（北京地区）
+
+应用—FTP配置，启用ftp，用户名密码都设为user，保存，然后点右上角退出管理界面（重要）。ftp登录光猫ftp，默认会进入/mnt目录（挂载U盘存储的路径），一定要直接在远端地址里输入/var/config回车，即可强行切换到配置文件目录，而且有写权限。
+**注意ftp不能直接点击上层目录，否则都无法读取，而是要直接输入/var/config回车进入。**
+
+如果安装了Notepad3，可以直接在远端窗格里右键点config.xml，选查看/编辑，用Notepad3打开配置文件。如果没有安装，也可以把config.xml下载到本地，改完后覆盖回去。
+
+1、对于北京联通，需要先解除管理界面的屏蔽，搜
+```
+<Value Name="PROVINCE_BEIJING_ACCOUNT_ADMIN_DISABLE"
+```
+
+把后面的值改成0。非北京版直接看下一步。
+
+2、搜
+```
+<Value Name="SUSER_PASSWORD"
+```
+，后面的值为当前超管密码。
+
+3、搜
+```
+<Value Name="MIB_TELNET_ENABLE"
+```
+把后面的值改成1，开启telnet。下面的TELNET_USER和TELNET_PASSWD即为默认telnet用户名（yhtcAdmin）和密码（Cuc@YHfw）。
+还有一处要改的是
+```
+<Value Name="PROVINCE_TELNETCLI_ENABLE"
+```
+，把后面的值改成1。
+
+4、搜
+```
+<Value Name="telnet"
+```
+，把后面的值改成3，让telnet直接进入su权限。
+
+5、搜
+```
+<Value Name="MIB_SERIAL_USERNAME"
+```
+，这个和下面的MIB_SERIAL_PASSWD即为默认TTL用户名（admin）和密码（yhtc）。
+
+6、搜
+```
+<Value Name="pppUser"
+```
+，第一处一般是TR069连接的用户名，第二处是宽带账号，下面的pppPasswd就是宽带密码。在宽带账号密码的下面不远处还有一行<Value Name="enableIGMP" Value="0"/>，改成1可对WAN拨号连接启用IGMP代理（北京版白嫖IPTV的必要条件）。
+
+7、搜
+```
+Value Name="PROXY_PASSWORD"
+```
+，后面的值即为固话密码。
+
+> https://www.right.com.cn/forum/thread-8383645-1-1.html
+
+#### pt921g
+直接下载文件
+```
+http://192.168.1.1/romfile.cfg
+```
+
+
+
+
+#### PT926G/E  PT921G
+
+PT924G联通，提示成功但无法开启telnet。
+换种方法用资料的部分。
+
+
+#### 友华改tr069可编辑
+
+##### 法1：
 直接复位后，超管登录进去，打开以下链接，
 ```
 http://192.168.1.1/bd/vermod.asp
 ```
 直接修改 锁定远程控制的参数即可。
 
+##### 法2：
 以下步骤多余。
 1. 输入 ，回车运行。
 ```
 cp /home/httpd/web/net_eth_links.asp /var/
 ```
-	- 我们准备修改这个文件，但这个文件放在一个只读的分区上，所以先把它复制一份到可以读写的地方。
+ 我们准备修改这个文件，但这个文件放在一个只读的分区上，所以先把它复制一份到可以读写的地方。
 
 2. 输入编辑这个文件。`vi` 是著名的非常难用的编辑器，因此我们一步步来：
 ```
 vi /var/net_eth_links.asp
 ```
-
-    1. 输入，然后回车，
+1. 输入，然后回车，
 ```
 /is_configurable
 ```
-    也就是查找 `is_configurable` 这个字符串。光标应该会跳转到这个位置：
+
+
+ 也就是查找 `is_configurable` 这个字符串。光标应该会跳转到这个位置：
 
 ```javascript
-        //If connection type is TR069 return false, else return true
+ //If connection type is TR069 return false, else return true
         function is_configurable()
         {
           var lk = document.forms[0].lkname.value;
@@ -726,7 +922,7 @@ mount --bind /var/net_eth_links.asp /home/httpd/web/net_eth_links.asp
 > https://lantian.pub/article/random-notes/youhua-pt926g-disable-tr069.lantian/
 
 
-**资料**
+#### 友华通用资料
 修改mac，sn，注册状态，telnet，下发状态，tr069等配置页面，需要超管环境下
 ```
 http://192.168.1.1/bd/vermod.asp
@@ -770,8 +966,115 @@ http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 
 
 
-### 烽火HG6201M
-#### 法1
+### 烽火HG
+
+
+#### 烽火通用
+
+##### HG6145F/HG6045F3/HG5143F
+
+移动烽火-吉比特-JBT-HG6145F超密破解-TJ
+https://www.right.com.cn/forum/thread-8252579-1-1.html
+北京联通/移动 烽火HG6145D/HG6145D1 获取管理员密码 改省份 改桥接 破解 拆解
+https://www.right.com.cn/forum/thread-8230876-1-1.html
+电信烽火HG5143F光猫开启telnet获取超级密
+https://think-me.github.io/post/2023/04/08/18531/index.html
+
+第一步：打开telnet  
+获得光猫的MAC地址  
+电脑打开CMD界面，输入   
+```
+arp -a 192.168.1.1
+```
+
+这时将显示你的光猫MAC。  
+```
+Fh@E96C2C
+```
+浏览器中录入  
+移动
+```
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=38144E085FF0
+```
+联通
+```
+http://192.168.1.1/telnet?enable=1&key=7CFCFD921CF0
+```
+电信
+```
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=0874585AEDEC
+```
+
+```
+root  或者  admin
+```
+
+```
+Fh@5C5558
+```
+FH-nE7jA%5m9EE9C4
+```
+hg2x0
+```
+
+FH-nE7jA%5m9EE9C4
+电信telnet账号可能root，admin，telnetadmin
+```
+telecom
+```
+密码
+```
+nE7jA%5m
+```
+FH-nE7jA%5m5C5558
+
+```
+TeleCom_1234
+```
+CUAdmin
+```
+hg2x0
+```
+输su再输Fh@
+TeleCom_1234
+
+第二部 获得超密  
+打开CMD命令窗口录入：telnet 192.168.1.1  
+链接成功后输入账号：admin 在北京天津这边用这个admin，其他地方如果不管用就试试  root  
+录入密码为  Fh@ +你上面获得的MAC的后六位大写。  
+```
+Fh@40D2E0
+```
+命令行输入：
+```
+load_cli factory
+```
+
+```
+show admin_name
+```
+
+```
+show admin_pwd
+```
+
+移动查超密命令
+```
+cfg_cmd get InternetGatewayDevice.DeviceInfo.X_CMCC_TeleComAccount.Password
+```
+
+
+这时将显示你的超级账号名称  
+Success! admin_name=CMCCAdmin   
+  
+继续录入  
+Config\factorydir# show admin_pwd   
+这时将显示你的超级密码  
+Success! admin_pwd=CMCCAdminFa5&G3Pk  
+
+
+#### 电信HG6201M
+##### 法1：开telnet
 1. 开telnet
 ```
 http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
@@ -813,14 +1116,26 @@ cat /flash/cfg/agentconf/factory.conf
 
 第一二行就是超管账户密码。宽带密码网页端可看。
 
-#### 法2
+##### 法2：解码
 192.168.1.1:8080  登录userdmin后打开
 ```
 http://192.168.1.1:8080/cgi-bin/baseinfoSet.cgi
 ```
+
+ASCII码HTML实体编码数字，存在三种情况：
+1、不位移
+2、大小写字母循环和数字位移-4
+3、大小写字母循环和数字位移-4，非字母数字不位移
+
 74&117&119&84&76&78&118&113&54&78&
-直接解密网站：https://www.iwanyx.com/abc/
-在线跑java：https://www.bejson.com/runcode/java/
+
+**如果无字符的可以用以下代码：**
+
+在线跑java：
+```
+https://www.bejson.com/runcode/java/
+```
+
 ```java
 import java.util.HashMap;
 import java.util.Map;
@@ -851,7 +1166,12 @@ public class Main {
 }
 ```
 
-### HG6201T电信
+**如果有字符和特殊符号的，非字母数字不位移**
+
+
+
+
+#### 电信HG6201T
 开telnet
 ```
 http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACCB366753C0
@@ -871,7 +1191,7 @@ cat /flash/cfg/agentconf/factory.conf
 ```
 
 
-### HG2543C1/HG2541C1电信
+#### 电信HG2543C1/HG2541C1
 
 开启telnet  
 
@@ -881,11 +1201,44 @@ telnet密码：（每个光猫不一样）
 ```
 cat /flash/cfg/agentconf/factory.conf
 ```
-jqkcrba7jqkcrba7
-takfpucybijxg
 
-s3pudcwa5tcd3
-### HG2201U/
+
+
+#### 电信HG6543C1
+```
+192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
+```
+
+telnet用户名 ：root  
+telnet密码：默认无线网络密钥+默认终端配置密码 的组合，要用pt才能上翻页
+```
+cat /flash/cfg/agentconf/factory.conf
+```
+
+或直接输入下面命令查
+```查看前2行
+head -2 /flash/cfg/agentconf/factory.conf
+```
+
+
+
+#### 联通电信HG261GS/HG260/HG5143F
+（广西电信）
+
+192.168.1.1
+联通版进入维护账号
+```
+http://192.168.1.1/logoffaccount.html
+```
+用户名：fiberhomehg2x0  
+密码：hg2x0
+
+出厂设置保存一下即可
+
+开telnet  
+root  hg2x0
+
+#### 联通HG2201U/
 
 user登录后打开
 ```
@@ -915,49 +1268,18 @@ cat /fhconf/backpresettings.conf | grep Admin
 进ftp下载 /fhconf/backpresettings.conf
 搜索cuadmin，base64解码
 
-### HG261GS/HG260/HG5143F
-（广西电信）
+#### 联通HG221G
 
-	192.168.1.1
-	联通版进入维护账号
-```
-http://192.168.1.1/logoffaccount.html
-```
-用户名：fiberhomehg2x0  
-密码：hg2x0
-
-出厂设置保存一下即可
-
-开telnet  
-root  hg2x0
-
-### 联通HG221G
 telnet
-admin
-admin
+账户密码都是admin
+
 进入后
 ```
 > get telnetpwd   注册，输入命令获取超密
 ```
 
-### 电信烽火HG6543C1
-```
-192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
-```
+#### 联通HG6201F（河南）
 
-telnet用户名 ：root  
-telnet密码：默认无线网络密钥+默认终端配置密码 的组合
-```
-cat /flash/cfg/agentconf/factory.conf
-```
-要用pt才能上翻页
-```查看前2行
-head -2 /flash/cfg/agentconf/factory.conf
-```
-
-
-
-### 河南联通HG6201F
 备份配置文件 
 ```
 http://192.168.1.1/backupsettings.conf
@@ -967,123 +1289,27 @@ http://192.168.1.1/backupsettings.conf
 http://192.168.1.1/updatesettings.html
 ```
 
-### HG6145F/HG6045F3/HG5143F
-移动烽火-吉比特-JBT-HG6145F超密破解-TJ
-https://www.right.com.cn/forum/thread-8252579-1-1.html
-北京联通/移动 烽火HG6145D/HG6145D1 获取管理员密码 改省份 改桥接 破解 拆解
-https://www.right.com.cn/forum/thread-8230876-1-1.html
-电信烽火HG5143F光猫开启telnet获取超级密
-https://think-me.github.io/post/2023/04/08/18531/index.html
 
-第一步：打开telnet  
-获得光猫的MAC地址  
-电脑打开CMD界面，输入   
-```
-arp -a 192.168.1.1
-```
-takfpucy
-这时将显示你的光猫MAC。  
-```
-Fh@E96C2C
-```
-浏览器中录入  
-移动
-```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=90837E9DECB0
-```
-联通
-```
-http://192.168.1.1/telnet?enable=1&key=7CFCFD921CF0
-```
-电信
-```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=0874585AEDEC
-```
-4E8120874585AEDEC
-```
-root  或者  admin
-```
-Fh@2FCB00
-```
-Fh@5C5558
-```
-FH-nE7jA%5m9EE9C4
-```
-hg2x0
-```
-7qGmg9xBmw39
-FH-nE7jA%5m9EE9C4
-电信telnet账号可能root，admin，telnetadmin
-```
-telecom
-```
-密码
-```
-nE7jA%5m
-```
-FH-nE7jA%5m5C5558
-
-telecomadmin77910910
-```
-TeleCom_1234
-```
-CUAdmin
-```
-hg2x0
-```
-lnadmin72191117
-输su再输Fh@
-
-TeleCom_1234
-第二部 获得超密  
-打开CMD命令窗口录入：telnet 192.168.1.1  
-链接成功后输入账号：admin 在北京天津这边用这个admin，其他地方如果不管用就试试  root  
-录入密码为  Fh@644D90+你上面获得的MAC的后六位大写。  
-```
-Fh@40D2E0
-```
-命令行输入：
-```
-load_cli factory
-```
-
-```
-show admin_name
-```
-
-```
-show admin_pwd
-```
-
-这时将显示你的超级账号名称  
-Success! admin_name=CMCCAdmin   
-  
-继续录入  
-Config\factorydir# show admin_pwd   
-这时将显示你的超级密码  
-Success! admin_pwd=CMCCAdminFa5&G3Pk  
-
-### 广东HG6145A2
+#### 移动HG6145A2
 
 然后发现了[这个帖子](https://www.right.com.cn/FORUM/thread-8283798-1-1.html)  
-用cfg_cmd get来读，加密的也能读到，直接cfg_cmd get试了一下，有这个命令，能用，然后就是找密码在哪里了  
-直接进fhdata，cat usrconfig_conf一大堆东西，看得眼花  
+用cfg_cmd get来读，加密的也能读到，直接cfg_cmd get试了一下，有这个命令，能用，直接进fhdata，cat usrconfig_conf一大堆东西，看得眼花  
 把内容粘贴到记事本ctrl+f，搜password，发现好几个，config interface 'InternetGatewayDevice__DeviceInfo__X_CMCC_TeleComAccount__'这个看起来最像，先验证一下，cfg_cmd get InternetGatewayDevice.DeviceInfo.X_CMCC_TeleComAccount.Username  
 提示get success!value=CMCCAdmin  
-那就是你了，然后
+
 
 开telnet后，查超密命令
 ```
 cfg_cmd get InternetGatewayDevice.DeviceInfo.X_CMCC_TeleComAccount.Password
 ```
 
-，get success!value=xxxx
 
 
+### 锐捷H/T
 
-### 锐捷H60G/H61G/H80G/T66
+#### H60G/H61G/H80G/T66/T51/SG631Z（通用）
 
-移动联通均是，记录vlan id，loid，重置。
+**移动是，记录vlan id，loid，重置，超管登录。**
 
 ```
 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
@@ -1093,14 +1319,11 @@ http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 admin
 ```
 
-```
-1234qwer@@
-```
-
+telnet默认密码是
 ```
 chzhdpl@246
 ```
-su
+移动su
 ```
 aDm8H%MdA
 ```
@@ -1110,18 +1333,331 @@ aDm8H%MdA
 sidbg 1 DB set DevAuthInfo 0 User CMCCAdmin
 ```
 
+user提权
 ```
 sidbg 1 DB set DevAuthInfo 1 Level 1
 sidbg 1 DB save
 ```
 
+直接修改超密：
+```shell
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+
+**联通vlan id，loid，宽带账号密码，复位，登录超管打开：安全，telnet开启**
+```
+admin
+```
+telnet默认密码是
+```
+chzhdpl@246
+```
+注册下发时，马上命令改超密，福建联通有几秒间隔，猫会自动重启。
+```shell
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+卡注册
+```
+sidbg 1 DB set PDTCTUSERINFO 0 Status 0  
+sidbg 1 DB set PDTCTUSERINFO 0 Result 1  
+sidbg 1 DB save
+```
+
+
+#### 移动SU6100
+锐捷猫，江苏
+user进去，开telnet，账号密码同锐捷，su：aDm8H%MdA
+只有user账号，没有超管，界面功能有限。
+
+
+
+### 创维SK
+
+#### 移动SK-D848/SK-D742/
+
+鲜绿色页面，查password，2010前面部分，有的看不了。
+```
+192.168.1.1/ajax_user_register.gch
+```
+
+恢复出厂，超管登录，打开telnet，F12方法：将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
+```
+http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
+```
+
+telnet
+root
+【无线wifi密码+超密】，无wifi密码的直接就超密
+su
+aDm8H%MdA  或超密
+
+
+#### 移动SK-D840(浙江)/SK-d745S（安徽绿色界面）
+
+绿色和蓝色页面，复位后，超管菜单，安全，添加telnet，插光纤会重启，注册会重启。
+telnet
+root
+aDm8H%MdA
+
+超管进去，安全，访问添加一个telent，然后即可，root
+root
+无线wifi密码+超密
+
+
+#### 移动SK-D748浅蓝色(贵州)/移动ZN800(江苏)/SK-D746/SK740S(北京)
+
+浅蓝色页面，地址带/cgi-bin/，开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
+```
+http://192.168.1.1/cgi-bin/telnet.asp
+```
+
+打开，下载**romfile.cfg**，里面可以查telnet
+```
+http://192.168.1.1/cgi-bin/upgrade.asp
+```
+
+江苏移动ZN800，集客，自动注册。
+
+telnet：
+```
+CMCCAdmin
+```
+  
+```
+s2@We3%Dc#
+```
+
+```
+admin
+```
+
+```
+aDm8H%MdA
+```
+重新注册后进telnet，找到var/tmp/romfile.cfg，查看对应行和后面2行
+```
+cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
+```
+或者
+```
+cat tmp/ctromfile.cfg | grep 'CMCCAdmin' -A 2
+```
+或者
+```
+cat var/romfile.cfg | grep 'CMCCAdmin' -A 2
+```
+
+
+#### 移动SK-D848N（江苏）
+
+新版，telnet旧版方法已经关闭，无法开启
+
+复位后，插光纤，关闭周期上报，填入password，会自动注册，并更改超密，但是不会退出登录。
+
+#### 移动dt720-csf(河南)
+```
+192.168.1.1/ajax_user_register.gch
+```
+
+6016356310201030000IGDSUCCSUCC-1312374208
+4031
+17657919835
+绿色登录页
+user页面开启telnet
+
+telnet
+账号
+root
+aDm8H%MdA
+
+#### 联通SK-D740/SK-d740-c/SK-D748-C/SK-D742C/SK-D748
+
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+开启telnet。默认版本telnet账号root，Pon521
+
+- **【河南】**
+ftp软件登入，useradmin，useradmin。
+法1：打开一下telnet，输入user或root，随便数一下6位密码确认（一定要做），进入/var/tmp/，可以看到生成telnet_su_passwd，下载查看超密。
+
+法2：输入/userconfig/cfg/    下载db_user_cfg.xml，xor，routerpass解码即可。有的不能解码。
+
+- **【山东】**
+user，Pon521，记住注册码，重置或切换版本默认再切换回山东，  
+开telnet，账号user，CUAdmin，su密码：CUAdmin  ，telnet密码为超密。先登录telnet后，在注册下发数据，更改超密，telnet保持一段时间在线。
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+
+```
+sidbg 1 DB set TelnetCfg 0 TS_Enable 1
+sidbg 1 DB set TelnetCfg 0 Lan_Enable 1
+sidbg 1 DB set TelnetUser 0 Password 123Qwe
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+
+解密参照下面，xor，routerpass均不能解，user密码+超密（待确认）
+```
+bnyparhbCUAdmin
+```
+ 
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+查看解密后的文件
+```
+vi /tmp/debug-decry-cfg
+```
+
+#### 联通dt741-csf/DT541/DT541-csf 
+
+记下LOID还有VID
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+清除复位后，勾选开启telnet
+- **【河南】【山东】【辽宁】【天津】**
+telnet登录root或user      密码：  user密码+CUAdmin    
+
+#### 联通SK-D740/745【无telnet按扭】
+
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+【内蒙古】
+无telnet都按此
+
+法1：
+恢复出厂，设置里，开启ftp，useradmin，useradmin
+注册，从ftp进去，下载配置文件解密。
+
+法2：山东可，
+上面telnet链接打开，切换默认版本，注册40%，手动配置。
+
+#### 电信DT741（政企悦me）
+
+【内蒙古电信】
+|运营商|中国电信|
+|设备型号|DT741-zhengqi|
+|设备标识号|34AA31-4E61534AA310C8AC0|
+|硬件版本号|V1.0|
+|软件版本号|V1.0.1|
+
+useradmin登录，输入下面开启telnet
+```
+http://192.168.1.1/usr=telecomadmin&psw=nE7jA%5m&cmd=1&telnet.gch
+```
+telnet账密都是telnetadmin，su也是一样
+```
+telnetadmin
+```
+命令需要su
+
+ftp账户密码为useradmin账密
+
+
+#### 电信DT720-cs【注册下发】
+
+【安徽山西】
+开telnet
+```
+http://192.168.1.1:8080/hidden_version_switch.html
+```
+
+telnet账密都是telnetadmin
+```
+telnetadmin
+```
+其他用sidbg命令，su密码不是默认超密
+
+
+
 
 吉比特CM115Z,CM113Z光猫破解超级权限教程
 https://www.right.com.cn/forum/thread-2270800-1-1.html
 
-### H2-3/H1s-3
 
-浅蓝或灰蓝色页面。
+#### 移动SK-M424-ZQ融合企业网关
+
+【江苏】
+sn自动认证，user进去后台复位，
+超管进去，安全，访问添加一个telent，然后即可，root
+root
+无线wifi密码+超密ykh36cfgaDm8H%MdA
+
+#### 移动HG550G企宽
+
+【上海】
+标密aDm8H%MdA
+
+界面同TEWE 272g，蓝色，菜单底部，移动企宽蓝色页面可参考此种模式。有的需要用超管进去。
+配置文件下载
+```
+http://192.168.1.1/bd/hide.asp
+```
+
+![](https://s3.bmp.ovh/imgs/2023/12/02/ff5e99cdc39a2d67.png)
+
+https://blog.csdn.net/qq_42294237/article/details/132025846
+
+
+
+
+
+### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开！
+sn认证
+捅复位后，重新注册，密码保持不变，删除tr069
+S-Box8L94，F12查看loid，需在网页里重置，复位键没用。
+
+贵州企业宽带H10g-32ac不会自动下发数据，telnet默认开的
+telnet 192.168.1.1
+用户名admin密码
+
+H51e   用上面
+telnet：CMCCAdmin，密码
+```
+UM@Pon521
+```
+
+
+```
+chzhdpl@246
+```
+
+```
+sidbg 1 DB printall 1
+```
+
+```
+sidbg 1 DB p DevAuthinfo
+```
+su
+```
+aDm8H%MdA
+```
+
+解密配置文件
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+
+查看解密后的文件
+```
+vi /tmp/debug-decry-cfg
+```
+按n跳转下一个匹配的内容
+
+### H2-3/H1s-3/H2-3s/H2-2
+
+H2-3灰色页面，H2-3s蓝色页面在系统里恢复出厂，登录超管，直接注册不会被退出。
+
+##### 浅蓝或灰蓝色页面
 查看设备信息含普通账号密码  
 ```
 http://192.168.1.1/webcmcc/gui_device_info.html?password=!@qw34er&username=root
@@ -1151,231 +1687,14 @@ http://192.168.1.1/webcmcc/gui_restore_factory.html?password=!@qw34er&username=r
 ```
 http://192.168.1.1/webcmcc/modeset.html?password=!@qw34er&username=root
 ```
-开TELNET  自己设置 TELNET账号密码 建议设置 账号为 root  
+
+**开TELNET  自己设置 TELNET账号密码 建议设置 账号为 root**  
 ```
 http://192.168.1.1/webcmcc/telnet.html?password=!@qw34er&username=root
 ```
 
-2.使用Telnet 连接光猫，账户和密码均为刚设置的(root账户,否则编辑文件显示只读文件)
-
-输入以下命令
-Telnet 192.168.1.1
-输入Telnet账户密码登陆，登陆成功后
-
-输入进入config路径
-```
-cd /config/worka
-```
-
-输入
-先复制user密码
-```
-grep aucUserAccountPassword lastgood.xml /config/worka
-```
-
-```
-grep aucTeleAccountPassword lastgood.xml /config/worka
-```
-
-```
-grep aucTelnetPassword lastgood.xml /config/worka
-```
-然后复制粘贴保存一下aucTelnetPassword值
-输入vim lastgood.xml
-找到aucTeleAccountPassword(Win可以用PgUp,PgDn翻页)
-找到后吧找到aucTeleAccountPassword的Value值(英文输入状态按i进入编辑)将值替换成aucTelnetPassword的值
-(由于Value值太长显示不出全部,所以先把aucTeleAccountPassword的Value里面的内容删了然后复制aucTelnetPassword值,在cmd命令里右键一下张贴进去)
-然后按Esc在按:wq回车
-:wq退出后输入reboot重启一下,然后你就可以使用之前设置的TELNET密码访问了
-
-telnet密码
-```
-a2#We4%Dc2
-```
-
-
-
-### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/GS8108/GM630/H2-2/H2-3e/T51G/UNG430Z/UNG300Z/UNG301Z
-获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
-
-
- 1. 使用光猫背后的普通用户名登录进光猫，浏览器复制以下链接打开  
-```
-http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
-```
-5jifg@f4@C1
-```
-http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
-```
-
-```
-192.168.1.1/cgi-bin/getGateWay.cgi
-```
-
-```
-http://192.168.1.1/system.cgi?telnet
-```
-
-```
-http://192.168.1.1/tserver.gch
-```
-
-```
-http://192.168.1.1/hidden_factory_switch.gch
-```
-
-```
-http://192.168.1.1/hidden_factory_switch.html
-```
-
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-
-```
-http://192.168.1.1/hidden_version_switch.gch
-```
-sk-d748s
-```
-http://192.168.1.1/cgi-bin/telnet.asp
-```
-2. 电脑启用 telnet  
-  
-3. 通过telnet进入光猫  
-   
-输入：  
-  
-telnet 192.168.1.1  
-  
-用户名、密码如下：  
-```
-CMCCAdmin
-```  
-
-```
-aDm8H%MdA
-```
-联通telenet账户密码：
-```
-admin
-```
-
-```
-chzhdpl@246
-```
-UNG220Z（甘肃移动）
-```
-CMCCAdmin
-```
-```
-chzhdpl@246
-```
-
-注意：密码默认不显示 不需要重复输入  
-
-输su 提权，密码也是aDm8H%MdA，输入符由/$变成 /#，就成功登录了。
-
-1. 查看一下登陆信息,可以看到账号密码全部进行了加密  
-
-```
-sidbg 1 DB p DevAuthInfo
-```  
-  
-输入上面的命令后将会显示下面的账号密码经过加密的内容：  
-```
-<Tbl name="DevAuthInfo" RowCount="2">
-<Row No="0">
-<DM name="ViewName" val="IGD.AU1"/>
-<DM name="Enable" val="1"/>
-<DM name="IsOnline" val="0"/>
-<DM name="AppID" val="1"/>
-<DM name="User" val="******"/>
-<DM name="Pass" val="******"/>
-<DM name="Level" val="1"/>
-<DM name="Extra" val=""/>
-<DM name="ExtraInt" val="0"/>
-</Row>
-<Row No="1">
-<DM name="ViewName" val="IGD.AU2"/>
-<DM name="Enable" val="1"/>
-<DM name="IsOnline" val="0"/>
-<DM name="AppID" val="1"/>
-<DM name="User" val="******"/>
-<DM name="Pass" val="******"/>
-<DM name="Level" val="2"/>
-<DM name="Extra" val=""/>
-<DM name="ExtraInt" val="0"/>
-</Row>
-</Tbl> 
-```
-
-有些地区（广西）账号是admin
-
-5. 修改CMCCAdmin用户的登录密码  
-  
-输入下面的命令更改CMCCAdmin的密码：  
-
-```shell
-sidbg 1 DB set DevAuthInfo 0 Pass admin1234
-sidbg 1 DB save
-```
-find / -name 'backupsettings.conf'
-6. 直接查询方式
-输入这个命令看看在哪个文件夹
-```
-find / -name 'db_backup_cfg.xml'
-```
-![](https://pic1.zhimg.com/80/v2-96b04989bf847a0a0b8d04f6bfbafbd4_720w.webp)
-
-进入这个文件夹
-```
-cd /userconfig/cfg
-```
-
-```
-aDm8H%MdA
-```  
-
-解密配置文件
-```
-sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
-```
-
-```
-sendcmd 1 DB decry userconfig/cfg/db_user_cfg.xml
-```
-
-查看解密后的文件
-```
-vi /tmp/debug-decry-cfg
-```
-
-```
-sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg | sed -n '/DevAuthInfo/,/\<Tb.>/p' | grep -i "User\|Pass"
-```
-在查看状态下使用vi命令的查找命令进行查找超级管理账号：CMCCAdmin，英文状态下点击【/】后输入CMCCAdmin后，点击回车
-
-> /CMCCAdmin  
-
-找到对应的CMCCAdmin以及对应User及下面行的Pass的Val值，大功告成
-
-完成后即可使用CMCCAdmin+更改后的密码即可登录光猫后台。
-
-**ftp账密是相同的：e8ftp**
-
-移动吉比特系列光猫均可参考。
-
-广西GM630-R，重置后，下发配置，再去删除tr069和关闭上报，第二个地址开启telnet。
-
-![](https://s3.bmp.ovh/imgs/2023/08/04/fbdb3ccf174e7fa0.png)
-
-或者reset后，超密进去，在 安全 telnet配置，启用telnet，再注册loid。
-H2-2部分测试失败，河南平顶山测试成功。
-![](https://s3.bmp.ovh/imgs/2023/08/02/1b69319f6a712987.png)
-
-
-#### H2-3鲜蓝色界面和深蓝
-user登录后，直接console输入
+##### 鲜蓝色界面和深蓝
+user登录后，直接F12，console输入
 H2-3（2020-07）跟 H1s-3 $.PATH='/aoaform/'   H2-3  $.PATH='/'
 ```
 TMP_PATH=$.PATH
@@ -1421,11 +1740,7 @@ $.PATH=TMP_PATH
 cd /config/worka
 ```
 
-
-
-![](https://s3.bmp.ovh/imgs/2023/12/26/1a21fb632d5f7a0d.png)
-![](https://s3.bmp.ovh/imgs/2023/12/26/c23109aa2bc88f2b.png)
-
+另外：
 此版本无法复位和重置，用火狐浏览器开启telnet，
 特定版本的火狐浏览器插件，HTTP Header Live。  
 打开`HTTP Header Live`插件，在页面上随便点击一个页面，再次查看`HTTP Header Live`插件，捕捉到了`post`信息，选择一个post。  
@@ -1449,9 +1764,78 @@ send，然后点击右下角的`send`确认，会返回一个成功的页面`[su
 
 https://www.5v13.com/mesh/26321.html
 
-#### H2-3灰色页面，H2-3s蓝色页面在系统里恢复出厂，TEWA 272G
 
-### 内蒙H2-2鲜蓝色，注册会重启关闭telnet
+##### 超密法1：改为user密
+
+使用Telnet 连接光猫，账户和密码均为刚设置的root和admin(root账户,否则编辑文件显示只读文件)
+
+输入以下命令
+Telnet 192.168.1.1
+输入Telnet账户密码登陆，登陆成功后
+
+输入进入config路径
+```
+cd /config/worka
+```
+
+输入
+先复制user密码
+```
+grep aucUserAccountPassword lastgood.xml /config/worka
+```
+
+```
+grep aucTeleAccountPassword lastgood.xml /config/worka
+```
+
+```
+grep aucTelnetPassword lastgood.xml /config/worka
+```
+然后复制粘贴保存一下aucTelnetPassword值
+输入
+```
+vim lastgood.xml
+```
+找到aucTeleAccountPassword(Win可以用PgUp,PgDn翻页)
+找到后吧找到aucTeleAccountPassword的Value值(英文输入状态按i进入编辑)将值替换成aucTelnetPassword的值
+(由于Value值太长显示不出全部,所以先把aucTeleAccountPassword的Value里面的内容删了然后复制aucTelnetPassword值,在cmd命令里右键一下张贴进去)
+然后按Esc在按 :wq 回车
+退出后输入reboot重启一下,然后你就可以使用之前设置的TELNET密码访问了
+
+telnet密码
+```
+a2#We4%Dc2
+```
+
+##### 超密法2：解码
+
+查看，复制出来密码串
+```
+grep aucTeleAccountPassword lastgood.xml /config/worka
+```
+
+密码是ASCII的十六进制数字，在线跑python解码转换一下即可
+```python
+
+hex_codes_str = "直接输入：64,68,66,67,23,36,76,64,00,00"
+
+hex_codes = hex_codes_str.split(",")
+
+result = ""
+for hex_code in hex_codes:
+    if hex_code == "00":
+        break
+    char_code = int(hex_code, 16)
+    result += chr(char_code)
+
+print("转换结果为：")
+print(result)
+
+```
+
+
+
+#### H2-2（内蒙）鲜蓝色，注册会重启关闭telnet
 user进去隐藏恢复出厂设置，用下面开telnet
 ```
 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
@@ -1467,138 +1851,201 @@ aDm8H%MdA
 重新注册会重启猫，需要快速提交命令修改
 
 
+### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/
 
-### H3-2r ，H3-1r lite，H-PON01
+无需登录，直接打开
+```
+http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
+```
+telnet
+```
+CMCCAdmin
+```
 
-需要超管进，打开
+```
+aDm8H%MdA
+```
+
+### GS8108/GM630/UNG430Z/UNG300Z通用
+
+获取超级密码方法 https://www.right.com.cn/forum/thread-8266942-1-1.html
+
+ 1. 使用光猫背后的普通用户名登录进光猫，浏览器复制以下链接打开  
+```
+http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
+```
+这部分型号多数要复位进去超管打开下面这个
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+
+```
+192.168.1.1/cgi-bin/getGateWay.cgi
+```
+
+```
+http://192.168.1.1/system.cgi?telnet
+```
+
+```
+http://192.168.1.1/tserver.gch
+```
+
+```
+http://192.168.1.1/hidden_factory_switch.gch
+```
+
+```
+http://192.168.1.1/hidden_factory_switch.html
+```
+
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+
+```
+http://192.168.1.1/hidden_version_switch.gch
+```
+sk-d748s
+```
+http://192.168.1.1/cgi-bin/telnet.asp
+```
+
 ```
 http://192.168.1.1/bd/hide.asp
 ```
-一些隐藏的配置，开telnet
-如果404，直接导出config.xml
+
+  
+3. 通过telnet进入光猫  
+telnet 192.168.1.1  
+  
+用户名、密码如下：  
 ```
-http://192.168.1.1/bd/saveconf.asp
+CMCCAdmin
+```  
+
 ```
-修改telnet enable为1，所有telnet项改为1，上传上去后，要再重启一下光猫才生效。telnet账户密码CMCCAdmin   
+aDm8H%MdA
+```
+联通telenet账户密码：
+```
+admin
+```
+
+```
+chzhdpl@246
+```
+UNG220Z（甘肃移动）
+```
+CMCCAdmin
+```
+
+```
+chzhdpl@246
+```
+
+输su 提权，密码也是aDm8H%MdA，输入符由/$变成 /#，就成功登录了。
+
+1. 查看一下登陆信息,可以看到账号密码全部进行了加密  
+
+```
+sidbg 1 DB p DevAuthInfo
+```  
+  
+输入上面的命令后将会显示下面的账号密码经过加密的内容：  
+```
+<Tbl name="DevAuthInfo" RowCount="2">
+<Row No="0">
+<DM name="ViewName" val="IGD.AU1"/>
+<DM name="Enable" val="1"/>
+<DM name="IsOnline" val="0"/>
+<DM name="AppID" val="1"/>
+<DM name="User" val="******"/>
+<DM name="Pass" val="******"/>
+<DM name="Level" val="1"/>
+<DM name="Extra" val=""/>
+<DM name="ExtraInt" val="0"/>
+</Row>
+<Row No="1">
+<DM name="ViewName" val="IGD.AU2"/>
+<DM name="Enable" val="1"/>
+<DM name="IsOnline" val="0"/>
+<DM name="AppID" val="1"/>
+<DM name="User" val="******"/>
+<DM name="Pass" val="******"/>
+<DM name="Level" val="2"/>
+<DM name="Extra" val=""/>
+<DM name="ExtraInt" val="0"/>
+</Row>
+</Tbl> 
+```
+
+5. 修改CMCCAdmin用户的登录密码  
+  
+输入下面的命令更改CMCCAdmin的密码：  
+
+```shell
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save
+```
+find / -name 'backupsettings.conf'
+
+6. 直接查询方式
+输入这个命令看看在哪个文件夹
+```
+find / -name 'db_backup_cfg.xml'
+```
+
+进入这个文件夹
+```
+cd /userconfig/cfg
+```
+
 ```
 aDm8H%MdA
 ```  
 
-注册后，telnet不会掉线，进config，查看config.xml里的超密。
-
-
-
-https://www.right.com.cn/forum/thread-8285997-1-1.html
-
-https://blog.csdn.net/qq_42294237/article/details/132025846
-
-
-### 移动SK-D848，SK742，SK-M724
-
-江苏企业宽带，一网通注册码a+账号后8位。
-
-user页面开启telnet
-aDm8H%MdA
-telnet
-root
-无线wifi密码+超密aDm8H%MdA，无wifi密码的直接就超密。
-
-开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
+解密配置文件
 ```
-http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
-```
-64ed7btdaDm8H%MdA
-
-### 浙江SK-D840
-绿色和蓝色页面，复位后，超管菜单，安全，添加telnet，插光纤会重启，注册会重启。
-telnet
-root
-aDm8H%MdA
-
-
-### 贵州移动SK-D748/江苏移动ZN800
-浅蓝色页面，地址带/cgi-bin/，开telnet，user不行的话，打开注册页，能看到注册码，然后恢复出厂。打开
-```
-http://192.168.1.1/cgi-bin/telnet.asp
-```
-打开，下载**romfile.cfg**，里面可以查telnet
-```
-http://192.168.1.1/cgi-bin/upgrade.asp
-```
-telnet：
-```
-CMCCAdmin
-```
-  
-```
-s2@We3%Dc#
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 ```
 
 ```
-admin
-```
-```
-aDm8H%MdA
-```
-重新注册后进telnet，找到var/tmp/romfile.cfg，查看对应行和后面2行
-```
-cat var/tmp/romfile.cfg | grep 'CMCCAdmin' -A 2
-```
-或者
-```
-cat tmp/ctromfile.cfg | grep 'CMCCAdmin' -A 2
-```
-或者
-```
-cat var/romfile.cfg | grep 'CMCCAdmin' -A 2
+sendcmd 1 DB decry userconfig/cfg/db_user_cfg.xml
 ```
 
-### 江苏创维SK-D848，SK742
-
-查password
+查看解密后的文件
 ```
-192.168.1.1/ajax_user_register.gch
-```
-user页面开启telnet
-
-telnet
-root
-无线wifi密码+超密ykh36cfgaDm8H%MdA
-
-开启telnet。使用网上的几种方式都打不开。F12方法：使用user用户登录 ，点用户，按F12 ，将telnet display:none 改为1，是出现启用telnet 选项，但是钩了没用。  没用的话就得用CMCCAdmin超级用户登录，然后打开：
-```
-http://192.168.1.1/web/cmcc/gch/template_user.gch?nextpage=web/cmcc/gch/iot_advance_setting_t.gch
+vi /tmp/debug-decry-cfg
 ```
 
-### 江苏移动SK-D848N
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg | sed -n '/DevAuthInfo/,/\<Tb.>/p' | grep -i "User\|Pass"
+```
 
-新版，telnet旧版方法已经关闭，无法开启
+在查看状态下使用vi命令的查找命令进行查找超级管理账号：CMCCAdmin，英文状态下点击【/】后输入CMCCAdmin后，点击回车
 
-复位后，插光纤，关闭周期上报，填入password，会自动注册。
+> /CMCCAdmin  
 
+找到对应的CMCCAdmin以及对应User及下面行的Pass的Val值，大功告成
 
-### 安徽移动skd745S（绿色界面）
-江苏的方法不行
-超管进去，安全，访问添加一个telent，然后即可，root
-root
-无线wifi密码+超密ykh36cfgaDm8H%MdA
+**ftp账密是相同的：e8ftp**
 
-34551308254460000000
-41
-76482230
-### 江苏SK-M424-ZQ融合企业网关
-sn自动认证，user进去后台复位，
-超管进去，安全，访问添加一个telent，然后即可，root
-root
-无线wifi密码+超密ykh36cfgaDm8H%MdA
+移动吉比特系列光猫均可参考。
 
-### 移动CM112   GS3101  GS2107（GS3202不同）GS8101用中兴工具
+广西GM630-R，重置后，下发配置，再去删除tr069和关闭上报，第二个地址开启telnet。
+
+或者reset后，超密进去，在 安全 telnet配置，启用telnet，再注册loid。
+
+H2-2部分测试失败，河南平顶山测试成功。
+![](https://s3.bmp.ovh/imgs/2023/08/02/1b69319f6a712987.png)
+
+### CM112 /GS3101/GS2107（GS3202不同）
 
 **测试：**
 http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg  
 
-ZDdWY@C1
-1. 登陆路由器之后打开这个地址  
+1. 登陆user之后打开这个地址  
 ```
 http://192.168.1.1/cgi-bin/getGateWay.cgi
 ```
@@ -1650,25 +2097,113 @@ web_passwd="CMCCAdmin****"
 &amp;等于&
 
 
-GS8101恢复出厂后，用中兴2.exe直接开启临时telnet
-
-### 移动TEWA-86X，TEWA-7100A系列（江苏）
-油猴脚本，直接登录user即可，直接超管
-
-1. 在登录页面，按F12键打开浏览器控制台，选择源码；
-    
-2. 选中控制台，按 ctrl+f 搜索字段 "isAdmin"，双击搜索结果跳转到指定代码；
-    
-3. 单击 "isAdmin" 所在行前面的行号，打上断点，然后用user账号登录光猫；
-    
-4. 登录后页面会暂停，并且代码停止到刚才断点处；
-    
-5. 在 "isAdmin" 行下方增加一行语句 "return;", 按 ctrl+s 保存修改后，按 F8 继续运行即可；
-    
-6. 网页会定期刷新去判断权限，当页面自动暂停时重复上面 4、5 步骤操作即可。
 
 
-### 内蒙古移动ZN-M142G，M180（先绿色）
+
+
+
+#### GS8101
+
+GS系列猜测是中兴方案。
+复位，用中兴工具开telnet，GS8101恢复出厂后，用中兴2.exe直接开启临时telnet
+
+#### GS2107（四川）
+telnet账号：
+```
+CMCCAdmin
+```
+
+```
+s2@We3%Dc#
+```
+
+
+#### UNG220Z（甘肃移动）
+
+telnet
+```
+CMCCAdmin
+```
+
+```
+chzhdpl@246
+```
+
+### GM630/GM232/GM219S
+https://www.right.com.cn/forum/thread-4267874-1-1.html
+请全部理解且做好足够心理准备再继续进行。重置光猫之后不能上网，如果你自己设置不成功，就得打电话叫装维上门修复。  
+1、捅复位键，45～60秒。闪灭2次，捅后要断电重启。 
+2、打开登录页面，用管理员帐号CMCCAdmin和初始密码aDm8H%MdA登录进去。  
+3、在此页面  
+```
+http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+开启telnet,LAN，保存  
+4、退出登录，到主页“注册安装"，填入ONT密码，操作业务下发  
+
+6、使用windows自带的telnet，或者Xshell、SecureCRT等工具连接到光猫，登录用户CMCCAdmin，密码输入光猫反面写的user密码@C1，如xxxxxxxx@C1。（我这里是C1，如果不对请尝试省份首字母，比如@BJ）  
+待出现~$符号后，输入，超级密码一目了然。
+```
+sidbg 1 DB p DevAuthInfo
+```
+55jkh@vu@C1
+
+GM219S，telnet为
+用户名 root，密码 Pon521
+
+### GM219S 多版本
+http://www.8fe.com/jiaocheng/6041.html
+1、开telnet，旧版本
+```
+192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
+```
+
+2、法2，浅绿色后台
+```
+192.168.1.1/telnet-config.asp
+```
+admin 密码：与普通账号密码相同
+
+3、类江苏创维
+F12里开。
+
+常见telnet账号密码
+组合1：admin 密码：与普通账号密码相同（大概率）、1234、chzhdpl
+组合2：root 密码：Pon521
+组合3：CMCCAdmin 密码：aDm8H%MdA、Cmcc10086
+
+```
+cat /tmp/var/romfile.cfg | grep CMCCAdmin
+```
+
+### H3-2r/H3-1r lite/H-PON01
+
+需要超管进，打开
+```
+http://192.168.1.1/bd/hide.asp
+```
+一些隐藏的配置，开telnet
+如果404，直接导出config.xml
+```
+http://192.168.1.1/bd/saveconf.asp
+```
+修改telnet enable为1，所有telnet项改为1，上传上去后，要再重启一下光猫才生效。telnet账户密码CMCCAdmin   
+```
+aDm8H%MdA
+```  
+
+注册后，telnet不会掉线，进config，查看config.xml里的超密。
+
+https://www.right.com.cn/forum/thread-8285997-1-1.html
+
+https://blog.csdn.net/qq_42294237/article/details/132025846
+
+
+### 兆能ZN
+
+#### 移动ZN-M142G/M180（浅绿色）
+
+【内蒙古】
 user登录，直接打开telnet
 ```
 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
@@ -1676,83 +2211,35 @@ http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 默认的账户密码登录
 
 
-### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开！
-sn认证
-捅复位后，重新注册，密码保持不变，删除tr069
-S-Box8L94，F12查看loid，需在网页里重置，复位键没用。
+#### 电信ZN600
+https://www.right.com.cn/forum/thread-4146855-1-1.html
 
-贵州企业宽带H10g-32ac不会自动下发数据，telnet默认开的
-telnet 192.168.1.1
-用户名admin密码
-
-H51e   用上面
-telnet：CMCCAdmin，密码
-```
-UM@Pon521
-```
+ZN601
+先通过192.168.1.1:8080登录后台
+然后把 content 改成 telnet 再回车
+用户名 admin  
+密码 1234
+有的光猫的telnet账户名不是admin而是useradmin密码同1234  
 
 
-```
-chzhdpl@246
-```
-
-```
-sidbg 1 DB printall 1
-```
-
-```
-sidbg 1 DB p DevAuthinfo
-```
-su
-```
-aDm8H%MdA
-```
-
-解密配置文件
-```
-sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
-```
-
-查看解密后的文件
-```
-vi /tmp/debug-decry-cfg
-```
-按n跳转下一个匹配的内容
-
-### 移动SU6100
-锐捷猫，江苏
-user进去，开telnet，账号密码同锐捷，su：aDm8H%MdA
-只有user账号，没有超管，界面功能有限。
 
 
-### 上海移动HG550G企宽
 
-标密aDm8H%MdA
+### 贝尔
 
-界面同TEWE 272g，蓝色，菜单底部，移动企宽蓝色页面可参考此种模式。有的需要用超管进去。
-配置文件下载
-```
-http://192.168.1.1/bd/hide.asp
-```
-
-![](https://s3.bmp.ovh/imgs/2023/12/02/ff5e99cdc39a2d67.png)
-
-https://blog.csdn.net/qq_42294237/article/details/132025846
-
-### 贝尔移动G-140-MD
-
-Password：（移动的光认证密码，对应电信联通的loid）  
-INTERNET__VID_（上网的VLAN ID号）  
-VOICE__VID_（语音鉴权配置和密码）  
-Other__VID_（IPTV参数）  
-（由于楼主没办理iptv和固话，所以我这里是空的，这两个参数请自行百度需要备份的内容）  
-你的宽带账号  
-你的宽带密码
+#### G-140-MD
 
 **法一：直接查**
+
+需超管登录，三网通
 ```
 http://192.168.1.1/dumpdatamodel.cgi
 ```
+
+```
+http://192.168.1.1/system.cgi?telnet
+```
+
 telnet密码搜supassword
 ```
 <CLIPrompt ml="256" rw="RW" t="string" v="\\\\$"></CLIPrompt>
@@ -1760,10 +2247,11 @@ telnet密码搜supassword
 <SuPassword ml="64" rw="RW" t="string" v="FyoWiA9ebVq8Wcr5t1T+Zg==" ealgo="ab"></SuPassword>
 ``` 
 
-查找cmccadmin，supassword（telnet的root密码）解密。
+搜超密cmccadmin，cuadmin，supassword（telnet的root密码）解密。
+
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d 9sZeaWLFHzobEeWEL1wKtA==
+python nokia-router-cfg-tool.py -d uQz+2T4OMPl6tvTpyj0uwQ==
 ```
 telnet：
 user或useradmin  
@@ -1783,7 +2271,6 @@ G-140W-MD
 ```
 gp5mSww4zrzh
 ```
-bnyparhbCUAdmin
 
 ```
 ritool set Custom AH  这是切换电信界面  
@@ -1813,10 +2300,9 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ```
 
 **法二：重置**
-开机正常上网状态，直接拔掉光纤！（不这样操作它会自动还原配置）  
-用尖锐物品按住背面的复位孔十秒以上，直到自动重启！
 
 重置后标密，注册后密码不会马上变更，可以删除069。
+telnet密码是user密码，重新注册后超密不变
 
 账号：CMCCAdmin  
 密码：aDm8H%MdA  
@@ -1827,8 +2313,7 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ```
 http://192.168.1.1/system.cgi?telnet
 ```
-进入网络，远程管理菜单里找到password认证，填入你刚才备份的password，点应用。![](https://s1.ax1x.com/2020/03/17/8de8Te.jpg)  
-接下来插上光纤，回到后台主页，如果没问题的话就会开始自动下发配置：
+进入网络，远程管理菜单里找到password认证，接下来插上光纤，回到后台主页，如果没问题的话就会开始自动下发配置：
 
 telnet登录的话并不需要输入用户名和密码就可以直接登录，实际上登陆的用户名是root，密码不得而知，hg2x0，但是可以用passwd命令修改。用修改后的密码和用户名root可以登录TTL。cfe的用户名密码为telecomadmin和nE7jA%5m
 
@@ -1844,282 +2329,11 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Status 0
 cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ```
 
-### 贝尔联通G-140W-UG
-
-user里直接恢复出厂设置
-开启telnet和cgi页
-
-telnet密码是user密码，重新注册后超密不变（辽宁）
-
-### 江苏福建联通创维SK-D848，SK-D742
-
-绿色登录页
-user页面开启telnet
-
-telnet
-账号
-root
-无线wifi密码+超密aDm8H%MdA
-su
-aDm8H%MdA
-或超密
-
-### 河南移动驻马店dt720-csf
-192.168.1.1/ajax_user_registe.gch
-6016356310201030000IGDSUCCSUCC-1312374208
-4031
-17657919835
-绿色登录页
-user页面开启telnet
-
-telnet
-账号
-root
-aDm8H%MdA
-
-### 内蒙古联通创维SKd745【无telnet按扭】
-
-恢复出厂，设置里，开启ftp，useradmin，useradmin
-注册，从ftp进去，下载配置文件解密。
 
 
 
-### 河南联通sk-d740
-
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-开启telnet。
-
-ftp软件登入，useradmin，useradmin，返回上层目录，进入userconfig/cfg/
-下载db_user_cfg.xml，解码即可。
-
-### 山东联通sk-d740
-
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-开启telnet
-默认版本telnet账号root，Pon521
-山东的user，Pon521，记住注册码，重置或切换版本默认再切换回山东，  
-开telnet，账号user，CUAdmin，su密码：CUAdmin  ，telnet密码为超密。先登录telnet后，在注册下发数据，更改超密，telnet保持一段时间在线。
-
-```
-sidbg 1 DB set DevAuthInfo 0 Pass admin1234
-sidbg 1 DB save
-```
-
-```
-sidbg 1 DB set TelnetCfg 0 TS_Enable 1
-sidbg 1 DB set TelnetCfg 0 Lan_Enable 1
-sidbg 1 DB set TelnetUser 0 Password 123Qwe
-sidbg 1 DB set DevAuthInfo 0 Pass admin1234
-sidbg 1 DB save
-```
-
-解密参照下面，xor，routerpass均不能解
-```
-bnyparhbCUAdmin
-```
- 
-```
-sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
-```
-查看解密后的文件
-```
-vi /tmp/debug-decry-cfg
-```
-
-### 山东联通dt741-csf
-打开，里面有loid
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-切换版本，恢复出厂设置。
-telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
-
-### 辽宁联通dt741-csf
-打开，里面有loid
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-切换版本，恢复出厂设置。
-telnet账号root，密码是user密码+超密lnadmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
-
-### 天津山东联通DT541、DT541-csf 
-打开，里面有loid
-```
-http://192.168.18.1/hidden_version_switch.html
-```
-切换版本，恢复出厂设置。
-telnet账号root，密码是user密码+超密CUAdmin，恢复出厂设置，重新注册后，原来telnet也保持在线，退出后，telnet密码变为新的。
-
-### 安徽山西电信创维DT720-cs【注册下发】
-开telnet
-```
-http://192.168.1.1:8080/hidden_version_switch.html
-```
-
-telnet账密都是telnetadmin
-```
-telnetadmin
-```
-其他用sidbg命令，su密码不是默认超密
-
-### 内蒙古电信DT741（政企悦me）
-
-|运营商|中国电信|
-|设备型号|DT741-zhengqi|
-|设备标识号|34AA31-4E61534AA310C8AC0|
-|硬件版本号|V1.0|
-|软件版本号|V1.0.1|
-
-useradmin登录，输入下面开启telnet
-```
-http://192.168.1.1/usr=telecomadmin&psw=nE7jA%5m&cmd=1&telnet.gch
-```
-telnet账密都是telnetadmin，su也是一样
-```
-telnetadmin
-```
-命令需要su
-
-ftp账户密码就是普通管理员账密
-
-
-### 河南联通 dt741-csf  
-记下LOID还有VID   
-不插光纤按住光猫后边的重置键直到光猫重启，  
-```
-http://192.168.1.1/hidden_version_switch.html
-```
- 勾选开启telnet    
-telnet登录root user密码+CUAdmin    
-```
-sendcmd 1 DB DevAuthInfo
-sendcmd 1 DB set DevAuthInfo 0 User CUAdmin
-sendcmd 1 DB set DevAuthInfo 0 Pass cuadmin131415
-sendcmd 1 DB save
-```
-
-```
-http://192.168.1.1/cu.html
-```
-账户CUAdmin 密码11223344 设置完插上光纤就行  
-
-### GM630，GM232，GM219S
-https://www.right.com.cn/forum/thread-4267874-1-1.html
-请全部理解且做好足够心理准备再继续进行。重置光猫之后不能上网，如果你自己设置不成功，就得打电话叫装维上门修复。  
-1、捅复位键，45～60秒。很关键，捅后，要断电重启。 
-2、打开登录页面，用管理员帐号CMCCAdmin和初始密码aDm8H%MdA登录进去。  
-3、在此页面  
-```
-http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
-```
-开启telnet,LAN，保存  
-4、退出登录，到主页“注册安装"，填入ONT密码，操作业务下发  
-5、下发完成后，现在可以正常上网，然后再提供远程
-6、使用windows自带的telnet，或者Xshell、SecureCRT等工具连接到光猫，登录用户CMCCAdmin，密码输入光猫反面写的user密码@C1，如xxxxxxxx@C1。（我这里是C1，如果不对请尝试省份首字母，比如@BJ）  
-待出现~$符号后，输入，超级密码一目了然。
-```
-sidbg 1 DB p DevAuthInfo
-```
-55jkh@vu@C1
-
-GM219S，telnet为
-用户名 root，密码 Pon521
-
-### GM219S 不同版本
-http://www.8fe.com/jiaocheng/6041.html
-1、开telnet，旧版本
-```
-192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
-```
-
-2、法2，浅绿色后台
-```
-192.168.1.1/telnet-config.asp
-```
-admin 密码：与普通账号密码相同
-
-3、类江苏创维
-F12里开。
-
-常见telnet账号密码
-组合1：admin 密码：与普通账号密码相同（大概率）、1234、chzhdpl
-组合2：root 密码：Pon521
-组合3：CMCCAdmin 密码：aDm8H%MdA、Cmcc10086
-
-
-```
-cat /tmp/var/romfile.cfg | grep CMCCAdmin
-```
-
-
-### 北京移动SK-D746，SK740S，联通UNG310H
-普通账户登录后，输下面，下载romfile.cfg文件，搜索admin  
-```
-http://192.168.1.1/cgi-bin/upgrade.asp
-```
-
-```
-http://192.168.1.1/romfile.cfg
-```
-
-
-### TEWA 800G 830G
-
-备份配置文件 
-```
-http://192.168.1.1/backupsettings.conf
-```
-还原配置文件
-```
-http://192.168.1.1/updatesettings.html
-```
-
-
-### 电信TEWA 1102E
-用魔尊的计算su开启telnet
-登录后su进去
-再输入exit退出Busybox，命令提示符变成>，
-telecomadmin get
-CUAdmin get
-
-### 电信ZN600
-https://www.right.com.cn/forum/thread-4146855-1-1.html
-
-ZN601
-先通过192.168.1.1:8080登录后台
-然后把 content 改成 telnet 再回车
-用户名 admin  
-密码 1234
-有的光猫的telnet账户名不是admin而是useradmin密码同1234  
-
-
-### 联通sk-d740-c，SK-D748-C，SK-D742C，SK-D748
-详情步骤：  
-【1】保证正常访问光猫web  
-
-【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：
-```
-http://192.168.1.1/hidden_version_switch.html
-```
-勾选telnet功能，一闪而过不用在意。）  
-
-账户密码都是useradmin/useradmin  
-【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
-【4】ftp链接光猫。这里我使用的是winscp，ftp连接光猫，账户密码都是useradmin/useradmin（看下图），/var/tmp/目录下，找到telnet_su_passwd 文件，打开即可获得。
-
-
-### 电信瑞斯达康AC-8
-
-此系列的，基本配置，接口，pon，记好loid，和对应各网络连接，有的静态ip，需要记好。
-
-然后拔光纤捅复位，标密进去，系统管理，新建一个超管，密码要足够复杂!QAZ2wsx#EDC，插回光纤，注册即可。
-
-
-### 联通瑞斯达康MSG2100E-UPON-4V
+### 瑞斯达康
+#### 联通MSG2100E-UPON-4V
 
 管理员192.168.1.1/cu.php   
 CUAdmin   
@@ -2132,12 +2346,428 @@ telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输�
 
 这货的uboot密码也很奇葩就在uboot下按ctrl+u键提示输入密码:uboot!
 
+#### 电信AC-8
+
+此系列的，基本配置，接口，pon，记好loid，和对应各网络连接，有的静态ip，需要记好。
+
+然后拔光纤捅复位，标密进去，系统管理，新建一个超管，密码要足够复杂!QAZ2wsx#EDC，插回光纤，注册即可。
+
+
+
+
+
+### 中兴
+
+#### F412/F460/F612/F660/F623等23端口被关闭处理方法：  
+
+中兴下面是解决23端口被关闭的方法。
+1，开个dos窗口一直ping，用如下命令  
+```
+ping 192.168.1.1 -l 128 -t
+```  
+
+2，   再开一个dos窗口  
+
+```
+telnet 192.168.1.1 10128  
+```
+  
+    账号：root  
+    密码：Zte521  
+
+3，输入  
+```
+sendcmd 1 DB p DevAuthInfo
+```
+ 获取管理员密码 用于网页登录
+
+
+
+### 中兴系列G7615
+中兴G7615注册50%手动配置上网删除Tr069
+https://www.right.com.cn/forum/thread-8279408-1-1.html
+(出处: 恩山无线论坛)
+
+先用开telnet工具开启临时账号密码，修改临时telnet为永久
+
+
+```
+sendcmd 1 DB p TelnetCfg  
+sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1  
+sendcmd 1 DB set TelnetCfg 0 TS_UName root  
+sendcmd 1 DB set TelnetCfg 0 TSLan_UName root  
+sendcmd 1 DB set TelnetCfg 0 TS_UPwd 123Qwe  
+sendcmd 1 DB set TelnetCfg 0 TSLan_UPwd 123Qwe  
+sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 99  
+sendcmd 1 DB set TelnetCfg 0 ExitTime 999999  
+sendcmd 1 DB set TelnetCfg 0 InitSecLvl 3  
+sendcmd 1 DB set TelnetCfg 0 CloseServerTime 9999999  
+sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1  
+sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
+sendcmd 1 DB save
+```
+
+```
+sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
+sendcmd 1 DB save
+```
+
+```
+sidbg 1 DB set TelnetCfg 0 TSLan_UName root  
+sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
+```
+
+
+```
+sidbg 1 DB set TelnetUser 0 Username 123Qwe
+sidbg 1 DB set TelnetUser 0 Password 123Qwe
+sidbg 1 DB set DevAuthInfo 0 Pass cuadmin1234
+sidbg 1 DB save
+```
+
+   /etc/init.d/regioncode       查询地区代码  
+   upgradetest sdefconf 310     310代表广东，其他地区找对应代码  
+设置国家地区代码：   upgradetest sdefconf [序号]  
+查询国家地区代码：   upgradetest gdefconf
+如果upgradetest命令不成功，请修改为siupgrade
+  
+   setmac show          查看MAC情况，里面显示16进制  
+   setmac 3 2180        清除原注册信息2180项  
+   setmac 3 2181        清除原注册信息2181项  
+   
+  
+  
+  
+   setmac 1 768 XXXXXX      旧光猫MAC前6位大写8593B2  
+   setmac 1 2176 XXXX        旧光猫SN序列号前4位，厂商代码大写，中兴ZTEG，华为HTWC  
+   setmac 1 2177 XXXXXXXX       旧光猫SN序列号后8位大写  
+   setmac 1 2178 XXXXXXXXXX    旧光猫SN大写  
+   setmac 1 512 XXXX....XXXX      旧光猫后台联通设备标识代码大写如01FFFFF......  
+  
+  
+  
+   setmac 1 256 85:93:b2:ca:ea:39        旧光猫MAC，小写  
+   setmac 1 257 85:93:b2:ca:ea:3a  
+   setmac 1 258 85:93:b2:ca:ea:3b  
+   setmac 1 259 85:93:b2:ca:ea:3c  
+   setmac 1 260 85:93:b2:ca:ea:3d  
+   setmac 1 261 85:93:b2:ca:ea:3e  
+   setmac 1 262 85:93:b2:ca:ea:3f  
+   setmac 1 263 85:93:b2:ca:ea:40  
+   
+```
+ebtfee4gaDm8H%MdA
+```
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
+sidbg 1 DB save   
+```
+
+```
+sidbg 1 DB delr WANC 0
+```
+
+   注册50%不能上网，telnet改注册为成功
+   
+```
+sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
+sendcmd 1 DB save
+sendcmd 1 DB reboot
+```
+删除TR069，禁用RMS服务器使能  
+```
+sendcmd 1 DB delr WANC 0
+```
+
+```
+sidbg 1 DB delr WANC 0
+```
+
+查询TR069在第几个（0 1 2 3 4等）  
+```
+sendcmd 1 DB p WANC
+```
+0代表前面查询TR069在0这一项里面，如果查询是3，那就0改为3 
+```
+sendcmd 1 DB delr WANC 0
+```
+RMS服务器不启用周期上报
+```
+sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0 
+sendcmd 1 DB set MgtServer 0 Tr069Enable 0
+
+```
+
+```
+sendcmd 1 DB set WANC 1 WANCType 0
+```
+
+###  上海电信F450G(悦me样)
+#### V1.0版本
+useradmin登录后，直接在该页面地址（不需删除内容）后添加
+```
+/dumpmdmd.conf
+```
+下载文件，后搜索，password
+字母加数字的部分即是：Ncqrvlcr36
+`Password&gt;Ncqrvlcr36&lt;/Password&gt;#j@b8S?%&lt`
+
+#### V2.0.0P1T1sh，T后面是1不是2就可以用下面的方法，2的话已禁用该法！
+据说捅复位，不会清除loid，不过最好在useradmin里记一下。
+不插光纤，捅复位后，默认开telnet。
+root
+Zte521
+
+捅了无效，拔了光纤浏览器输入
+```
+http://192.168.1.1/return2factory.html
+```
+复位后默认开启telnet，
+root
+Zte521
+
+3、以下命令都要在输入后，都要使用以下命令保存配置  
+```
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
+
+4、    插上光纤后不自动关闭telnet
+```
+sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
+5、     最多能够登录5个用户，避免被锁死
+```
+sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
+
+6、破解打开网页自动跳转LOID注册页面  
+```
+sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
+
+
+7、破解最大用户数(本例设置为66，当然你可以直接把这个限制关了)  
+        设置66用户     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制最大用户数
+```
+sendcmd 1 DB set CltLmt 8 Max 66
+sendcmd 1 DB save  
+sendcmd 1 DB reboot
+```
+8、  查看telecomadmin帐号的密码
+```
+sendcmd 1 DB p DevAuthInfo
+```
+9、重启光猫，进192.168.1.1的页面，点设备注册，输入宽带识别号后点下一步，完成设备注册！！！
+
+10、再次telnet进光猫，禁用电信远程控制（此项必须在以上步骤完成后进行！！！切记！！！否则无法注册LOID成功！）  
+```
+sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)  
+sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0  
+sendcmd 1 DB set MgtServer 0 Tr069Enable 0
+```
+
+11、用telecomadmin的密码进192.168.1.1的页面，把“网络-网络设置”里连接名称带internet字样（下拉可见）的配置删除，再“新建wan连接”，直接把连接模式从“路由”改成“桥接”就点最下面的“添加”，再点“保存”，重启光猫完工！
+
+12、参考帖子：[http://www.chinadsl.net/forum.ph … 666&_dsign=a2aedfd5](https://ayw.ink/?golink=aHR0cDovL3d3dy5jaGluYWRzbC5uZXQvZm9ydW0ucGhwP21vZD12aWV3dGhyZWFkJmFtcDt0aWQ9MTI3NjY2JmFtcDtfZHNpZ249YTJhZWRmZDU=)  
+[http://www.chinadsl.net/thread-127664-1-1.html](https://ayw.ink/?golink=aHR0cDovL3d3dy5jaGluYWRzbC5uZXQvdGhyZWFkLTEyNzY2NC0xLTEuaHRtbA==)  
+
+所有用得到的telnet命令：  
+A、设置telnet用户名密码、端口和登录等  
+     sendcmd 1 DB set TelnetCfg 0 TS_Enable 1     打开telnet  
+     sendcmd 1 DB set PortControl 3 PortEnable 1   打开23端口  
+     sendcmd 1 DB set PortControl 6 PortEnable 0   关闭58000端口-Tr069服务  
+     sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1    局域网登录允许  
+     sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1     插上光纤后不自动关闭telnet  
+     sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5     最多能够登录5个用户，避免被锁死  
+     破解打开网页自动跳转LOID注册页面（适用于手工配置，无法LOID注册的同学），此项本人没有尝试过，照搬过来供参考。  
+     sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
+     sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
+
+     破解最大用户数(本例设置为32，当然你可以直接把这个限制关了)  
+     sendcmd 1 DB set CltLmt 8 Max 32    设置32用户  
+     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制
+
+     查看telecomadmin帐号的密码  
+     sendcmd 1 DB p DevAuthInfo
+
+E、无论进行了任何指令设置，需要使用以下命令保存配置  
+     sendcmd 1 DB save  
+     sendcmd 1 DB reboot
+
+F、折腾TR069：  
+     方案一：把Tr069设置ITMS服务器页面的东西乱改：  
+```
+
+                  sendcmd 1 DB p MgtServer  
+                  sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)     把ITMS认证地址改掉  
+                  sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0     不启用周期上报  
+                  sendcmd 1 DB set MgtServer 0 Tr069Enable 0     禁用Tr069远程控制  
+                  sendcmd 1 DB set MgtServer 0 UserName xxx     这里的*改成随便什么当ITMS认证用户名 
+                  sendcmd 1 DB set MgtServer 0 Password **********     这里的*改成随便什么当ITMS认证密码  
+                  sendcmd 1 DB set MgtServer 0 PeriodicInformInterval 15768000000     把间隔时间弄成500年  
+                  sendcmd 1 DB set MgtServer 0 ConnectionRequestUsername *****     这里的*改成随便什么当反向认证用户名  
+                  sendcmd 1 DB set MgtServer 0 ConnectionRequestPassword ********     这里的改成随便什么当反向认证密码 
+
+```
+
+                  
+     方案二：个人感觉这个结合方案一最好：  
+```
+sendcmd 1 DB p WANC        
+                  查看网络连接设置，确认row 0是修改目标：1_TR069_VOICE_R_VID_46，如果不是row 0而是row 1或row 2，下面的 WANC 0 改成 WANC 1 或者 WANC 2  
+                  
+sendcmd 1 DB set WANC 0 VLANID 64        修改Tr069连接的VLAN  
+sendcmd 1 DB save  
+sendcmd 1 DB reboot  
+```
+                  此修改如同修改telenet密码，必须重启光猫才能生效。  
+      方案三：强迫症患者福音，彻底清除：  
+                  光猫默认4条连接数据，TR069就是第一条 也就是 <Row No=”0″>  
+                  直接使用命令 sendcmd 1 DB delr WANC 0  删除WANC 表 Row 0 数据  
+                  delr 参数就是删除表内数据条目的命令。  
+                  登录telcomadmin，查看网络连接情况，TR069已经被删除。  
+  
+G、最后，把一级超级用户telecomadmin和二级普通用户useradmin的密码改掉：  
+```
+     sendcmd 1 DB p DevAuthInfo 查看设备所有用户名和密码  
+     sendcmd 1 DB set DevAuthInfo 0 Pass **********     这里的*改成你自己希望的teleadmin用户的密码，执行完就在网页上试试登录  
+     sendcmd 1 DB set DevAuthInfo 1 Pass *****     这里的*改成你自己希望的useradmin用户的密码，执行完就在网页上试试登录
+```
+XXX、路由接4k iptv盒子的设置：  
+       到光猫的设置界面——网络——网络设置——网络连接里的连接名称选Other_B_VID_85  
+       确认：1、勾选了“启用VLAN”  
+                 2、VlanID填85  
+                 3、802.1p选0 —默认好像是5，造成4k的认证异常，看一会儿就报错  
+                 4、LAN端口绑定：只勾选iTV（这个是为了我的标清iptv选的，如果你没有就把勾去掉，这样光猫4个lan口的就都能接路由了）  
+                 5、SSID端口绑定：全部不勾选  
+                 6、到左侧选VLAN绑定，默认应该是有两条规则，网口3和4，用户侧VLAN=85，绑定wan连接名称“Other_B_VID_85”，点击表格最后一行空白行，照着这两条规则，再添加一条网口1的就行了（如果上面第4点没有勾选iTV，那就再加一条iTV的），记得点保存  
+                 7、最后到应用——IGMP设置里确认宽带连接是选了“Other_B_VID_85”，组播VLAN是填了51                 8、保存后重启光猫就完成光猫部分的设置了！  
+                 9、本条只针对刷了**koolshare改版固件的华硕路由！！！进路由开启jffs空间并重启路由，telnet进路由，运行一键脚本后等待路由再次重启之后就行。
+
+                      脚本有两种，一种是4k盒子直接接路由的，另一种是仍然接光猫上的网口的，脚本内容如下：  
+                       第一个脚本：
+  ```
+  cd /jffs/scripts/ && rm -rf SHiptv.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/SHiptv.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL1NIaXB0di5zaA==) && chmod +x SHiptv.sh && sh SHiptv.sh  
+  ```
+                       第二个脚本：
+   ```
+cd /jffs/scripts/ && rm -rf iptv7x.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/iptv7x.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL2lwdHY3eC5zaA==) && chmod +x iptv7x.sh && sh iptv7x.sh
+```
+                       关于第二个脚本，特别说明一下：主要目的是为了省一个路由的口，并且万一路由死机，只要盒子和光猫不重启就还能继续看，缺点是认证速度慢，而且需要关闭光猫的DHCP功能，而且我家里还会有认证异常看不了的情况，所以推荐第一个脚本。
+
+
+这些隐藏的页面大多数设备都通用，有兴趣的可以试试，呵呵~<br><br>注意：F450G必须超级用户登录，有些设备普通用户登录也行。 
+导出配置页面：http://192.168.1.1/backupsettings.html 
+导入配置页面：http://192.168.1.1/updatesettings.html
+服务访问控制：[http://192.168.1.1/scsrvcntr.html
+工厂模式页面：http://192.168.1.1/factorymode.html(工厂模式下可修改MAC等参数)  
+版本信息页面：http://192.168.1.1/test_version.html
+显示当前配置：http://192.168.1.1/dumpmdm.cmd
+
+### 中兴F650全系使能
+
+
+ 中兴F412/F460/F612/F660等方法：
+1，开个dos窗口一直ping，用如下命令
+    ping 192.168.1.1 -l 128 -t
+
+2，   再开一个dos窗口
+    输入：telnet 192.168.1.1 10128
+
+    账号：root
+    密码：Zte521
+输入 sendcmd 1 DB p CltLmt （注意空格和大小写）解释：查看一下当前的用户数量
+ 
+输入 sendcmd 1 DB set CltLmt 8 Max 9 （注意空格和大小写）解释：修改最大用户数为9，原来是5，可以改成其他数目，建议最大数目不超过255
+输入 sendcmd 1 DB set CltLmt 8 Enable 0  (注意空格和大小写）解释：去掉限制，部分地区可能有这个检查，为安全起见建议大家将这个值改成0
+输入 sendcmd 1 DB save  (注意空格和大小写）解释：修改保存
+
+https://www.jarvisw.com/?p=1460
+
+下载链接：
+
+[factorymode_crack-v2](https://www.jarvisw.com/wp-content/uploads/2021/11/factorymode_crack-1.rar)[下载](https://www.jarvisw.com/wp-content/uploads/2021/11/factorymode_crack-1.rar)
+
+#### 使用方法：
+
+连上光猫局域网后，打开cmd，输入：
+
+factorymode_crack.exe -l xxx open -i 192.168.1.1
+
+或者
+
+factorymode_crack.exe -l xxx open -i 192.168.1.1 -p 8080
+
+(有的光猫使用的是8080端口，IP地址默认是192.168.1.1如果你的光猫已经修改请指定自己的地址，另外-l参数已经无效，但仍然需要指定，随便填即可)
+
+如果打开成功会出现：
+
+Enter192.168.1.1
+
+FactoryModeSuccess:FactoryModeAuth.gch?user=l0Fo18jP&pass=7N518I28
+
+user=的值是telnet的用户名，pass=后面的是telnet的密码
+
+
+
+#### TFTP提取法
+接着打开TFTP软件 在telnet中输入 
+```
+tftp -p -l userconfig/cfg/db_user_cfg.xml -r db_user_cfg.xml 192.168.1.2
+```
+ip根据TFTP软件中的ip进行修改。
+
+#### U盘拷贝：
+
+插U盘，登录后浏览器输入：
+http://192.168.1.1/cgi-bin/luci/admin/storage/copyMove?opstr=copy|/userconfig|/mnt/USB_disc1|cfg&fileLists=cfg/&_=0.5060406976503316
+
+成功备份的话输出：
+{"setRes":true,"filePath":"/userconfig","percent":100,"transId":0,"fileNum":0}
+
+cfg里找
+db_user_cfg.xml
+
+      点击“网络”-“网络设置”-“网络连接”，选择带有TR069的这个连接，点击下面的删除。  
+       点击“网络”-“远程管理”-“ITMS服务器”，如下图  
+
+![](https://s3.bmp.ovh/imgs/2023/07/19/a1f507853a5c0aec.png)
+
+         取消“启用周期上报”，将“ITMS认证地址”清空或改动几个数字。最后点下面的保存按钮，完成设置保存。到此破解完成，把密码记下来，以后再也不会变了。
+
+
+
+### 联通UNG310H
+普通账户登录后，输下面，下载romfile.cfg文件，搜索admin  
+```
+http://192.168.1.1/cgi-bin/upgrade.asp
+```
+
+```
+http://192.168.1.1/romfile.cfg
+```
+
 ### 联通KD-YUN-811G
 
 user登录后下载，搜索cuadmin，河南。
 ```
 http://192.168.1.1/backupsettings.conf
 ```
+
+
+
+
+
 
 ### 华为光猫河南联通HS8346V5，HS8346R5，上海移动 华为HS8546V5 山东联通HS8346X6
 > https://www.right.com.cn/forum/thread-4092011-1-1.html
@@ -2469,400 +3099,12 @@ https://www.chinadsl.net/forum.php?mod=viewthread&tid=170109
 
 ```
 
-### 中兴F412/F460/F612/F660/F623等23端口被关闭处理方法：  
-中兴下面是解决23端口被关闭的方法。
-1，开个dos窗口一直ping，用如下命令  
-```
-ping 192.168.1.1 -l 128 -t
-```  
-
-2，   再开一个dos窗口  
-    输入：
-```
-telnet 192.168.1.1 10128  
-```
-  
-    账号：root  
-    密码：Zte521  
-
-3，输入  
-```
-sendcmd 1 DB p DevAuthInfo
-```
- 获取管理员密码 用于网页登录
-
-
-### 中兴系列G7615
-中兴G7615注册50%手动配置上网删除Tr069
-https://www.right.com.cn/forum/thread-8279408-1-1.html
-(出处: 恩山无线论坛)
-
-先用开telnet工具开启临时账号密码，修改临时telnet为永久
-
-
-```
-sendcmd 1 DB p TelnetCfg  
-sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1  
-sendcmd 1 DB set TelnetCfg 0 TS_UName root  
-sendcmd 1 DB set TelnetCfg 0 TSLan_UName root  
-sendcmd 1 DB set TelnetCfg 0 TS_UPwd 123Qwe  
-sendcmd 1 DB set TelnetCfg 0 TSLan_UPwd 123Qwe  
-sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 99  
-sendcmd 1 DB set TelnetCfg 0 ExitTime 999999  
-sendcmd 1 DB set TelnetCfg 0 InitSecLvl 3  
-sendcmd 1 DB set TelnetCfg 0 CloseServerTime 9999999  
-sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1  
-sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
-sendcmd 1 DB save
-```
-
-```
-sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
-sendcmd 1 DB save
-```
-
-```
-sidbg 1 DB set TelnetCfg 0 TSLan_UName root  
-sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
-```
-
-
-```
-sidbg 1 DB set TelnetUser 0 Username 123Qwe
-sidbg 1 DB set TelnetUser 0 Password 123Qwe
-sidbg 1 DB set DevAuthInfo 0 Pass cuadmin1234
-sidbg 1 DB save
-```
-
-   /etc/init.d/regioncode       查询地区代码  
-   upgradetest sdefconf 310     310代表广东，其他地区找对应代码  
-设置国家地区代码：   upgradetest sdefconf [序号]  
-查询国家地区代码：   upgradetest gdefconf
-如果upgradetest命令不成功，请修改为siupgrade
-  
-   setmac show          查看MAC情况，里面显示16进制  
-   setmac 3 2180        清除原注册信息2180项  
-   setmac 3 2181        清除原注册信息2181项  
-   
-  
-  
-  
-   setmac 1 768 XXXXXX      旧光猫MAC前6位大写8593B2  
-   setmac 1 2176 XXXX        旧光猫SN序列号前4位，厂商代码大写，中兴ZTEG，华为HTWC  
-   setmac 1 2177 XXXXXXXX       旧光猫SN序列号后8位大写  
-   setmac 1 2178 XXXXXXXXXX    旧光猫SN大写  
-   setmac 1 512 XXXX....XXXX      旧光猫后台联通设备标识代码大写如01FFFFF......  
-  
-  
-  
-   setmac 1 256 85:93:b2:ca:ea:39        旧光猫MAC，小写  
-   setmac 1 257 85:93:b2:ca:ea:3a  
-   setmac 1 258 85:93:b2:ca:ea:3b  
-   setmac 1 259 85:93:b2:ca:ea:3c  
-   setmac 1 260 85:93:b2:ca:ea:3d  
-   setmac 1 261 85:93:b2:ca:ea:3e  
-   setmac 1 262 85:93:b2:ca:ea:3f  
-   setmac 1 263 85:93:b2:ca:ea:40  
-   
-```
-ebtfee4gaDm8H%MdA
-```
-
-```
-sidbg 1 DB set DevAuthInfo 0 Pass admin1234
-sidbg 1 DB save   
-```
-
-```
-sidbg 1 DB delr WANC 0
-```
-
-   注册50%不能上网，telnet改注册为成功
-   
-```
-sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
-sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
-sendcmd 1 DB save
-sendcmd 1 DB reboot
-```
-删除TR069，禁用RMS服务器使能  
-```
-sendcmd 1 DB delr WANC 0
-```
-
-```
-sidbg 1 DB delr WANC 0
-```
-
-查询TR069在第几个（0 1 2 3 4等）  
-```
-sendcmd 1 DB p WANC
-```
-0代表前面查询TR069在0这一项里面，如果查询是3，那就0改为3 
-```
-sendcmd 1 DB delr WANC 0
-```
-RMS服务器不启用周期上报
-```
-sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0 
-sendcmd 1 DB set MgtServer 0 Tr069Enable 0
-
-```
-
-```
-sendcmd 1 DB set WANC 1 WANCType 0
-```
-
 ### 联通华为HN8145XR
 记下loid，重置，登录CUAdmin，断开光猫，管理，配置文件，导出hw_ctree.xml，用华为解密工具解密，编辑，修改CUAdmin
 
 
-### 河南联通F657GV9改桥接
-
-改桥接，先记录Loid，直接断光纤，重置，进超管CUAdmin，改好桥接后，注册即可。
 
 
-###  上海电信F450G
-#### V1.0版本
-useradmin登录后，直接在该页面地址（不需删除内容）后添加
-```
-/dumpmdmd.conf
-```
-下载文件，后搜索，password
-字母加数字的部分即是：Ncqrvlcr36
-Password&gt;Ncqrvlcr36&lt;/Password&gt;
-#J@b8S?%&lt
-#### V2.0.0P1T1sh，T后面是1不是2就可以用下面的方法，2的话已禁用该法！
-据说捅复位，不会清除loid，不过最好在useradmin里记一下。
-不插光纤，捅复位后，默认开telnet。
-root
-Zte521
-
-捅了无效，拔了光纤浏览器输入
-```
-http://192.168.1.1/return2factory.html
-```
-复位后默认开启telnet，
-root
-Zte521
-
-3、以下命令都要在输入后，都要使用以下命令保存配置  
-```
-sendcmd 1 DB save  
-sendcmd 1 DB reboot
-```
-
-4、    插上光纤后不自动关闭telnet
-```
-sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1
-sendcmd 1 DB save  
-sendcmd 1 DB reboot
-```
-5、     最多能够登录5个用户，避免被锁死
-```
-sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5
-sendcmd 1 DB save  
-sendcmd 1 DB reboot
-```
-
-6、破解打开网页自动跳转LOID注册页面  
-```
-sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
-sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
-sendcmd 1 DB save  
-sendcmd 1 DB reboot
-```
-
-
-7、破解最大用户数(本例设置为66，当然你可以直接把这个限制关了)  
-        设置66用户     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制最大用户数
-```
-sendcmd 1 DB set CltLmt 8 Max 66
-sendcmd 1 DB save  
-sendcmd 1 DB reboot
-```
-8、  查看telecomadmin帐号的密码
-```
-sendcmd 1 DB p DevAuthInfo
-```
-9、重启光猫，进192.168.1.1的页面，点设备注册，输入宽带识别号后点下一步，完成设备注册！！！
-
-10、再次telnet进光猫，禁用电信远程控制（此项必须在以上步骤完成后进行！！！切记！！！否则无法注册LOID成功！）  
-```
-sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)  
-sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0  
-sendcmd 1 DB set MgtServer 0 Tr069Enable 0
-```
-
-11、用telecomadmin的密码进192.168.1.1的页面，把“网络-网络设置”里连接名称带internet字样（下拉可见）的配置删除，再“新建wan连接”，直接把连接模式从“路由”改成“桥接”就点最下面的“添加”，再点“保存”，重启光猫完工！
-
-12、参考帖子：[http://www.chinadsl.net/forum.ph … 666&_dsign=a2aedfd5](https://ayw.ink/?golink=aHR0cDovL3d3dy5jaGluYWRzbC5uZXQvZm9ydW0ucGhwP21vZD12aWV3dGhyZWFkJmFtcDt0aWQ9MTI3NjY2JmFtcDtfZHNpZ249YTJhZWRmZDU=)  
-[http://www.chinadsl.net/thread-127664-1-1.html](https://ayw.ink/?golink=aHR0cDovL3d3dy5jaGluYWRzbC5uZXQvdGhyZWFkLTEyNzY2NC0xLTEuaHRtbA==)  
-
-所有用得到的telnet命令：  
-A、设置telnet用户名密码、端口和登录等  
-     sendcmd 1 DB set TelnetCfg 0 TS_Enable 1     打开telnet  
-     sendcmd 1 DB set PortControl 3 PortEnable 1   打开23端口  
-     sendcmd 1 DB set PortControl 6 PortEnable 0   关闭58000端口-Tr069服务  
-     sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1    局域网登录允许  
-     sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1     插上光纤后不自动关闭telnet  
-     sendcmd 1 DB set TelnetCfg 0 Max_Con_Num 5     最多能够登录5个用户，避免被锁死  
-     破解打开网页自动跳转LOID注册页面（适用于手工配置，无法LOID注册的同学），此项本人没有尝试过，照搬过来供参考。  
-     sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
-     sendcmd 1 DB set PDTCTUSERINFO 0 Result 1
-
-     破解最大用户数(本例设置为32，当然你可以直接把这个限制关了)  
-     sendcmd 1 DB set CltLmt 8 Max 32    设置32用户  
-     sendcmd 1 DB set CltLmt 8 Enable 0    直接关闭限制
-
-     查看telecomadmin帐号的密码  
-     sendcmd 1 DB p DevAuthInfo
-
-E、无论进行了任何指令设置，需要使用以下命令保存配置  
-     sendcmd 1 DB save  
-     sendcmd 1 DB reboot
-
-F、折腾TR069：  
-     方案一：把Tr069设置ITMS服务器页面的东西乱改：  
-```
-
-                  sendcmd 1 DB p MgtServer  
-                  sendcmd 1 DB set MgtServer 0 URL [http://127.0.0.1](https://ayw.ink/?golink=aHR0cDovLzEyNy4wLjAuMS8=)     把ITMS认证地址改掉  
-                  sendcmd 1 DB set MgtServer 0 PeriodicInformEnable 0     不启用周期上报  
-                  sendcmd 1 DB set MgtServer 0 Tr069Enable 0     禁用Tr069远程控制  
-                  sendcmd 1 DB set MgtServer 0 UserName xxx     这里的*改成随便什么当ITMS认证用户名 
-                  sendcmd 1 DB set MgtServer 0 Password **********     这里的*改成随便什么当ITMS认证密码  
-                  sendcmd 1 DB set MgtServer 0 PeriodicInformInterval 15768000000     把间隔时间弄成500年  
-                  sendcmd 1 DB set MgtServer 0 ConnectionRequestUsername *****     这里的*改成随便什么当反向认证用户名  
-                  sendcmd 1 DB set MgtServer 0 ConnectionRequestPassword ********     这里的改成随便什么当反向认证密码 
-
-```
-
-                  
-     方案二：个人感觉这个结合方案一最好：  
-```
-sendcmd 1 DB p WANC        
-                  查看网络连接设置，确认row 0是修改目标：1_TR069_VOICE_R_VID_46，如果不是row 0而是row 1或row 2，下面的 WANC 0 改成 WANC 1 或者 WANC 2  
-                  
-sendcmd 1 DB set WANC 0 VLANID 64        修改Tr069连接的VLAN  
-sendcmd 1 DB save  
-sendcmd 1 DB reboot  
-```
-                  此修改如同修改telenet密码，必须重启光猫才能生效。  
-      方案三：强迫症患者福音，彻底清除：  
-                  光猫默认4条连接数据，TR069就是第一条 也就是 <Row No=”0″>  
-                  直接使用命令 sendcmd 1 DB delr WANC 0  删除WANC 表 Row 0 数据  
-                  delr 参数就是删除表内数据条目的命令。  
-                  登录telcomadmin，查看网络连接情况，TR069已经被删除。  
-  
-G、最后，把一级超级用户telecomadmin和二级普通用户useradmin的密码改掉：  
-```
-     sendcmd 1 DB p DevAuthInfo 查看设备所有用户名和密码  
-     sendcmd 1 DB set DevAuthInfo 0 Pass **********     这里的*改成你自己希望的teleadmin用户的密码，执行完就在网页上试试登录  
-     sendcmd 1 DB set DevAuthInfo 1 Pass *****     这里的*改成你自己希望的useradmin用户的密码，执行完就在网页上试试登录
-```
-XXX、路由接4k iptv盒子的设置：  
-       到光猫的设置界面——网络——网络设置——网络连接里的连接名称选Other_B_VID_85  
-       确认：1、勾选了“启用VLAN”  
-                 2、VlanID填85  
-                 3、802.1p选0 —默认好像是5，造成4k的认证异常，看一会儿就报错  
-                 4、LAN端口绑定：只勾选iTV（这个是为了我的标清iptv选的，如果你没有就把勾去掉，这样光猫4个lan口的就都能接路由了）  
-                 5、SSID端口绑定：全部不勾选  
-                 6、到左侧选VLAN绑定，默认应该是有两条规则，网口3和4，用户侧VLAN=85，绑定wan连接名称“Other_B_VID_85”，点击表格最后一行空白行，照着这两条规则，再添加一条网口1的就行了（如果上面第4点没有勾选iTV，那就再加一条iTV的），记得点保存  
-                 7、最后到应用——IGMP设置里确认宽带连接是选了“Other_B_VID_85”，组播VLAN是填了51                 8、保存后重启光猫就完成光猫部分的设置了！  
-                 9、本条只针对刷了**koolshare改版固件的华硕路由！！！进路由开启jffs空间并重启路由，telnet进路由，运行一键脚本后等待路由再次重启之后就行。
-
-                      脚本有两种，一种是4k盒子直接接路由的，另一种是仍然接光猫上的网口的，脚本内容如下：  
-                       第一个脚本：
-  ```
-  cd /jffs/scripts/ && rm -rf SHiptv.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/SHiptv.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL1NIaXB0di5zaA==) && chmod +x SHiptv.sh && sh SHiptv.sh  
-  ```
-                       第二个脚本：
-   ```
-cd /jffs/scripts/ && rm -rf iptv7x.sh && wget –no-check-certificate [https://raw.githubusercontent.co … TV/master/iptv7x.sh](https://ayw.ink/?golink=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0Fycm9uWWluLzRLLUlQVFYvbWFzdGVyL2lwdHY3eC5zaA==) && chmod +x iptv7x.sh && sh iptv7x.sh
-```
-                       关于第二个脚本，特别说明一下：主要目的是为了省一个路由的口，并且万一路由死机，只要盒子和光猫不重启就还能继续看，缺点是认证速度慢，而且需要关闭光猫的DHCP功能，而且我家里还会有认证异常看不了的情况，所以推荐第一个脚本。
-
-
-这些隐藏的页面大多数设备都通用，有兴趣的可以试试，呵呵~<br><br>注意：F450G必须超级用户登录，有些设备普通用户登录也行。 
-导出配置页面：http://192.168.1.1/backupsettings.html 
-导入配置页面：http://192.168.1.1/updatesettings.html
-服务访问控制：[http://192.168.1.1/scsrvcntr.html
-工厂模式页面：http://192.168.1.1/factorymode.html(工厂模式下可修改MAC等参数)  
-版本信息页面：http://192.168.1.1/test_version.html
-显示当前配置：http://192.168.1.1/dumpmdm.cmd
-
-### 中兴F650全系使能
-
-
- 中兴F412/F460/F612/F660等方法：
-1，开个dos窗口一直ping，用如下命令
-    ping 192.168.1.1 -l 128 -t
-
-2，   再开一个dos窗口
-    输入：telnet 192.168.1.1 10128
-
-    账号：root
-    密码：Zte521
-输入 sendcmd 1 DB p CltLmt （注意空格和大小写）解释：查看一下当前的用户数量
- 
-输入 sendcmd 1 DB set CltLmt 8 Max 9 （注意空格和大小写）解释：修改最大用户数为9，原来是5，可以改成其他数目，建议最大数目不超过255
-输入 sendcmd 1 DB set CltLmt 8 Enable 0  (注意空格和大小写）解释：去掉限制，部分地区可能有这个检查，为安全起见建议大家将这个值改成0
-输入 sendcmd 1 DB save  (注意空格和大小写）解释：修改保存
-
-https://www.jarvisw.com/?p=1460
-
-下载链接：
-
-[factorymode_crack-v2](https://www.jarvisw.com/wp-content/uploads/2021/11/factorymode_crack-1.rar)[下载](https://www.jarvisw.com/wp-content/uploads/2021/11/factorymode_crack-1.rar)
-
-#### 使用方法：
-
-连上光猫局域网后，打开cmd，输入：
-
-factorymode_crack.exe -l xxx open -i 192.168.1.1
-
-或者
-
-factorymode_crack.exe -l xxx open -i 192.168.1.1 -p 8080
-
-(有的光猫使用的是8080端口，IP地址默认是192.168.1.1如果你的光猫已经修改请指定自己的地址，另外-l参数已经无效，但仍然需要指定，随便填即可)
-
-如果打开成功会出现：
-
-Enter192.168.1.1
-
-FactoryModeSuccess:FactoryModeAuth.gch?user=l0Fo18jP&pass=7N518I28
-
-user=的值是telnet的用户名，pass=后面的是telnet的密码
-
-在线解密（2元一次）：
-https://www.jarvisw.com/onutools
-
-#### TFTP提取法
-接着打开TFTP软件 在telnet中输入 
-```
-tftp -p -l userconfig/cfg/db_user_cfg.xml -r db_user_cfg.xml 192.168.1.2
-```
-ip根据TFTP软件中的ip进行修改。
-
-#### U盘拷贝：
-
-插U盘，登录后浏览器输入：
-http://192.168.1.1/cgi-bin/luci/admin/storage/copyMove?opstr=copy|/userconfig|/mnt/USB_disc1|cfg&fileLists=cfg/&_=0.5060406976503316
-
-成功备份的话输出：
-{"setRes":true,"filePath":"/userconfig","percent":100,"transId":0,"fileNum":0}
-
-cfg里找
-db_user_cfg.xml
-
-      点击“网络”-“网络设置”-“网络连接”，选择带有TR069的这个连接，点击下面的删除。  
-       点击“网络”-“远程管理”-“ITMS服务器”，如下图  
-
-![](https://s3.bmp.ovh/imgs/2023/07/19/a1f507853a5c0aec.png)
-
-         取消“启用周期上报”，将“ITMS认证地址”清空或改动几个数字。最后点下面的保存按钮，完成设置保存。到此破解完成，把密码记下来，以后再也不会变了。
 
 ### 中兴系列天翼4.0（浙江江苏）获取方法
 https://www.right.com.cn/forum/thread-8163087-1-1.html
@@ -2952,16 +3194,6 @@ Pass就是超级密码了
 ```
 { "Params": [], "MethodName": "GetTAPasswd", "RPCMethod": "CallMethod", "ObjectPath": "/com/ctc/igd1/Telecom/System", "InterfaceName": "com.ctc.igd1.SysCmd", "ServiceName": "com.ctc.igd1" }
 ```
-![](https://s3.bmp.ovh/imgs/2023/08/01/0dce6227f03bdd9b.jpg)
-
-![](https://s3.bmp.ovh/imgs/2023/08/01/7e5aca2f5e30b34e.png)
-![](https://s3.bmp.ovh/imgs/2023/08/01/8ba5d06104d2cb1e.png)
-
-5. 修改后，点右上角上交纸飞机发送，成功后返回compose这个，点开里面即可看到密码。
-![](https://s3.bmp.ovh/imgs/2023/08/01/e3835ff2236cbaee.png)
-
-![](https://s3.bmp.ovh/imgs/2023/08/01/f674545710e8b8f0.png)
-
 
 
 
@@ -3836,7 +4068,9 @@ sidbg 1 DB save
 sendcmd 1 DB set FWBase 0 ConntrackMax 65535
 sendcmd 1 DB save
 ```
-### 换猫
+## 换猫
+
+电信，小翼管家有个自助更换网关
 
 #### 山东联通换猫直接用loid注册即可，没有绑定
 #### 安徽移动，loid改sn，mac还不行，拨号上，
@@ -3858,7 +4092,7 @@ sendcmd 1 DB save
 
 
 
-### 宽带密码
+## 宽带密码
 123456，123123，321321,12345678，后6位，888888，666666
 #### 北京移动，应该是装机日期，格式：20220202，loid：Bj开头
 #### 辽宁移动，12345678或后8位
@@ -3873,7 +4107,7 @@ sendcmd 1 DB save
 #### 海南移动手机号，密码kd123456
 
 
-### 注册码
+## 注册码
 #### 江苏移动
 江苏家宽账号/手机号后10位，企业宽带：a+账号后9位
 
@@ -3921,39 +4155,6 @@ loid和账号一样
 CUAdmin，CUAdmin登录进去说明捅成功了，联系我下一步
 
 
-## 步骤
-
-联通：
-1.  光猫背部user登录，【状态】-网络侧，找到internet_xx那个拍照，认证注册里，loid拍照，
-
-2.  电脑网口直连光猫网口1，不要经过路由器，同时用手机<流量>热点给电脑供网（手机USB线或热点）
-
-3.  注意要先拔光纤（猫底下方形的那个），拿个针捅reset复位孔持续捅40秒左右，一般看到所有灯闪灭2次再松开就差不多了，如果一直没闪烁就每40秒松开一下，再捅40秒，重复4次；最后拔电重启猫，全程拔光纤，等我说插再插。
-
-4.  捅后光猫后台输入
-192.168.1.1/cu.html
-CUAdmin，CUAdmin登录进去说明捅成功了，联系我下一步
-
-
-------------
-移动：
-
-2.  电脑网口直连光猫网口1，不要经过路由器，同时用手机<流量>热点给电脑供网（手机USB线或热点）
-
-3.  注意要先拔光纤（猫底下方形的那个），拿个针捅reset复位孔持续捅40秒左右，一般看到所有灯闪灭2次再松开就差不多了，如果一直没闪烁就每40秒松开一下，再捅40秒，重复4次；最后拔电重启猫，全程拔光纤，等我说插再插。
-
-4.  捅后光猫后台输入
-192.168.1.1
-CMCCAdmin，aDm8H%MdA登录进去说明捅成功了，联系我下一步
-
-
------------------------
-
-手机开usb热点（注意不是无线热点，另外不要接任何WiFi，要使用流量上网）
-
-即：手机和电脑之间接个数据线（台式机接机箱背后usb口），然后手机上开启usb热点（一般在设置-移动共享网络里面找或者有的叫个人热点，然后更多共享设置里面），另外如果接数据线出现让你选充电或者传文件或照片这请取消和这个无关
-
-弄下很简单的，不会可以百度下
 
 
 
@@ -7471,6 +7672,129 @@ tv46 桥，1200
 051602071352
 071352
 
+##### 广州联通
+1_TR069_R_VID_46	启用	已连接	DHCP	10.40.215.95	255.255.240.0	10.40.208.1	10.123.178.236	10.123.178.237	7c:c7:4a:e7:c5:a2
+2_INTERNET_R_VID_41	启用	已连接	PPPoE	10.90.147.208	255.255.255.255	10.90.128.1	116.116.116.116	221.5.88.88	7c:c7:4a:e7:c5:a1
+3_IPTV_B_VID_45	启用	已连接	PPPoE
+
+2041873899
+GZFTH8940012855402496@16900.gd
+
+辽宁联通176
+2052967658
+10
+dl07741499@163
+orther40
+4010
+
+河南联通DT545
+0340140525
+581
+037404393295
+
+北京移动skd747
+BJ1i581pfh
+10
+211010962382
+
+河南联通G7615
+0273185158
+22
+039203255822
+模式	DHCP
+连接名称	2_IPTV_R_VID_23
+NAT	启用
+IP	10.72.235.201/255.255.254.0
+DNS1	10.253.224.68
+DNS2	10.253.227.68
+DNS3	0.0.0.0
+
+
+
+内蒙古联通HS8145
+47
+047104494542
+46
+3800
+
+
+江苏移动
+8351481033
+52
+
+3405558193
+92
+
+dny2kAd*
+江苏移动SKD848N
+3914305158
+98
+
+江苏移动
+13952623455
+38
+
+山东联通
+WF64717271
+2338，3,80
+
+3741
+053606176443
+
+河南
+0974434744
+364
+039405104400
+
+江苏
+3405531775
+32
+
+江苏移动
+a161745808
+50
+
+v7mucsgzeggpj
+
+山西联通
+2_INTERNET_R_VID_2218
+035102124331
+
+内蒙联通G7615
+TL03259556011781051
+TL03259556011781051
+47
+047503259556
+
+河南联通
+0553057607
+316
+037403262696
+3_INTERNET_R_VID_316
+模式	DHCP
+连接名称	2_IPTV_R_VID_1201
+NAT	启用
+IP	10.126.133.1/255.255.254.0
+DNS1	10.253.224.68
+DNS2	10.253.227.68
+
+山东联通
+JN59485009
+3_INTERNET_R_VID_3040
+053108745759
+2_IPTV_B_VID_600，3,80
+
+
+江苏联通
+0516050080604913
+2005
+051605008060
+43,5，24
+
+
+江苏移动
+39
+18861826261
 
 
 
@@ -7484,29 +7808,7 @@ csdn：
 ## 失败
 
 
-## 其他
-例如HS8545M5的超级账户密码是（广东等地区）：CMCCAdmin aDm8H%MdA
-还有一些其它可尝试的超级账户：
 
-CMCCAdmin Cmcc10086#
-
-telecomadmin nE7jA%5m
-
-telecomadmin admintelecom
-
-超级账号：CMCCAdmin 超级密码：aDm8H%MdA
-
-超级用户名:telecomadmin 超级密码:nE7jA%5m
-
-用户名 telecomadmin 密码 admintelecom
-
-超级用户名 : fiberhomehg2x0 超级密码 : hg2x0
-
-超级帐户名是：admin 密码：Cmcc10086#
-
-1. 电信超级密码 telecomadmin nE7jA%5m
-2. 移动超级密码 CMCCAdmin aDm8H%MdA
-3. 联通超级密码 CUAdmin CUAdmin
 
 
 
@@ -7523,30 +7825,6 @@ base64，md5加密
 https://blog.csdn.net/qq_26373925/article/details/112798210
 
 
-## 移动
-1./首先获取超级密码，网上查到  
-账号：CMCCAdmin  
-密码：aDm8H%MdA  
-师傅设置的光猫拨号，浏览器输入192.168.1.1，试了下，可以登入  
-
-2./找到”网络“-->宽带设置,可以看到一个PPPOE模式，将使能勾去掉，端口绑定也取消打勾，记下自己的VLAN ID 然后点击修改。
-
-3./新建WAN连接， 
-模式：“桥模式”，  
-使能：打勾，  
-LAN 1234可以全打勾，意思是四个LAN全可以拨号，  
-DHCP服务去掉打勾，
-桥类型，我选择的 IP BRIDGE，不知道和PPPOE BRIDGE有何区别  
-业务模式选择INTERNET  
-VLAN模式选择改写tag，VLAN ID填写刚才记下的VLAN  
-其他默认即可，最后点击修改
-
-4./路由器填入你的账号密码即可，一般即可拨号成功
-
-5./TR069服务使能的钩子是灰色的，按F12搜索disable找到对应按钮，改为enable回车即可，
-论坛有教程在此不再赘述。还有开启TTL服务，暂时不知道密码。
-
-6./TELNET服务，在管理里边，打勾即可，查看密码也是F12的方法，把密码选项PASSAORD改为TEXT。
 
 ## 联通
 
@@ -7612,17 +7890,7 @@ https://www.right.com.cn/forum/thread-4005957-1-1.html
 
 联通光猫超级密码(无需繁琐获取)适用大部分地区(手机/P
 https://www.bilibili.com/read/cv14851248/
-北京地区：联通光猫TEWA-800E超级管理员(亲测有效)
-```
-document.getElementById('loginfrm').setAttribute('method','get');
-document.getElementById('username').value = 'CUAdmin';
-document.getElementById('password').value = 'CUAdmin';
-document.getElementById('loginfrm').submit();
-```
-document.getElementById('loginForm').setAttribute('method','post');
-document.getElementById('loginUsername').value = 'lndmin';
-document.getElementById('loginPassword').value = 'lndmin';
-document.getElementById('loginForm').submit();
+
 
 
 联通宽带光猫获取超级密码教程吉比特无源光纤接入用户端设备（GPON ONU）
@@ -7684,21 +7952,11 @@ http://192.168.1.1/servmngr.html
 ```
 192.168.1.1/
 
-#### 北京联通绕过超管TEWA，注意修改id名
-```
-document.getElementById('loginfrm').setAttribute('method','get');  
-document.getElementById('username').value = 'CUAdmin';  
-document.getElementById('password').value = 'CUAdmin';  
-document.getElementById('loginfrm').submit();
-```
-
 
 https://www.right.com.cn/FORUM/thread-8253868-1-1.html
 【[https://blog.csdn.net/nordpol/article/details/124937187](https://blog.csdn.net/nordpol/article/details/124937187)】  
 详情步骤：  
-【1】保证正常访问光猫web  
-  
-  
+
 【2】再打开这个链接，开启telnet功能。（打开隐藏配置界面：
 ```
 192.168.1.1/hidden_version_switch.html
@@ -7709,8 +7967,6 @@ https://www.right.com.cn/FORUM/thread-8253868-1-1.html
 【3】然后本地可以测试一下光猫telnet功能是否打开（开始-运行-cmd-telnet192.168.1.1，用户名user，密码随意，进不去也无所谓，这一步是确保光猫启用了telnet功能，配置中会留下明文密码）  
 【4】ftp链接光猫。这里我使用的是winscp，ftp连接光猫，账户密码都是useradmin/useradmin（看下图），/var/tmp/目录下，找到telnet_su_passwd 文件，打开即可获得  
   
-那么上面就是超级密码了。  
-使用超级管理员登录就可以了~~！
 
 
 
