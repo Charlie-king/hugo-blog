@@ -125,7 +125,7 @@ chzhdpl@246
 ```
 http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
 ```
-5jifg@f4@C1
+
 ```
 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 ```
@@ -160,4 +160,16 @@ http://192.168.1.1/hidden_version_switch.gch
 sk-d748s
 ```
 http://192.168.1.1/cgi-bin/telnet.asp
+```
+贝尔
+```
+http://192.168.1.1/dumpdatamodel.cgi
+```
+
+```
+http://192.168.1.1/system.cgi?telnet
+```
+
+```
+python nokia-router-cfg-tool.py -d uQz+2T4OMPl6tvTpyj0uwQ==
 ```
