@@ -145,6 +145,8 @@ sendcmd 1 DB p DevAuthInfo
 
 ### 中兴1.6
 
+#### 中兴开telnet 6
+
 网卡地址
 ```
 000729553557
@@ -152,22 +154,30 @@ sendcmd 1 DB p DevAuthInfo
 
 联通
 新版固件要改网卡
+
+```
+./6 -i 192.168.1.1 --port 80 --user factorymode --pass nE%jA@5b --new --telnet
+```
+
+```
+./6 -i 192.168.1.1 --port 80 --user CMCCAdmin --pass aDm8H%MdA --new --telnet
+```
+
 ```
 ./6 -i 192.168.1.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
 ```
 
+```
+./6 -i 192.168.2.1 --port 80 --user lnadmin --pass lnadmin --new --telnet
+```
 
 电信
 ```
 ./6 -i 192.168.1.1 --new --telnet
 ```
-
+执行结果，如果一直报异常错，可能网卡没改，网卡不行。
 ```
 ZteONU 0.0.6 (github.com/thank243/zteOnu) 
------------------------------------
-step [0] reset factory: ok
-step [1] request factory mode: ok
-step [2] send sq: Your request has bad syntax or is inherently impossible to satisfy. Attempt retrying..(1/10)
 -----------------------------------
 step [0] reset factory: ok
 step [1] request factory mode: ok
@@ -182,10 +192,6 @@ ZteONU 0.0.6 (github.com/thank243/zteOnu)
 -----------------------------------
 step [0] reset factory: ok
 step [1] request factory mode: ok
-step [2] send sq: Your request has bad syntax or is inherently impossible to satisfy. Attempt retrying..(1/10)
------------------------------------
-step [0] reset factory: ok
-step [1] request factory mode: ok
 step [2] send sq: ok
 step [3] check login auth: ok
 step [4] enter factory mode: ok
@@ -193,6 +199,72 @@ step [4] enter factory mode: ok
 user: root
 pass: Zte521
 ```
+
+#### 电信光猫查看账号密码命令
+查telnet账号(第一个账号密码)
+```
+gdbus call -y -d com.ctc.igd1 -o /com/ctc/igd1/Network/Telnetserver/Accounts/0 -m com.ctc.igd1.Properties.Get com.ctc.igd1.TelnetAccount UserName
+```
+查telnet密码(第一个账号密码)
+```
+gdbus call -y -d com.ctc.igd1 -o /com/ctc/igd1/Network/Telnetserver/Accounts/0 -m com.ctc.igd1.Properties.Get com.ctc.igd1.TelnetAccount Password
+```
+
+查看超密
+```
+gdbus call -y -d com.ctc.igd1 -o /com/ctc/igd1/Network/HTTPServer -m com.ctc.igd1.Properties.Get com.ctc.igd1.HTTPServer AdminPassword
+```
+
+查看普管账号密码
+```
+setmac show2 | grep USERNAME
+```
+
+```
+setmac show2 | grep USERPASSWD
+```
+
+### 中兴ttl开telnet方法6611 7611 7615全系和v2
+
+https://www.right.com.cn/forum/thread-8385678-1-1.html
+
+原理就是把mtd5格式化后，重启一下就行了，这样Telnet就开好了  
+  
+帐号：root  密码： Zte521  上面是正常情况，如果Telnet端口没  
+  
+开启，用论坛Telnet工具开一下，会卡在永久开启Telnet那个  
+  
+代码那，不用管，Telnet是开好了，帐号密码还是上面那个。  
+  
+移动版  
+  
+TTL里输入以下命令（复制时别少0）  
+  
+第一条：nand erase 0x900000 0x800000  
+  
+第二条：reset  
+  
+电信版  
+  
+TTL里输入以下命令  
+  
+  
+第一条：nand erase 0xd00000 0x800000（复制时别少0）  
+  
+  
+第二条：reset  
+  
+7615V2电信版  
+  
+TTL里输入以下命令（复制时别少0）  
+  
+  
+第一条：nand erase 0x900000 0x800000  
+  
+  
+第二条：reset  
+  
+其它版本自己验证，因为我开的多的就是这两种猫
 
 
 ## 成功案例
@@ -222,6 +294,23 @@ com.ctc.igd1.HTTPServer
 返回抓包
 
 抓包格式
+```json
+{  
+    "Params": [  
+        {  
+            "InterfaceName": "com.ctc.igd1.HTTPServer",  
+            "ObjectPath": "/com/ctc/igd1/Network/HTTPServer",  
+            "Properties": [  
+  
+            ]  
+        }  
+    ],  
+    "RPCMethod": "GetPropertyValues",  
+    "SequenceId": "30134",  
+    "ServiceName": "com.ctc.igd1"  
+}
+```
+压缩一行显示：
 ```json
 {"Params":[{"InterfaceName":"com.ctc.igd1.HTTPServer","ObjectPath":"/com/ctc/igd1/Network/HTTPServer","Properties":[]}],"RPCMethod":"GetPropertyValues","SequenceId":"30134","ServiceName":"com.ctc.igd1"}
 ```
@@ -279,13 +368,17 @@ https://nos*.189cube.com/device/api
 
 
 ### 天邑TEWA
-#### 电信700G
+
+#### 电信700G/707G/708G
+
+直接打开ftp软件，进ftp，账号密码是useradmin普通管理员账密，/var/config/lastgood.xml或db_user_cfg.xml，解码，用708G解码，拖拽过去
+
 法1：192.168.1.1  普通管理员进入，关闭电脑防火墙。  
 在“Windows PowerShell（管理员）”中按顺序输入命令
 
 输入 ftp 192.168.1.1
 
-输入 密码（光猫后面贴出的登录密码）
+输入useradmin 账号密码
 
 输入 cd ..
 
@@ -494,7 +587,8 @@ CUAdmin
 
 电信
 账号telecomadmin、admin、telecom
-pt926G   admin，TeleCom_1234
+pt926G，pt924G
+admin，TeleCom_1234
 pt926E    admin  user的密码被改过，就是改后的密码，
 ```
 admin
@@ -513,8 +607,9 @@ TeleCom_mac  后6位小写
 ```
 
 ```
-TeleCom_92199c
+TeleCom_d725f8
 ```
+
 
 查看配置文件和超密
 ```
@@ -845,12 +940,14 @@ Value Name="PROXY_PASSWORD"
 
 > https://www.right.com.cn/forum/thread-8383645-1-1.html
 
-#### pt921g
-直接下载文件
+#### 电信pt921g（悦me界面）
+
+useradmin登录后，直接下载文件
 ```
 http://192.168.1.1/romfile.cfg
 ```
 
+搜索telecomadmin
 
 
 
@@ -1001,15 +1098,15 @@ Fh@7562E8
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=38144E085FF0
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=BC000413C1E0
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=7CFCFD921CF0
+http://192.168.2.1/telnet?enable=1&key=98EDCABDE820
 ```
 电信
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=CC77C97562E8
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACC4A93B3B60
 ```
 
 ```
@@ -1017,7 +1114,7 @@ root  或者  admin
 ```
 
 ```
-Fh@5C5558
+Fh@3B3B60
 ```
 FH-nE7jA%5m9EE9C4
 ```
@@ -1045,9 +1142,9 @@ TeleCom_1234
 ```
 FH-nE7jA%5m
 ```
-HG5140A，telnetadmin，
+HG5140A，telnetadmin，[mac后6位大写]
 ```
-FH-nE7jA%5m[mac后6位大写]
+FH-nE7jA%5m40A0CC
 ```
 CUAdmin
 ```
@@ -1096,6 +1193,9 @@ Success! admin_pwd=CMCCAdminFa5&G3Pk
 
 
 #### 电信HG6201M
+
+浙江电信
+
 ##### 法1：开telnet
 1. 开telnet
 ```
@@ -1106,7 +1206,7 @@ http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
 ```
 root
 ```
-
+移动root，hg2x0 
 ```
 hg2x0
 ```
@@ -1128,7 +1228,7 @@ FH-nE7jA%5m + mac后6位大写
 ```
 
 ```
-FH-nE7jA%5m9EE9C4
+FH-nE7jA%5m7F229C
 ```
 
 3. 输入命令
@@ -1146,8 +1246,8 @@ http://192.168.1.1:8080/cgi-bin/baseinfoSet.cgi
 
 ASCII码HTML实体编码数字，存在三种情况：
 1、不位移
-2、大小写字母循环和数字位移-4
-3、大小写字母循环和数字位移-4，非字母数字不位移
+2、大小写字母循环偏移-4，数字和其他不偏移
+
 
 74&117&119&84&76&78&118&113&54&78&
 
@@ -1157,6 +1257,37 @@ ASCII码HTML实体编码数字，存在三种情况：
 ```
 https://www.bejson.com/runcode/java/
 ```
+
+**大小写字母循环内偏移-4，非字母不位移**
+```python
+def convert_text(input_text):
+    result = ""
+    codes = input_text.split("&")
+    for code in codes:
+        if code:  # 判断是否为空字符串，为空则跳过
+            num = int(code)
+            if 65 <= num <= 90:  # 大写字母
+                num -= 4
+                if num < 65:
+                    num += 26
+                result += chr(num)
+            elif 97 <= num <= 122:  # 小写字母
+                num -= 4
+                if num < 97:
+                    num += 26
+                result += chr(num)
+            else:
+                result += chr(num)
+
+    return result
+
+input_text = "53&84&119&74&97&100&113&73&89&88&58&33&"
+print(convert_text(input_text))
+```
+
+53&84&119&74&97&100&113&73&89&88&
+5PsFwzmEUT
+
 
 ```java
 import java.util.HashMap;
@@ -1169,7 +1300,7 @@ public class Main {
         Map<String, String> map = new HashMap<>();
         //  获取信息的方式 http://192.168.1.1:8080/cgi-bin/baseinfoSet.cgi
         // fixme,下面两行把从路由器拿到的信息放在这里
-        map.put("telecomadmin", "74&117&119&84&76&78&118&113&54&78&");
+        map.put("telecomadmin", "53&84&119&74&97&100&113&73&89&88&");
         map.put("useradmin", "101&104&113&109&114&");
         for (Map.Entry<String, String> entry : map.entrySet()) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -1188,9 +1319,6 @@ public class Main {
 }
 ```
 
-**如果有字符和特殊符号的，非字母数字不位移**
-
-
 
 
 #### 电信HG6201T
@@ -1206,10 +1334,19 @@ Fh@3142CC
 ```
 abcd
 ```
+安徽电信HG6201T，root，FH-nE7jA%5m
+```
+FH-nE7jA%5m
+```
+
 
 输入命令，第二行就是超密
 ```
 cat /flash/cfg/agentconf/factory.conf
+```
+
+```
+head -2 /flash/cfg/agentconf/factory.conf
 ```
 
 
@@ -1259,6 +1396,14 @@ http://192.168.1.1/logoffaccount.html
 
 开telnet  
 root  hg2x0
+
+#### 联通HG2543C1北京
+
+user登录后，打开以下地址，查看所有配置信息，base64
+```
+http://192.168.1.1/backupsettings.txt
+```
+
 
 #### 联通HG2201U/
 
@@ -1562,6 +1707,26 @@ http://192.168.1.1/hidden_version_switch.html
 法2：山东可，
 上面telnet链接打开，切换默认版本，注册40%，手动配置。
 
+#### 电信SK-M724(合肥政企)
+
+```
+http://192.168.1.1/hidden_version_switch.html
+```
+点开telnet，ftp账户密码是背部普通账密useradmin
+ftp登录后切换，成功后切到`/userconfig`目录下，查看`loid_file`文件，里面是光猫的loid注册信息，去telnet登录一下，/var/tmp/中下载`telnet_su_passwd`。telnet密码是wifi密码+超管密码。
+超密直接下载配置文件，或者去telnet里。
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+
+查看解密后的文件
+```
+vi /tmp/debug-decry-cfg
+```
+
+
+
+
 #### 电信DT741（政企悦me）
 
 【内蒙古电信】
@@ -1624,15 +1789,16 @@ root
 http://192.168.1.1/bd/hide.asp
 ```
 
-![](https://s3.bmp.ovh/imgs/2023/12/02/ff5e99cdc39a2d67.png)
+![](https://s3.bmp.ovh/imgs/2023/12/02/ff5e99cdc39a2d67.png) 
+
 
 https://blog.csdn.net/qq_42294237/article/details/132025846
 
 
 
 
+### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开
 
-### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开！
 sn认证
 捅复位后，重新注册，密码保持不变，删除tr069
 S-Box8L94，F12查看loid，需在网页里重置，复位键没用。
@@ -1674,6 +1840,21 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 vi /tmp/debug-decry-cfg
 ```
 按n跳转下一个匹配的内容
+
+### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/
+
+无需登录，直接打开
+```
+http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
+```
+telnet
+```
+CMCCAdmin
+```
+sxcgs0hp
+```
+aDm8H%MdA
+```
 
 ### H2-3/H1s-3/H2-3s/H2-2
 
@@ -1836,7 +2017,7 @@ a2#We4%Dc2
 grep aucTeleAccountPassword lastgood.xml /config/worka
 ```
 
-密码是ASCII的十六进制数字，在线跑python解码转换一下即可
+密码是ASCII的十六进制数字，在线跑python解码转换一下即可，也可能是64位加密，无解。
 ```python
 
 hex_codes_str = "直接输入：64,68,66,67,23,36,76,64,00,00"
@@ -1855,6 +2036,24 @@ print(result)
 
 ```
 
+**输入切换省份（省份名称用全称，有的版本是简称如广东是gd01，有些区域版本省份代码是省份全拼如河北：hebei）；**
+```
+hi_cfm set sysinfo.province gd01
+```
+
+```
+hi_cfm set sysinfo.province hebei
+```
+
+**输入使用配置生效，重启。**
+
+```
+hi_cfm config
+```
+
+```
+reboot
+```
 
 
 #### H2-2（内蒙）鲜蓝色，注册会重启关闭telnet
@@ -1872,21 +2071,6 @@ aDm8H%MdA
 ```
 重新注册会重启猫，需要快速提交命令修改
 
-
-### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/
-
-无需登录，直接打开
-```
-http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch
-```
-telnet
-```
-CMCCAdmin
-```
-
-```
-aDm8H%MdA
-```
 
 ### GS8108/GM630/UNG430Z/UNG300Z通用
 
@@ -2044,6 +2228,11 @@ vi /tmp/debug-decry-cfg
 ```
 sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg | sed -n '/DevAuthInfo/,/\<Tb.>/p' | grep -i "User\|Pass" | grep -i "UserName\|Password"
 ```
+查宽带密码
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg | awk '/15906211406/{print; for(i=1;i<=5;i++){getline; print}}'
+```
+
 
 在查看状态下使用vi命令的查找命令进行查找超级管理账号：CMCCAdmin，英文状态下点击【/】后输入CMCCAdmin后，点击回车
 
@@ -2118,10 +2307,63 @@ web_passwd="CMCCAdmin****"
 
 &amp;等于&
 
+#### GS3101
 
+浏览器进入光猫后台192.168.1.1，光猫背面普通账号密码登录
 
+**然后新开网页输入下列网址，第一个要是不行，换第二个网址**，开telnet
 
+```
+http://192.168.1.1/cgi-bin/getGateWay.cgi
+```
 
+```
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1
+```
+
+```
+admin
+```
+
+```
+s2@We3%Dc#
+```
+
+**然后输入下列两行命令的任意一行就可以得到超管账号和密码了**
+
+```
+cat ctromfile.cfg | grep 'user'
+```
+
+**查询地区命令**
+
+```
+cd /userfs
+```
+
+**修改地区命令**
+
+```
+prolinecmd romfileselect set 地区代码
+```
+
+**修改SN命令**
+
+```
+prolinecmd serialnum set 要修改成的SN码
+```
+
+**修改MAC命令**
+
+```
+sys mac 要修改成的MAC码 -n
+```
+
+**修改相关参数后执行下列命令保存生效**
+
+```
+prolinecmd restore default
+```
 
 
 #### GS8101
@@ -2231,7 +2473,7 @@ user登录，直接打开telnet
 http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 ```
 默认的账户密码登录
-
+​23m9kf76CUAdmin
 
 #### 电信ZN600
 https://www.right.com.cn/forum/thread-4146855-1-1.html
@@ -2250,6 +2492,17 @@ ZN601
 ### 贝尔
 
 #### G-140-MD
+
+##### 河南联通G-140-UD
+user登录，点击管理，用户管理，修改密码，右键查看框架源代码，搜索CUAdmin就行。
+
+##### 北京联通G-140W-UD
+
+1、chrome浏览器访问[http://192.168.1.1](http://192.168.1.1/)，修改密码页面上，F12，打开开发者工具，搜索到超级密码。  
+2、chrome登录页面，>>按钮上右键检查元素，F12，打开开发者工具，将login.cgi修改为cu.html，用超级密码登录。  
+3、在快速设置中可以修改为桥接。个人意见，没啥子必要。  
+4、在地址栏访问 [http://192.168.1.1/system.cgi?telnet](http://192.168.1.1/system.cgi?telnet)  开启telnet。  
+5、终端窗口 telnet 192.168.1.1，就进入系统root账号了。
 
 **法一：直接查**
 
@@ -2380,6 +2633,60 @@ telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输�
 
 ### 中兴
 
+#### 北京中兴开telnet工具  用user账密，不需超管
+
+直接改桥接命令
+https://www.right.com.cn/forum/thread-8225766-1-1.html
+```
+**第二步：**  
+输入命令：  
+_sendcmd 1 DB p WANC_  
+并将显示的内容复制下来备用。你大概会得到以下内容：  
+<Tbl name="WANC" RowCount="5">  
+        <Row No="0">  
+                <DM name="ViewName" val="IGD.WD1.WCD2.WCPPP1"/>  
+                <DM name="WANCDViewName" val="IGD.WD1.WCD2"/>  
+                <DM name="Enable" val="1"/>  
+                <DM name="WANCType" val="0"/>  
+                <DM name="ConnType" val="1"/>  
+                <DM name="TriggerEnable" val="0"/>  
+                <DM name="LANDViewName" val=""/>  
+                <DM name="WANCName" val="2_INTERNET_R_VID_3961"/>  
+……  
+        </Row>  
+        <Row No="1">  
+                <DM name="ViewName" val="IGD.WD1.WCD3.WCIP1"/>  
+                <DM name="WANCDViewName" val="IGD.WD1.WCD3"/>  
+……  
+        </Row>  
+  
+请记住 2_INTERNET_R_VID_3961 出现在哪个Row No里。比如上面的例子，就是Row 0  
+接下来输入：  
+_sendcmd 1 DB set WANC 0 ConnType 4_  
+意思是将  WANC 表的 0 行 ConnType 字段值改为 4：sendcmd 1 DB set 表名(WANC) 行数(0) 字段名(ConnType) 字段值(4)  
+万一你看到的 2_INTERNET_R_VID_3961 出现在了其他row里，将 WANC后面的数字0改成相应的Row no就可以。  
+然后输入以下命令保存设置：  
+_sendcmd 1 DB save_  
+  
+到这里理论上就已经将模式改成桥接了，重启光猫，然后把光纤插回去。  
+用光猫的Lan1口连接路由器，就可以使用路由器拨号了。  
+  
+今后如果想改回路由模式，用命令：  
+_sendcmd 1 DB set WANC 0 ConnType 0_  
+就可以  
+  
+以下内容不做也可以：  
+如果有兴趣可以顺手把telnet功能打开，方便以后折腾：  
+方法如下，分别输入一下五个命令，复制一条命令执行一次：  
+_sendcmd 1 DB set TelnetCfg 0 TS_Enable 1__sendcmd 1 DB set PortControl 3 PortEnable 1_  
+_sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1_  
+_sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1_  
+_sendcmd 1 DB save_  
+以后你就可以插上光纤用telnet登陆了。
+```
+
+
+
 #### F607za
 默认开telnet，或者用老工具开，无需超密。
 
@@ -2442,11 +2749,14 @@ sidbg 1 DB set TelnetCfg 0 TSLan_UName root
 sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
 ```
 
+```
+sendcmd 1 DB delr WANC 0
+```
 
 ```
-sidbg 1 DB set TelnetUser 0 Username 123Qwe
+sidbg 1 DB set TelnetUser 0 Username root
 sidbg 1 DB set TelnetUser 0 Password 123Qwe
-sidbg 1 DB set DevAuthInfo 0 Pass cuadmin1234
+sidbg 1 DB set DevAuthInfo 0 Pass admin1234
 sidbg 1 DB save
 ```
 
@@ -3260,7 +3570,7 @@ find_secret('8567D4C66584D68D710E2728D22B3EDF0F0434F6C682A3BEAE184F5DC6241AD2', 
 ```
 cat /etc/init.d/regioncode
 ```
-（更改地区数字）
+改地区（更改地区数字）
 ```
 upgradetest sdefconf 211
 ```
@@ -3858,6 +4168,15 @@ cfgcli –r
 
 提升权限时会提示输入密码，密码为：Fh@ABCDEF，其中ABCDEF为光猫设备标识后六位，去掉分隔符，全部大写。
 
+```
+load preconfig 加省份全拼
+```
+**（省份首字母大写）**
+```
+load preconfig Liaoning
+```
+
+
 load_cli factory                                                       进入工程模式
 set factorymode enable                                          开启写入模式
 set device_oui ABCDEF                                           设置OUI
@@ -3868,6 +4187,26 @@ set factorymode disable                                  
 exit                                                                        退出工程模式。
 reboot                                                                   重启光猫生效。
 
+**第三步，改地区**  
+改地区有命令的方式，也有工厂模式网页管理端的方式，这里两种方式我都写出来，但是我偏向于工程模式管理端的方式改地区，因为我在命令的方式改地区后，注册卡在了98%，不是IPTV 不能用就是电话不能用，**最后还是用工厂模式管理页面改地区后才下发注册到100%，宽带，IPTV，电话全部正常**  
+**命令的方式**:获得超密一样，win键+R,打开命令，然后输入cmd，弹出命令窗口后，复制 telnet 192.168.1.1，然后粘贴在命令窗口，下一步输入用户名：telecom ，密码：nE7jA%5m（输入密码时是不显示的，也可先复制好，右键在窗口点一下即可粘贴），之后输入 su ，密码输入Fh@（MAC后6位），然后输入load_cli factory，进入工厂模式，然后输入load preconfig（这就是改地区的命令） ，load preconfig空格你的城市拼音，假设是上海就输入load preconfig shanghai  
+**工厂模式管理端的方式:**先开启隐藏账户，浏览器地址打开[http://192.168.1.1](http://192.168.1.1/)   然后输入用户名：telecom 输入密码：nE7jA%5m登录，在再新建一个，地址输入打开 [http://192.168.1.1:8080/html/logoffaccount.html](http://192.168.1.1:8080/html/logoffaccount.html)，必须先在[http://192.168.1.1](http://192.168.1.1/) 上用超密登录，不然 [http://192.168.1.1:8080/html/logoffaccount.html](http://192.168.1.1:8080/html/logoffaccount.html)这个网址会无法打开，打开后，开启隐藏账户、TR069 WAN连接、ITMS参数，点保存， 如下图  
+![](https://www.right.com.cn/forum/data/attachment/forum/202311/06/233333emiiwaz1egzfumzs.jpg)
+
+**3.jpg** _(6.09 KB, 下载次数: 0)_
+
+[下载附件](https://www.right.com.cn/forum/forum.php?mod=attachment&aid=NjUzOTE2fGZhNzBiY2U0fDE3MzIxMjEzMzV8ODY4MjQ4fDgzMTEzNDM%3D&nothumb=yes)  保存到相册
+
+2023-11-6 23:33 上传
+
+  
+之后win键+R,打开命令，然后输入cmd，弹出命令窗口后，复制 telnet 192.168.1.1，然后粘贴在命令窗口，下一步输入用户名：telecom ，密码：nE7jA%5m，之后输入 su ，密码输入Fh@（MAC后6位），然后输入load_cli factory，进入工厂模式，然后输入 load_cli factory，然后输入 set factorymode enable，然后输入 set xvr_tx ON，输入完就是在浏览器上输入192.168.1.1或是192.168.1.1:8080 ，可能不同的光猫有所不同，反正可以打开工厂模式管理页面就行，如下图，会显示处于工厂模式的  
+![](https://www.right.com.cn/forum/data/attachment/forum/202311/06/233815vk0vxmwa5xcmvdwv.jpg)  
+  
+登录账号密码就不是之前的超密了，是烽火自己的，**账号fiberhomehg2x0，密码hg2x0，**登录后就能看到熟悉的出厂设置，预设值模式下的改地区，还有恢复开箱模式，改GPON或是EPON等了，如下图  
+![](https://www.right.com.cn/forum/data/attachment/forum/202311/06/234103i6y9vnq7ay5kwzry.jpg)  
+  
+至此telnet，超密，改地区，恢复开箱就都全部搞定了
 
 load preconfig Guangdong     改省份（要注意：有些省份文件缺少，可能会出现访问不了。那就要又重新加别的省份了，直接能打开主页，而且跳出注册面。有风险，自己担风险。）如果改自己省用不了。就网上找下与自己省份参数一样的省份重新load preconfig 省份  
 show area_code （此命令为显示当前加载的省份）  
@@ -4002,6 +4341,70 @@ show area_code （此命令为显示当前加载的省份）
 100. voice_test [on|off]
 ```
 
+手动修改注册状态  
+
+```
+cfg_cmd set InternetGatewayDevice.X_CU_UserInfo.Status 0
+```
+//0=成功，1=身份证不存在，2=宽带账号不存在，3=身份证与宽带账号匹配失败，4=超时，5=已经注册过且无新的工单要执行，99=无认证结果信息  
+
+```
+cfg_cmd set InternetGatewayDevice.X_CU_UserInfo.Result 1 
+```
+//0=开始下发，1=下发成功，2=下发失败，99=无下发结果信息
+
+### 创维SK改sn，地区
+**查看地区代码**
+```
+/etc/init.d/regioncode
+```
+
+**查看当前光猫所在地区**
+```
+siupgrade gdefconf
+```
+
+**下列命令为将光猫修改为辽宁地区，329为辽宁地区代码  
+```
+siupgrade sdefconf 329
+```
+
+**（修改地区以后，光猫会自动重启，重启以后超管密码就变成公开的了）**
+
+**查看设备所有ID代码**
+
+```
+sismac show
+```
+
+**查看设备所有ID代码（显示十进制）**
+```
+sismac info
+```
+
+**下列命令+空格+ID代码+所要修改的参数**
+
+```
+sismac 1
+```
+
+**下列命令+空格+ID代码，就把参数清除了**
+```
+sismac 3
+```
+
+**保存配置**
+
+```
+sidbg 1 DB save
+```
+
+**重启光猫**
+
+```
+reboot
+```
+
 ### h2-2修改sn，mac等教程
 首先感谢论坛的资料，打开[http://192.168.1.1/hidden_version_switch.gch](http://192.168.1.1/hidden_version_switch.gch)，选择“Default Version”并确定，光猫自动重启，（恢复出厂设置）  
 直接打开这个网页[http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch](http://192.168.1.1/usr=CMCCAdmin&psw=aDm8H%25MdA&cmd=1&telnet.gch) 出现 success（成功）的字样（打开telnet）  
@@ -4103,21 +4506,41 @@ sendcmd 1 DB save
 #### 天津联通，云南联通，注册不会下发上网账号密码
 #### 辽宁联通换猫，直接注册
 
+## 数据下发
+
+### 不下发：
+河南联通
+天津联通
+
+### 下发id，不下发宽带账号密码
+云南联通
+陕西移动
+
+
+## 注册自动下发：
+广东移动，广东联通，广东电信，
 
 
 ## 宽带密码
 123456，123123，321321,12345678，后6位，888888，666666
 #### 北京移动，应该是装机日期，格式：20220202，loid：Bj开头
 #### 辽宁移动，12345678或后8位
+#### 海南移动，账号手机号，密码kd123456
 #### 黑龙江移动，后6位
+#### 浙江移动，后6位
+#### 江苏移动，账号手机号，密码112233，企宽123123（装机时手动设置的）
+#### 四川移动（账号不是手机号的话，取手机后6位），
+#### 广东移动东莞移动，后6位，一般后6位
+#### 陕西移动，后6位
+
 #### 辽宁联通，后6位或8位数字或123456
 #### 河南联通、湖北联通、天津联通、上海联通，123456
-#### 四川移动（账号不是手机号的话，取手机后6位），广东移动东莞移动，后6位，一般后6位
-#### 山东联通、江苏联通，后6位
-#### 浙江移动，后6位
-#### 江苏移动，112233，企宽123123（手动设置）
+#### 山东联通、江苏联通、安徽联通、云南联通，后6位
+#### 内蒙古联通，123456或013579或身份证后6位（客服不一定知道，不能修改到）
+
 #### 山西太原联通 1234567890
-#### 海南移动手机号，密码kd123456
+
+#### 河北电信，后6位
 
 
 ## 注册码
@@ -4152,7 +4575,7 @@ sendcmd 1 DB save
 loid和账号一样
 073800292846
 
-#### 河北联通，山西联通，贵州联通，江西联通无loid，mac自动认证
+#### 湖南联通，河北联通，山西联通，贵州联通，江西联通，北京联通无loid，mac自动认证
 
 
 

@@ -1,7 +1,7 @@
 ---
 title: "PVE安装和初始设置"
 subtitle: "笔记本安装PVE后的设置"
-date: 2023-07-05T11:08:20+08:00
+date: 2024-11-19T10:08:20+08:00
 
 lastmod: 2023-07-05T11:08:20+08:00
 draft: false
@@ -55,63 +55,6 @@ PVE：
 
 4. 进入界面，选第一个install promox VE，选择安装位置，选择地区（china），设置密码和邮箱，设置网络，设置和路由器同个网段，开始安装。安装后会启动进入系统，用户root，密码为刚才设置的密码。启动后会显示IP，在同个局域网内可通过浏览器访问，注意是https而非http。
 ![](https://s3.bmp.ovh/imgs/2023/07/07/bc1b38bbcaf904a1.png)
-
-
-## nano编辑器简单介绍
-
-一般linux发行版都内置了nano，vi编辑器，对新手而言nano更友好，vi的使用习惯不太一样。
-
-如系统没内置自行安装一下。
-
-CentOS 系统：
-```javascript
-yum install -y nano
-```
-
-Debian/Ubuntu 系统：
-
-```javascript
-apt-get install -y nano
-```
-
-
-**nano编辑器语法简单介绍：**
-
-1. 语法：
-```
-nano <文件名或文件绝对路径>
-```
-打开文件，文件不存在则新建
-
-```
-示例：
-nano  xx.conf
-nano  /xxx/xxx/xx.conf
-
-```
-
-打开后即可直接编辑，上下左右方向键可直接移动光标，选中可以进行复制，编辑，粘贴等，注意pve浏览器管理台中shell只能通过鼠标右键复制粘贴，不支持ctrl+c/v。
-
-底部有快捷键说明，^G 即为 Ctrl+G ，功能为显示帮助文本。
--   Ctrl+G，显示帮助文本
--   Ctrl+O，保存当前文件
--   Ctrl+R，读取其他文件并插入光标位置
--   Ctrl+Y，跳至上一屏幕
--   Ctrl+K，剪切当前一行
--   Ctrl+C，显示光标位置
--   Ctrl+X，退出编辑文本
--   Ctrl+J，对其当前段落（以空格为分隔符）
--   Ctrl+W，搜索文本位置
--   Ctrl+V，跳至下一屏幕
--   Ctrl+U，粘贴文本至光标处
--   Ctrl+T，运行拼写检查
--   Ctrl+_，跳转到某一行
--   ALT+U，撤销
--   ALT+E，重做
--   ALT+Y, 语法高亮
--   ALT+#，显示行号
-
-编辑修改后，保存`ctrl+o`，退出`ctrl+X`，如没有保存直接退出`ctrl+x`时会弹出提示是否保存，按y或n进行保存退出或不保存退出。
 
 
 ## 笔记本pve合盖子不休眠设置
@@ -321,14 +264,69 @@ if(false)
 ```
 ![](https://s3.bmp.ovh/imgs/2023/07/07/e9a8daf415ce64d3.png)
 
-##
-
-注意：此版网卡驱动r8168新版存在问题，旧笔记本经常遇到遇到网络断的情况
-
-lspci -v
-查看
 
 
+
+
+## 其他：nano编辑器简单介绍
+
+一般linux发行版都内置了nano，vi编辑器，对新手而言nano更友好，vi的使用习惯不太一样。
+
+如系统没内置自行安装一下。
+
+CentOS 系统：
+```javascript
+yum install -y nano
+```
+
+Debian/Ubuntu 系统：
+
+```javascript
+apt-get install -y nano
+```
+
+
+**nano编辑器语法简单介绍：**
+
+1. 语法：
+```
+nano <文件名或文件绝对路径>
+```
+打开文件，文件不存在则新建
+
+```
+示例：
+nano  xx.conf
+nano  /xxx/xxx/xx.conf
+
+```
+
+打开后即可直接编辑，上下左右方向键可直接移动光标，选中可以进行复制，编辑，粘贴等，注意pve浏览器管理台中shell只能通过鼠标右键复制粘贴，不支持ctrl+c/v。
+
+底部有快捷键说明，^G 即为 Ctrl+G ，功能为显示帮助文本。
+-   Ctrl+G，显示帮助文本
+-   Ctrl+O，保存当前文件
+-   Ctrl+R，读取其他文件并插入光标位置
+-   Ctrl+Y，跳至上一屏幕
+-   Ctrl+K，剪切当前一行
+-   Ctrl+C，显示光标位置
+-   Ctrl+X，退出编辑文本
+-   Ctrl+J，对其当前段落（以空格为分隔符）
+-   Ctrl+W，搜索文本位置
+-   Ctrl+V，跳至下一屏幕
+-   Ctrl+U，粘贴文本至光标处
+-   Ctrl+T，运行拼写检查
+-   Ctrl+_，跳转到某一行
+-   ALT+U，撤销
+-   ALT+E，重做
+-   ALT+Y, 语法高亮
+-   ALT+#，显示行号
+
+编辑修改后，保存`ctrl+o`，退出`ctrl+X`，如没有保存直接退出`ctrl+x`时会弹出提示是否保存，按y或n进行保存退出或不保存退出。
+
+## 一些问题
+
+注意：r8168网卡驱动新版存在问题，旧笔记本经常遇到遇到网络断的情况
 
 ## 参考
 
