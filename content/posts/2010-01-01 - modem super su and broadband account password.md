@@ -152,28 +152,28 @@ sendcmd 1 DB p DevAuthInfo
 000729553557
 ```
 
-联通
+执行命令
 新版固件要改网卡
 
 ```
-./6 -i 192.168.1.1 --port 80 --user factorymode --pass nE%jA@5b --new --telnet
+./6.exe -i 192.168.1.1 --port 80 --user factorymode --pass nE%jA@5b --new --telnet
 ```
 
 ```
-./6 -i 192.168.1.1 --port 80 --user CMCCAdmin --pass aDm8H%MdA --new --telnet
+./6.exe -i 192.168.1.1 --port 80 --user CMCCAdmin --pass aDm8H%MdA --new --telnet
 ```
 
 ```
-./6 -i 192.168.1.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
+./6.exe -i 192.168.1.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
 ```
 
 ```
-./6 -i 192.168.2.1 --port 80 --user lnadmin --pass lnadmin --new --telnet
+./6.exe -i 192.168.2.1 --port 80 --user lnadmin --pass lnadmin --new --telnet
 ```
 
 电信
 ```
-./6 -i 192.168.1.1 --new --telnet
+./6.exe -i 192.168.1.1 --new --telnet
 ```
 执行结果，如果一直报异常错，可能网卡没改，网卡不行。
 ```
@@ -485,6 +485,7 @@ CUAdmin get
 #### 联通TEWA 800/830/1206e（河南）/870G（江苏）
 
 后缀不同
+登录user后，打开连接。
 1206e
 ```
 http://192.168.1.1/backupsettings.html
@@ -497,6 +498,11 @@ http://192.168.1.1/backupsettings.conf
 还原上传配置文件
 ```
 http://192.168.1.1/updatesettings.html
+```
+
+直接打开这个可看到详细信息，超密等。
+```
+http://192.168.1.1/dumpmdmd.cmd
 ```
 
 
@@ -967,7 +973,7 @@ http://192.168.1.1/bd/vermod.asp
 直接修改 锁定远程控制的参数即可。
 
 ##### 法2：
-以下步骤多余。
+改源码部分
 1. 输入 ，回车运行。
 ```
 cp /home/httpd/web/net_eth_links.asp /var/
@@ -1449,7 +1455,7 @@ telnet
 
 备份配置文件 
 ```
-http://192.168.1.1/backupsettings.conf
+http://192.168.2.1/backupsettings.conf
 ```
 还原配置文件
 ```
