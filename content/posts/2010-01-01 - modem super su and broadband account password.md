@@ -718,6 +718,7 @@ options[MENU_OPTION_SYSUSER]options[MENU_OPTION_SYSPWD]
 telnet
 看超密，里面一般第一个
 开telnet  admin，1234
+或TeleCom_1234
 grep 关键字 -A 5  含后5行
 grep 关键字 -B 5  含前5行
 
@@ -832,7 +833,7 @@ http://192.168.1.1/bd/vermod.asp
 
 打开back下载文件config.xml，查找超密，宽带密码
 
-```jsx
+```js
 http://192.168.1.1/bd/saveconf.asp
 ```
 
@@ -1099,16 +1100,16 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@7562E8
+Fh@2DE560
 ```
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=BC000413C1E0
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=3086F12DE560
 ```
 联通
 ```
-http://192.168.2.1/telnet?enable=1&key=98EDCABDE820
+http://192.168.2.1/telnet?enable=1&key=9070D339AD70
 ```
 电信
 ```
@@ -2207,6 +2208,11 @@ find / -name 'backupsettings.conf'
 ```
 find / -name 'db_backup_cfg.xml'
 ```
+cd到根目录，遍历所有文件按内容搜索，比较久
+```
+cd /
+find -type f -name '*'|xargs grep '你的宽带账号'
+```
 
 进入这个文件夹
 ```
@@ -2239,6 +2245,14 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg
 sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg | awk '/15906211406/{print; for(i=1;i<=5;i++){getline; print}}'
 ```
 
+```
+<Tbl name="WANCPPP" RowCount="1">
+<Row No="0">
+<DM name="ViewName" val="IGD.WD1.WCD2.WCPPP1"/>
+<DM name="UserName" val="01016575656"/>
+<DM name="Password" val="806743"/>
+```
+
 
 在查看状态下使用vi命令的查找命令进行查找超级管理账号：CMCCAdmin，英文状态下点击【/】后输入CMCCAdmin后，点击回车
 
@@ -2247,8 +2261,6 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg
 找到对应的CMCCAdmin以及对应User及下面行的Pass的Val值，大功告成
 
 **ftp账密是相同的：e8ftp**
-
-移动吉比特系列光猫均可参考。
 
 广西GM630-R，重置后，下发配置，再去删除tr069和关闭上报，第二个地址开启telnet。
 
@@ -2445,6 +2457,12 @@ F12里开。
 ```
 cat /tmp/var/romfile.cfg | grep CMCCAdmin
 ```
+### GM620(湖南移动)
+telnet
+192.168.1.1/telnet
+以上某个链接打开
+admin
+默认超密
 
 ### H3-2r/H3-1r lite/H-PON01
 
@@ -2494,7 +2512,6 @@ ZN601
 
 
 
-
 ### 贝尔
 
 #### G-140-MD
@@ -2532,7 +2549,7 @@ telnet密码搜supassword
 
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d uQz+2T4OMPl6tvTpyj0uwQ==
+python nokia-router-cfg-tool.py -d f+ZHnLWWzs65ppLpDjT69g==
 ```
 telnet：
 user或useradmin  
@@ -2610,8 +2627,82 @@ cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Status 0
 cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
 ```
 
+```
+设置超级登录用户名  
+cfgcli -s InternetGatewayDevice.DeviceInfo.X_CT-COM_TeleComAccount.UserName 要修改的用户名
+设置超级密码  
+cfgcli -s InternetGatewayDevice.DeviceInfo.X_CT-COM_TeleComAccount.Password 要修改的密码  
+修改路由器无线名字  
+cfgcli -s InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID 要修改的名称  
+修改路由器无线5G名称:
+cfgcli -s InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.SSID 要修改的名称)
+```
+直接改超密密码
+```
+cfgcli -s InternetGatewayDevice.DeviceInfo.X_CT-COM_TeleComAccount.Password admin1234
+```
+
+修改默认超密 
+```
+cfgcli -g InternetGatewayDevice.DeviceInfo.X_CT-COM_TeleComAccount.Password
+```
 
 
+进入Telnet查看宽带账号密码 
+```
+cat /configs/etc/ppp/options_ppp131
+```
+
+```
+一、互刷运营商
+要先选中国电信的介面,Telnet命令
+ritool set Custom AH 切换电信界面
+ritool set Custom CU 切换联通界面
+直接命令 reboot 重启
+再刷入移动或联通固件，这时再恢复出厂 cfgcli -r
+二、telnet 常用修改  
+（1）修改超级用户名称和密码  
+cfgcli -s InternetGatewayDevice.DeviceInfo.X_CT-COM_TeleComAccount.UserName ***
+cfgcli -s InternetGatewayDevice.DeviceInfo.X_CT-COM_TeleComAccount.Password ***
+（2）修改MAC命令
+ritool set YPSerialNum 8300012110BC046384
+ritool set MACAddress f8:8c:e8:88:ad:88 (MAC的英文要小写)
+ritool set G984Serial 5A01B711（这个位置是设备识别号的后8位 )
+（3）关闭注册提示
+cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Status 0
+cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1
+
+（4）开启 ipv6
+cfgcli -f -s InternetGatewayDevice.DeviceInfo.X_CT-COM_IPProtocolVersion.Mode 3
+（5）修改设备基本信息
+ritool set MfrID HWTC (:把 生产厂家标识 NBEL 改为HWTC）
+ritool set Mnemonic G-140W-ME (设备型号G-140W-ME）
+（6）修改2.5G和5G名称
+cfgcli -s InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.SSID ***
+cfgcli -s InternetGatewayDevice.LANDevice.1.WLANConfiguration.5.SSID ***-5G
+ritool set SSID-1Name ***
+ritool set SSID-2Name ***-5G
+（7）修改上网设备数量限制
+原来配置文件最多只能3台设备上网，必须修改
+cfgcli set InternetGatewayDevice.Services.X_CT-COM_MWBAND.TotalTerminalNumber 10
+改完后，输入：ritool dump ，看一下改了没
+cfgcli -r 恢复出厂 ，等命令走结束
+reboot 或 reset 重启设备
+三、常用配置网页网址
+
+选省份介面http://192.168.1.1/opid_setting.cgi
+固件升级路径：[http://192.168.1.1/upgrade.cgi](http://192.168.1.1/upgrade.cgi)
+插件配置卸载路径：[http://192.168.1.1/upgrade_plugin.cgi?](http://192.168.1.1/upgrade_plugin.cgi?)
+Upnp功能开启：[http://192.168.1.1/upnp.cgi?](http://192.168.1.1/upnp.cgi?)
+usb备份、恢复：[http://192.168.1.1/usb.cgi?backup](http://192.168.1.1/usb.cgi?backup)
+TR069 RMS平台认证：[http://192.168.1.1/tr69.cgi](http://192.168.1.1/tr69.cgi)
+AWIFI激活管理平台：[http://192.168.1.1/awifi_config.cgi](http://192.168.1.1/awifi_config.cgi)
+设备ma等信息查看：[http://192.168.1.1/bucpe.cgi](http://192.168.1.1/bucpe.cgi)
+设定password密码： [http://192.168.1.1/gpon_config.cgi](http://192.168.1.1/gpon_config.cgi)
+设定LAN端IPV6： [http://192.168.1.1/lan_cu.cgi](http://192.168.1.1/lan_cu.cgi)
+配置文件查看：[http://192.168.1.1/dumpdatamodel.cgi](http://192.168.1.1/dumpdatamodel.cgi)
+
+```
 
 ### 瑞斯达康
 #### 联通MSG2100E-UPON-4V
@@ -3195,6 +3286,22 @@ http://192.168.1.1/bridge_route.gch
 tr069最开始短的部分，第一个
 ```xml
 <WANIPConnectionInstance InstanceID="1" Enable="0" Reset="0" PossibleConnectionTypes="" ConnectionType="IP_Routed" Name="" LastConnectionError="ERROR_NONE" AutoDisconnectTime="0" IdleDisconnectTime="0" WarnDisconnectDelay="0" RSIPAvailable="0" NATEnabled="0" AddressingType="DHCP" DNSEnabled="1" DNSOverrideAllowed="0" DNSServers="" MaxMTUSize="1500" MACAddressOverride="0" ConnectionTrigger="" RouteProtocolRx="" ShapingRate="0" ShapingBurstSize="0" PortMappingNumberOfEntries="0" PortTriggerNumberOfEntries="0" X_HW_SERVICELIST="TR069" X_HW_VLAN="50" X_HW_PRI="6" X_HW_MultiCastVLAN="4294967295" X_HW_VenderClassID="" X_HW_E8C_LanInterface="" X_HW_TR069FLAG="0" X_HW_IPv4Enable="1" X_HW_IPv6Enable="0" X_HW_IPv6MultiCastVLAN="-1">
+```
+
+
+直接改桥接，搜索WANPPPConnectionInstance，替换原来internet的那段，909行号附近，注意改vlan
+```xml
+<WANPPPConnectionInstance InstanceID="1" Enable="1" Reset="0" PossibleConnectionTypes="IP_Routed,PPPoE_Bridged" ConnectionType="PPPoE_Bridged" PPPoESessionID="1" Name="" AutoDisconnectTime="" IdleDisconnectTime="180" WarnDisconnectDelay="0" RSIPAvailable="0" NATEnabled="0" Username="" Password="" PPPEncryptionProtocol="None" PPPCompressionProtocol="None" PPPAuthenticationProtocol="PAP" RemoteIPAddress="" MaxMRUSize="1492" DNSEnabled="1" DNSOverrideAllowed="0" DNSServers="" MACAddressOverride="0" TransportType="PPPoE" PPPoEACName="" PPPoEServiceName="" ConnectionTrigger="AlwaysOn" RouteProtocolRx="Off" PPPLCPEcho="0" PPPLCPEchoRetry="0" ShapingRate="-1" ShapingBurstSize="0" PortMappingNumberOfEntries="0" PortTriggerNumberOfEntries="" X_HW_SERVICELIST="INTERNET" X_HW_VLAN="44【vlanid要改这里】" X_HW_PRI="0" X_HW_MultiCastVLAN="4294967295" X_HW_ConnectionControl="0xFFFFFFFF" X_HW_IPMode="0" X_HW_IPv4Enable="1" X_HW_IPv6Enable="1" X_HW_IPv6MultiCastVLAN="-1" X_HW_E8C_LanInterface="InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.1,InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.2,InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.3" X_HW_TR069FLAG="0" X_HW_PriPolicy="Specified" X_HW_DefaultPri="0" X_HW_MacId="1" X_HW_WanId="0" X_HW_LanDhcpEnable="1" X_HW_E8C_DsliteEnable="0" X_HW_E8C_DsliteMode="0" X_HW_E8C_DsliteAftr="" X_HW_LcpEchoReqCheck="0" X_HW_ExServiceList="" X_HW_NatType="0" X_HW_IPForwardList="" X_HW_E8C_IPv6IPAddress="" X_HW_E8C_IPv6IPAddressAlias="" X_HW_E8C_IPv6IPAddressOrigin="AutoConfigured" X_HW_E8C_IPv6DNSServers="" X_HW_E8C_DefaultIPv6Gateway="" X_HW_E8C_IPv6PrefixAlias="" X_HW_E8C_IPv6PrefixOrigin="PrefixDelegation" X_HW_E8C_IPv6Prefix="" X_HW_E8C_IPv6PrefixPltime="0" X_HW_E8C_IPv6PrefixVltime="0" X_HW_E8C_IPv6DomainName="" X_HW_E8C_IPv6PrefixDelegationEnabled="0" X_HW_Dnsv4ProxyForV6="0" X_HW_UpPortId="0" X_HW_IdleDetectMode="DetectBidirectionally" X_HW_Tr069Invisible="0" X_HW_CU_IPForwardModeEnabled="0" X_HW_CU_IGMPProxyEnable="0" X_HW_BindPhyPortInfo="LAN1,LAN2,LAN3" X_HW_IPv6_PortForwardNumberOfEntries="0" X_HW_RemoteWanInfo="" X_HW_IPv6PppUp="0" X_HW_DHCPv6ForAddress="0" X_HW_IGMPEnable="0" X_HW_RouteProtocolRxMode="Passive" X_HW_RouteProtocolAuthMode="Off" X_HW_RouteProtocolAuthKey="" X_HW_UnnumberedModel="0" X_HW_TDE_IPv6AddressPrefixLength="64" X_HW_TDE_IPv6AddressingType="SLAAC" X_HW_Flag="0" X_HW_LowerLayers="" X_HW_VLANMode="2" X_HW_HURL="" X_HW_MOTM="" X_HW_StaticRouteInfo="" X_HW_DscpToPbitTbl="" X_HW_UpstreamWAN="0" X_HW_ConnectionDelay="30" X_HW_BridgeEnable="0" X_HW_CU_MLDProxyEnable="0" X_HW_TRUE_IPMode="" X_HW_TRUE_IPv6DNSAddressSource="" X_HW_AgentRemoteIdMode="off" X_HW_NPTv6Enable="0" X_HW_VXLAN_Enable="0" X_HW_SpeedLimit_UP="0" X_HW_SpeedLimit_DOWN="0" X_HW_PingResponseEnable="0" X_HW_IPv6LLA="" X_HW_PingResponseWhiteList="" X_HW_OperateDisable="0" LastDisconnectTime="">
+<X_HW_6RDTunnel Enable="0" RdPrefix="" RdPrefixLen="40" RdBRIPv4Address="" RdIPv4MaskLen="10"/>
+<X_HW_IPv6>
+<IPv6Address NumberOfInstances="1">
+<IPv6AddressInstance InstanceID="1" Alias="cpe-1" Origin="" IPAddress="" ChildPrefixBits="" X_HW_E8C_DnsIpAddr="" AddrMaskLen="64" DefaultGateway=""/>
+</IPv6Address>
+<IPv6Prefix NumberOfInstances="1">
+<IPv6PrefixInstance InstanceID="1" Alias="cpe-1" Origin="" Prefix="" X_HW_E8C_ChildPrefixBits="" X_HW_CU_PreferredLifeTime="" X_HW_CU_ValidLifeTime=""/>
+</IPv6Prefix>
+</X_HW_IPv6>
+</WANPPPConnectionInstance>
 ```
 
 
@@ -4494,13 +4601,22 @@ sendcmd 1 DB save
 
 电信，小翼管家有个自助更换网关
 
-#### 山东联通换猫直接用loid注册即可，没有绑定
+#### 山东河南联通换猫直接用loid注册即可，没有绑定
+#### 天津联通换猫，直接loid配置，手动配置网络即可
+iptv不勾选，保持和原猫一致，vlan id 2802，优先级3，nat使能，组播3801
+
 #### 安徽移动，loid改sn，mac还不行，拨号上，
 #### 湖南移动认sn，mac，改完拨号屏蔽注册页即可
 ```
 sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
 sendcmd 1 DB save
+```
+
+```
+sidbg 1 DB set PDTCTUSERINFO 0 Status 0  
+sidbg 1 DB set PDTCTUSERINFO 0 Result 1  
+sidbg 1 DB save
 ```
 #### 广东移动、广东电信，光猫改广东地区即可注册
 #### 广西电信，光猫改广西地区即可注册
@@ -4517,14 +4633,20 @@ sendcmd 1 DB save
 ### 不下发：
 河南联通
 天津联通
+河北联通
 
 ### 下发id，不下发宽带账号密码
 云南联通
 陕西移动
+吉林电信，41
 
 
 ## 注册自动下发：
 广东移动，广东联通，广东电信，
+福建联通，
+湖南联通
+山西联通
+山东联通，固话也下发(贝尔140)
 
 
 ## 宽带密码
@@ -4540,13 +4662,14 @@ sendcmd 1 DB save
 #### 陕西移动，后6位
 
 #### 辽宁联通，后6位或8位数字或123456
-#### 河南联通、湖北联通、天津联通、上海联通，123456
+#### 河南联通、湖北联通、天津联通、上海联通、吉林联通，123456
 #### 山东联通、江苏联通、安徽联通、云南联通，后6位
 #### 内蒙古联通，123456或013579或身份证后6位（客服不一定知道，不能修改到）
 
 #### 山西太原联通 1234567890
 
 #### 河北电信，后6位
+#### 吉林电信，5种：123456,123321,135246,155413，账号后6位 
 
 
 ## 注册码
@@ -4585,17 +4708,7 @@ loid和账号一样
 
 
 
-3_IPTV_B_VID_30
-
-联通：
-1.  电脑网口直连光猫网口1，不要经过路由器，同时用手机<流量>热点给电脑供网（手机USB线或热点）
-
-2.  注意要先拔光纤（猫底下方形的那个），拿个针捅reset复位孔持续捅40秒左右，一般看到所有灯闪灭2次再松开就差不多了，如果一直没闪烁就每40秒松开一下，再捅40秒，重复4次；最后拔电重启猫，全程拔光纤，等我说插再插。
-
-3.  捅后光猫后台输入
-192.168.1.1/cu.html
-CUAdmin，CUAdmin登录进去说明捅成功了，联系我下一步
-
+湖南电信，海南电信： loid+密码
 
 
 ## 案例
@@ -4726,7 +4839,11 @@ https://bbs.luobotou.org/thread-49853-1-1.html
 
 
 我又一光猫破解telnet，没错，那就是H2-3s  
-方法很简单，使用CMCCAdmin（密码aDm8H%MdA）登录192.168.1.1，然后打开这个链接：http://192.168.1.1/bd/vermod.asp    
+方法很简单，使用CMCCAdmin（密码aDm8H%MdA）登录192.168.1.1，然后打开这个链接：
+```
+http://192.168.1.1/bd/vermod.asp
+```
+
 你就会进到这个界面：  
   
   
