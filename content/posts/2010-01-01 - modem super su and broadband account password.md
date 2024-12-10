@@ -481,6 +481,15 @@ telecomadmin get
 CUAdmin get
 输入get查看提示，有的get telepwd
 
+#### 电信TEWA 600AGM(悦me)
+
+useradmin登录后，直接在该页面地址（不需删除内容）后添加
+```
+/dumpmdmd.conf
+```
+下载文件，后搜索，password或搜telecomadmin账号
+字母加数字的部分即是：Ncqrvlcr36
+`Password&gt;Ncqrvlcr36&lt;/Password&gt;#j@b8S?%&lt`
 
 #### 联通TEWA 800/830/1206e（河南）/870G（江苏）
 
@@ -1100,7 +1109,7 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@2DE560
+Fh@B2E8C2
 ```
 浏览器中录入  
 移动
@@ -1109,7 +1118,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=3086F12DE560
 ```
 联通
 ```
-http://192.168.2.1/telnet?enable=1&key=9070D339AD70
+http://192.168.1.1/telnet?enable=1&key=383D5BB2E8C2
 ```
 电信
 ```
@@ -1149,9 +1158,9 @@ TeleCom_1234
 ```
 FH-nE7jA%5m
 ```
-HG5140A，telnetadmin，[mac后6位大写]
+HG5140A，广东电信HG6143D1，telnetadmin，[mac后6位大写]
 ```
-FH-nE7jA%5m40A0CC
+FH-nE7jA%5mF5FD20
 ```
 CUAdmin
 ```
@@ -1456,7 +1465,7 @@ telnet
 
 备份配置文件 
 ```
-http://192.168.2.1/backupsettings.conf
+http://192.168.1.1/backupsettings.conf
 ```
 还原配置文件
 ```
@@ -1820,7 +1829,6 @@ telnet：CMCCAdmin，密码
 UM@Pon521
 ```
 
-
 ```
 chzhdpl@246
 ```
@@ -2004,7 +2012,7 @@ grep aucTelnetPassword lastgood.xml /config/worka
 然后复制粘贴保存一下aucTelnetPassword值
 输入
 ```
-vim lastgood.xml
+vim /config/worka/lastgood.xml
 ```
 找到aucTeleAccountPassword(Win可以用PgUp,PgDn翻页)
 找到后吧找到aucTeleAccountPassword的Value值(英文输入状态按i进入编辑)将值替换成aucTelnetPassword的值
@@ -2269,11 +2277,12 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg
 H2-2部分测试失败，河南平顶山测试成功。
 ![](https://s3.bmp.ovh/imgs/2023/08/02/1b69319f6a712987.png)
 
-### CM112 /GS3101/GS2107（GS3202不同）
+### CM112z /GS3101/GS2107（GS3202不同）
 
 **测试：**
 http://192.168.1.1/cgi-bin/tmp/ctromfile.cfg  
 
+cm112z（北京移动）http://192.168.1.1/cgi-bin/content.asp
 1. 登陆user之后打开这个地址  
 ```
 http://192.168.1.1/cgi-bin/getGateWay.cgi
@@ -2458,8 +2467,11 @@ F12里开。
 cat /tmp/var/romfile.cfg | grep CMCCAdmin
 ```
 ### GM620(湖南移动)
-telnet
-192.168.1.1/telnet
+开telnet
+```
+http://192.168.1.1/telnet.gch
+```
+
 以上某个链接打开
 admin
 默认超密
