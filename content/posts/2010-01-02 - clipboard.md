@@ -173,3 +173,20 @@ http://192.168.1.1/system.cgi?telnet
 ```
 python nokia-router-cfg-tool.py -d uQz+2T4OMPl6tvTpyj0uwQ==
 ```
+
+
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass aDm8H%MdA
+sidbg 1 DB save   
+```
+
+```
+sidbg 1 DB set WANC 1 ConnType 4
+```
+
+```
+sidbg 1 DB delr WANC 0
+```
+
+

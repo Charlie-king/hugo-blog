@@ -271,6 +271,8 @@ TTL里输入以下命令（复制时别少0）
 
 ### 电信小翼管家8.15
 
+https://www.eiahk.com/news/4649.html
+
 老接口，已失效：
 ```
 { "Params": [], "MethodName": "GetTAPasswd", "RPCMethod": "CallMethod", "ObjectPath": "/com/ctc/igd1/Telecom/System", "InterfaceName": "com.ctc.igd1.SysCmd", "ServiceName": "com.ctc.igd1" }
@@ -764,6 +766,23 @@ SUSER_PASSWORD
 ```
 
 
+#### 电信PT622/PT921G
+
+老猫，登录useradmin，下载文件
+```
+http://192.168.x.x/romfile.cfg
+```
+
+搜
+web_passwd
+就是超级密码
+
+开telnet，
+```
+http://192.168.1.1/cgi-bin/telnet.asp
+```
+telnet账户密码
+admin/123456
 
 
 #### 移动PT939G/PT104E
@@ -850,8 +869,12 @@ http://192.168.1.1/bd/saveconf.asp
 
 #### 联通PT952G
 
-user登录后，点几次返回，再点管理员登录，直接进入，然后再开telnet。
+法1：user登录后，点几次返回，再点管理员登录，直接进入，然后再开telnet。
 
+法2：打开下载配置文件
+```
+http://192.168.1.1/backupsettings.conf
+```
 
 
 #### 联通PT928E
@@ -1109,7 +1132,7 @@ arp -a 192.168.1.1
 
 这时将显示你的光猫MAC。  
 ```
-Fh@B2E8C2
+Fh@B45A9A
 ```
 浏览器中录入  
 移动
@@ -1118,7 +1141,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=3086F12DE560
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=383D5BB2E8C2
+http://192.168.1.1/telnet?enable=1&key=F84D33BFCC50
 ```
 电信
 ```
@@ -1130,7 +1153,7 @@ root  或者  admin
 ```
 
 ```
-Fh@3B3B60
+Fh@692940
 ```
 FH-nE7jA%5m9EE9C4
 ```
@@ -1269,9 +1292,9 @@ ASCII码HTML实体编码数字，存在三种情况：
 
 **如果无字符的可以用以下代码：**
 
-在线跑java：
+在线跑python：
 ```
-https://www.bejson.com/runcode/java/
+https://www.jyshare.com/compile/9/
 ```
 
 **大小写字母循环内偏移-4，非字母不位移**
@@ -1340,7 +1363,7 @@ public class Main {
 #### 电信HG6201T
 开telnet
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACCB366753C0
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=3CFB5CA8CBDC
 ```
 telnet账户密码root，
 ```
@@ -1413,7 +1436,7 @@ http://192.168.1.1/logoffaccount.html
 开telnet  
 root  hg2x0
 
-#### 联通HG2543C1北京
+#### 联通HG2543C1（北京）
 
 user登录后，打开以下地址，查看所有配置信息，base64
 ```
@@ -1547,7 +1570,7 @@ sidbg 1 DB set PDTCTUSERINFO 0 Status 0
 sidbg 1 DB set PDTCTUSERINFO 0 Result 1  
 sidbg 1 DB save
 ```
-
+dyc92uktgQtJK2#T
 
 #### 移动SU6100
 锐捷猫，江苏
@@ -2266,7 +2289,10 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml && cat /var/tmp/debug-decry-cfg
 
 > /CMCCAdmin  
 
-找到对应的CMCCAdmin以及对应User及下面行的Pass的Val值，大功告成
+直接改桥接命令：注意要row 数值 =  wanc 后的
+```
+sidbg 1 DB set WANC 1 ConnType 4
+```
 
 **ftp账密是相同的：e8ftp**
 
@@ -2749,7 +2775,7 @@ https://www.right.com.cn/forum/thread-8225766-1-1.html
 ```
 **第二步：**  
 输入命令：  
-_sendcmd 1 DB p WANC_  
+sendcmd 1 DB p WANC  
 并将显示的内容复制下来备用。你大概会得到以下内容：  
 <Tbl name="WANC" RowCount="5">  
         <Row No="0">  
@@ -2771,7 +2797,7 @@ _sendcmd 1 DB p WANC_
   
 请记住 2_INTERNET_R_VID_3961 出现在哪个Row No里。比如上面的例子，就是Row 0  
 接下来输入：  
-_sendcmd 1 DB set WANC 0 ConnType 4_  
+sendcmd 1 DB set WANC 0 ConnType 4
 意思是将  WANC 表的 0 行 ConnType 字段值改为 4：sendcmd 1 DB set 表名(WANC) 行数(0) 字段名(ConnType) 字段值(4)  
 万一你看到的 2_INTERNET_R_VID_3961 出现在了其他row里，将 WANC后面的数字0改成相应的Row no就可以。  
 然后输入以下命令保存设置：  
@@ -2903,6 +2929,22 @@ sidbg 1 DB save
 ebtfee4gaDm8H%MdA
 ```
 
+sendcmd 1 DB set WANC 1 ConnType 4
+
+```
+sidbg 1 DB set DevAuthInfo 0 Pass aDm8H%MdA
+sidbg 1 DB save   
+```
+
+```
+sidbg 1 DB set WANC 1 ConnType 4
+```
+
+```
+sidbg 1 DB delr WANC 0
+```
+
+
 ```
 sidbg 1 DB set DevAuthInfo 0 Pass admin1234
 sidbg 1 DB save   
@@ -2945,7 +2987,7 @@ sendcmd 1 DB set MgtServer 0 Tr069Enable 0
 ```
 
 ```
-sendcmd 1 DB set WANC 1 WANCType 0
+sendcmd 1 DB set WANC 0 WANCType 0
 ```
 
 ###  上海电信F450G(悦me样)
