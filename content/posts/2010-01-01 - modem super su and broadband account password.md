@@ -1141,7 +1141,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=3086F12DE560
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=F84D33BFCC50
+http://192.168.1.1/telnet?enable=1&key=5C7DF3784430
 ```
 电信
 ```
@@ -1418,7 +1418,50 @@ cat /flash/cfg/agentconf/factory.conf
 head -2 /flash/cfg/agentconf/factory.conf
 ```
 
+#### 电信HG3142F/HG5585F/HG5382A (fttr主ONU),HG558*,HG6371F(从光猫)
 
+8080先登录普通管理员，打开下面页面，如果打不开，就复位猫超管进去
+
+打开页面
+```
+http://192.168.1.1:8080/html/upnp.html
+```
+F12查源码改upnp.js 中的 saveApply 函数，右键粘贴替换为下面，ctrl+s，点击页面upnp  保存。
+
+```js
+function saveApply() {
+    var postdata = {
+        // ftp: 0,
+        telnet: 1,
+        // dnsrelay: 1,
+        // portal: 0,
+        action: "telnet"
+        // terminal_number: 255,
+    };
+    postdata.sessionid = sessionidstr; // sessionidstr已经在其他地方定义
+    XHR.post("set_services", postdata, initPage);
+    showOrHideLoadingWindowFromIframe("show");
+}
+```
+
+telnet
+账户
+```
+telnetadmin
+```
+密码，安徽不用MAC后6位
+```
+FH-nE7jA%5m + MAC后6位
+```
+SU密码:Fh@MAC后6
+
+```
+load_cli factory
+```
+
+```
+show admin_pwd
+```
 
 #### 联通电信HG261GS/HG260/HG5143F
 （广西电信）
@@ -2886,6 +2929,10 @@ sidbg 1 DB set TelnetCfg 0 TS_UPwd 123Qwe
 
 ```
 sendcmd 1 DB delr WANC 0
+```
+
+```
+sidbg  1 DB delr WANC 0
 ```
 
 ```
