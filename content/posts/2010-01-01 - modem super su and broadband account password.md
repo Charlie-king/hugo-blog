@@ -626,7 +626,7 @@ TeleCom_mac  后6位小写
 ```
 TeleCom_d725f8
 ```
-
+江苏电信pt926E，admin，TeleCom_1234，TeleCom_mac  后6位小写，注意复制右键异常问题
 
 查看配置文件和超密
 ```
@@ -1137,11 +1137,11 @@ Fh@B45A9A
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=3086F12DE560
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7430AFD51AD0
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=5C7DF3784430
+http://192.168.1.1/telnet?enable=1&key=3086F19EB850
 ```
 电信
 ```
@@ -1860,7 +1860,7 @@ sn自动认证，user进去后台复位，
 root
 无线wifi密码+超密ykh36cfgaDm8H%MdA
 
-#### 移动HG550G企宽
+### 移动HG550G企宽
 
 【上海】
 标密aDm8H%MdA
@@ -1921,6 +1921,28 @@ sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
 vi /tmp/debug-decry-cfg
 ```
 按n跳转下一个匹配的内容
+
+### P22-2c(企业)上海移动
+
+password认证，普通登录，状态页底下，激活码就是注册码
+在网页端，设备管理，F12找到开启，深恢复出厂
+超管登录后，安全，开启telenet：CMCCAdmin，密码普通账号@C1，可重改。
+
+```
+刚登录telnet
+>
+输入sh
+#
+```
+查看超管
+```
+cat /var/romfile.cfg | grep  CMCCAdmin
+```
+查看宽带账户密码
+```
+cat /var/tmp/ppp1.conf
+```
+
 
 ### H3-1S/H3-2S/H3-2Sse/H3-2sa/H5-8/H5-9/
 
@@ -2630,7 +2652,7 @@ telnet密码搜supassword
 
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d f+ZHnLWWzs65ppLpDjT69g==
+python nokia-router-cfg-tool.py -d dAIhmXbcEOf5AAaZ4LhVkw==
 ```
 telnet：
 user或useradmin  
@@ -2811,6 +2833,8 @@ telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输�
 
 ### 中兴
 
+#### 
+
 #### 北京中兴开telnet工具  用user账密，不需超管
 
 直接改桥接命令
@@ -2861,6 +2885,22 @@ _sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1_
 _sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1_  
 _sendcmd 1 DB save_  
 以后你就可以插上光纤用telnet登陆了。
+```
+
+
+#### F632（悦me界面）
+
+
+F632电信，登录默认，打开下载配置文件，解密
+
+```
+http://192.168.1.1/common_page/File_Download_lua.lua?downtype=0&IF_FILEPATH=/userconfig/cfg/db_user_cfg.xml&IF_FILENAMEUTF8=db_user_cfg.xml8
+```
+
+#### 电信ZXEN CG200-8G8V
+用2.exe，开telnet
+```
+./2.exe -l xxx open -i 192.168.1.1
 ```
 
 
@@ -4844,7 +4884,7 @@ base64，md5加密
 解密网站：md5.cn
 https://blog.csdn.net/qq_26373925/article/details/112798210
 
-
+nmah5pmh
 
 ## 联通
 
