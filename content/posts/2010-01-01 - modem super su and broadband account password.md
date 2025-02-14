@@ -151,6 +151,18 @@ sendcmd 1 DB p DevAuthInfo
 ```
 000729553557
 ```
+tftp下载文件
+```
+tftp -p -l userconfig/cfg/db_user_cfg.xml -r db_user_cfg.xml 192.168.1.2
+```
+老版
+```
+.\2.exe -l xxx open -i 192.168.1.1
+```
+
+```
+.\1.exe --user CMCCAdmin --pass aDm8H%MdA -- 192.168.1.1 80 telnet open
+```
 
 执行命令
 新版固件要改网卡
@@ -569,6 +581,10 @@ http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 http://192.168.1.1:8080/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 ```
 
+电信打开获取配置文件
+```
+http://192.168.1.1:/bd/saveconf.aspBackup
+```
 telnet用户名密码：普通账号命令残缺，输入目录后双击tap能补全显示目录
 
 移动：
@@ -667,6 +683,34 @@ get lastgood.xml c:\aa.xml
 
 #### 电信PT928E-NP|R3/PT104E/PT1570-h10（通用）
 
+#### 联通友华PT（通用）
+
+##### 方法1：直接改user
+user登录上去，找到账户修改，看user有个三角形符号都可以改，F12，选中元素user，把 =0，改为1，
+修改密码即直接改到超管密码。
+
+##### 方法2：出厂，改配置页
+
+需要先恢复出厂，loid在注册页f12找。
+
+需登录超管后，打开这个开telnet
+```
+http://192.168.1.1/bd/vermod.asp
+```
+
+注册改为0，下发不动99，再输入loid注册，超管不会被退出。有宽带账号密码可以直接配置。
+
+打开back下载文件config.xml，查找超密，宽带密码
+
+```js
+http://192.168.1.1/bd/saveconf.asp
+```
+打开telnet后，配置文件 /var/config/lastgoot.xml
+如果加密了，查看超密执行命令为：
+```
+xmlconfig -os | grep SUSER
+```
+
 ##### 方法1：控制台
 
 要从8080登入，橙色页面，useradmin登录后
@@ -703,6 +747,12 @@ options[MENU_OPTION_SYSUSER]options[MENU_OPTION_SYSPWD]
 ```
 这一行下面的一行就是超级密码
 
+#### 电信PT924
+
+telnet， TeleCom_1234
+```
+cat /var/romfile.cfg | grep web_passwd -A 5
+```
 
 #### 电信PT928E
 
@@ -770,7 +820,7 @@ SUSER_PASSWORD
 
 老猫，登录useradmin，下载文件
 ```
-http://192.168.x.x/romfile.cfg
+http://192.168.1.1/romfile.cfg
 ```
 
 搜
@@ -840,31 +890,6 @@ http://192.168.1.1/updatesettings.html
 ```
 http://192.168.1.1/register_prov.html
 ```
-
-
-#### 联通友华PT（通用）
-
-##### 方法1：直接改user
-user登录上去，找到账户修改，看user有个三角形符号都可以改，F12，选中元素user，把 =0，改为1，
-修改密码即直接改到超管密码。
-
-##### 方法2：出厂，改配置页
-
-需要先恢复出厂，loid在注册页f12找。
-
-需登录超管后，打开这个开telnet
-```
-http://192.168.1.1/bd/vermod.asp
-```
-
-注册改为0，下发不动99，再输入loid注册，超管不会被退出。有宽带账号密码可以直接配置。
-
-打开back下载文件config.xml，查找超密，宽带密码
-
-```js
-http://192.168.1.1/bd/saveconf.asp
-```
-
 
 
 #### 联通PT952G
@@ -1114,6 +1139,18 @@ http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 
 #### 烽火通用
 
+### 固定超密
+
+telnet登录后，按这步骤操作，切换地区
+```
+load_cli factory
+set factorymode enable
+load preconfig CH_CT Temp
+set factorymode disable
+exit
+reboot
+```
+
 ##### HG6145F/HG6045F3/HG5143F
 
 移动烽火-吉比特-JBT-HG6145F超密破解-TJ
@@ -1137,7 +1174,7 @@ Fh@B45A9A
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7430AFD51AD0
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=F8E4A4E43780
 ```
 联通
 ```
@@ -1153,7 +1190,7 @@ root  或者  admin
 ```
 
 ```
-Fh@692940
+Fh@E43780
 ```
 FH-nE7jA%5m9EE9C4
 ```
@@ -1373,7 +1410,7 @@ Fh@3142CC
 ```
 abcd
 ```
-安徽电信HG6201T，root，FH-nE7jA%5m
+安徽江苏电信HG6201T，root，FH-nE7jA%5m
 ```
 FH-nE7jA%5m
 ```
@@ -1402,13 +1439,15 @@ cat /flash/cfg/agentconf/factory.conf
 
 
 
-#### 电信HG6543C1
+#### 电信HG6543C1/HG220GS
 ```
 192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
 ```
 
 telnet用户名 ：root  
 telnet密码：默认无线网络密钥+默认终端配置密码 的组合，要用pt才能上翻页
+
+四川电信HG220GS，root，hg2x0
 ```
 cat /flash/cfg/agentconf/factory.conf
 ```
@@ -1417,6 +1456,13 @@ cat /flash/cfg/agentconf/factory.conf
 ```查看前2行
 head -2 /flash/cfg/agentconf/factory.conf
 ```
+
+或直接编辑修改第二行超密保存reboot重启
+```
+vi  /flash/cfg/agentconf/factory.conf
+```
+:wq
+
 
 #### 电信HG3142F/HG5585F/HG5382A (fttr主ONU),HG558*,HG6371F(从光猫)
 
@@ -2174,6 +2220,20 @@ aDm8H%MdA
 ```
 重新注册会重启猫，需要快速提交命令修改
 
+### HX5-9hLite/HX5-9haLite
+
+[来源](https://github.com/wuben007/hx5-9hLite#%E7%A7%BB%E5%8A%A8%E5%85%89%E7%8C%ABhx5-9hlite-%E8%8E%B7%E5%8F%96%E8%B6%85%E7%BA%A7%E5%AF%86%E7%A0%81)
+
+1. 开启telnet curl --location --request POST '[http://192.168.1.1/boaform/set_telenet_enabled_mod.cgi](http://192.168.1.1/boaform/set_telenet_enabled_mod.cgi)'  
+    --header 'Content-Type: application/x-www-form-urlencoded'  
+    --data-urlencode 'mode_name=/boaform/set_telenet_enabled_mod'  
+    --data-urlencode 'nonedata=0.8681615761763514'  
+    --data-urlencode 'telenet_enabled=1'  
+    --data-urlencode 'user_name=root'  
+    --data-urlencode 'user_password=nE7jA%5m' 
+2. telnet 测试 telnet 192.168.1.1 出现登录 登录 用户名root ,密码为上面设置的密码
+3. 查找超级账号的密码 ，进入 路径： /config/work vi lastgood.xml 输入：/CMCCAdmin 则下一行则为 超级密码
+4. 超级密码有有效期，具体多久没有测试，以及telnet 也会关机，需要的时候，可以重复操作
 
 ### GS8108/GM630/UNG430Z/UNG300Z通用
 
@@ -2613,7 +2673,34 @@ ZN601
 有的光猫的telnet账户名不是admin而是useradmin密码同1234  
 
 
+### 九联UNG903H/UNG853H
 
+移动
+
+```
+http://192.168.1.1/aoaform/web_query_user_show.cgi
+```
+
+
+UNG953H-S 是加密的，查看源代码： aes_1.js 使用的是 aes 加密，key 的动态取的，网页控制台输入 Crypto_aes_g_key 就可以拿到。然后用常规的 CryptoJS 就可以解密。
+
+超级密码
+
+登录user，打开，telnet账号密码和user一致
+```
+http://192.168.1.1/webcmcc/telnet.html
+```
+
+cd /返回根目录，或者直接进配置文件目录
+```
+cd /config/workb
+```
+编辑查看超密和宽带密码
+```
+vi /config/workb/backup_lastgood.xml
+```
+
+/CMCCAdmin
 
 ### 贝尔
 
@@ -4801,6 +4888,7 @@ sidbg 1 DB save
 #### 四川移动（账号不是手机号的话，取手机后6位），
 #### 广东移动东莞移动，后6位，一般后6位
 #### 陕西移动，后6位
+### 河南移动，123456
 
 #### 辽宁联通，后6位或8位数字或123456
 #### 河南联通、湖北联通、天津联通、上海联通、吉林联通，123456
