@@ -163,7 +163,7 @@ tftp -p -l userconfig/cfg/db_user_cfg.xml -r db_user_cfg.xml 192.168.1.2
 ```
 .\1.exe --user CMCCAdmin --pass aDm8H%MdA -- 192.168.1.1 80 telnet open
 ```
-
+.\1.exe --user CUAdmin --pass CUAdmin -- 192.168.18.1 80 telnet open
 执行命令
 新版固件要改网卡
 
@@ -176,7 +176,7 @@ tftp -p -l userconfig/cfg/db_user_cfg.xml -r db_user_cfg.xml 192.168.1.2
 ```
 
 ```
-./6.exe -i 192.168.1.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
+./6.exe -i 192.168.18.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
 ```
 
 ```
@@ -380,6 +380,47 @@ https://nos*.189cube.com/device/api
 {"Params":[{"InterfaceName":"com.ctc.igd1.HTTPServer","ObjectPath":"/com/ctc/igd1/Network/HTTPServer","Properties":[]}],"RPCMethod":"GetPropertyValues","ServiceName":"com.ctc.igd1"}
 ```
 
+请求重写：查loid和密码
+```
+{"ServiceName":"com.ctc.igd1","Params":[{"InterfaceName":"com.ctc.igd1.PONInfo","Properties":[],"ObjectPath":"/com/ctc/igd1/Info/PON"}],"RPCMethod":"GetPropertyValues"}
+```
+
+请求重写：查vlan id：
+```
+
+
+```
+
+
+
+
+### 电信直接改桥接
+
+TEWA，TCGC 511 特艺直接打开
+```
+http://192.168.1.1:8080/SO_Wizard.html
+```
+
+```
+http://192.168.1.1:8080/bridge_route.gch
+```
+
+```
+http://192.168.1.1/bridge_route.gch
+```
+
+### 复制下载配置文件
+
+中兴F660
+复制到web根页面
+```
+cp /tmp/db_backup_cfg.xml /home/httpd
+```
+
+直接访问下载
+```
+http://192.168.1.1/db_backup_cfg.xml
+```
 
 ### 天邑TEWA
 
@@ -559,8 +600,8 @@ http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 #### 移动TEWA-86X，TEWA-7100A系列（江苏）
 油猴脚本，直接登录user即可，直接超管
 
-1. 在登录页面，按F12键打开浏览器控制台，选择源码；
-2. 选中控制台，按 ctrl+f 搜索字段 "isAdmin"，双击搜索结果跳转到指定代码；
+1. 在登录页面，按F12键打开浏览器控制台，选择 网络；
+2. 选中控制台，按 ctrl+f 搜索字段 "isAdmin"，双击搜索结果跳转到指定代码，右键在源代码中打开；
 3. 单击 "isAdmin" 所在行前面的行号，打上断点，然后用user账号登录光猫；
 4. 登录后页面会暂停，并且代码停止到刚才断点处；
 5. 在 "isAdmin" 行下方增加一行语句 "return;", 按 ctrl+s 保存修改后，按 F8 继续运行即可；
@@ -649,6 +690,10 @@ TeleCom_d725f8
 cat /var/config/lastgood.xml | grep SUSER_PASSWORD
 ```
 
+```
+cat /config/config.xml | grep SUSER_PASSWORD
+```
+
 友华光猫的 lastgood.xml 里的拨号密码是初始的，也可能是base64加密过的，实时的在var/ppp/ppp.conf
 ```
 cat /var/ppp/ppp.conf
@@ -680,8 +725,6 @@ useradmin
 get lastgood.xml c:\aa.xml
 ```
 
-
-#### 电信PT928E-NP|R3/PT104E/PT1570-h10（通用）
 
 #### 联通友华PT（通用）
 
@@ -747,12 +790,14 @@ options[MENU_OPTION_SYSUSER]options[MENU_OPTION_SYSPWD]
 ```
 这一行下面的一行就是超级密码
 
-#### 电信PT924
+·#### 电信PT924
 
 telnet， TeleCom_1234
 ```
 cat /var/romfile.cfg | grep web_passwd -A 5
 ```
+
+#### 电信PT928E-NP|R3/PT104E/PT1570-h10（通用）
 
 #### 电信PT928E
 
@@ -816,8 +861,8 @@ SUSER_PASSWORD
 ```
 
 
-#### 电信PT622/PT921G
-
+#### 电信PT622/PT632/PT921G
+四川电信
 老猫，登录useradmin，下载文件
 ```
 http://192.168.1.1/romfile.cfg
@@ -833,6 +878,14 @@ http://192.168.1.1/cgi-bin/telnet.asp
 ```
 telnet账户密码
 admin/123456
+
+#### 移动政企BG1460-R40(上海)
+
+蓝色页面，方法标准，开telnet
+
+```
+cat /config/config.xml | grep  SUSER
+```
 
 
 #### 移动PT939G/PT104E
@@ -890,6 +943,16 @@ http://192.168.1.1/updatesettings.html
 ```
 http://192.168.1.1/register_prov.html
 ```
+
+
+#### 联通PT924G/PT927G
+
+山东联通PT924实践。
+无需登录。要连续刷新打开这个，同时打开命令行telnet登录，连续刷和登录，这个过程会短暂打开telnet，借机登录。
+```
+http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
+```
+
 
 
 #### 联通PT952G
@@ -1178,7 +1241,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=F8E4A4E43780
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=3086F19EB850
+http://192.168.1.1/telnet?enable=1&key=7CF9A0DB5A74
 ```
 电信
 ```
@@ -1190,7 +1253,7 @@ root  或者  admin
 ```
 
 ```
-Fh@E43780
+Fh@DB5A74
 ```
 FH-nE7jA%5m9EE9C4
 ```
@@ -1425,6 +1488,19 @@ cat /flash/cfg/agentconf/factory.conf
 head -2 /flash/cfg/agentconf/factory.conf
 ```
 
+#### 电信HG5040A
+
+常规开启
+黑龙江电信
+账户
+```
+telnetadmin
+```
+密码，
+```
+FH-nE7jA%5m + MAC后6位
+```
+
 
 #### 电信HG2543C1/HG2541C1
 
@@ -1511,18 +1587,27 @@ show admin_pwd
 
 #### 联通电信HG261GS/HG260/HG5143F
 （广西电信）
-
+（四川移动HG260GT）
 192.168.1.1
-联通版进入维护账号
+联通版进入维护账号，启用隐藏，跳到登录页，登录
 ```
 http://192.168.1.1/logoffaccount.html
 ```
-用户名：fiberhomehg2x0  
-密码：hg2x0
+用户
+```
+fiberhomehg2x0
+```
+密码
+```
+hg2x0
+```
 
 出厂设置保存一下即可
 
-开telnet  
+开telnet ，默认 
+admin
+admin
+或者
 root  hg2x0
 
 #### 联通HG2543C1（北京）
@@ -1927,7 +2012,7 @@ https://blog.csdn.net/qq_42294237/article/details/132025846
 
 ### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开
 
-sn认证
+sn认证，集客可能password
 捅复位后，重新注册，密码保持不变，删除tr069
 S-Box8L94，F12查看loid，需在网页里重置，复位键没用。
 
@@ -2673,7 +2758,7 @@ ZN601
 有的光猫的telnet账户名不是admin而是useradmin密码同1234  
 
 
-### 九联UNG903H/UNG853H
+### 九联UNG903H/UNG853H/HG51(广东)
 
 移动
 
@@ -2739,7 +2824,7 @@ telnet密码搜supassword
 
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d dAIhmXbcEOf5AAaZ4LhVkw==
+python nokia-router-cfg-tool.py -d 83tWGmAGvkP/tzeRd6awZQ==
 ```
 telnet：
 user或useradmin  
@@ -2785,6 +2870,12 @@ reboot
 ```
 cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Status 0  
 cfgcli -s InternetGatewayDevice.X_CT-COM_UserInfo.Result 1  
+```
+
+改地区
+XG-040G-MD超密登录后
+```
+http://192.168.1.1/opid_setting.cgi?set
 ```
 
 **法二：重置**
@@ -2984,7 +3075,7 @@ F632电信，登录默认，打开下载配置文件，解密
 http://192.168.1.1/common_page/File_Download_lua.lua?downtype=0&IF_FILEPATH=/userconfig/cfg/db_user_cfg.xml&IF_FILENAMEUTF8=db_user_cfg.xml8
 ```
 
-#### 电信ZXEN CG200-8G8V
+#### 电信企业猫ZXEN CG200-8G8V
 用2.exe，开telnet
 ```
 ./2.exe -l xxx open -i 192.168.1.1
@@ -4862,6 +4953,7 @@ sidbg 1 DB save
 河南联通
 天津联通
 河北联通
+江苏联通
 
 ### 下发id，不下发宽带账号密码
 云南联通
@@ -4872,9 +4964,11 @@ sidbg 1 DB save
 ## 注册自动下发：
 广东移动，广东联通，广东电信，
 福建联通，
+浙江联通
 湖南联通
 山西联通
 山东联通，固话也下发(贝尔140)
+海南电信，（loid和密码）
 
 
 ## 宽带密码
@@ -4887,11 +4981,11 @@ sidbg 1 DB save
 #### 江苏移动，账号手机号，密码112233，企宽123123（装机时手动设置的）
 #### 四川移动（账号不是手机号的话，取手机后6位），
 #### 广东移动东莞移动，后6位，一般后6位
-#### 陕西移动，后6位
+#### 陕西移动，后6位，123456
 ### 河南移动，123456
 
 #### 辽宁联通，后6位或8位数字或123456
-#### 河南联通、湖北联通、天津联通、上海联通、吉林联通，123456
+#### 河南联通、湖北联通、湖南联通、天津联通、上海联通、吉林联通，123456
 #### 山东联通、江苏联通、安徽联通、云南联通，后6位
 #### 内蒙古联通，123456或013579或身份证后6位（客服不一定知道，不能修改到）
 
@@ -4904,6 +4998,15 @@ sidbg 1 DB save
 ## 注册码
 #### 江苏移动
 江苏家宽账号/手机号后10位，企业宽带：a+账号后9位
+
+#### 湖北移动
+SN认证，PASSWORD天sn后10位
+
+#### 西藏联通
+loid+密码123456
+
+#### 陕西联通
+loid+密码
 
 #### 广东移动
 广东，每个城市1个字母+账号后8位+2（移机过就是3，4，5，6累加），15768226708，e682267082
@@ -4935,7 +5038,8 @@ loid和账号一样
 
 #### 湖南联通，河北联通，山西联通，贵州联通，江西联通，北京联通无loid，mac自动认证
 
-
+#### 福建电信
+loid密码=loid
 
 湖南电信，海南电信： loid+密码
 
