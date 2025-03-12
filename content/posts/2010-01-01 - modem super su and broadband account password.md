@@ -546,6 +546,22 @@ useradmin登录后，直接在该页面地址（不需删除内容）后添加
 字母加数字的部分即是：Ncqrvlcr36
 `Password&gt;Ncqrvlcr36&lt;/Password&gt;#j@b8S?%&lt`
 
+#### 电信TEWA 750E/700G
+
+8080，useradmin登录后，在新地址打开
+```
+192.168.1.1:8080/dumpmdmd.conf
+```
+
+```
+http://192.168.1.1:8080/backupsettings.conf
+```
+
+下载文件，后搜索，password或搜telecomadmin账号
+字母加数字的部分即是：Ncqrvlcr36
+`Password&gt;Ncqrvlcr36&lt;/Password&gt;#j@b8S?%&lt`
+
+
 #### 联通TEWA 800/830/1206e（河南）/870G（江苏）
 
 后缀不同
@@ -1202,19 +1218,7 @@ http://192.168.1.1/cgi-bin/abcdidfope94e0934jiewru8ew414.cgi
 
 #### 烽火通用
 
-### 固定超密
-
-telnet登录后，按这步骤操作，切换地区
-```
-load_cli factory
-set factorymode enable
-load preconfig CH_CT Temp
-set factorymode disable
-exit
-reboot
-```
-
-##### HG6145F/HG6045F3/HG5143F
+#### HG6145F/HG6045F3/HG5143F
 
 移动烽火-吉比特-JBT-HG6145F超密破解-TJ
 https://www.right.com.cn/forum/thread-8252579-1-1.html
@@ -1277,6 +1281,10 @@ nE7jA%5m
 ```
 TeleCom_1234
 ```
+root
+```
+abcd
+```
 
 ```
 FH-nE7jA%5m
@@ -1330,8 +1338,29 @@ Config\factorydir# show admin_pwd
 这时将显示你的超级密码  
 Success! admin_pwd=CMCCAdminFa5&G3Pk  
 
+#### 烽火删除tr069
 
-#### 电信HG6201M
+1、
+删除的时候提示“不允许修改含有TR069的连接”。  
+根据这个提示，我们能知道挺多信息的吧。  
+chrome浏览F12打开开发者工具  
+点一下最左上角的含有鼠标的图标，再点一下下拉框，找到tr069一行，双击并删除 TR069 字样回车之后，就可以做修改了
+
+2、先记好loid，vlanid，宽带账号密码，进telnet改地区，为下面，重新注册配置好数据上网
+
+telnet登录后，按这步骤操作，切换地区
+```
+load_cli factory
+set factorymode enable
+load preconfig CH_CT Temp
+set factorymode disable
+exit
+reboot
+```
+
+
+
+#### 电信HG6201M/HG2201T
 
 浙江电信
 
@@ -1342,8 +1371,13 @@ http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
 ```
 
 2. telnet账户密码
+
 ```
 root
+```
+2201T 江苏电信
+```
+abcd
 ```
 移动root，hg2x0 
 ```
@@ -1373,6 +1407,10 @@ FH-nE7jA%5m7F229C
 3. 输入命令
 ```
 cat /flash/cfg/agentconf/factory.conf
+```
+
+```
+head 2 /flash/cfg/agentconf/factory.conf
 ```
 
 第一二行就是超管账户密码。宽带密码网页端可看。
@@ -3624,6 +3662,124 @@ tr069最开始短的部分，第一个
 ```
 
 
+### 华为
+
+
+开telnet后
+```
+telnet 192.168.1.1
+root #用户名
+adminHW #密码
+su #提权，此时只能使用华为内置的定制命令，输入?显示所有可用的命令。
+shell #进入shell
+ls #能列出文件即表示shell补全成功。
+```
+
+此时shell用户其实是srv_ssmp，可以再输入一次su(密码:admin)提升为root。
+
+获取超管权限有三种方式
+
+> 1. 提升useradmin为超级权限用户  
+> 2. 查询超管用户telecomadmin密码  
+> 3. 增加一个超管用户
+
+
+```
+telnet 192.168.1.1
+root
+adminHW
+su
+shell
+
+cd /mnt/jffs2/ #进入/mnt/jffs2目录
+cp -f hw_ctree.xml hw_ctree.xml.bak #备份是个好习惯
+cp -f hw_ctree.xml mycfg.xml.gz #拷贝一份出来
+aescrypt2 1 mycfg.xml.gz tem #1为解密 0为加密，tem是key，加密也用这个
+gzip -d mycfg.xml.gz #解压
+```
+
+```
+cd /mnt/jffs2/
+cp -f hw_ctree.xml hw_ctree.xml.bak
+cp -f hw_ctree.xml mycfg.xml.gz
+aescrypt2 1 mycfg.xml.gz tem
+gzip -d mycfg.xml.gz
+```
+
+到这里为止我们得到了一个解密后的mycfg.xml文件
+
+看看其中用户设置部分
+
+```xml
+<X_HW_WebUserInfo NumberOfInstances="2"> 
+<X_HW_WebUserInfoInstance InstanceID="1" ModifyPasswordFlag="0" UserName="useradmin" Password="$2yyyyyyyyyyyyyyyyyyy" UserLevel="1" Enable="1" Alias="cpe-1" Salt="c3d06c58fc5ad62c23979eff" PassMode="3"/>
+<X_HW_WebUserInfoInstance InstanceID="2" ModifyPasswordFlag="1" UserName="telecomadmin" Password="$2;xxxxxxxxxxxxxxxxxx$" UserLevel="0" Enable="1" Alias="cpe-2" PassMode="3" Salt="50181e70bec28dd7aaa6f4f5"/>
+</X_HW_WebUserInfo>
+```
+
+```
+NumberOfInstances=2 用户总数为2
+InstanceID="1" 用户序号
+UserLevel="1" 1为普通用户 0为超级用户
+Enable="1" 1启用 0禁用
+Alias="cpe-1" 别名，不重要
+Salt="c3d06c58fc5ad62c23979eff" 盐，加密用的随机数
+PassMode="3" 加密模式 ，0表示明文不加密
+```
+
+搞懂这段代码的含义就可以修改了，根据自己需要选择下面三个操作中的任意一个或几个
+##### 法1：
+1、提升useradmin为超级权限  
+把useradmin这一行的UserLevel=”1″改为UserLevel=”0″即可
+
+##### 法2：
+2、查询超管telecomadmin的密码  
+telecomadmin这一行内$与$之间的xxxxxxxxxxxxxx$就是超管密码，用华为解密工具的密文解密里的$2解密即可
+
+grep WebUserInfoInstance mycfg.xml #提取包含有超管密码的项password字段
+
+```
+grep WebUserInfoInstance mycfg.xml
+```
+
+直接查：
+
+telnet 192.168.1.1
+root
+adminHW
+```
+display current-configuration grep telecomadmin
+```
+
+屏幕上会直接打印出含有telecomadmin账户密码的行，解密即可
+
+##### 法3：
+
+修改
+<X_HW_WebUserInfo NumberOfInstances="2">
+为
+<X_HW_WebUserInfo NumberOfInstances="3">
+
+在telecomadmin这一行下面新增一行,表示新增一个超管admin密码为newpasswd
+```
+<X_HW_WebUserInfoInstance InstanceID="3" ModifyPasswordFlag="0" UserName="admin" Password="newpasswd" UserLevel="0" Enable="1" Alias="cpe-3" PassMode="0" />
+```
+
+完成修改以后
+
+gzip mycfg.xml #压缩
+aescrypt2 0 mycfg.xml.gz tem #加密
+cp -f mycfg.xml.gz /mnt/jffs2/hw_ctree.xml #替换
+reboot #重启生效
+
+```
+gzip mycfg.xml
+aescrypt2 0 mycfg.xml.gz tem
+cp -f mycfg.xml.gz /mnt/jffs2/hw_ctree.xml
+reboot
+```
+
+
 ### 华为万兆猫HN8145X6使能+补全AllShell+修改SN+E改XG+切换华为界面
 ```
 
@@ -3868,9 +4024,6 @@ https://www.chinadsl.net/forum.php?mod=viewthread&tid=170109
 
 ### 联通华为HN8145XR
 记下loid，重置，登录CUAdmin，断开光猫，管理，配置文件，导出hw_ctree.xml，用华为解密工具解密，编辑，修改CUAdmin
-
-
-
 
 
 ### 中兴系列天翼4.0（浙江江苏）获取方法
