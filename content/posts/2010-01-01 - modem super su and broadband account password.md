@@ -1503,7 +1503,7 @@ public class Main {
 ```
 http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=3CFB5CA8CBDC
 ```
-telnet账户密码root，
+telnet账户密码root， 安徽电信也有root，Fh@3142CC的
 ```
 Fh@3142CC
 ```
@@ -1511,7 +1511,7 @@ Fh@3142CC
 ```
 abcd
 ```
-安徽江苏电信HG6201T，root，FH-nE7jA%5m
+安徽电信、江苏电信HG6201T，root，FH-nE7jA%5m
 ```
 FH-nE7jA%5m
 ```
@@ -3124,6 +3124,11 @@ http://192.168.1.1/common_page/File_Download_lua.lua?downtype=0&IF_FILEPATH=/use
 #### F607za
 默认开telnet，或者用老工具开，无需超密。
 
+### F660海南电信
+
+无法用以下通用开telnet，拔捅复位3分钟，足够久复位，telnet默认开，插光纤telnet被关，loid和密码还在，此时登录超管，再插光纤，不会被退出，再注册。
+
+
 #### F412/F460/F612/F660/F623等23端口被关闭处理方法：  
 
 中兴下面是解决23端口被关闭的方法。
@@ -3630,7 +3635,7 @@ http://192.168.1.1/bridge_route.gch
 换猫后注册不上，弹出强制注册的解决方式，超管登录后导出配置文件hw_tree.xml，修改下面：
 
 改rms，扰乱端口和密码，
-```
+```xml
 <X_HW_UserInfo UserName="$24Y`P;n_0(49&lt;s-%sZXu1&amp;du3#4IP=&amp;QOJZKLOSiE$" 【这是loid，在网页上先填写后保存】UserId="" Status="0【这里99改为0】" Limit="10" Times="0" Result="1【这里99改为1】" ForceSupport="1【这里99改为1】" X_HW_InformStatus="0" X_HW_AcsCnnctSatus="0"/>
 ```
 禁用tr069 wan使能，WANIPConnectionInstance
