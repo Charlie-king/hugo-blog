@@ -133,6 +133,15 @@ operator
 operator123
 ```
 
+### 贵州广电
+
+```
+admin
+```
+
+```
+aDm8H%MdA
+```
 
 
 #### 中兴F607ZA
@@ -697,7 +706,7 @@ TeleCom_mac  后6位小写
 ```
 
 ```
-TeleCom_d725f8
+TeleCom_
 ```
 江苏电信pt926E，admin，TeleCom_1234，TeleCom_mac  后6位小写，注意复制右键异常问题
 
@@ -898,11 +907,14 @@ admin/123456
 #### 移动政企BG1460-R40(上海)
 
 蓝色页面，方法标准，开telnet
-
+超密
 ```
 cat /config/config.xml | grep  SUSER
 ```
-
+宽带账号密码
+```
+cat /config/config.xml | grep  ppp
+```
 
 #### 移动PT939G/PT104E
 
@@ -1541,11 +1553,14 @@ FH-nE7jA%5m + MAC后6位
 
 
 #### 电信HG2543C1/HG2541C1
-
+广东电信
 开启telnet  
-
+```
+192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
+```
 telnet用户名 ：root   
 密码是（默认无线网络密钥+默认终端配置密码）的组合
+注意只认猫背部的，wifi密码改过无关
 telnet密码：（每个光猫不一样）
 ```
 cat /flash/cfg/agentconf/factory.conf
@@ -2654,6 +2669,7 @@ prolinecmd romfileselect set 地区代码
 prolinecmd serialnum set 要修改成的SN码
 ```
 
+prolinecmd serialnum set FHTT18BB8B50
 **修改MAC命令**
 
 ```
@@ -3026,6 +3042,7 @@ AWIFI激活管理平台：[http://192.168.1.1/awifi_config.cgi](http://192.168.1
 ### 瑞斯达康
 #### 联通MSG2100E-UPON-4V
 
+注意要点上面菜单的保存配置
 管理员192.168.1.1/cu.php   
 CUAdmin   
 CUAdmin   
@@ -3044,7 +3061,43 @@ telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输�
 然后拔光纤捅复位，标密进去，系统管理，新建一个超管，密码要足够复杂!QAZ2wsx#EDC，插回光纤，注册即可。
 
 
+### 福建广电
 
+默认
+```
+FJGDAdmin
+```
+
+```
+96311.com
+```
+
+DT741，NL-5200(新大陆)，类似友华界面。
+
+先登录背部admin，然后F12，控制台，输入确认
+```
+fetch('/boaform/formSaveConfig', {  
+  method: 'POST',  
+  headers: {  
+    'Content-Type': 'application/x-www-form-urlencoded'  
+  },  
+  body: 'save_cs=1'  
+})  
+  .then(response => response.text())  
+  .then(result => {  
+    if (result.includes('userreg.asp')) {  
+      alert('特么请先登录啊！')  
+    } else {  
+      prompt('您的 FJGDAdmin 密码为', getField(result, 'SUSER_PASSWORD'))  
+    }  
+  })  
+  
+  
+function getField(str, name) {  
+  let valueLine = str.split('\n').find(x => { return x.includes(name) })  
+  return valueLine.trim().split('" Value="')[1].replace('"/>', '')  
+}
+```
 
 
 ### 中兴
@@ -4152,6 +4205,9 @@ def find_secret(secret, max_len):
 find_secret('8567D4C66584D68D710E2728D22B3EDF0F0434F6C682A3BEAE184F5DC6241AD2', 8)
     
 ```
+
+### 刷机h10
+https://www.znds.com/tv-1246416-2-1.html
 
 ## 改sn，改地区
 
