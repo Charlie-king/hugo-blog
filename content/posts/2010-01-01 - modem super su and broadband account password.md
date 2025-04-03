@@ -1257,7 +1257,7 @@ http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=F8E4A4E43780
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=7CF9A0DB5A74
+http://192.168.1.1/telnet?enable=1&key=3086F187A630
 ```
 电信
 ```
@@ -2788,6 +2788,10 @@ https://www.right.com.cn/forum/thread-8285997-1-1.html
 
 https://blog.csdn.net/qq_42294237/article/details/132025846
 
+#### 移动S-GTA86G0A(江苏)
+
+复位后，进超管后台开telnet
+
 
 ### 兆能ZN
 
@@ -4206,8 +4210,33 @@ find_secret('8567D4C66584D68D710E2728D22B3EDF0F0434F6C682A3BEAE184F5DC6241AD2', 
     
 ```
 
-### 刷机h10
+### 刷机h10-13改电视盒子
 https://www.znds.com/tv-1246416-2-1.html
+
+#### h10-13ac(天津)
+此类型有两个cpu两个系统，一个电视盒子，一个光猫。
+复位方法，持续捅复位，不定时松开，持续10分钟左右。
+
+当盒子使用，需要配置网络，先进超管，网络-宽带设置-上行口，选lan。默认的网络链接改一下重新新建一个网络连接，ipv4，链接模式DHCP模式，vlan不启用，端口wifi都勾选，如图：
+![[Pasted image 20250330002445.png]]
+![[Pasted image 20250330002604.png]]
+
+U盘装当贝桌面等其他软件，设置里面查看已经安装的软件，打开就行了
+https://www.right.com.cn/forum/thread-7110520-1-1.html
+
+### 单线复用
+https://zhuanlan.zhihu.com/p/109457053
+核心：原iptv绑定端口不勾，网络vlan绑定，选lan1，wan侧vlan选iptv链接，用户侧vlan用iptv的vlanid。
+![[Pasted image 20250330005309.png]]
+样式1中兴
+![[Pasted image 20250330005353.png]]![[Pasted image 20250330005420.png]]![[Pasted image 20250330005439.png]]
+华为猫
+
+![[Pasted image 20250330005503.png]]
+
+路由器侧，每个型号不一样
+![[Pasted image 20250330005552.png]]![[Pasted image 20250330005607.png]]
+
 
 ## 改sn，改地区
 
