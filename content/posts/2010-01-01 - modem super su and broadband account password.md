@@ -135,12 +135,61 @@ operator123
 
 ### 贵州广电
 
+初始
 ```
 admin
 ```
 
 ```
 aDm8H%MdA
+```
+
+### 福建广电
+
+初始
+```
+FJGDAdmin
+```
+
+```
+96311.com
+```
+
+动态
+DT741，NL-5200(新大陆)，类似友华界面。
+
+先登录背部admin，然后F12，控制台，输入确认
+```
+fetch('/boaform/formSaveConfig', {  
+  method: 'POST',  
+  headers: {  
+    'Content-Type': 'application/x-www-form-urlencoded'  
+  },  
+  body: 'save_cs=1'  
+})  
+  .then(response => response.text())  
+  .then(result => {  
+    if (result.includes('userreg.asp')) {  
+      alert('特么请先登录啊！')  
+    } else {  
+      prompt('您的 FJGDAdmin 密码为', getField(result, 'SUSER_PASSWORD'))  
+    }  
+  })  
+  
+  
+function getField(str, name) {  
+  let valueLine = str.split('\n').find(x => { return x.includes(name) })  
+  return valueLine.trim().split('" Value="')[1].replace('"/>', '')  
+}
+```
+
+
+### 陕西广电
+
+HGU B1型家庭网关 型号: GL3100B1
+登录后，打开下载，搜索，超密为四位数字
+```
+192.168.1.1/romfile.cfg
 ```
 
 
@@ -714,9 +763,13 @@ TeleCom_
 ```
 cat /var/config/lastgood.xml | grep SUSER_PASSWORD
 ```
-
+上海企宽，目录
 ```
 cat /config/config.xml | grep SUSER_PASSWORD
+```
+查看宽带密码
+```
+cat /config/config.xml | grep ppp
 ```
 
 友华光猫的 lastgood.xml 里的拨号密码是初始的，也可能是base64加密过的，实时的在var/ppp/ppp.conf
@@ -972,6 +1025,14 @@ http://192.168.1.1/updatesettings.html
 http://192.168.1.1/register_prov.html
 ```
 
+
+#### 移动HG550(上海企宽)
+友华方案，通用开telnet
+
+24281355
+1101
+21023371860180@jt.com
+588325
 
 #### 联通PT924G/PT927G
 
@@ -1253,11 +1314,11 @@ Fh@B45A9A
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=F8E4A4E43780
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=0846C7C59550
 ```
 联通
 ```
-http://192.168.1.1/telnet?enable=1&key=3086F187A630
+http://192.168.1.1/telnet?enable=1&key=7CFCFDB3BCE0
 ```
 电信
 ```
@@ -1269,7 +1330,7 @@ root  或者  admin
 ```
 
 ```
-Fh@DB5A74
+Fh@C59550
 ```
 FH-nE7jA%5m9EE9C4
 ```
@@ -1341,6 +1402,10 @@ cat /var/InternetGatewayDevice/DeviceInfo/X_CT-COM_TeleComAccount/value.conf
 cfg_cmd get InternetGatewayDevice.DeviceInfo.X_CMCC_TeleComAccount.Password
 ```
 
+电信查超密命令
+```
+cfg_cmd showvalue InternetGatewayDevice. 1 | grep -i 'password'
+```
 
 这时将显示你的超级账号名称  
 Success! admin_name=CMCCAdmin   
@@ -1470,7 +1535,7 @@ def convert_text(input_text):
 
     return result
 
-input_text = "53&84&119&74&97&100&113&73&89&88&58&33&"
+input_text = "126&46&80&70&69&35&122&53&"
 print(convert_text(input_text))
 ```
 
@@ -1619,6 +1684,7 @@ function saveApply() {
 }
 ```
 
+HG3124F
 telnet
 账户
 ```
@@ -2849,8 +2915,8 @@ vi /config/workb/backup_lastgood.xml
 
 #### G-140-MD
 
-##### 河南联通G-140-UD
-user登录，点击管理，用户管理，修改密码，右键查看框架源代码，搜索CUAdmin就行。
+##### 河南内蒙古联通G-140-UD
+user登录，点击管理，用户管理，修改密码，右键查看框架源代码，搜索CUAdmin可查到明文超密。
 
 ##### 北京联通G-140W-UD
 
@@ -3065,44 +3131,14 @@ telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输�
 然后拔光纤捅复位，标密进去，系统管理，新建一个超管，密码要足够复杂!QAZ2wsx#EDC，插回光纤，注册即可。
 
 
-### 福建广电
+### 吉视传媒
 
-默认
-```
-FJGDAdmin
-```
+吉林的宽带192.168.0.1
+普通账号admin/admin
+超管root/root
 
-```
-96311.com
-```
-
-DT741，NL-5200(新大陆)，类似友华界面。
-
-先登录背部admin，然后F12，控制台，输入确认
-```
-fetch('/boaform/formSaveConfig', {  
-  method: 'POST',  
-  headers: {  
-    'Content-Type': 'application/x-www-form-urlencoded'  
-  },  
-  body: 'save_cs=1'  
-})  
-  .then(response => response.text())  
-  .then(result => {  
-    if (result.includes('userreg.asp')) {  
-      alert('特么请先登录啊！')  
-    } else {  
-      prompt('您的 FJGDAdmin 密码为', getField(result, 'SUSER_PASSWORD'))  
-    }  
-  })  
-  
-  
-function getField(str, name) {  
-  let valueLine = str.split('\n').find(x => { return x.includes(name) })  
-  return valueLine.trim().split('" Value="')[1].replace('"/>', '')  
-}
-```
-
+机顶盒密码四位数一般为
+0000 1234 6666 9999 8888
 
 ### 中兴
 
@@ -3181,7 +3217,7 @@ http://192.168.1.1/common_page/File_Download_lua.lua?downtype=0&IF_FILEPATH=/use
 #### F607za
 默认开telnet，或者用老工具开，无需超密。
 
-### F660海南电信
+#### F660海南电信
 
 无法用以下通用开telnet，拔捅复位3分钟，足够久复位，telnet默认开，插光纤telnet被关，loid和密码还在，此时登录超管，再插光纤，不会被退出，再注册。
 
@@ -4210,6 +4246,8 @@ find_secret('8567D4C66584D68D710E2728D22B3EDF0F0434F6C682A3BEAE184F5DC6241AD2', 
     
 ```
 
+### 
+
 ### 刷机h10-13改电视盒子
 https://www.znds.com/tv-1246416-2-1.html
 
@@ -4236,7 +4274,11 @@ https://zhuanlan.zhihu.com/p/109457053
 
 路由器侧，每个型号不一样
 ![[Pasted image 20250330005552.png]]![[Pasted image 20250330005607.png]]
+### 光猫插网线当路由器用
 
+
+
+https://www.right.com.cn/FORUM/thread-8393629-1-1.html
 
 ## 改sn，改地区
 
@@ -5200,6 +5242,7 @@ sidbg 1 DB save
 
 ### 下发id，不下发宽带账号密码
 云南联通
+贵州联通，41，（新装宽带密码随机）
 陕西移动
 吉林电信，41
 
@@ -5212,6 +5255,7 @@ sidbg 1 DB save
 山西联通
 山东联通，固话也下发(贝尔140)
 海南电信，（loid和密码）
+新疆联通
 
 
 ## 宽带密码
@@ -5284,7 +5328,7 @@ loid和账号一样
 #### 福建电信
 loid密码=loid
 
-湖南电信，海南电信： loid+密码
+辽宁电信，湖南电信，海南电信： loid+密码
 
 
 ## 案例
