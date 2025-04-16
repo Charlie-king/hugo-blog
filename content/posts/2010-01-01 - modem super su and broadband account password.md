@@ -1364,7 +1364,7 @@ FH-nE7jA%5m
 ```
 HG5140A，广东电信HG6143D1，telnetadmin，[mac后6位大写]
 ```
-FH-nE7jA%5mF5FD20
+FH-nE7jA%5mA78034
 ```
 CUAdmin
 ```
@@ -2948,7 +2948,7 @@ telnet密码搜supassword
 
 解密，用python文件，nokia-router-cfg-tool.py文件夹下命令行运行语句，-d后面是加密的内容。
 ```
-python nokia-router-cfg-tool.py -d 83tWGmAGvkP/tzeRd6awZQ==
+python nokia-router-cfg-tool.py -d RVkz0RuODMYtV5p8XwG4RQ==
 ```
 telnet：
 user或useradmin  
@@ -4242,7 +4242,7 @@ def find_secret(secret, max_len):
 
 
 # 8: 这里是最长到8位密码。可以将数字调大，获取更长的密码
-find_secret('8567D4C66584D68D710E2728D22B3EDF0F0434F6C682A3BEAE184F5DC6241AD2', 8)
+find_secret('482ee1e24e17ff1e83e425c20c2f9f926e011eb2391024616d220e6d7d201de0', 8)
     
 ```
 
