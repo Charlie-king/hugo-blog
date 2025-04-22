@@ -192,6 +192,16 @@ HGU B1型家庭网关 型号: GL3100B1
 192.168.1.1/romfile.cfg
 ```
 
+### 四川广电
+
+```
+SCCNmadmin
+```
+
+```
+DK@5ui%9
+```
+
 
 #### 中兴F607ZA
 查看超级管理员密码
@@ -200,6 +210,10 @@ Telnet连接光猫，用户名root，密码Zte521，输入命令
 sendcmd 1 DB p DevAuthInfo
 ```
 即可查看所有的用户名密码，
+
+### 中兴猫复位
+
+关机，重新开机，等红灯闪时迅速捅下复位孔，保持，直到所有灯亮。
 
 ### 中兴1.6
 
@@ -1322,7 +1336,7 @@ http://192.168.1.1/telnet?enable=1&key=7CFCFDB3BCE0
 ```
 电信
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=ACC4A93B3B60
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CC74A483A48
 ```
 
 ```
@@ -1330,7 +1344,7 @@ root  或者  admin
 ```
 
 ```
-Fh@C59550
+Fh@483A48
 ```
 FH-nE7jA%5m9EE9C4
 ```
@@ -1604,7 +1618,7 @@ head -2 /flash/cfg/agentconf/factory.conf
 ```
 
 #### 电信HG5040A
-
+telnetadmin
 常规开启
 黑龙江电信
 账户
@@ -1616,7 +1630,7 @@ telnetadmin
 FH-nE7jA%5m + MAC后6位
 ```
 
-
+FH-nE7jA%5m483A48
 #### 电信HG2543C1/HG2541C1
 广东电信
 开启telnet  
@@ -2881,6 +2895,29 @@ ZN601
 密码 1234
 有的光猫的telnet账户名不是admin而是useradmin密码同1234  
 
+#### ZN600/ZNHG600
+
+法1：
+192.168.1.1:8080登录
+接在http://192.168.1.1:8080/cgi-bin/login.asp使用普通账户登录，登录后地址栏输入
+
+```
+http://192.168.1.1:8080/romfile.cfg
+```
+
+回车就可以把romfile.cfg下载到本地
+
+法2：
+将 U 盘插到光猫的 USB 口上，再在[电脑](https://www.smzdm.com/ju/sp4x11p/)上访问 `http://192.168.1.1/cgi-bin/luci/admin/storage/settings` 来到存储页面，通过 F12 输入 `get_path_files("/mnt/usb1_1/../..")` 跳转到根目录后，将 `root/config.rom` 复制到 U 盘中查看文件就能获取到超级密码了。
+
+法3：
+使用光猫底下的普通密码登录到 FTP，然后访问 `/var/config`或者`root/config.rom`，找到 `lastgood.xml` 复制到电脑上（访问目录可能提示权限不足，F5 刷新后就能进去），下载搜索
+
+法4：
+点击底下的“快速装维入口”，再点击右上角的“返回登录页面”，在新的登录页面中，尝试登录，F12 的网络请求中返回的 `telecomStatus.cgi` 中有明文的超级密码。
+
+后来这个请求返回的密码经过了 MD5 加密，但我们知道以前的超级密码都是以 telecomadmin + 8 位数字组成的，获得加密后的密码也可以反推出原密码。
+
 
 ### 九联UNG903H/UNG853H/HG51(广东)
 
@@ -3108,6 +3145,32 @@ AWIFI激活管理平台：[http://192.168.1.1/awifi_config.cgi](http://192.168.1
 配置文件查看：[http://192.168.1.1/dumpdatamodel.cgi](http://192.168.1.1/dumpdatamodel.cgi)
 
 ```
+
+解密算法：
+
+```python
+import base64
+
+class RouterCrypto:
+    def __init__(self):
+        from Crypto.Cipher import AES
+        # key and IV for AES
+        key = '3D A3 73 D7 DC 82 2E 2A 47 0D EC 37 89 6E 80 D7 2C 49 B3 16 29 DD C9 97 35 4B 84 03 91 77 9E A4'
+        iv  = 'D0 E6 DC CD A7 4A 00 DF 76 0F C0 85 11 CB 05 EA'
+        # create AES-128-CBC cipher
+        self.cipher = AES.new(bytes(bytearray.fromhex(key)), AES.MODE_CBC, bytes(bytearray.fromhex(iv)))
+
+    def decrypt(self, data):
+        output = self.cipher.decrypt(data)
+        # remove PKCS#7 padding
+        return output[:-ord(output[-1:])]
+
+
+encrypted = input('请输入密码字串：')
+print('解密密码为：', RouterCrypto().decrypt(base64.b64decode(encrypted)).decode('UTF-8'))
+
+```
+
 
 ### 瑞斯达康
 #### 联通MSG2100E-UPON-4V
@@ -3761,6 +3824,11 @@ tr069最开始短的部分，第一个
 
 
 ### 华为
+
+#### 华为移动猫
+记录注册码，vlanid，宽带账号密码，iptv等信息，复位，用初始密码切换地区，切换**江苏**填好宽带账号数据，输入Password注册。
+
+管理，设备管理，关闭rms注册跳转即可，即可关闭rms劫持跳转注册，网络直接可用，远程连接数据也都是可编辑的。
 
 
 开telnet后
