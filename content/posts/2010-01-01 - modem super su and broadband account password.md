@@ -66,7 +66,8 @@ telecomadmin
 
 ```
 nE7jA%5m
-```  
+```
+
 
 ```
 admintelecom
@@ -97,7 +98,7 @@ http://192.168.1.1/logoffaccount.html
 湖南：CUAdmin#HGU 
 重庆：账号cqadmin 密码cqunicom
 北京：123qweasdzxc 
-海南：cu@HNunicom 
+海南：cuadmin，cu@HNunicom 
 黑龙江：hljcuadmin，8MCU@HLJ
 
 #### 广东联通
@@ -154,6 +155,7 @@ FJGDAdmin
 ```
 96311.com
 ```
+
 
 动态
 DT741，NL-5200(新大陆)，类似友华界面。
@@ -1328,7 +1330,7 @@ Fh@B45A9A
 浏览器中录入  
 移动
 ```
-http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=0846C7C59550
+http://192.168.1.1/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CC74A201FD8
 ```
 联通
 ```
@@ -1336,7 +1338,7 @@ http://192.168.1.1/telnet?enable=1&key=7CFCFDB3BCE0
 ```
 电信
 ```
-http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CC74A483A48
+http://192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1&key=7CC74A201FD8
 ```
 
 ```
@@ -1344,9 +1346,17 @@ root  或者  admin
 ```
 
 ```
-Fh@483A48
+Fh@919BD8
 ```
-FH-nE7jA%5m9EE9C4
+
+```
+telnetadmin
+```
+
+```
+FH-nE7jA%5m919BD8
+```
+
 ```
 hg2x0
 ```
@@ -1617,10 +1627,10 @@ cat /flash/cfg/agentconf/factory.conf
 head -2 /flash/cfg/agentconf/factory.conf
 ```
 
-#### 电信HG5040A
+#### 电信HG5040A/HG6540A
 telnetadmin
 常规开启
-黑龙江电信
+黑龙江电信，江苏电信6540A
 账户
 ```
 telnetadmin
@@ -1631,6 +1641,7 @@ FH-nE7jA%5m + MAC后6位
 ```
 
 FH-nE7jA%5m483A48
+
 #### 电信HG2543C1/HG2541C1
 广东电信
 开启telnet  
@@ -2918,15 +2929,39 @@ http://192.168.1.1:8080/romfile.cfg
 
 后来这个请求返回的密码经过了 MD5 加密，但我们知道以前的超级密码都是以 telecomadmin + 8 位数字组成的，获得加密后的密码也可以反推出原密码。
 
+#### 电信ZN504XG-D(广东)
 
-### 九联UNG903H/UNG853H/HG51(广东)
+背部useradmin直接登录，绿色界面没关系。
+打开
+```
+192.168.1.1:8080/cgi-bin/getGateWay.cgi
+```
+
+页面直接显示telnet账号密码都是telnetadmin和超密，telnet  状态YES为开启。
+telnet的su也是telnetadmin。
+```
+Family GateWay
+telnetadmin
+telnetadmin
+No
+nE7jA%5m
+```
+
+gbus查超密即可。配置文件var/romfile.cfg
+也可用这个命令查
+```
+tcapi show Account
+```
+
+### 九联
+
+### 移动UNG903H/UNG853H/HG51(广东)
 
 移动
 
 ```
 http://192.168.1.1/aoaform/web_query_user_show.cgi
 ```
-
 
 UNG953H-S 是加密的，查看源代码： aes_1.js 使用的是 aes 加密，key 的动态取的，网页控制台输入 Crypto_aes_g_key 就可以拿到。然后用常规的 CryptoJS 就可以解密。
 
@@ -2947,6 +2982,47 @@ vi /config/workb/backup_lastgood.xml
 ```
 
 /CMCCAdmin
+
+#### 电信UNG310H(广东)
+ 
+1. 拿大头针捅复位键，一直压住大概20秒，光猫会重置出厂设置并恢复原始超密。  
+2. 管理页面192.168.1.1，用户名telecomadmin，密码nE7jA%5m登录。  
+3. 在维护页面里面点备份ROMFILE，通过浏览器下载romfile.cfg。  
+4. 用编辑器打开romfile.cfg，搜索telnet，找到下面这行  
+```
+TelnetEntry Active="No" telnet_username="telnetadmin" telnet_passwd="telnetadmin" telnet_admin_username="telnetadmin_super" telnet_admin_passwd="telnetadmin" telnet_port="23" 
+```
+把Active=”No“，改为“Yes”。修改后保存。  
+改参数2处屏蔽注册。
+```
+registerStatus="0",registerResult="1"
+```
+5. 重新登录光猫管理页面，在维护页面通过更新ROMFILE，把修改后的romfile.cfg上传。光猫更新ROMFILE后就会重启，重启后telnet就会打开。  
+6. 之后可以用系统自带telnet工具，用户名和密码都是telnetadmin，用SU命令可以提权，密码telnetadmin
+
+
+
+#### 电信UNG00A(广东)
+复位后，超管登录地址格式如下
+```
+http://192.168.1.1:8080/cgi-bin/content.asp
+```
+打开telnet
+```
+http://192.168.1.1:8080/cgi-bin/telnet.asp
+```
+
+telnet账号密码和su都是
+```
+telnetadmin
+```
+
+配置文件
+var/romfile.cfg
+
+gbus命令查。
+
+
 
 ### 贝尔
 
@@ -5292,13 +5368,13 @@ sidbg 1 DB save
 ```
 #### 广东移动、广东电信，光猫改广东地区即可注册
 #### 广西电信，光猫改广西地区即可注册
-#### 湖南联通、上海电信没有vlan id
+#### 湖南联通、上海电信，陕西电信没有vlan id
 #### 北京联通mac认证，不需要loid
 #### 河北联通mac认证，不需要loid，不会自动下发
 #### 山西移动，联通mac认证
 #### 天津电信，直接loid注册
 #### 天津联通，云南联通，注册不会下发上网账号密码
-#### 辽宁联通换猫，直接注册
+#### 辽宁山东联通换猫，直接注册
 
 ## 数据下发
 
@@ -5313,6 +5389,7 @@ sidbg 1 DB save
 贵州联通，41，（新装宽带密码随机）
 陕西移动
 吉林电信，41
+海南联通，88
 
 
 ## 注册自动下发：
@@ -5338,12 +5415,13 @@ sidbg 1 DB save
 #### 广东移动东莞移动，后6位，一般后6位
 #### 陕西移动，后6位，123456
 ### 河南移动，123456
+### 湖北移动，888888
 
 #### 辽宁联通，后6位或8位数字或123456
 #### 河南联通、湖北联通、湖南联通、天津联通、上海联通、吉林联通，123456
 #### 山东联通、江苏联通、安徽联通、云南联通，后6位
 #### 内蒙古联通，123456或013579或身份证后6位（客服不一定知道，不能修改到）
-
+#### 海南联通，后6位
 #### 山西太原联通 1234567890
 
 #### 河北电信，后6位
@@ -5396,7 +5474,7 @@ loid和账号一样
 #### 福建电信
 loid密码=loid
 
-辽宁电信，湖南电信，海南电信： loid+密码
+#### 辽宁电信，湖南电信，海南电信： loid+密码
 
 
 ## 案例

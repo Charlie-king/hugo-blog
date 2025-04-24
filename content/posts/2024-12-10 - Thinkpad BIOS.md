@@ -1,4 +1,4 @@
----
+hugo.111520.yzz---
 title: "联想Thinkpad的BIOS配置说明"
 subtitle: "联想Thinkpad的BIOS配置字段说明"
 date: 2024-12-10T18:08:20+08:00
