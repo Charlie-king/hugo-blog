@@ -498,6 +498,40 @@ http://192.168.1.1/db_backup_cfg.xml
 
 ### 天邑TEWA
 
+### su密码计算
+
+python在线运行网站：
+https://www.bejson.com/runcode/python3/
+https://www.json.cn/run/python3/
+https://www.w3cschool.cn/tryrun/runcode?lang=python3
+
+```python
+def generate_a1(hex_str):
+    ct1 = 'QbNUTaMecPWVSKdCgXIJRrsfYXwyqpvnDHWzQuPmAGtAxRTphBcwBnNkjbFmvVMqaFkEutSrDCxsCKjBzEyDEUJTZfHZghMHYFdeASGNaUgFtdbYRkshJHkFNXMcKdfw'
+    ct2 = 'NXMcKdfwRkshJHkFaUgFtdbYYFdeASGNZfHZghMHzEyDEUJTDCxsCKjBaFkEutSrjbFmvVMqhBcwBnNkAGtAxRTpDHWzQuPmYXwyqpvngXIJRrsfcPWVSKdCQbNUTaMe'
+    ct3 = 'eMaTUNbQCdKSVWPcfsrRJIXgnvpqywXYmPuQzWHDpTRxAtGAkNnBwcBhqMVvmFbjrStuEkFaBjKCsxCDTJUEDyEzHMhgZHfZNGSAedFYYbdtFgUaFkHJhskRwfdKcMXN'
+    hex_clean = ''.join(c for c in hex_str.upper() if c in '0123456789ABCDEF')
+    if len(hex_clean) < 12: return "MAC错误"
+    v19 = [ord(c) for c in reversed(hex_clean[-8:])]
+    v10 = next(((c-48|j) for j,c in enumerate(v19) if 49<=c<=57), 5)
+    a1, a2, a3 = [], [], []
+    for k in range(len(v19)):
+        v15 = v19[k] & v19[7-k] if k <4 else v19[k] | v19[k-4]
+        v16 = v15 + v10
+        if v16 > 127: v16, v10 = k, k
+        a1.append(ct1[v16])
+        a2.append(ct2[v16])
+        a3.append(ct3[v16])
+        v10 += max(k, 1)
+    return ''.join(a1) + '  ' + ''.join(a2) + '  ' + ''.join(a3)
+
+if __name__ == "__main__":
+    print(generate_a1('AAAAAAAAAAAA'))
+    #AAAAAAAAAAAA为mac地址，不区分大小写，格式随意，AA-AA-AA-AA-AA-AA 或者 AA:AA:AA:AA:AA:AA都可以
+
+```
+
+
 #### 电信700G/707G/708G
 
 直接打开ftp软件，进ftp，账号密码是useradmin普通管理员账密，/var/config/lastgood.xml或db_user_cfg.xml，解码，用708G解码，拖拽过去
@@ -523,14 +557,97 @@ get lastgood.xml c:\aa.xml
 以上完成之后会在C盘生成一个aa.xml文件。
 搜索此配置文件telecomadmin
 
+
+法1：ftp法
+默认开ftp的，账号密码位useradmin背部密码，登录进去后，找到配置文件
+海南是 /userconfig/cfg/db_user_cfg.xml
+文件和decode.exe放同级目录，运行生成解密文件。
+
+法2：开telnet
+
+1、用su工具开启并计算su
+
+2、光猫复位，用默认超密登录打开以下：
+
+```
+http://192.168.1.1:8080/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+
+3、可通过ftp修改配置文件后加密后上传实现。
+
+命令如下：
+```
+sidbg 1 DB decry /userconfig/cfg/db_user_cfg.xml
+```
+
+配置文件解密算法：
+```python
+from Crypto.Cipher import AES
+from binascii import a2b_hex
+KEY = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+def decrypt(text):
+    cryptor = AES.new(KEY, AES.MODE_ECB)
+    plain_text = cryptor.decrypt(a2b_hex(text))
+    return plain_text
+cfg_file = open("db_user_cfg.xml", "rb")
+dec_file = open("db_user_cfg.decode.xml", "w")
+file_header = cfg_file.read(60)
+while 1:
+    trunk_info = cfg_file.read(12)
+    trunk_data = cfg_file.read(65536)
+    trunk_real_size = int.from_bytes(trunk_info[0:4], byteorder='big', signed=False)
+    trunk_size = int.from_bytes(trunk_info[4:8], byteorder='big', signed=False)
+    next_trunk = int.from_bytes(trunk_info[8:12], byteorder='big', signed=False)
+    print(trunk_real_size, trunk_size, next_trunk)
+    dec_file.write(decrypt(trunk_data.hex()).decode(encoding="utf-8"))
+    if next_trunk==0:
+        break
+```
+
+直接改桥接：
+```
+http://192.168.1.1:8080/bridge_route.gch
+```
+
+设备管理选项里 有一个 **扭转注册状态** 的选项按钮 可以将 管理（ITMS）注册状态 扭转为注册成功
+
+![[Pasted image 20250426183919.png]]
+
+#### 电信TEWA 1008V
+
+ftp默认开启，useradmin和他的密码
+
+超管登录后
+telnet
+```
+http://192.168.1.1:8080/enableTelnet.html
+```
+
+```
+http://192.168.1.1/enableTelnet.html
+```
+
+卡bug进root
+打一个;并回车，此时会报错：sh: syntax error: unexpected ";"，不用管它，这时执行命令
+```
+echo $USER
+```
+就发现我们是root了
+
+#### 电信1100G(博通)
+
+博通方案，开telnet
+
+```
+http://192.168.1.1:8080/telandftpcfg.cmd?action=add&telusername=admin&telpwd=admin&telport=23&telenable=1
+```
 #### 电信TEWA 1006E
 TEWA 1006E
 telnet
-su:RwkkmxAw
-TEWA 766G
-su:bWVXTFDx
 
-下载我之前发布的《天邑SU工具》在里面输入对应地区码切换地区，
+TEWA 766G
+
+《天邑SU工具》在里面输入对应地区码切换地区，开启telnet
 也可以命令行下输入输入，如，切换湖北地区命令：
 echo 0x2A00>/proc/nvram/LocationCode
 改mac
@@ -1526,6 +1643,8 @@ ASCII码HTML实体编码数字，存在三种情况：
 1、不位移
 2、大小写字母循环偏移-4，数字和其他不偏移
 
+复制这一行
+ "baseinfoSet_TELECOMPASSWORD"
 
 74&117&119&84&76&78&118&113&54&78&
 
@@ -1563,7 +1682,7 @@ input_text = "126&46&80&70&69&35&122&53&"
 print(convert_text(input_text))
 ```
 
-53&84&119&74&97&100&113&73&89&88&
+102&108&102&121&121&110&55&100&52&69&65&76&
 5PsFwzmEUT
 
 
@@ -1643,7 +1762,7 @@ FH-nE7jA%5m + MAC后6位
 FH-nE7jA%5m483A48
 
 #### 电信HG2543C1/HG2541C1
-广东电信
+广东电信，湖北电信
 开启telnet  
 ```
 192.168.1.1:8080/cgi-bin/telnetenable.cgi?telnetenable=1
@@ -2152,6 +2271,20 @@ http://192.168.1.1/bd/hide.asp
 https://blog.csdn.net/qq_42294237/article/details/132025846
 
 
+### 特艺
+
+#### 电信TG1608CT_A8-G
+
+打开telenet，用超级密码进入后
+
+可能没有8080
+```
+http://192.168.1.1:8080/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
+```
+
+用户名telnetuser，密码光猫背面标签
+命令
+sidbg
 
 
 ### H10g-32ac企业网关（江苏、内蒙移动）S-Box8L94，telnet默认开
@@ -2239,6 +2372,22 @@ aDm8H%MdA
 H2-3灰色页面，H2-3s蓝色页面在系统里恢复出厂，登录超管，直接注册不会被退出。
 
 ##### 浅蓝或灰蓝色页面
+
+**开TELNET  自己设置 TELNET账号密码 建议设置 账号为 root**  
+```
+http://192.168.1.1/webcmcc/telnet.html?password=!@qw34er&username=root
+```
+或者
+```
+http://192.168.1.1/webcmcc/rc_telnet_debug.html?password=!@qw34er&username=root
+```
+
+直接重置猫，一打开就重置！
+```
+http://192.168.1.1/webcmcc/gui_restore_factory.html?password=!@qw34er&username=root
+```
+
+
 查看设备信息含普通账号密码  
 ```
 http://192.168.1.1/webcmcc/gui_device_info.html?password=!@qw34er&username=root
@@ -2267,11 +2416,6 @@ http://192.168.1.1/webcmcc/gui_restore_factory.html?password=!@qw34er&username=r
 对于一些需换猫有绑定SN MAC 注册卡30-40%可用此强制注册再去手动配置即可  
 ```
 http://192.168.1.1/webcmcc/modeset.html?password=!@qw34er&username=root
-```
-
-**开TELNET  自己设置 TELNET账号密码 建议设置 账号为 root**  
-```
-http://192.168.1.1/webcmcc/telnet.html?password=!@qw34er&username=root
 ```
 
 ##### 鲜蓝色界面和深蓝
@@ -2381,7 +2525,7 @@ vim /config/worka/lastgood.xml
 找到后吧找到aucTeleAccountPassword的Value值(英文输入状态按i进入编辑)将值替换成aucTelnetPassword的值
 (由于Value值太长显示不出全部,所以先把aucTeleAccountPassword的Value里面的内容删了然后复制aucTelnetPassword值,在cmd命令里右键一下张贴进去)
 然后按Esc在按 :wq 回车
-退出后输入reboot重启一下,然后你就可以使用之前设置的TELNET密码访问了
+退出后输入reboot重启一下,然后你就可以使用之前设置的TELNET密码访问了，有的user和telecount加密方法不同了不能用user的密码直接替代
 
 telnet密码
 ```
@@ -2394,7 +2538,10 @@ a2#We4%Dc2
 ```
 grep aucTeleAccountPassword lastgood.xml /config/worka
 ```
-
+十六进制转换字符串在线网站：
+```
+https://www.bejson.com/convert/ox2str/
+```
 密码是ASCII的十六进制数字，在线跑python解码转换一下即可，也可能是64位加密，无解。
 ```python
 
@@ -2847,6 +2994,14 @@ F12里开。
 ```
 cat /tmp/var/romfile.cfg | grep CMCCAdmin
 ```
+
+### GM220-S(天津移动)
+
+所有方法都不行，恢复出厂后，u盘可以到处配置文件。
+
+记录password，删除tr069，注册到60%手动配置。
+
+
 ### GM620(湖南移动)
 开telnet
 ```
@@ -2929,6 +3084,22 @@ http://192.168.1.1:8080/romfile.cfg
 
 后来这个请求返回的密码经过了 MD5 加密，但我们知道以前的超级密码都是以 telecomadmin + 8 位数字组成的，获得加密后的密码也可以反推出原密码。
 
+#### 电信ZN-XG120(安徽)
+
+useradmin普通登录
+```
+http://192.168.1.1:8080/cgi-bin/login.asp
+```
+下载搜索 web_passwd=
+```
+http://192.168.1.1:8080/romfile.cfg
+```
+
+telnet
+```xml
+<TelnetEntry Active="No" telnet_username="telnetadmin" telnet_passwd="telnetadmin" telnet_admin_username="telnetadmin_super" telnet_admin_passwd="telnetadmin" telnet_port="23" /> 
+```
+
 #### 电信ZN504XG-D(广东)
 
 背部useradmin直接登录，绿色界面没关系。
@@ -2955,7 +3126,7 @@ tcapi show Account
 
 ### 九联
 
-### 移动UNG903H/UNG853H/HG51(广东)
+#### 移动UNG903H/UNG853H/HG51(广东)
 
 移动
 
@@ -3050,7 +3221,7 @@ http://192.168.1.1/dumpdatamodel.cgi
 http://192.168.1.1/system.cgi?telnet
 ```
 
-telnet密码搜supassword
+telnet密码搜supassword解密
 ```
 <CLIPrompt ml="256" rw="RW" t="string" v="\\\\$"></CLIPrompt>
  
@@ -3067,20 +3238,39 @@ telnet：
 user或useradmin  
 密码背部   
 su密码  
-G-140-MF
+
+解密算法：
+```python
+import base64
+
+class RouterCrypto:
+    def __init__(self):
+        from Crypto.Cipher import AES
+        # key and IV for AES
+        key = '3D A3 73 D7 DC 82 2E 2A 47 0D EC 37 89 6E 80 D7 2C 49 B3 16 29 DD C9 97 35 4B 84 03 91 77 9E A4'
+        iv  = 'D0 E6 DC CD A7 4A 00 DF 76 0F C0 85 11 CB 05 EA'
+        # create AES-128-CBC cipher
+        self.cipher = AES.new(bytes(bytearray.fromhex(key)), AES.MODE_CBC, bytes(bytearray.fromhex(iv)))
+
+    def decrypt(self, data):
+        output = self.cipher.decrypt(data)
+        # remove PKCS#7 padding
+        return output[:-ord(output[-1:])]
+
+
+encrypted = input('请输入密码字串：')
+print('解密密码为：', RouterCrypto().decrypt(base64.b64decode(encrypted)).decode('UTF-8'))
+
 ```
-8tEETadDzUXc
+
 ```
-G-1425-MB
+cfgcli -a &gt; /tmp/config.xml
 ```
-GFdN2gMzTYC2
-AWYqE5qKJxxV
-JVGYsGxK2UaW
+
 ```
-G-140W-MD
+cat /tmp/config.xml
 ```
-gp5mSww4zrzh
-```
+自行查看这个文件的内容
 
 ```
 ritool set Custom AH  这是切换电信界面  
@@ -3281,7 +3471,10 @@ telnet或ttl连上  输入enable  testnode 密码rcios.test，再接着输�
 
 ### 中兴
 
-#### 
+#### 中兴换猫
+
+详细教程
+https://zhuanlan.zhihu.com/p/7384412244
 
 #### 北京中兴开telnet工具  用user账密，不需超管
 
@@ -4418,9 +4611,45 @@ https://zhuanlan.zhihu.com/p/109457053
 
 路由器侧，每个型号不一样
 ![[Pasted image 20250330005552.png]]![[Pasted image 20250330005607.png]]
-### 光猫插网线当路由器用
+### 光猫当路由器交换机用
+
+#### 光猫直接当路由器
+
+**1、LAN口 IPv4关闭DHCP服务，IPv6关闭RA和DHCP服务**
+**2、删除光猫WAN口里的所有配置（宽带设置）
+3、新建WAN**
+IP协议版本：任意（选IPv4不影响获取IPv6地址）  
+模式：桥接（Bridge）  
+端口绑定：SSID1、SSD5、上联路由器的网口（如LAN1~4）  
+DHCP服务：关闭  
+VLAN：不启用
+**4、设置Wi-Fi名和密码**  
+与主路由设置相同的SSID、密码和加密方式可以实现无线漫游
 
 
+
+#### 猫桥接后兼做路由器交换机
+
+**0、电脑有线连接光猫，电脑IP设置192.168.1.2、掩码255.255.255.0，其他可不填**  
+1、LAN口-IPv4关闭DHCP服务，IPv6关闭RA和DHCP服务
+
+**2、修改WAN口Internet绑定端口（宽带桥接设置）**  
+仅绑定下联路由器的端口，DHCP服务关闭，其他不变，不影响IPTV ，这个是桥接的连接。 
+
+**3、新建WAN连接**  
+IP协议版本：任意（选IPv4不影响获取IPv6地址）  
+模式：桥接  
+**端口绑定：SSID1、SSID5、除Internet/IPTV/iTV外的任意LAN口（如LAN2~4）**  
+**请务必不要与已绑定的端口重复！！！**  
+**请务必不要与已绑定的端口重复！！！**  
+**请务必不要与已绑定的端口重复！！！**  
+DHCP服务：关闭  
+VLAN：不启用  
+
+拨号设备网线回连猫。
+
+**4、设置Wi-Fi名和密码**  
+与主路由设置相同的SSID、密码和加密方式可以实现无线漫游
 
 https://www.right.com.cn/FORUM/thread-8393629-1-1.html
 
@@ -4497,8 +4726,9 @@ f460修改设备标识方法方法适合硬件版本v3.0，软件版本V2.30.10P
 以修改光猫23位设备标识号的前6位为666999例，从图中看id代码为768，修改命令setmac 1 768 666999
 ```
 
+中兴详细改sn
+https://zhuanlan.zhihu.com/p/7384412244
 
-  
 查询所有ID和SN  
 ```
 setmac show
@@ -5022,8 +5252,46 @@ cfgcli –r
 然后输入reboot让光猫重启，完成后在用浏览器进管理页面就发现相关参数已经按照自己的要求改变了。
 ```
 
+再打开下面的地址就可以自助修改省份了  
+[http://192.168.1.1/opid_setting.cgi?set](http://192.168.1.1/opid_setting.cgi?set)  
+  
+  
+还有一些其他的设置方法  
+固件升级  
+[http://192.168.1.1/upgrade.cgi](http://192.168.1.1/upgrade.cgi)  
+[http://192.168.1.1/mobile_up.cgi](http://192.168.1.1/mobile_up.cgi)  
+  
+插件配置卸载路径  
+[http://192.168.1.1/upgrade_plugin.cgi](http://192.168.1.1/upgrade_plugin.cgi)  
+  
+Upnp功能开启  
+[http://192.168.1.1/upnp.cgi](http://192.168.1.1/upnp.cgi)  
+  
+usb备份、恢复  
+[http://192.168.1.1/usb.cgi?backup](http://192.168.1.1/usb.cgi?backup)  
+  
+TR-069 RMS平台认证  
+[http://192.168.1.1/tr69.cgi](http://192.168.1.1/tr69.cgi)  
+  
+AWIFI激活管理平台  
+[http://192.168.1.1/awifi_config.cgi](http://192.168.1.1/awifi_config.cgi)  
+  
+设备mac,序列号，型号，厂商等信息修改  
+[http://192.168.1.1/bucpe.cgi](http://192.168.1.1/bucpe.cgi)  
+  
+设置省份  
+[http://192.168.1.1/opid_setting.cgi?set](http://192.168.1.1/opid_setting.cgi?set)
+
 ### GS3101改sn，mac
 
+
+### 华为运营商定制版修改
+
+登录超管后，打开，切换password，修改sn应用
+
+```
+http://192.168.1.1/html/amp/ontauth/password.asp
+```
 
 ### 烽火改sn，mac
 
@@ -5303,6 +5571,21 @@ https://www.right.com.cn/FORUM/thread-4958877-1-1.html
 天邑Mac和SN后8位一致，改Mac就是改sn.运用天邑TelnetClient工具，
 用：echo xx xx xx xx xx xx>/proc/nvram/BaseMacAddr  命令即可
 
+TEWA系列改模式
+【光芯片不支持或双模自适应光猫不要改！！！】  
+【否则后果自负！！！】  
+改为GPON：  
+qoecmd PonType set G  
+改为EPON：  
+qoecmd PonType set E  
+改为XGPON：  
+qoecmd PonType set 10G  
+改为10GEPON：  
+qoecmd PonType set 10E  
+然后记得保存一下：  
+qoecmd save
+
+
 ### 中兴光猫查看宽带密码
 开telnet后，执行命令，拷贝到mnt目录，然后去管理员后台开ftp，useradmin，useradmin，下载配置文件，再解密
 ```
@@ -5358,12 +5641,14 @@ iptv不勾选，保持和原猫一致，vlan id 2802，优先级3，nat使能，
 ```
 sendcmd 1 DB set PDTCTUSERINFO 0 Status 0  
 sendcmd 1 DB set PDTCTUSERINFO 0 Result 1  
+sendcmd 1 DB set PDTCTUSERINFO 0 tForcePushFlg 0
 sendcmd 1 DB save
 ```
 
 ```
 sidbg 1 DB set PDTCTUSERINFO 0 Status 0  
 sidbg 1 DB set PDTCTUSERINFO 0 Result 1  
+sidbg 1 DB set PDTCTUSERINFO 0 tForcePushFlg 0
 sidbg 1 DB save
 ```
 #### 广东移动、广东电信，光猫改广东地区即可注册
@@ -5390,6 +5675,9 @@ sidbg 1 DB save
 陕西移动
 吉林电信，41
 海南联通，88
+青海电信，41，
+黑龙江电信，41
+
 
 
 ## 注册自动下发：
@@ -5429,6 +5717,7 @@ sidbg 1 DB save
 
 
 ## 注册码
+
 #### 江苏移动
 江苏家宽账号/手机号后10位，企业宽带：a+账号后9位
 
@@ -5437,6 +5726,7 @@ SN认证，PASSWORD天sn后10位
 
 #### 西藏联通
 loid+密码123456
+
 
 #### 陕西联通
 loid+密码
@@ -5465,7 +5755,7 @@ loid+密码
 云浮移动
 汕尾移动 s
 
-#### 湖南联通
+#### 湖南联通mac认证
 loid和账号一样
 073800292846
 
@@ -5474,7 +5764,7 @@ loid和账号一样
 #### 福建电信
 loid密码=loid
 
-#### 辽宁电信，湖南电信，海南电信： loid+密码
+#### 辽宁电信，湖南电信，海南电信，西藏电信： loid+密码
 
 
 ## 案例
