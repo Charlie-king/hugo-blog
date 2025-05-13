@@ -242,19 +242,19 @@ tftp -p -l userconfig/cfg/db_user_cfg.xml -r db_user_cfg.xml 192.168.1.2
 新版固件要改网卡
 
 ```
-./6.exe -i 192.168.1.1 --port 80 --user factorymode --pass nE%jA@5b --new --telnet
+./7.exe -i 192.168.1.1 --port 80 --user factorymode --pass nE%jA@5b --new --telnet
 ```
 
 ```
-./6.exe -i 192.168.1.1 --port 80 --user CMCCAdmin --pass aDm8H%MdA --new --telnet
+./7.exe -i 192.168.1.1 --port 80 --user CMCCAdmin --pass aDm8H%MdA --new --telnet
 ```
 
 ```
-./6.exe -i 192.168.18.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
+./7.exe -i 192.168.18.1 --port 80 --user CUAdmin --pass CUAdmin --new --telnet
 ```
 
 ```
-./6.exe -i 192.168.2.1 --port 80 --user lnadmin --pass lnadmin --new --telnet
+./7.exe -i 192.168.2.1 --port 80 --user lnadmin --pass lnadmin --new --telnet
 ```
 
 电信
@@ -1469,9 +1469,9 @@ Fh@919BD8
 ```
 telnetadmin
 ```
-
+Fh@4C47A0
 ```
-FH-nE7jA%5m919BD8
+FH-nE7jA%5mFh@4C47A0
 ```
 
 ```
@@ -1770,10 +1770,6 @@ FH-nE7jA%5m483A48
 telnet用户名 ：root   
 密码是（默认无线网络密钥+默认终端配置密码）的组合
 注意只认猫背部的，wifi密码改过无关
-telnet密码：（每个光猫不一样）
-```
-cat /flash/cfg/agentconf/factory.conf
-```
 
 
 
@@ -1784,6 +1780,20 @@ cat /flash/cfg/agentconf/factory.conf
 
 telnet用户名 ：root  
 telnet密码：默认无线网络密钥+默认终端配置密码 的组合，要用pt才能上翻页
+
+湖北电信HG6543C3
+telnet
+```
+telecom
+```
+
+```
+nE7jA%5m
+```
+
+```
+cat /flash/cfg/agentconf/factory.conf
+```
 
 四川电信HG220GS，root，hg2x0
 ```
@@ -3054,6 +3064,27 @@ http://192.168.1.1/getpage.gch?pid=1002&nextpage=tele_sec_tserver_t.gch
 默认的账户密码登录
 ​23m9kf76CUAdmin
 
+#### 移动ZN-173
+
+登录user后，打开telnet
+```
+http://192.168.1.1/cgi-bin/getGateHide.cgi
+```
+
+telnet
+用户名是admin  
+密码是aDm8H%MdA
+
+查看超管
+```
+cat /tmp/ctromfile.cfg | grep "CMCCAdmin"
+```
+
+su CMCCAdmin
+切换到su密码就是超管密码
+
+
+
 #### 电信ZN600
 https://www.right.com.cn/forum/thread-4146855-1-1.html
 
@@ -3590,6 +3621,8 @@ https://www.right.com.cn/forum/thread-8279408-1-1.html
 先用开telnet工具开启临时账号密码，修改临时telnet为永久
 
 
+
+
 ```
 sendcmd 1 DB p TelnetCfg  
 sendcmd 1 DB set TelnetCfg 0 Lan_Enable 1  
@@ -3605,6 +3638,11 @@ sendcmd 1 DB set TelnetCfg 0 Lan_EnableAfterOlt 1
 sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
 sendcmd 1 DB save
 ```
+
+```
+sendcmd 1 DB delr WANC 0
+```
+
 
 ```
 sendcmd 1 DB set DevAuthInfo 0 Pass admin1234
