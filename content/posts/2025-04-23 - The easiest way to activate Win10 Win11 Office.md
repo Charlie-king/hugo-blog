@@ -36,3 +36,14 @@ seo:
 
 
 
+1. 联网，开始菜单管理员模式打开powershell
+
+2. 输入命令，
+```
+irm https://get.activated.win | iex
+```
+
+3. 选择对应一键激活
+
+4. 项目源码：
+https://github.com/massgravel/Microsoft-Activation-Scripts
